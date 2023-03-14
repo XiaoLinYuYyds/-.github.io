@@ -1,0 +1,10 @@
+app_New_Setting.c ---》创建manwincreate_para_t   窗口跟目录
+New_Setting.c        ---》创建framewincreate_para_t 窗口
+New_Setting_para.c---》存放图层控件显示大小和位置数据
+
+新添加ID：
+ID_HOME_NEW_SETTING_NUMBER://新添加的通用设置ID，通过这个ID跳转界面窗口进入:app_New_Setting_manwin_create创建manwin窗口
+
+APP_NEWSETTING_ID://进入新添加的通用设置app的mainwin窗口id
+执行功能：
+	case SETTING_SW_TO_MAIN:  //直接返回到home界面

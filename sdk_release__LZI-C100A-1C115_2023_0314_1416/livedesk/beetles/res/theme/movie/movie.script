@@ -1,0 +1,468 @@
+[res_2001]
+name	  	=MOVIE_BRIGHT_BG_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\BRIGHT_BG.bmp
+commentCN 	=BRIGHT_BG
+commentEN 	=BRIGHT_BG
+
+[res_2002]
+name	  	=MOVIE_BRIGHT_PROG_BG_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\BRIGHT_PROG_BG_UF.bmp
+commentCN 	=BRIGHT_PROG_BG_UF
+commentEN 	=BRIGHT_PROG_BG_UF
+
+[res_2003]
+name	  	=MOVIE_BRIGHT_PROG_CURSOR_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\BRIGHT_PROG_CURSOR_UF.bmp
+commentCN 	=BRIGHT_PROG_CURSOR_UF
+commentEN 	=BRIGHT_PROG_CURSOR_UF
+
+[res_2004]
+name	  	=MOVIE_DLG_BG_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\DLG_BG.bmp
+commentCN 	=DLG_BG
+commentEN 	=DLG_BG
+
+[res_2005]
+name	  	=MOVIE_DLG_BTN_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\DLG_BTN_F.bmp
+commentCN 	=DLG_BTN_F
+commentEN 	=DLG_BTN_F
+
+[res_2006]
+name	  	=MOVIE_DLG_BTN_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\DLG_BTN_UF.bmp
+commentCN 	=DLG_BTN_UF
+commentEN 	=DLG_BTN_UF
+
+[res_2007]
+name	  	=MOVIE_LBRIGHT_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\LBRIGHT_F.bmp
+commentCN 	=LBRIGHT_F
+commentEN 	=LBRIGHT_F
+
+[res_2008]
+name	  	=MOVIE_LBRIGHT_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\LBRIGHT_UF.bmp
+commentCN 	=LBRIGHT_UF
+commentEN 	=LBRIGHT_UF
+
+[res_2009]
+name	  	=MOVIE_LVOLUME_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\LVOLUME_F.bmp
+commentCN 	=LVOLUME_F
+commentEN 	=LVOLUME_F
+
+[res_2010]
+name	  	=MOVIE_LVOLUME_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\LVOLUME_UF.bmp
+commentCN 	=LVOLUME_UF
+commentEN 	=LVOLUME_UF
+
+[res_2011]
+name	  	=MOVIE_NUM0_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\NUM0.bmp
+commentCN 	=NUM0
+commentEN 	=NUM0
+
+[res_2012]
+name	  	=MOVIE_NUM1_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\NUM1.bmp
+commentCN 	=NUM1
+commentEN 	=NUM1
+
+[res_2013]
+name	  	=MOVIE_NUM2_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\NUM2.bmp
+commentCN 	=NUM2
+commentEN 	=NUM2
+
+[res_2014]
+name	  	=MOVIE_NUM3_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\NUM3.bmp
+commentCN 	=NUM3
+commentEN 	=NUM3
+
+[res_2015]
+name	  	=MOVIE_NUM4_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\NUM4.bmp
+commentCN 	=NUM4
+commentEN 	=NUM4
+
+[res_2016]
+name	  	=MOVIE_NUM5_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\NUM5.bmp
+commentCN 	=NUM5
+commentEN 	=NUM5
+
+[res_2017]
+name	  	=MOVIE_NUM6_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\NUM6.bmp
+commentCN 	=NUM6
+commentEN 	=NUM6
+
+[res_2018]
+name	  	=MOVIE_NUM7_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\NUM7.bmp
+commentCN 	=NUM7
+commentEN 	=NUM7
+
+[res_2019]
+name	  	=MOVIE_NUM8_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\NUM8.bmp
+commentCN 	=NUM8
+commentEN 	=NUM8
+
+[res_2020]
+name	  	=MOVIE_NUM9_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\NUM9.bmp
+commentCN 	=NUM9
+commentEN 	=NUM9
+
+[res_2021]
+name	  	=MOVIE_NUMLOCK_BG_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\NUMLOCK_BG.bmp
+commentCN 	=NUMLOCK_BG
+commentEN 	=NUMLOCK_BG
+
+[res_2022]
+name	  	=MOVIE_PAL_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\pal.bmp
+commentCN 	=PAL
+commentEN 	=PAL
+
+[res_2023]
+name	  	=MOVIE_PAUSESTA_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\PAUSESTA.bmp
+commentCN 	=PAUSESTA
+commentEN 	=PAUSESTA
+
+[res_2024]
+name	  	=MOVIE_PLAYSTA_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\PLAYSTA.bmp
+commentCN 	=PLAYSTA
+commentEN 	=PLAYSTA
+
+[res_2025]
+name	  	=MOVIE_PROG_BG_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\PROG_BG_UF.bmp
+commentCN 	=PROG_BG_UF
+commentEN 	=PROG_BG_UF
+
+[res_2026]
+name	  	=MOVIE_PROG_CURSOR_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\PROG_CURSOR_UF.bmp
+commentCN 	=PROG_CURSOR_UF
+commentEN 	=PROG_CURSOR_UF
+
+[res_2027]
+name	  	=MOVIE_RBRIGHT_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\RBRIGHT_F.bmp
+commentCN 	=RBRIGHT_F
+commentEN 	=RBRIGHT_F
+
+[res_2028]
+name	  	=MOVIE_RBRIGHT_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\RBRIGHT_UF.bmp
+commentCN 	=RBRIGHT_UF
+commentEN 	=RBRIGHT_UF
+
+[res_2029]
+name	  	=MOVIE_RVOLUME_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\RVOLUME_F.bmp
+commentCN 	=RVOLUME_F
+commentEN 	=RVOLUME_F
+
+[res_2030]
+name	  	=MOVIE_RVOLUME_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\RVOLUME_UF.bmp
+commentCN 	=RVOLUME_UF
+commentEN 	=RVOLUME_UF
+
+[res_2031]
+name	  	=MOVIE_SPSC_16R9_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_16R9.bmp
+commentCN 	=SPSC_16R9
+commentEN 	=SPSC_16R9
+
+[res_2032]
+name	  	=MOVIE_SPSC_4R3_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_4R3.bmp
+commentCN 	=SPSC_4R3
+commentEN 	=SPSC_4R3
+
+[res_2033]
+name	  	=MOVIE_SPSC_BG_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_BG.bmp
+commentCN 	=SPSC_BG
+commentEN 	=SPSC_BG
+
+[res_2034]
+name	  	=MOVIE_SPSC_BRIGHTSET_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_BRIGHTSET_F.bmp
+commentCN 	=SPSC_BRIGHTSET_F
+commentEN 	=SPSC_BRIGHTSET_F
+
+[res_2035]
+name	  	=MOVIE_SPSC_BRIGHTSET_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_BRIGHTSET_UF.bmp
+commentCN 	=SPSC_BRIGHTSET_UF
+commentEN 	=SPSC_BRIGHTSET_UF
+
+[res_2036]
+name	  	=MOVIE_SPSC_BRIGHT_STATIC_ICON_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_BRIGHT_STATIC_ICON.bmp
+commentCN 	=SPSC_BRIGHT_STATIC_ICON
+commentEN 	=SPSC_BRIGHT_STATIC_ICON
+
+[res_2037]
+name	  	=MOVIE_SPSC_CHANNEL_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_CHANNEL_F.bmp
+commentCN 	=SPSC_CHANNEL_F
+commentEN 	=SPSC_CHANNEL_F
+
+[res_2038]
+name	  	=MOVIE_SPSC_CHANNEL_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_CHANNEL_UF.bmp
+commentCN 	=SPSC_CHANNEL_UF
+commentEN 	=SPSC_CHANNEL_UF
+
+[res_2039]
+name	  	=MOVIE_SPSC_FF_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_FF_F.bmp
+commentCN 	=SPSC_FF_F
+commentEN 	=SPSC_FF_F
+
+[res_2040]
+name	  	=MOVIE_SPSC_FF_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_FF_UF.bmp
+commentCN 	=SPSC_FF_UF
+commentEN 	=SPSC_FF_UF
+
+[res_2041]
+name	  	=MOVIE_SPSC_NEXT_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_NEXT_F.bmp
+commentCN 	=SPSC_NEXT_F
+commentEN 	=SPSC_NEXT_F
+
+[res_2042]
+name	  	=MOVIE_SPSC_NEXT_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_NEXT_UF.bmp
+commentCN 	=SPSC_NEXT_UF
+commentEN 	=SPSC_NEXT_UF
+
+[res_2043]
+name	  	=MOVIE_SPSC_ONLY_ONCE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_ONLY_ONCE.bmp
+commentCN 	=SPSC_ONLY_ONCE
+commentEN 	=SPSC_ONLY_ONCE
+
+[res_2044]
+name	  	=MOVIE_SPSC_ORIGIN_SIZE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_ORIGIN_SIZE.bmp
+commentCN 	=SPSC_ORIGIN_SIZE
+commentEN 	=SPSC_ORIGIN_SIZE
+
+[res_2045]
+name	  	=MOVIE_SPSC_PLAYMODE_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_PLAYMODE_F.bmp
+commentCN 	=SPSC_PLAYMODE_F
+commentEN 	=SPSC_PLAYMODE_F
+
+[res_2046]
+name	  	=MOVIE_SPSC_PLAYMODE_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_PLAYMODE_UF.bmp
+commentCN 	=SPSC_PLAYMODE_UF
+commentEN 	=SPSC_PLAYMODE_UF
+
+[res_2047]
+name	  	=MOVIE_SPSC_PLAYPAUSE_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_PLAYPAUSE_F.bmp
+commentCN 	=SPSC_PLAYPAUSE_F
+commentEN 	=SPSC_PLAYPAUSE_F
+
+[res_2048]
+name	  	=MOVIE_SPSC_PLAYPAUSE_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_PLAYPAUSE_UF.bmp
+commentCN 	=SPSC_PLAYPAUSE_UF
+commentEN 	=SPSC_PLAYPAUSE_UF
+
+[res_2049]
+name	  	=MOVIE_SPSC_PREV_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_PREV_F.bmp
+commentCN 	=SPSC_PREV_F
+commentEN 	=SPSC_PREV_F
+
+[res_2050]
+name	  	=MOVIE_SPSC_PREV_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_PREV_UF.bmp
+commentCN 	=SPSC_PREV_UF
+commentEN 	=SPSC_PREV_UF
+
+[res_2051]
+name	  	=MOVIE_SPSC_PROG_BG_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_PROG_BG_UF.bmp
+commentCN 	=SPSC_PROG_BG_UF
+commentEN 	=SPSC_PROG_BG_UF
+
+[res_2052]
+name	  	=MOVIE_SPSC_PROG_CURSOR_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_PROG_CURSOR_UF.bmp
+commentCN 	=SPSC_PROG_CURSOR_UF
+commentEN 	=SPSC_PROG_CURSOR_UF
+
+[res_2053]
+name	  	=MOVIE_SPSC_PROG_PLAYSTA_PAUSE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_PROG_PLAYSTA_PAUSE.bmp
+commentCN 	=SPSC_PROG_PLAYSTA_PAUSE
+commentEN 	=SPSC_PROG_PLAYSTA_PAUSE
+
+[res_2054]
+name	  	=MOVIE_SPSC_PROG_PLAYSTA_PLAY_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_PROG_PLAYSTA_PLAY.bmp
+commentCN 	=SPSC_PROG_PLAYSTA_PLAY
+commentEN 	=SPSC_PROG_PLAYSTA_PLAY
+
+[res_2055]
+name	  	=MOVIE_SPSC_RANDOM_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_RANDOM.bmp
+commentCN 	=SPSC_RANDOM
+commentEN 	=SPSC_RANDOM
+
+[res_2056]
+name	  	=MOVIE_SPSC_ROTATE_ALL_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_ROTATE_ALL.bmp
+commentCN 	=SPSC_ROTATE_ALL
+commentEN 	=SPSC_ROTATE_ALL
+
+[res_2057]
+name	  	=MOVIE_SPSC_ROTATE_ONE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_ROTATE_ONE.bmp
+commentCN 	=SPSC_ROTATE_ONE
+commentEN 	=SPSC_ROTATE_ONE
+
+[res_2058]
+name	  	=MOVIE_SPSC_RR_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_RR_F.bmp
+commentCN 	=SPSC_RR_F
+commentEN 	=SPSC_RR_F
+
+[res_2059]
+name	  	=MOVIE_SPSC_RR_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_RR_UF.bmp
+commentCN 	=SPSC_RR_UF
+commentEN 	=SPSC_RR_UF
+
+[res_2060]
+name	  	=MOVIE_SPSC_SCREENSET_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_SCREENSET_F.bmp
+commentCN 	=SPSC_SCREENSET_F
+commentEN 	=SPSC_SCREENSET_F
+
+[res_2061]
+name	  	=MOVIE_SPSC_SCREENSET_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_SCREENSET_UF.bmp
+commentCN 	=SPSC_SCREENSET_UF
+commentEN 	=SPSC_SCREENSET_UF
+
+[res_2062]
+name	  	=MOVIE_SPSC_SCREEN_RATIO_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_SCREEN_RATIO.bmp
+commentCN 	=SPSC_SCREEN_RATIO
+commentEN 	=SPSC_SCREEN_RATIO
+
+[res_2063]
+name	  	=MOVIE_SPSC_SEQUENCE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_SEQUENCE.bmp
+commentCN 	=SPSC_SEQUENCE
+commentEN 	=SPSC_SEQUENCE
+
+[res_2064]
+name	  	=MOVIE_SPSC_TIMESET_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_TIMESET_F.bmp
+commentCN 	=SPSC_TIMESET_F
+commentEN 	=SPSC_TIMESET_F
+
+[res_2065]
+name	  	=MOVIE_SPSC_TIMESET_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_TIMESET_UF.bmp
+commentCN 	=SPSC_TIMESET_UF
+commentEN 	=SPSC_TIMESET_UF
+
+[res_2066]
+name	  	=MOVIE_SPSC_TRACK_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_TRACK_F.bmp
+commentCN 	=SPSC_TRACK_F
+commentEN 	=SPSC_TRACK_F
+
+[res_2067]
+name	  	=MOVIE_SPSC_TRACK_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_TRACK_UF.bmp
+commentCN 	=SPSC_TRACK_UF
+commentEN 	=SPSC_TRACK_UF
+
+[res_2068]
+name	  	=MOVIE_SPSC_TVOUT_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_TVOUT_F.bmp
+commentCN 	=SPSC_TVOUT_F
+commentEN 	=SPSC_TVOUT_F
+
+[res_2069]
+name	  	=MOVIE_SPSC_TVOUT_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_TVOUT_UF.bmp
+commentCN 	=SPSC_TVOUT_UF
+commentEN 	=SPSC_TVOUT_UF
+
+[res_2070]
+name	  	=MOVIE_SPSC_VIDEO_RATIO_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SPSC_VIDEO_RATIO.bmp
+commentCN 	=SPSC_VIDEO_RATIO
+commentEN 	=SPSC_VIDEO_RATIO
+
+[res_2071]
+name	  	=MOVIE_SUB_SET_BG_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SUB_SET_BG.bmp
+commentCN 	=SUB_SET_BG
+commentEN 	=SUB_SET_BG
+
+[res_2072]
+name	  	=MOVIE_SUB_SET_LBTN_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SUB_SET_LBTN_F.bmp
+commentCN 	=SUB_SET_LBTN_F
+commentEN 	=SUB_SET_LBTN_F
+
+[res_2073]
+name	  	=MOVIE_SUB_SET_LBTN_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SUB_SET_LBTN_UF.bmp
+commentCN 	=SUB_SET_LBTN_UF
+commentEN 	=SUB_SET_LBTN_UF
+
+[res_2074]
+name	  	=MOVIE_SUB_SET_RBTN_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SUB_SET_RBTN_F.bmp
+commentCN 	=SUB_SET_RBTN_F
+commentEN 	=SUB_SET_RBTN_F
+
+[res_2075]
+name	  	=MOVIE_SUB_SET_RBTN_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\SUB_SET_RBTN_UF.bmp
+commentCN 	=SUB_SET_RBTN_UF
+commentEN 	=SUB_SET_RBTN_UF
+
+[res_2076]
+name	  	=MOVIE_VOLUME_BG_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\VOLUME_BG.bmp
+commentCN 	=VOLUME_BG
+commentEN 	=VOLUME_BG
+
+[res_2077]
+name	  	=MOVIE_VOLUME_PROG_BG_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\VOLUME_PROG_BG_UF.bmp
+commentCN 	=VOLUME_PROG_BG_UF
+commentEN 	=VOLUME_PROG_BG_UF
+
+[res_2078]
+name	  	=MOVIE_VOLUME_PROG_CURSOR_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./movie\VOLUME_PROG_CURSOR_UF.bmp
+commentCN 	=VOLUME_PROG_CURSOR_UF
+commentEN 	=VOLUME_PROG_CURSOR_UF
+

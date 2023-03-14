@@ -1,0 +1,7 @@
+--drv_display 显示驱动相关代码
+--drv_keyboard 按键驱动相关代码
+--drv_touchpanel 触摸屏驱动相关代码
+--drv_uart 串口驱动相关代码
+--mod_bookengine 电子书解码模块
+--mod_ginkgo 录音模块
+--mod_orange GUI 模块

@@ -1,0 +1,74 @@
+[prog_ver]
+ver=string:.C10.0015
+
+[system]
+;fm search thread hold, (1-63) default is 4
+fm_th=4
+
+;enable restore default param when poweron.
+;bit[0,7]:   {mediaType, videoScreenRatio, volume, lang, style, keytone, cvbs, light_off}
+;bit[8,15]: {pwm, pwm1, bright, contrast, hue, saturability, tv_system, avin_system}
+enRestoreParam=0x0207
+
+;default auto play media type,range:[0,3]:{video,audio,ebook,photo}
+mediaType=0
+
+;default video screen ratio.
+;0,FULL_SCREEN_VIDEO_RATIO
+;1,FULL_SCREEN_SCREEN_RATIO
+;2,ORIGIN_SIZE
+;3,4:3
+;4,16:9
+videoScreenRatio=1
+
+;disable display logo, range:{0,1}:{display, blank}
+logoDisable=0
+
+;real maximum volume, range:[0, 30]
+realVolume_max=30
+
+;default volume 0-30
+volume=30
+
+;default language 0x400/0x410/0x420 en/chs/cht
+lang=0x410
+
+;default background 0-1
+style=0
+
+;default keytone off/on 0/1
+keytone=0
+
+;default cvbs output ntsc/pal 0/1
+cvbs=1
+
+;backlight_off time, range:{0,10,30,60,90}
+light_off=60
+
+;default lcd pwm, range:[0,14]
+pwm=4
+
+;default lcd pwm1, range:[0,14]
+pwm1=14
+
+;default display bright, range:[1,100]
+bright=50
+
+;default display contrast, range:[1,100]
+contrast=45
+
+;default display hue, range:[1,100]
+hue=50
+
+;default display saturability, range:[1,100]
+saturability=50
+
+;default tv system, range:[0,8]:{PAL-DK/PAL-I/PAL-BG/NTSC-M/SECAM-DK/PAL-M/PAL-N/PAL-60/SECAM-BG}
+tv_system=1
+
+;default avin system, range:[0,8]:{PAL-DK/PAL-I/PAL-BG/NTSC-M/SECAM-DK/PAL-M/PAL-N/PAL-60/SECAM-BG}
+avin_system=1
+
+[fm]
+;;auto close screen in fm, in 5s
+;auto_close_scn=30

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "main_menu.h": "c",
+        "app_home_i.h": "c",
+        "app_setting_i.h": "c"
+    }
+}

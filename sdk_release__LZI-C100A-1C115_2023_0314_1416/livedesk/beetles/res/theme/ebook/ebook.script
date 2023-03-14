@@ -1,0 +1,378 @@
+[res_7001]
+name	  	=EBOOK_BAR_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\bar.bmp
+commentCN 	=BAR
+commentEN 	=BAR
+
+[res_7002]
+name	  	=EBOOK_BAR_BOTTOM_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\bar_bottom.bmp
+commentCN 	=BAR_BOTTOM
+commentEN 	=BAR_BOTTOM
+
+[res_7003]
+name	  	=EBOOK_BAR_TOP_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\bar_top.bmp
+commentCN 	=BAR_TOP
+commentEN 	=BAR_TOP
+
+[res_7004]
+name	  	=EBOOK_BATTERY0_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\battery0.bmp
+commentCN 	=BATTERY0
+commentEN 	=BATTERY0
+
+[res_7005]
+name	  	=EBOOK_BATTERY1_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\battery1.bmp
+commentCN 	=BATTERY1
+commentEN 	=BATTERY1
+
+[res_7006]
+name	  	=EBOOK_BATTERY10_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\battery10.bmp
+commentCN 	=BATTERY10
+commentEN 	=BATTERY10
+
+[res_7007]
+name	  	=EBOOK_BATTERY3_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\battery3.bmp
+commentCN 	=BATTERY3
+commentEN 	=BATTERY3
+
+[res_7008]
+name	  	=EBOOK_BATTERY5_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\battery5.bmp
+commentCN 	=BATTERY5
+commentEN 	=BATTERY5
+
+[res_7009]
+name	  	=EBOOK_BATTERY7_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\battery7.bmp
+commentCN 	=BATTERY7
+commentEN 	=BATTERY7
+
+[res_7010]
+name	  	=EBOOK_BATTERY9_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\battery9.bmp
+commentCN 	=BATTERY9
+commentEN 	=BATTERY9
+
+[res_7011]
+name	  	=EBOOK_BOTTOM_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\bottom.bmp
+commentCN 	=BOTTOM
+commentEN 	=BOTTOM
+
+[res_7012]
+name	  	=EBOOK_BUFF1_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buff1.bmp
+commentCN 	=BUFF1
+commentEN 	=BUFF1
+
+[res_7013]
+name	  	=EBOOK_BUFF10_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buff10.bmp
+commentCN 	=BUFF10
+commentEN 	=BUFF10
+
+[res_7014]
+name	  	=EBOOK_BUFF2_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buff2.bmp
+commentCN 	=BUFF2
+commentEN 	=BUFF2
+
+[res_7015]
+name	  	=EBOOK_BUFF3_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buff3.bmp
+commentCN 	=BUFF3
+commentEN 	=BUFF3
+
+[res_7016]
+name	  	=EBOOK_BUFF4_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buff4.bmp
+commentCN 	=BUFF4
+commentEN 	=BUFF4
+
+[res_7017]
+name	  	=EBOOK_BUFF5_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buff5.bmp
+commentCN 	=BUFF5
+commentEN 	=BUFF5
+
+[res_7018]
+name	  	=EBOOK_BUFF6_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buff6.bmp
+commentCN 	=BUFF6
+commentEN 	=BUFF6
+
+[res_7019]
+name	  	=EBOOK_BUFF7_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buff7.bmp
+commentCN 	=BUFF7
+commentEN 	=BUFF7
+
+[res_7020]
+name	  	=EBOOK_BUFF8_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buff8.bmp
+commentCN 	=BUFF8
+commentEN 	=BUFF8
+
+[res_7021]
+name	  	=EBOOK_BUFF9_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buff9.bmp
+commentCN 	=BUFF9
+commentEN 	=BUFF9
+
+[res_7022]
+name	  	=EBOOK_BUFFER1_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buffer1.bmp
+commentCN 	=BUFFER1
+commentEN 	=BUFFER1
+
+[res_7023]
+name	  	=EBOOK_BUFFER10_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buffer10.bmp
+commentCN 	=BUFFER10
+commentEN 	=BUFFER10
+
+[res_7024]
+name	  	=EBOOK_BUFFER2_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buffer2.bmp
+commentCN 	=BUFFER2
+commentEN 	=BUFFER2
+
+[res_7025]
+name	  	=EBOOK_BUFFER3_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buffer3.bmp
+commentCN 	=BUFFER3
+commentEN 	=BUFFER3
+
+[res_7026]
+name	  	=EBOOK_BUFFER4_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buffer4.bmp
+commentCN 	=BUFFER4
+commentEN 	=BUFFER4
+
+[res_7027]
+name	  	=EBOOK_BUFFER5_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buffer5.bmp
+commentCN 	=BUFFER5
+commentEN 	=BUFFER5
+
+[res_7028]
+name	  	=EBOOK_BUFFER6_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buffer6.bmp
+commentCN 	=BUFFER6
+commentEN 	=BUFFER6
+
+[res_7029]
+name	  	=EBOOK_BUFFER7_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buffer7.bmp
+commentCN 	=BUFFER7
+commentEN 	=BUFFER7
+
+[res_7030]
+name	  	=EBOOK_BUFFER8_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buffer8.bmp
+commentCN 	=BUFFER8
+commentEN 	=BUFFER8
+
+[res_7031]
+name	  	=EBOOK_BUFFER9_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\buffer9.bmp
+commentCN 	=BUFFER9
+commentEN 	=BUFFER9
+
+[res_7032]
+name	  	=EBOOK_CHARGE0_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\charge0.bmp
+commentCN 	=CHARGE0
+commentEN 	=CHARGE0
+
+[res_7033]
+name	  	=EBOOK_CHARGE1_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\charge1.bmp
+commentCN 	=CHARGE1
+commentEN 	=CHARGE1
+
+[res_7034]
+name	  	=EBOOK_CHARGE10_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\charge10.bmp
+commentCN 	=CHARGE10
+commentEN 	=CHARGE10
+
+[res_7035]
+name	  	=EBOOK_CHARGE3_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\charge3.bmp
+commentCN 	=CHARGE3
+commentEN 	=CHARGE3
+
+[res_7036]
+name	  	=EBOOK_CHARGE5_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\charge5.bmp
+commentCN 	=CHARGE5
+commentEN 	=CHARGE5
+
+[res_7037]
+name	  	=EBOOK_CHARGE7_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\charge7.bmp
+commentCN 	=CHARGE7
+commentEN 	=CHARGE7
+
+[res_7038]
+name	  	=EBOOK_CHARGE9_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\charge9.bmp
+commentCN 	=CHARGE9
+commentEN 	=CHARGE9
+
+[res_7039]
+name	  	=EBOOK_FCS_AUTO_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\fcs_auto.bmp
+commentCN 	=FCS_AUTO
+commentEN 	=FCS_AUTO
+
+[res_7040]
+name	  	=EBOOK_FCS_BG_MUSIC_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\fcs_bg_music.bmp
+commentCN 	=FCS_BG_MUSIC
+commentEN 	=FCS_BG_MUSIC
+
+[res_7041]
+name	  	=EBOOK_FCS_GOTOPAGE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\fcs_gotopage.bmp
+commentCN 	=FCS_GOTOPAGE
+commentEN 	=FCS_GOTOPAGE
+
+[res_7042]
+name	  	=EBOOK_FCS_SEL_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\fcs_sel.bmp
+commentCN 	=FCS_SEL
+commentEN 	=FCS_SEL
+
+[res_7043]
+name	  	=EBOOK_FCS_TXTCOLOR_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\fcs_txtcolor.bmp
+commentCN 	=FCS_TXTCOLOR
+commentEN 	=FCS_TXTCOLOR
+
+[res_7044]
+name	  	=EBOOK_GRAY_BLOCK_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\gray_block.bmp
+commentCN 	=GRAY_BLOCK
+commentEN 	=GRAY_BLOCK
+
+[res_7045]
+name	  	=EBOOK_MUTE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\mute.bmp
+commentCN 	=MUTE
+commentEN 	=MUTE
+
+[res_7046]
+name	  	=EBOOK_PAUSE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\pause.bmp
+commentCN 	=PAUSE
+commentEN 	=PAUSE
+
+[res_7047]
+name	  	=EBOOK_PLAY_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\play.bmp
+commentCN 	=PLAY
+commentEN 	=PLAY
+
+[res_7048]
+name	  	=EBOOK_SET_INFO_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\set_info.bmp
+commentCN 	=SET_INFO
+commentEN 	=SET_INFO
+
+[res_7049]
+name	  	=EBOOK_SLIDE_BAR_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\slide_bar.bmp
+commentCN 	=SLIDE_BAR
+commentEN 	=SLIDE_BAR
+
+[res_7050]
+name	  	=EBOOK_SLIDE_BLOCK_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\slide_block.bmp
+commentCN 	=SLIDE_BLOCK
+commentEN 	=SLIDE_BLOCK
+
+[res_7051]
+name	  	=EBOOK_SLIDE_BLOCK_L_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\slide_block_l.bmp
+commentCN 	=SLIDE_BLOCK_L
+commentEN 	=SLIDE_BLOCK_L
+
+[res_7052]
+name	  	=EBOOK_SLIDE_BLOCK_R_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\slide_block_r.bmp
+commentCN 	=SLIDE_BLOCK_R
+commentEN 	=SLIDE_BLOCK_R
+
+[res_7053]
+name	  	=EBOOK_TIP_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\tip_f.bmp
+commentCN 	=TIP_F
+commentEN 	=TIP_F
+
+[res_7054]
+name	  	=EBOOK_TIP_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\tip_uf.bmp
+commentCN 	=TIP_UF
+commentEN 	=TIP_UF
+
+[res_7055]
+name	  	=EBOOK_UNFCS_AUTO_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\unfcs_auto.bmp
+commentCN 	=UNFCS_AUTO
+commentEN 	=UNFCS_AUTO
+
+[res_7056]
+name	  	=EBOOK_UNFCS_BG_MUSIC_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\unfcs_bg_music.bmp
+commentCN 	=UNFCS_BG_MUSIC
+commentEN 	=UNFCS_BG_MUSIC
+
+[res_7057]
+name	  	=EBOOK_UNFCS_GOTOPAGE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\unfcs_gotopage.bmp
+commentCN 	=UNFCS_GOTOPAGE
+commentEN 	=UNFCS_GOTOPAGE
+
+[res_7058]
+name	  	=EBOOK_UNFCS_SEL_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\unfcs_sel.bmp
+commentCN 	=UNFCS_SEL
+commentEN 	=UNFCS_SEL
+
+[res_7059]
+name	  	=EBOOK_UNFCS_TXTCOLOR_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\unfcs_txtcolor.bmp
+commentCN 	=UNFCS_TXTCOLOR
+commentEN 	=UNFCS_TXTCOLOR
+
+[res_7060]
+name	  	=EBOOK_VOLUME_BOTTOM_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\volume_bottom.bmp
+commentCN 	=VOLUME_BOTTOM
+commentEN 	=VOLUME_BOTTOM
+
+[res_7061]
+name	  	=EBOOK_VOLUME_L_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\volume_l.bmp
+commentCN 	=VOLUME_L
+commentEN 	=VOLUME_L
+
+[res_7062]
+name	  	=EBOOK_VOLUME_R_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\volume_r.bmp
+commentCN 	=VOLUME_R
+commentEN 	=VOLUME_R
+
+[res_7063]
+name	  	=EBOOK_WKM_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./ebook\wkm.bmp
+commentCN 	=WKM
+commentEN 	=WKM
+

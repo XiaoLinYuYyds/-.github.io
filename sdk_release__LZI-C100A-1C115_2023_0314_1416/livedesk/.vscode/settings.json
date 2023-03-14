@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "explorer.h": "c",
+        "explorer_list.h": "c",
+        "explorer_ui.h": "c",
+        "filelist.h": "c",
+        "app_movie_i.h": "c"
+    }
+}

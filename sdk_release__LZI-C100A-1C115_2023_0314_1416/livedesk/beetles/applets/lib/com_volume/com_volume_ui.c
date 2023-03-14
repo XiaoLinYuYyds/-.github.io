@@ -1,0 +1,252 @@
+
+/*
+**************************************************************************************************************
+*											         ePDK
+*						            the Easy Portable/Player Develop Kits
+*									           desktop system
+*
+*						        	 (c) Copyright 2007-2010, ANDY, China
+*											 All Rights Reserved
+*
+* File    	: volume_ui.c
+* By      	: Bayden.chen
+* Func		:
+* Version	: v1.0
+* ============================================================================================================
+* 2011-05-05  Bayden.chen  create this file
+**************************************************************************************************************
+*/
+
+#include "com_volume_ui.h"
+
+static com_volume_uipara_t uipara_400_240 =
+{
+	1,
+	{
+		(320 - 300) / 2, 32, 356 - 56, 24
+	},
+	{
+		0, 0, 356 - 56, 24
+	},
+	{
+		0, 0, 356 - 56, 24,
+		ID_COM_VOLUME_VOLUME_BG_BMP
+	},
+	{
+		{
+			314 - 80 + 5, 6, 18, 18,
+			ID_COM_VOLUME_LVOLUME_F_BMP,
+			ID_COM_VOLUME_LVOLUME_UF_BMP,
+		},
+		{
+			314 - 80 + 5, 6, 18, 18,
+			ID_COM_VOLUME_RVOLUME_F_BMP,
+			ID_COM_VOLUME_RVOLUME_UF_BMP
+		},
+		{
+			52 - 40 + 5, 10, 250 - 30, 4,
+			ID_COM_VOLUME_VOLUME_PROG_BG_UF_BMP
+		},
+		{
+			52 - 40 + 5, 10, 5, 4,
+			ID_COM_VOLUME_VOLUME_PROG_CURSOR_UF_BMP
+		}
+	},
+	{
+		336 - 80 + 5, 0, 16, 24
+	}
+};
+
+static com_volume_uipara_t uipara_720_480 =
+{
+	1,
+	{
+		(720 - 356) / 2, 72, 356, 24
+	},
+	{
+		0, 0, 356, 24
+	},
+	{
+		0, 0, 356, 24,
+		ID_COM_VOLUME_VOLUME_BG_BMP
+	},
+	{
+		{
+			294, 6, 18, 18,
+			ID_COM_VOLUME_LVOLUME_F_BMP,
+			ID_COM_VOLUME_LVOLUME_UF_BMP,
+		},
+		{
+			294, 6, 18, 18,
+			ID_COM_VOLUME_RVOLUME_F_BMP,
+			ID_COM_VOLUME_RVOLUME_UF_BMP
+		},
+		{
+			32, 10, 250, 4,
+			ID_COM_VOLUME_VOLUME_PROG_BG_UF_BMP
+		},
+		{
+			32, 10, 5, 4,
+			ID_COM_VOLUME_VOLUME_PROG_CURSOR_UF_BMP
+		}
+	},
+	{
+		316, 0, 16, 24
+	}
+};
+
+static com_volume_uipara_t uipara_480_272 =
+{
+	1,
+	{
+		(480 - 300) / 2, 32, 356 - 56, 24
+	},
+	{
+		0, 0, 356 - 56, 24
+	},
+	{
+		0, 0, 356 - 56, 24,
+		ID_COM_VOLUME_VOLUME_BG_BMP
+	},
+	{
+		{
+			314 - 80 + 5, 6, 18, 18,
+			ID_COM_VOLUME_LVOLUME_F_BMP,
+			ID_COM_VOLUME_LVOLUME_UF_BMP,
+		},
+		{
+			314 - 80 + 5, 6, 18, 18,
+			ID_COM_VOLUME_RVOLUME_F_BMP,
+			ID_COM_VOLUME_RVOLUME_UF_BMP
+		},
+		{
+			52 - 40 + 5, 10, 250 - 30, 4,
+			ID_COM_VOLUME_VOLUME_PROG_BG_UF_BMP
+		},
+		{
+			52 - 40 + 5, 10, 5, 4,
+			ID_COM_VOLUME_VOLUME_PROG_CURSOR_UF_BMP
+		}
+	},
+	{
+		336 - 80 + 5, 0, 32, 24
+	}
+};
+
+static com_volume_uipara_t uipara_720_576 =
+{
+	1,
+	{
+		(720 - 356) / 2, 72, 356, 24
+	},
+	{
+		0, 0, 356, 24
+	},
+	{
+		0, 0, 356, 24,
+		ID_COM_VOLUME_VOLUME_BG_BMP
+	},
+	{
+		{
+			314, 6, 18, 18,
+			ID_COM_VOLUME_LVOLUME_F_BMP,
+			ID_COM_VOLUME_LVOLUME_UF_BMP,
+		},
+		{
+			314, 6, 18, 18,
+			ID_COM_VOLUME_RVOLUME_F_BMP,
+			ID_COM_VOLUME_RVOLUME_UF_BMP
+		},
+		{
+			52, 10, 250, 4,
+			ID_COM_VOLUME_VOLUME_PROG_BG_UF_BMP
+		},
+		{
+			52, 10, 5, 4,
+			ID_COM_VOLUME_VOLUME_PROG_CURSOR_UF_BMP
+		}
+	},
+	{
+		336, 0, 16, 24
+	}
+};
+
+static com_volume_uipara_t uipara_800_480 =
+{
+	1,
+	{
+		(_W_SCR_ - 356) / 2, 72, 356, 24
+	},
+	{
+		0, 0, 356, 24
+	},
+	{
+		0, 0, 356, 24,
+		ID_COM_VOLUME_VOLUME_BG_BMP
+	},
+	{
+		{
+			294, 6, 15, 12,
+			ID_COM_VOLUME_LVOLUME_F_BMP,
+			ID_COM_VOLUME_LVOLUME_UF_BMP,
+		},
+		{
+			294, 6, 15, 12,
+			ID_COM_VOLUME_RVOLUME_F_BMP,
+			ID_COM_VOLUME_RVOLUME_UF_BMP
+		},
+		{
+			32, 10, 250, 4,
+			ID_COM_VOLUME_VOLUME_PROG_BG_UF_BMP
+		},
+		{
+			32, 10, 5, 4,
+			ID_COM_VOLUME_VOLUME_PROG_CURSOR_UF_BMP
+		}
+	},
+	{
+		316, 0, 16, 24
+	}
+};
+
+com_volume_uipara_t *com_volume_get_uipara(__s32 rotate)
+{
+	__s32 			screen_width;
+	__s32 			screen_height;
+	/* get lcd size*/
+	dsk_display_get_size(&screen_width, &screen_height);
+
+	switch(rotate)
+	{
+		case GUI_SCNDIR_NORMAL:
+		case GUI_SCNDIR_ROTATE180:
+		{
+			if((screen_width == 320) && (screen_height == 240))
+			{
+				return &uipara_400_240;
+			}
+			else if((screen_width == 720) && (screen_height == 576))
+			{
+				return &uipara_720_576;
+			}
+			else if((screen_width == 480) && (screen_height == 272))
+			{
+				return &uipara_480_272;
+			}
+			else if((screen_width == 720) && (screen_height == 480))
+			{
+				return &uipara_720_480;
+			}
+			else if((screen_width == 800) && (screen_height == 480))
+			{
+				return &uipara_800_480;
+			}
+		}
+
+		case GUI_SCNDIR_ROTATE90:
+		case GUI_SCNDIR_ROTATE270:
+			break;
+	}
+
+	return &uipara_800_480;
+}

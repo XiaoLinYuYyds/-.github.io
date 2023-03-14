@@ -1,0 +1,228 @@
+[res_3001]
+name	  	=EXPLORER_BG0_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\bg0.bmp
+commentCN 	=BG0
+commentEN 	=BG0
+
+[res_3002]
+name	  	=EXPLORER_DELETE_ICON_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\delete_icon_focused.bmp
+commentCN 	=DELETE_ICON_FOCUSED
+commentEN 	=DELETE_ICON_FOCUSED
+
+[res_3003]
+name	  	=EXPLORER_DELETE_ICON_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\delete_icon_unfocused.bmp
+commentCN 	=DELETE_ICON_UNFOCUSED
+commentEN 	=DELETE_ICON_UNFOCUSED
+
+[res_3004]
+name	  	=EXPLORER_EBOOK_FILE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\ebook_file.bmp
+commentCN 	=EBOOK_FILE
+commentEN 	=EBOOK_FILE
+
+[res_3005]
+name	  	=EXPLORER_EBOOK_ICON_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\ebook_icon_focused.bmp
+commentCN 	=EBOOK_ICON_FOCUSED
+commentEN 	=EBOOK_ICON_FOCUSED
+
+[res_3006]
+name	  	=EXPLORER_EBOOK_ICON_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\ebook_icon_unfocused.bmp
+commentCN 	=EBOOK_ICON_UNFOCUSED
+commentEN 	=EBOOK_ICON_UNFOCUSED
+
+[res_3007]
+name	  	=EXPLORER_ERROR_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\error.bmp
+commentCN 	=ERROR
+commentEN 	=ERROR
+
+[res_3008]
+name	  	=EXPLORER_FOLDER_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\folder.bmp
+commentCN 	=FOLDER
+commentEN 	=FOLDER
+
+[res_3009]
+name	  	=EXPLORER_FOLDER_ICON_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\folder_icon_focused.bmp
+commentCN 	=FOLDER_ICON_FOCUSED
+commentEN 	=FOLDER_ICON_FOCUSED
+
+[res_3010]
+name	  	=EXPLORER_FOLDER_ICON_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\folder_icon_unfocused.bmp
+commentCN 	=FOLDER_ICON_UNFOCUSED
+commentEN 	=FOLDER_ICON_UNFOCUSED
+
+[res_3011]
+name	  	=EXPLORER_LIST_ITEM_FOCUS_BG_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\list_item_focus_bg.bmp
+commentCN 	=LIST_ITEM_FOCUS_BG
+commentEN 	=LIST_ITEM_FOCUS_BG
+
+[res_3012]
+name	  	=EXPLORER_LIST_SCROLL_BG_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\list_scroll_bg.bmp
+commentCN 	=LIST_SCROLL_BG
+commentEN 	=LIST_SCROLL_BG
+
+[res_3013]
+name	  	=EXPLORER_LIST_SCROLL_BODY_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\list_scroll_body.bmp
+commentCN 	=LIST_SCROLL_BODY
+commentEN 	=LIST_SCROLL_BODY
+
+[res_3014]
+name	  	=EXPLORER_LIST_SCROLL_HEAD_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\list_scroll_head.bmp
+commentCN 	=LIST_SCROLL_HEAD
+commentEN 	=LIST_SCROLL_HEAD
+
+[res_3015]
+name	  	=EXPLORER_LIST_SCROLL_TAIL_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\list_scroll_tail.bmp
+commentCN 	=LIST_SCROLL_TAIL
+commentEN 	=LIST_SCROLL_TAIL
+
+[res_3016]
+name	  	=EXPLORER_LONG_STR_SCROLL_BG_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\long_str_scroll_bg.bmp
+commentCN 	=LONG_STR_SCROLL_BG
+commentEN 	=LONG_STR_SCROLL_BG
+
+[res_3017]
+name	  	=EXPLORER_MUSIC_FILE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\music_file.bmp
+commentCN 	=MUSIC_FILE
+commentEN 	=MUSIC_FILE
+
+[res_3018]
+name	  	=EXPLORER_MUSIC_ICON_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\music_icon_focused.bmp
+commentCN 	=MUSIC_ICON_FOCUSED
+commentEN 	=MUSIC_ICON_FOCUSED
+
+[res_3019]
+name	  	=EXPLORER_MUSIC_ICON_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\music_icon_unfocused.bmp
+commentCN 	=MUSIC_ICON_UNFOCUSED
+commentEN 	=MUSIC_ICON_UNFOCUSED
+
+[res_3020]
+name	  	=EXPLORER_PHOTO_FILE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\photo_file.bmp
+commentCN 	=PHOTO_FILE
+commentEN 	=PHOTO_FILE
+
+[res_3021]
+name	  	=EXPLORER_PHOTO_ICON_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\photo_icon_focused.bmp
+commentCN 	=PHOTO_ICON_FOCUSED
+commentEN 	=PHOTO_ICON_FOCUSED
+
+[res_3022]
+name	  	=EXPLORER_PHOTO_ICON_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\photo_icon_unfocused.bmp
+commentCN 	=PHOTO_ICON_UNFOCUSED
+commentEN 	=PHOTO_ICON_UNFOCUSED
+
+[res_3023]
+name	  	=EXPLORER_SD_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\sd_focused.bmp
+commentCN 	=SD_FOCUSED
+commentEN 	=SD_FOCUSED
+
+[res_3024]
+name	  	=EXPLORER_SD_ICON_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\sd_icon_focused.bmp
+commentCN 	=SD_ICON_FOCUSED
+commentEN 	=SD_ICON_FOCUSED
+
+[res_3025]
+name	  	=EXPLORER_SD_ICON_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\sd_icon_unfocused.bmp
+commentCN 	=SD_ICON_UNFOCUSED
+commentEN 	=SD_ICON_UNFOCUSED
+
+[res_3026]
+name	  	=EXPLORER_SD_MOVIE_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\sd_movie_focused.bmp
+commentCN 	=SD_MOVIE_FOCUSED
+commentEN 	=SD_MOVIE_FOCUSED
+
+[res_3027]
+name	  	=EXPLORER_SD_MOVIE_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\sd_movie_unfocused.bmp
+commentCN 	=SD_MOVIE_UNFOCUSED
+commentEN 	=SD_MOVIE_UNFOCUSED
+
+[res_3028]
+name	  	=EXPLORER_SD_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\sd_unfocused.bmp
+commentCN 	=SD_UNFOCUSED
+commentEN 	=SD_UNFOCUSED
+
+[res_3029]
+name	  	=EXPLORER_UNKNOWN_FILE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\unknown_file.bmp
+commentCN 	=UNKNOWN_FILE
+commentEN 	=UNKNOWN_FILE
+
+[res_3030]
+name	  	=EXPLORER_UNKNOWN_FILE_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\unknown_file_focused.bmp
+commentCN 	=UNKNOWN_FILE_FOCUSED
+commentEN 	=UNKNOWN_FILE_FOCUSED
+
+[res_3031]
+name	  	=EXPLORER_UNKNOWN_FILE_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\unknown_file_unfocused.bmp
+commentCN 	=UNKNOWN_FILE_UNFOCUSED
+commentEN 	=UNKNOWN_FILE_UNFOCUSED
+
+[res_3032]
+name	  	=EXPLORER_USB_ICON_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\usb_icon_focused.bmp
+commentCN 	=USB_ICON_FOCUSED
+commentEN 	=USB_ICON_FOCUSED
+
+[res_3033]
+name	  	=EXPLORER_USB_ICON_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\usb_icon_unfocused.bmp
+commentCN 	=USB_ICON_UNFOCUSED
+commentEN 	=USB_ICON_UNFOCUSED
+
+[res_3034]
+name	  	=EXPLORER_USB_MOVIE_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\usb_movie_focused.bmp
+commentCN 	=USB_MOVIE_FOCUSED
+commentEN 	=USB_MOVIE_FOCUSED
+
+[res_3035]
+name	  	=EXPLORER_USB_MOVIE_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\usb_movie_unfocused.bmp
+commentCN 	=USB_MOVIE_UNFOCUSED
+commentEN 	=USB_MOVIE_UNFOCUSED
+
+[res_3036]
+name	  	=EXPLORER_VIDEO_FILE_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\video_file.bmp
+commentCN 	=VIDEO_FILE
+commentEN 	=VIDEO_FILE
+
+[res_3037]
+name	  	=EXPLORER_VIDEO_ICON_FOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\video_icon_focused.bmp
+commentCN 	=VIDEO_ICON_FOCUSED
+commentEN 	=VIDEO_ICON_FOCUSED
+
+[res_3038]
+name	  	=EXPLORER_VIDEO_ICON_UNFOCUSED_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./explorer\video_icon_unfocused.bmp
+commentCN 	=VIDEO_ICON_UNFOCUSED
+commentEN 	=VIDEO_ICON_UNFOCUSED
+

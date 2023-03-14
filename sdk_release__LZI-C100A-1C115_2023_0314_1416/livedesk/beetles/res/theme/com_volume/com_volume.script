@@ -1,0 +1,54 @@
+[res_14001]
+name	  	=COM_VOLUME_LVOLUME_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./com_volume\LVOLUME_F.bmp
+commentCN 	=LVOLUME_F
+commentEN 	=LVOLUME_F
+
+[res_14002]
+name	  	=COM_VOLUME_LVOLUME_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./com_volume\LVOLUME_UF.bmp
+commentCN 	=LVOLUME_UF
+commentEN 	=LVOLUME_UF
+
+[res_14003]
+name	  	=COM_VOLUME_PROG_BG_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./com_volume\PROG_BG_UF.bmp
+commentCN 	=PROG_BG_UF
+commentEN 	=PROG_BG_UF
+
+[res_14004]
+name	  	=COM_VOLUME_PROG_CURSOR_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./com_volume\PROG_CURSOR_UF.bmp
+commentCN 	=PROG_CURSOR_UF
+commentEN 	=PROG_CURSOR_UF
+
+[res_14005]
+name	  	=COM_VOLUME_RVOLUME_F_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./com_volume\RVOLUME_F.bmp
+commentCN 	=RVOLUME_F
+commentEN 	=RVOLUME_F
+
+[res_14006]
+name	  	=COM_VOLUME_RVOLUME_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./com_volume\RVOLUME_UF.bmp
+commentCN 	=RVOLUME_UF
+commentEN 	=RVOLUME_UF
+
+[res_14007]
+name	  	=COM_VOLUME_VOLUME_BG_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./com_volume\VOLUME_BG.bmp
+commentCN 	=VOLUME_BG
+commentEN 	=VOLUME_BG
+
+[res_14008]
+name	  	=COM_VOLUME_VOLUME_PROG_BG_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./com_volume\VOLUME_PROG_BG_UF.bmp
+commentCN 	=VOLUME_PROG_BG_UF
+commentEN 	=VOLUME_PROG_BG_UF
+
+[res_14009]
+name	  	=COM_VOLUME_VOLUME_PROG_CURSOR_UF_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./com_volume\VOLUME_PROG_CURSOR_UF.bmp
+commentCN 	=VOLUME_PROG_CURSOR_UF
+commentEN 	=VOLUME_PROG_CURSOR_UF
+

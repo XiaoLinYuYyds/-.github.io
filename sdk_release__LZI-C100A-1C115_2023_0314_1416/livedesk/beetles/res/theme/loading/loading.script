@@ -1,0 +1,66 @@
+[res_12001]
+name	  	=LOADING_BUFF1_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./loading\buff1.bmp
+commentCN 	=BUFF1
+commentEN 	=BUFF1
+
+[res_12002]
+name	  	=LOADING_BUFF10_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./loading\buff10.bmp
+commentCN 	=BUFF10
+commentEN 	=BUFF10
+
+[res_12003]
+name	  	=LOADING_BUFF2_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./loading\buff2.bmp
+commentCN 	=BUFF2
+commentEN 	=BUFF2
+
+[res_12004]
+name	  	=LOADING_BUFF3_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./loading\buff3.bmp
+commentCN 	=BUFF3
+commentEN 	=BUFF3
+
+[res_12005]
+name	  	=LOADING_BUFF4_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./loading\buff4.bmp
+commentCN 	=BUFF4
+commentEN 	=BUFF4
+
+[res_12006]
+name	  	=LOADING_BUFF5_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./loading\buff5.bmp
+commentCN 	=BUFF5
+commentEN 	=BUFF5
+
+[res_12007]
+name	  	=LOADING_BUFF6_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./loading\buff6.bmp
+commentCN 	=BUFF6
+commentEN 	=BUFF6
+
+[res_12008]
+name	  	=LOADING_BUFF7_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./loading\buff7.bmp
+commentCN 	=BUFF7
+commentEN 	=BUFF7
+
+[res_12009]
+name	  	=LOADING_BUFF8_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./loading\buff8.bmp
+commentCN 	=BUFF8
+commentEN 	=BUFF8
+
+[res_12010]
+name	  	=LOADING_BUFF9_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./loading\buff9.bmp
+commentCN 	=BUFF9
+commentEN 	=BUFF9
+
+[res_12011]
+name	  	=LOADING_WKM_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./loading\wkm.bmp
+commentCN 	=WKM
+commentEN 	=WKM
+

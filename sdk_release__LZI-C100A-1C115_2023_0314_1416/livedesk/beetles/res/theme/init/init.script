@@ -1,0 +1,150 @@
+[res_1]
+name	  	=INIT_BLUETOOTH_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\bluetooth.bmp
+commentCN 	=BLUETOOTH
+commentEN 	=BLUETOOTH
+
+[res_2]
+name	  	=INIT_CHARGE_BMP0_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\CHARGE_BMP0.bmp
+commentCN 	=CHARGE_BMP0
+commentEN 	=CHARGE_BMP0
+
+[res_3]
+name	  	=INIT_CHARGE_BMP1_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\CHARGE_BMP1.bmp
+commentCN 	=CHARGE_BMP1
+commentEN 	=CHARGE_BMP1
+
+[res_4]
+name	  	=INIT_CHARGE_BMP2_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\CHARGE_BMP2.bmp
+commentCN 	=CHARGE_BMP2
+commentEN 	=CHARGE_BMP2
+
+[res_5]
+name	  	=INIT_CHARGE_ENERGY_0_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\charge_energy_0.bmp
+commentCN 	=CHARGE_ENERGY_0
+commentEN 	=CHARGE_ENERGY_0
+
+[res_6]
+name	  	=INIT_CHARGE_ENERGY_1_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\charge_energy_1.bmp
+commentCN 	=CHARGE_ENERGY_1
+commentEN 	=CHARGE_ENERGY_1
+
+[res_7]
+name	  	=INIT_CHARGE_ENERGY_2_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\charge_energy_2.bmp
+commentCN 	=CHARGE_ENERGY_2
+commentEN 	=CHARGE_ENERGY_2
+
+[res_8]
+name	  	=INIT_CHARGE_ENERGY_3_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\charge_energy_3.bmp
+commentCN 	=CHARGE_ENERGY_3
+commentEN 	=CHARGE_ENERGY_3
+
+[res_9]
+name	  	=INIT_CHARGE_ENERGY_4_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\charge_energy_4.bmp
+commentCN 	=CHARGE_ENERGY_4
+commentEN 	=CHARGE_ENERGY_4
+
+[res_10]
+name	  	=INIT_CHARGE_ENERGY_5_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\charge_energy_5.bmp
+commentCN 	=CHARGE_ENERGY_5
+commentEN 	=CHARGE_ENERGY_5
+
+[res_11]
+name	  	=INIT_CHARGE_NULL_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\CHARGE_NULL.bmp
+commentCN 	=CHARGE_NULL
+commentEN 	=CHARGE_NULL
+
+[res_12]
+name	  	=INIT_ENERGY_0_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\energy_0.bmp
+commentCN 	=ENERGY_0
+commentEN 	=ENERGY_0
+
+[res_13]
+name	  	=INIT_ENERGY_1_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\energy_1.bmp
+commentCN 	=ENERGY_1
+commentEN 	=ENERGY_1
+
+[res_14]
+name	  	=INIT_ENERGY_2_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\energy_2.bmp
+commentCN 	=ENERGY_2
+commentEN 	=ENERGY_2
+
+[res_15]
+name	  	=INIT_ENERGY_3_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\energy_3.bmp
+commentCN 	=ENERGY_3
+commentEN 	=ENERGY_3
+
+[res_16]
+name	  	=INIT_ENERGY_4_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\energy_4.bmp
+commentCN 	=ENERGY_4
+commentEN 	=ENERGY_4
+
+[res_17]
+name	  	=INIT_ENERGY_5_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\energy_5.bmp
+commentCN 	=ENERGY_5
+commentEN 	=ENERGY_5
+
+[res_18]
+name	  	=INIT_NO_VOL_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\no_vol.bmp
+commentCN 	=NO_VOL
+commentEN 	=NO_VOL
+
+[res_19]
+name	  	=INIT_POINT_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\point.bmp
+commentCN 	=POINT
+commentEN 	=POINT
+
+[res_20]
+name	  	=INIT_PROG_BG_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\PROG_BG.bmp
+commentCN 	=PROG_BG
+commentEN 	=PROG_BG
+
+[res_21]
+name	  	=INIT_PROG_CURSOR_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\PROG_CURSOR.bmp
+commentCN 	=PROG_CURSOR
+commentEN 	=PROG_CURSOR
+
+[res_22]
+name	  	=INIT_PROG_LEFT_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\PROG_LEFT.bmp
+commentCN 	=PROG_LEFT
+commentEN 	=PROG_LEFT
+
+[res_23]
+name	  	=INIT_PROG_MID_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\PROG_MID.bmp
+commentCN 	=PROG_MID
+commentEN 	=PROG_MID
+
+[res_24]
+name	  	=INIT_UPDATE_FINISH_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\update_finish.bmp
+commentCN 	=UPDATE_FINISH
+commentEN 	=UPDATE_FINISH
+
+[res_25]
+name	  	=INIT_USB_CONNECT_VOL_BMP
+file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./init\usb_connect_vol.bmp
+commentCN 	=USB_CONNECT_VOL
+commentEN 	=USB_CONNECT_VOL
+
