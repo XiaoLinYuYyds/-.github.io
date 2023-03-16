@@ -1,0 +1,6 @@
+1，将所有png图片复制到当前目录；打开8bpp_pack_compress.bat；
+2，选项0；
+3，选项1；
+4，选项2；
+5，将wkm.pal改为wkm.bmp；
+6，使用bmp文件。

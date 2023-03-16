@@ -1,0 +1,1 @@
+..\..\LangOSDBuild.exe .\lang.xml 

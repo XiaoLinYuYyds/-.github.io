@@ -1,0 +1,6 @@
+---- MBOOK_Decode_Init Matches (5 in 4 files) ----
+mbook_on_create in app_ebook.c (livedesk\beetles\applets\ebook) : 	ebook_ctrl->mbook = MBOOK_Decode_Init(NULL, &err);
+app_new_ebook_framewin_create in App_new_ebook.c (livedesk\beetles\applets\new_ebook) : 	ebook_ctrl->mbook = MBOOK_Decode_Init(NULL, &err);
+mbook_decode.c (livedesk\beetles\applets\ebook\mbook) line 712 : *                       				MBOOK_Decode_Init
+mbook_decode.c (livedesk\beetles\applets\ebook\mbook) line 723 : H_DECODE   MBOOK_Decode_Init(char *filename, __u8 *err)
+mbook_decode.h (livedesk\beetles\applets\ebook\mbook) line 40 : H_DECODE   MBOOK_Decode_Init(char *filename, __u8 *err);

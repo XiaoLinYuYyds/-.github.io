@@ -1,0 +1,133 @@
+Convert Word table to text file...
+
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\file_off.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL1_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL1_TUN_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL2_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL2_TUN_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL3_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL4_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL5_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL5_TUN_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL6_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL6_TUN_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL7_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL1_TUN2_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PLL5_TUN2_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\OSC24M_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\CPU_AHB_APB0_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\APB1_CLK_DIV_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\AXI_GATING_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\AHB_GATING_REG0.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\AHB_GATING_REG1.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\APB0_GATING_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\APB1_GATING_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\NAND_SCLK_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\MS_SCLK_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\SD0_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\SD1_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\SD2_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\SD3_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\TS_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\SS_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\SPI0_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\SPI1_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\SPI2_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\PATA_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\IR0_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\IR1_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\IIS_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\AC97_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\SPDIF_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\KEYPAD_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\SATA_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\USB_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\GPS_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\SPI3_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\DRAM_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\BE0_SCLK_CFG_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\BE1_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\FE0_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\FE1_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\MP_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\LCD0_CH0_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\LCD1_CH0_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\CSI_ISP_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\TVD_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\LCD0_CH1_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\LCD1_CH1_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\CSI0_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\CSI1_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\VE_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\AUDIO_CODEC_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\AVS_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\ACE_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\LVDS_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\HDMI_CLK_REG..txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\ccm\MALI400_CLK_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\DMA_IRQ_EN_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\DMA_IRQ_PEND_STA_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA0_CTRL_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA1_CTRL_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA2_CTRL_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA3_CTRL_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA4_CTRL_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA5_CTRL_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA6_CTRL_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA7_CTRL_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA0_SRC_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA1_SRC_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA2_SRC_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA3_SRC_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA4_SRC_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA5_SRC_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA6_SRC_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA7_SRC_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA0_DEST_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA1_DEST_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA2_DEST_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA3_DEST_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA4_DEST_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA5_DEST_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA6_DEST_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA7_DEST_ADDR_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA0_BC_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA1_BC_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA2_BC_REG.txt Success
+Create F:\Winners\eStudio\Softwares\SpecParse\txt_off\dma\NDMA3_BC_REG.txt S+main
+ccm
+dma
+[line 310] CParseContext::ParseFile : Total file count is 1 
+[line 148] format file: dma
+[line 160] +FormatBufBase 
+[Warning] [line 371] CSpecBufMngr::FormatBufBase m_vBaseInfo is empty!
+[line 162] -FormatBufBase 
+[line 163] +FormatBufReg 
+[line 165] -FormatBufReg 
+[line 166] +FormatBufStruct 
+[line 168] -FormatBufStruct 
+[line 172] format file: dma ok
+[line 148] format file: dma
+[line 154] +FormatDumpReg 
+[line 156] -FormatDumpReg 
+[line 172] format file: dma ok
+[line 148] format file: ccm
+[line 160] +FormatBufBase 
+[Warning] [line 371] CSpecBufMngr::FormatBufBase m_vBaseInfo is empty!
+[line 162] -FormatBufBase 
+[line 163] +FormatBufReg 
+[line 165] -FormatBufReg 
+[line 166] +FormatBufStruct 
+[line 168] -FormatBufStruct 
+[line 172] format file: ccm ok
+[line 148] format file: ccm
+[line 154] +FormatDumpReg 
+[line 156] -FormatDumpReg 
+[line 172] format file: ccm ok
+-main
++main
+open file .\txt_base\file_base.txt failed![line 310] CParseContext::ParseFile : Total file count is -1 
+[line: 313] ParseFile: no file is to be parse!
+-main

@@ -1,0 +1,1 @@
+GenSNFile.exe card.key sn.bin

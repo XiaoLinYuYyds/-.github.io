@@ -1,0 +1,20 @@
+VisualElf:  01/13/2021 11:27:08 : CVisualElfApp::OpenDocument(elf, D:\winners\ePDK\workspace\suniii\compass\rootfs\apps\music.axf)
+
+VisualElf:  01/13/2021 11:28:48 : CVisualElfApp::OpenDocument(elf, D:\winners\ePDK\workspace\suniii\compass\rootfs\mod\orange.mod)
+
+VisualElf:  01/25/2021 13:31:54 : CVisualElfApp::OpenDocument(elf, D:\winners\ePDK\workspace\suniii\compass\rootfs\apps\ebook.axf)
+
+VisualElf:  01/25/2021 13:32:06 : CVisualElfApp::OpenDocument(elf, D:\winners\ePDK\workspace\suniii\compass\rootfs\apps\music.axf)
+
+VisualElf:  02/09/2021 10:32:53 : CVisualElfApp::OpenDocument(elf, D:\winners\ePDK\workspace\sunii\rootfs\mod\cedar\adec_aac.plg)
+
+VisualElf:  02/09/2021 10:33:12 : CVisualElfApp::OpenDocument(elf, D:\winners\ePDK\workspace\sunii\rootfs\mod\cedar\adec_aac.drv)
+
+VisualElf:  02/11/2021 11:18:21 : CVisualElfApp::OpenDocument(elf, D:\winners\ePDK\workspace\suniii\compass\rootfs\apps\movie.axf)
+
+VisualElf:  03/09/2021 22:49:31 : CVisualElfApp::OpenDocument(elf, D:\winners\ePDK_compass\eMod\mod_orange\__image.axf)
+
+VisualElf:  03/21/2021 10:15:02 : CVisualElfApp::OpenDocument(elf, D:\winners\ePDK\workspace\sunii\rootfs\mod\cedar\adec_aac.drv)
+
+VisualElf:  03/21/2021 10:15:19 : CVisualElfApp::OpenDocument(elf, D:\winners\ePDK\workspace\sunii\rootfs\mod\cedar\adec_aac.plg)
+

@@ -76,6 +76,7 @@ typedef struct tag_root_ctrl
 	H_WIN	h_app_new_movie;/*存放manwin窗口*/
 	H_WIN	h_app_new_photo;
 	H_WIN	h_app_new_music;/*存放新添加的music应用*/
+	H_WIN	h_app_new_ebook;
 #if SP_APP_AUX
 	H_WIN	h_app_linin;
 #endif
@@ -562,6 +563,10 @@ static __s32 app_root_restore_focus_child(root_ctrl_t *root_ctrl)
 	else if(root_ctrl->h_app_ebook)
 	{
 		GUI_WinSetFocusChild(root_ctrl->h_app_ebook);
+	}
+	else if(root_ctrl->h_app_new_ebook)//新添加电子书窗口选中发送按键命令
+	{
+		GUI_WinSetFocusChild(root_ctrl->h_app_new_ebook);
 	}
 	else if(root_ctrl->h_app_setting)
 	{
@@ -1567,6 +1572,7 @@ static void __app_root_delete_all_app_except_home(root_ctrl_t *para)
 	para->h_app_record   = NULL;
 	para->h_app_new_setting = NULL;//新添加通用设置app
 	para->h_app_new_movie = NULL;//新添加的movie应用app
+	para->h_app_new_ebook = NULL;//清空新添加的电子书manwin窗口句柄
 #if SP_APP_AUX
 	para->h_app_linin    = NULL;
 #endif	
@@ -1634,6 +1640,7 @@ static void __app_root_delete_all_app_except_bg_audio(root_ctrl_t *para)
 	para->h_app_calendar = NULL;
 	para->h_app_record   = NULL;
 	para->h_app_new_movie = NULL;//新添加的movi应用app
+	para->h_app_new_ebook = NULL;
 	//para->h_app_new_music = NULL;//新添加音乐
 	//para->h_app_linin    = NULL;
 #if SP_APP_ATV
@@ -1751,6 +1758,8 @@ static void __app_root_delete_all_app(root_ctrl_t *para)
 	para->h_app_new_setting = NULL;//新添加通用设置app
 	para->h_app_new_movie = NULL;//新添加的movi应用app
 	para->h_app_new_music = NULL;//新添加的音乐应用app
+	para->h_app_new_ebook = NULL;//清除新添加的电子书句柄
+	
 #if SP_APP_AUX
 	para->h_app_linin    = NULL;
 #endif
@@ -2290,6 +2299,13 @@ static __s32 __app_root_to_ebook(root_ctrl_t *para
 		__wrn("ebook alreadly running...\n");
 		return EPDK_FAIL;
 	}
+		
+	if(NULL != para->h_app_new_ebook
+	    && para->root_para->root_type == rat_root_type)//新添加电子书
+	{
+		__wrn("new ebook alreadly running...\n");
+		return EPDK_FAIL;
+	}
 
 	//外部已经搜索并设置播放列表
 	//ret = __app_root_set_playfile(para->quick_root_type);
@@ -2779,6 +2795,11 @@ static __s32 app_root_process_before_show_dlg(root_ctrl_t *root_ctrl)
 		app_ebook_notify_delete_sub_scene(root_ctrl->h_app_ebook);
 	}
 
+	if(root_ctrl->h_app_new_ebook)
+	{
+		app_ebook_notify_delete_sub_scene(root_ctrl->h_app_new_ebook);
+	}
+
 	if(root_ctrl->h_app_fm)
 	{
 		app_fm_notify_delete_sub_scene(root_ctrl->h_app_fm);
@@ -2836,6 +2857,10 @@ static __s32 app_root_process_after_show_dlg(root_ctrl_t *root_ctrl)
 	else if(root_ctrl->h_app_ebook)
 	{
 		GUI_WinSetFocusChild(root_ctrl->h_app_ebook);
+	}
+	else if(root_ctrl->h_app_new_ebook)//新添加的电子书应用app
+	{
+		GUI_WinSetFocusChild(root_ctrl->h_app_new_ebook);
 	}
 	else if(root_ctrl->h_app_setting)
 	{
@@ -3359,7 +3384,7 @@ fail:
 	;
 	return EPDK_FAIL;
 }
-
+//储存设备拔出
 static __s32 __app_root_play_other_storages_on_plugout(root_ctrl_t *root_ctrl)
 {
 	__s32 ret;
@@ -3384,6 +3409,10 @@ static __s32 __app_root_play_other_storages_on_plugout(root_ctrl_t *root_ctrl)
 	reg_storage_type = para->cur_play_storage;
 
 	if(root_ctrl->h_app_ebook)
+	{
+		reg_media_type = m_eMediaTypeList_ebook;
+	}
+	if(root_ctrl->h_app_new_ebook)
 	{
 		reg_media_type = m_eMediaTypeList_ebook;
 	}
@@ -3849,6 +3878,12 @@ static __s32 app_root_prob_storage_type_for_play(root_ctrl_t *root_ctrl
 					goto alreadly_running;
 				}
 
+				if(root_ctrl->h_app_new_ebook)
+				{
+					__wrn("new ebook alreadly running\n");
+					goto alreadly_running;
+				}
+
 				__wrn("ebook not running\n");
 				goto from_nearest_storage;
 				break;
@@ -3925,6 +3960,12 @@ static __s32 app_root_prob_storage_type_for_play(root_ctrl_t *root_ctrl
 				if(!root_ctrl->h_app_ebook)
 				{
 					__wrn("ebook not running\n");
+					goto not_running;
+				}
+				
+				if(!root_ctrl->h_app_new_ebook)
+				{
+					__wrn("new ebook not running\n");
 					goto not_running;
 				}
 
@@ -4458,6 +4499,7 @@ static __s32 app_root_check_volume_key(__gui_msg_t *msg)
 				    //	&&(!(root_ctrl->h_app_linin)) &&
 				    &&(!(root_ctrl->h_app_new_movie)) //新添加的movie应用app
 				    &&(!(root_ctrl->h_app_new_music))//新添加音乐
+				    &&(!(root_ctrl->h_app_new_ebook)) 
 				#if SP_APP_ATV
 				    &&(!(root_ctrl->h_app_atv))
 				#endif
@@ -4522,6 +4564,7 @@ static __s32 app_root_check_volume_key(__gui_msg_t *msg)
 				    //	&&(!(root_ctrl->h_app_linin)) &&
 				    &&(!(root_ctrl->h_app_new_movie)) //新添加的movie应用app
 				    &&(!(root_ctrl->h_app_new_music))//新添加音乐
+				    &&(!(root_ctrl->h_app_new_ebook)) 
 				#if SP_APP_ATV
 				    &&(!(root_ctrl->h_app_atv))
 				#endif
@@ -4623,6 +4666,10 @@ __s32 app_root_shift_mode(root_ctrl_t *root_ctrl, __u32 type)
 		s_shiftMode = m_eShiftMode_new_setting;
 	}
 	else if(root_ctrl->h_app_ebook)
+	{
+		s_shiftMode = m_eShiftMode_ebook;
+	}
+	else if(root_ctrl->h_app_new_ebook)
 	{
 		s_shiftMode = m_eShiftMode_ebook;
 	}
@@ -4886,6 +4933,10 @@ static __s32 app_root_check_mode_key(__gui_msg_t *msg)
 					media = m_eMediaTypeList_video;
 				}
 				else if(root_ctrl->h_app_ebook)
+				{
+					media = m_eMediaTypeList_ebook;
+				}
+				else if(root_ctrl->h_app_new_ebook)
 				{
 					media = m_eMediaTypeList_ebook;
 				}
@@ -5178,6 +5229,10 @@ static __s32 app_root_check_short_key(__gui_msg_t *msg)
 				else if(root_ctrl->h_app_ebook)
 				{
 					media_type = m_eMediaTypeList_ebook;//电子书
+				}
+				else if(root_ctrl->h_app_new_ebook)
+				{
+					media_type = m_eMediaTypeList_ebook;//新添加的电子书
 				}
 			}
 		}
@@ -6210,6 +6265,23 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 						}
 						break;
 
+						case ID_HOME_NEW_EBOOK:
+						{
+							gscene_hbar_set_state(HBAR_ST_HIDE);
+							__app_root_change_to_default_bg();
+							__wrn("\n********************home switch to new ebook ***************\n");
+							root_para->root_type = msg->dwReserved;//2，TF卡
+							root_para->explr_root = msg->dwReserved;
+							root_para->data	=	ID_NEW_EXPLORER_EBOOK;//搜索电子书文件的id索引
+							root_para->return_to_explorer_file_list = 0 ;//列表模式
+							root_ctrl->h_app_new_ebook = app_new_ebook_manwin_create(root_para);//创建电子书manwin窗口
+							app_root_cacheon();
+
+							GUI_WinSetFocusChild(root_ctrl->h_app_new_ebook);//按键消息信号发送到当前创建的manwin窗口
+							app_root_cacheoff();
+						}
+						break;
+
 						default:
 							break;
 					}
@@ -6564,6 +6636,86 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 			}
 		}
 		break;
+		case APP_NEWEBOOK_ID://新添加的相册app应用程序manwin窗口
+		{
+			switch(HIWORD(msg->dwAddData1)){
+				case NEW_SWITCH_TO_OTHER_APP:{
+					switch(msg->dwAddData2){
+						case NEW_SETTING_SW_TO_MAIN:{
+							__wrn("**********new ebook to home**********\n");
+							GUI_ManWinDelete(root_ctrl->h_app_new_ebook);	/*删除新添加的photo相册应用manwin窗口*/
+							root_ctrl->h_app_new_ebook = NULL;
+							__here__;
+							app_root_cacheon();
+							__app_home_restore(msg);						/*重新创建home应用的manwin窗口*/
+							app_root_cacheoff();
+							break;
+						}
+						break;
+
+						case NEW_EBOOK_SW_TO_NEW_EXPLORER:{					/*跳转到new explorer应用manwin窗口*/
+						#if 1
+						gscene_hbar_set_state(HBAR_ST_HIDE);//设置为隐藏
+						__wrn("**********new ebook to new explorer**********\n");
+						__app_root_change_to_default_bg();
+						GUI_ManWinDelete(root_ctrl->h_app_new_ebook);	/*删除当前新添加photo相册app应用程序的manwin窗口*/
+						root_ctrl->h_app_new_ebook = NULL;
+						__wrn("********** new explorer create is...**********\n");
+						__wrn("root type=%d\n", msg->dwReserved);
+						root_para->root_type = msg->dwReserved;//RAT_TF，2;
+						root_para->explr_root = msg->dwReserved;
+						
+						root_para->data = ID_NEW_EXPLORER_EBOOK;	//单独显示电子书文件内容数据，一起存放到结构体root_para的data里面
+						root_para->return_to_explorer_file_list = 0 ;//列表模式
+						{
+							app_root_cacheon();
+							root_ctrl->h_app_new_explorer =  app_new_explorer_manwin_create(root_para);//创建new explorer 应用的manwin窗口
+							__wrn("root_ctrl->h_app_explorer = %x\n", root_ctrl->h_app_new_explorer);
+							GUI_WinSetFocusChild(root_ctrl->h_app_new_explorer);//按键消息信号发送到当前创建的manwin窗口
+							app_root_cacheoff();
+							__wrn("**********enter new explorer create ok  **********\n");
+							__wrn("ID_HOME_NEW_EXPORER msg->dwAddData2 =%d\n", msg->dwAddData2);
+							break;
+						}
+						#endif
+						}
+						break;
+
+						case SWITCH_TO_EXPLORER://跳转到资源管理器列表
+						{
+							__s32	ret = 0 ;
+							__wrn("**********new ebook to explorer**********\n");
+							GUI_ManWinDelete(root_ctrl->h_app_new_ebook);
+							root_ctrl->h_app_new_ebook = 0;
+							__wrn("**********explorer create is...**********\n");
+							root_para->root_type = root_para->explr_root;
+							__wrn("root_para->root_type=%d\n", root_para->root_type);
+							root_para->data = ID_EXPLORER_EBOOK;
+							app_root_cacheon();
+							ret =  app_explorer_create(root_para);
+							app_root_cacheoff();
+							app_root_cacheon();
+
+							if(EPDK_FAIL == ret)
+							{
+								__msg("create explorer fail , home restore\n") ;
+								__app_home_restore(msg);
+							}
+							else
+							{
+								root_ctrl->h_app_explorer = ret ;
+								GUI_WinSetFocusChild(root_ctrl->h_app_explorer);
+							}
+
+							app_root_cacheoff();
+							break;
+						}
+					}
+				}
+			}
+				
+		}
+		break;
 		
 		case APP_EXPLORER_ID:
 		{
@@ -6800,6 +6952,7 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 
 						case EXPLR_SW_TO_EBOOK:
 						{
+							#if 0
 							//删除后台音乐
 							//__app_root_delete_bg_music(msg);
 							__msg("**********explorer to ebook**********\n");
@@ -6812,6 +6965,20 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 							GUI_WinSetFocusChild(root_ctrl->h_app_ebook);
 							app_root_cacheoff();
 							__here__;
+							#else//新添加的电子书app应用
+							//删除后台音乐
+							//__app_root_delete_bg_music(msg);
+							__msg("**********explorer to new ebook**********\n");
+							app_root_cacheon();
+							//root_para->root_type = msg->dwReserved;
+							root_para->data = 0;
+							root_para->root_type = root_para->explr_root;
+							root_ctrl->h_app_new_ebook = app_new_ebook_manwin_create(root_para);//创建新的电子书manwin窗口
+							__here__;
+							GUI_WinSetFocusChild(root_ctrl->h_app_new_ebook);
+							app_root_cacheoff();
+							__here__;
+							#endif
 #if SP_FavoriteFiles
 							root_ctrl->h_app_explorer = NULL;//浏览器已自己删除
 #endif

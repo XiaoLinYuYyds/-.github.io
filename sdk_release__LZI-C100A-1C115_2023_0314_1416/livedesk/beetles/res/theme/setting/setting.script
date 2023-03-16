@@ -1,66 +1,66 @@
 [res_6001]
 name	  	=SETTING_SET_BOTTOM_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./setting\set_bottom.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./setting\set_bottom.bmp
 commentCN 	=SET_BOTTOM
 commentEN 	=SET_BOTTOM
 
 [res_6002]
 name	  	=SETTING_SET_BSYSSET_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./setting\set_bsysset.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./setting\set_bsysset.bmp
 commentCN 	=SET_BSYSSET
 commentEN 	=SET_BSYSSET
 
 [res_6003]
 name	  	=SETTING_SET_BUTT_LF_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./setting\set_butt_lf.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./setting\set_butt_lf.bmp
 commentCN 	=SET_BUTT_LF
 commentEN 	=SET_BUTT_LF
 
 [res_6004]
 name	  	=SETTING_SET_BUTT_RF_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./setting\set_butt_rf.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./setting\set_butt_rf.bmp
 commentCN 	=SET_BUTT_RF
 commentEN 	=SET_BUTT_RF
 
 [res_6005]
 name	  	=SETTING_SET_INFO_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./setting\set_info.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./setting\set_info.bmp
 commentCN 	=SET_INFO
 commentEN 	=SET_INFO
 
 [res_6006]
 name	  	=SETTING_SET_ITEM_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./setting\set_item_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./setting\set_item_f.bmp
 commentCN 	=SET_ITEM_F
 commentEN 	=SET_ITEM_F
 
 [res_6007]
 name	  	=SETTING_SET_SETICON00_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./setting\set_seticon00.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./setting\set_seticon00.bmp
 commentCN 	=SET_SETICON00
 commentEN 	=SET_SETICON00
 
 [res_6008]
 name	  	=SETTING_SET_TIPS_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./setting\set_tips.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./setting\set_tips.bmp
 commentCN 	=SET_TIPS
 commentEN 	=SET_TIPS
 
 [res_6009]
 name	  	=SETTING_TIP_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./setting\tip_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./setting\tip_f.bmp
 commentCN 	=TIP_F
 commentEN 	=TIP_F
 
 [res_6010]
 name	  	=SETTING_TIP_UF_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./setting\tip_uf.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./setting\tip_uf.bmp
 commentCN 	=TIP_UF
 commentEN 	=TIP_UF
 
 [res_6011]
 name	  	=SETTING_WKM_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./setting\wkm.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./setting\wkm.bmp
 commentCN 	=WKM
 commentEN 	=WKM
 

@@ -1,0 +1,1 @@
+RegTrans.exe regtrans.cfg > result.txt

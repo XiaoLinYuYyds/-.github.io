@@ -1,24 +1,24 @@
 [res_10001]
 name	  	=DIALOG_ICON_INFORMATION_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./dialog\icon_information.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./dialog\icon_information.bmp
 commentCN 	=ICON_INFORMATION
 commentEN 	=ICON_INFORMATION
 
 [res_10002]
 name	  	=DIALOG_MSGBOX_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./dialog\msgbox.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./dialog\msgbox.bmp
 commentCN 	=MSGBOX
 commentEN 	=MSGBOX
 
 [res_10003]
 name	  	=DIALOG_MSGBOX_BTN_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./dialog\msgbox_btn_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./dialog\msgbox_btn_f.bmp
 commentCN 	=MSGBOX_BTN_F
 commentEN 	=MSGBOX_BTN_F
 
 [res_10004]
 name	  	=DIALOG_MSGBOX_BTN_N_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./dialog\msgbox_btn_n.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./dialog\msgbox_btn_n.bmp
 commentCN 	=MSGBOX_BTN_N
 commentEN 	=MSGBOX_BTN_N
 

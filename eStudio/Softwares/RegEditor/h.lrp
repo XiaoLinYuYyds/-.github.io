@@ -1,0 +1,14 @@
+-->2009-4-21
+-->scott
+-->default.lrp
+
+REG_SYSTEM = 
+{
+	version    = 0x100,	
+	rootpath   = "H:\\reg",
+	createdate = "2009/4/21",
+	modifydate = "2009/4/21",
+	author     = "scott",
+	comment    = "lion registry system editor project",
+}
+

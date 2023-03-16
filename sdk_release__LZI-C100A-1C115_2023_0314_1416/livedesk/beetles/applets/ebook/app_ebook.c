@@ -317,7 +317,7 @@ __s32   mbook_on_create(__gui_msg_t *msg)
 		__wrn(" init mbook error \n");
 		goto EBOOK_ERROR_1;
 	}
-
+	// 获取路径
 	MBOOK_Decode_GetFilePath(ebook_ctrl->mbook, path);
 	// 设置默认编码
 	MBOOK_Decode_SetDefaultCharset(ebook_ctrl->mbook, EPDK_CHARSET_ENM_GBK);
@@ -349,11 +349,11 @@ __s32   mbook_on_create(__gui_msg_t *msg)
 	ebook_ctrl->config.bottom_width  = 0;
 	ebook_ctrl->config.show_width    = 1024;
 	ebook_ctrl->config.show_height   = 558;
-	MBOOK_Decode_Config(ebook_ctrl->mbook, &ebook_ctrl->config);
+	MBOOK_Decode_Config(ebook_ctrl->mbook, &ebook_ctrl->config);//解码控制
 	// 打开页面显示
-	ebook_ctrl->total_page = MBOOK_Decode_GetTotalPage(ebook_ctrl->mbook);
+	ebook_ctrl->total_page = MBOOK_Decode_GetTotalPage(ebook_ctrl->mbook);//获取解码的总页数
 
-	if(ebook_ctrl->book_bkpoint.page_no == 0)
+	if(ebook_ctrl->book_bkpoint.page_no == 0)//从头开始阅读
 	{
 		ebook_ctrl->cur_page = MBOOK_Decode_ShowPage(ebook_ctrl->mbook, 0); //不存在断点信息或者存在断点信息但从头开始阅读
 	}
@@ -375,12 +375,12 @@ __s32   mbook_on_create(__gui_msg_t *msg)
 	rect.y = ebook_uipara->page_lyr.y;
 	rect.width = ebook_uipara->page_lyr.w;
 	rect.height = ebook_uipara->page_lyr.h;
-	ebook_ctrl->pageLyr = ebook_layer_create(&rect);//创建page 图层
+	ebook_ctrl->pageLyr = ebook_layer_create(&rect);//创建page 图层，显示有电子书名的菜单图层
 	rect.x = ebook_uipara->volume_bar_lyr.x;
 	rect.y = ebook_uipara->volume_bar_lyr.y;
 	rect.width = ebook_uipara->volume_bar_lyr.w;
 	rect.height = ebook_uipara->volume_bar_lyr.h;
-	ebook_ctrl->volume_bar_Lyr = ebook_layer_create(&rect);	//创建volume bar 图层
+	ebook_ctrl->volume_bar_Lyr = ebook_layer_create(&rect);	//创建volume bar 图层，音量显示图标位置
 	page_para.font = ebook_ctrl->ebook_font;
 	page_para.page_layer = ebook_ctrl->pageLyr;
 	page_para.volume_bar_layer = ebook_ctrl->volume_bar_Lyr;
@@ -398,7 +398,7 @@ __s32   mbook_on_create(__gui_msg_t *msg)
 	page_para.cur_page = ebook_ctrl->cur_page;
 	page_para.total_page = ebook_ctrl->total_page;
 	eLIBs_strcpy(page_para.name, (void *)(eLIBs_strchrlast(path, '\\') + 1));	//获取当前阅读的电子书的书名
-
+	
 	if(ebook_ctrl->loading_lyr)
 	{
 		GUI_LyrWinDelete(ebook_ctrl->loading_lyr);	//删除loading 窗口
@@ -712,7 +712,7 @@ static __s32 page_info_proc(__gui_msg_t *msg)
 			break;
 		}
 
-		case CMD_PAGE_SET_PLAY:
+		case CMD_PAGE_SET_PLAY://设置播放提示框
 		{
 			if(msg->dwAddData2 == 0)	//电子书播放状态, 1 表示正在播放， 0 不是不是正常播放状态
 			{
@@ -778,7 +778,7 @@ static __s32 page_info_proc(__gui_msg_t *msg)
 			break;
 		}
 
-		case CMD_PAGE_SET_SET:
+		case CMD_PAGE_SET_SET://设置菜单
 		{
 			ebook_mset_para_t mset_para;
 			RECT rect;
@@ -1227,14 +1227,14 @@ static __s32 _app_ebook_Proc(__gui_msg_t  *msg)
 
 				if(ret != 0)	//不存在断点信息
 				{
-					__msg("mbook_load_breakpoint_info fail or there is no breakpoint info........\n");
+					__wrn("mbook_load_breakpoint_info fail or there is no breakpoint info........\n");
 					ebook_ctrl->book_bkpoint.page_no = 0;
 					mbook_on_create(msg);
 					__here__;
 				}
 				else
 				{
-					__msg("mbook_load_breakpoint_info succeed\n");
+					__wrn("mbook_load_breakpoint_info succeed\n");
 
 					if(ebook_ctrl->book_bkpoint.page_no > 1)
 					{
@@ -1263,7 +1263,7 @@ static __s32 _app_ebook_Proc(__gui_msg_t  *msg)
 					}
 				}
 			}
-			__msg("*********ebook create end************\n");
+			__wrn("*********ebook create end************\n");
 			return 0;
 		}
 

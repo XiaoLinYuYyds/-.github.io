@@ -1,336 +1,336 @@
 [res_5001]
 name	  	=PHOTO_BAR_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bar.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bar.bmp
 commentCN 	=BAR
 commentEN 	=BAR
 
 [res_5002]
 name	  	=PHOTO_BAR_BOTTOM_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bar_bottom.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bar_bottom.bmp
 commentCN 	=BAR_BOTTOM
 commentEN 	=BAR_BOTTOM
 
 [res_5003]
 name	  	=PHOTO_BAR_DOWN_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bar_down.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bar_down.bmp
 commentCN 	=BAR_DOWN
 commentEN 	=BAR_DOWN
 
 [res_5004]
 name	  	=PHOTO_BAR_SEL_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bar_sel_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bar_sel_f.bmp
 commentCN 	=BAR_SEL_F
 commentEN 	=BAR_SEL_F
 
 [res_5005]
 name	  	=PHOTO_BAR_SEL_N_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bar_sel_n.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bar_sel_n.bmp
 commentCN 	=BAR_SEL_N
 commentEN 	=BAR_SEL_N
 
 [res_5006]
 name	  	=PHOTO_BAR_TOP_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bar_top.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bar_top.bmp
 commentCN 	=BAR_TOP
 commentEN 	=BAR_TOP
 
 [res_5007]
 name	  	=PHOTO_BAR_UP_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bar_up.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bar_up.bmp
 commentCN 	=BAR_UP
 commentEN 	=BAR_UP
 
 [res_5008]
 name	  	=PHOTO_BG_MUSIC_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bg_music_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bg_music_f.bmp
 commentCN 	=BG_MUSIC_F
 commentEN 	=BG_MUSIC_F
 
 [res_5009]
 name	  	=PHOTO_BG_MUSIC_N_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bg_music_n.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bg_music_n.bmp
 commentCN 	=BG_MUSIC_N
 commentEN 	=BG_MUSIC_N
 
 [res_5010]
 name	  	=PHOTO_BG_SET_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bg_set_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bg_set_f.bmp
 commentCN 	=BG_SET_F
 commentEN 	=BG_SET_F
 
 [res_5011]
 name	  	=PHOTO_BG_SET_N_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bg_set_n.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bg_set_n.bmp
 commentCN 	=BG_SET_N
 commentEN 	=BG_SET_N
 
 [res_5012]
 name	  	=PHOTO_BRIGHT_BG_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bright_bg.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bright_bg.bmp
 commentCN 	=BRIGHT_BG
 commentEN 	=BRIGHT_BG
 
 [res_5013]
 name	  	=PHOTO_BRIGHT_BLOCK_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bright_block.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bright_block.bmp
 commentCN 	=BRIGHT_BLOCK
 commentEN 	=BRIGHT_BLOCK
 
 [res_5014]
 name	  	=PHOTO_BRIGHT_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bright_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bright_f.bmp
 commentCN 	=BRIGHT_F
 commentEN 	=BRIGHT_F
 
 [res_5015]
 name	  	=PHOTO_BRIGHT_N_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\bright_n.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\bright_n.bmp
 commentCN 	=BRIGHT_N
 commentEN 	=BRIGHT_N
 
 [res_5016]
 name	  	=PHOTO_COLOURTABLE_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\colourtable.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\colourtable.bmp
 commentCN 	=COLOURTABLE
 commentEN 	=COLOURTABLE
 
 [res_5017]
 name	  	=PHOTO_ERROR_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\error.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\error.bmp
 commentCN 	=ERROR
 commentEN 	=ERROR
 
 [res_5018]
 name	  	=PHOTO_GRAY_BLOCK_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\gray_block.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\gray_block.bmp
 commentCN 	=GRAY_BLOCK
 commentEN 	=GRAY_BLOCK
 
 [res_5019]
 name	  	=PHOTO_HORIZONTAL_LINE_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\horizontal_line.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\horizontal_line.bmp
 commentCN 	=HORIZONTAL_LINE
 commentEN 	=HORIZONTAL_LINE
 
 [res_5020]
 name	  	=PHOTO_INFO_ICON_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\info_icon.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\info_icon.bmp
 commentCN 	=INFO_ICON
 commentEN 	=INFO_ICON
 
 [res_5021]
 name	  	=PHOTO_INTERVAL_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\interval_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\interval_f.bmp
 commentCN 	=INTERVAL_F
 commentEN 	=INTERVAL_F
 
 [res_5022]
 name	  	=PHOTO_INTERVAL_N_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\interval_n.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\interval_n.bmp
 commentCN 	=INTERVAL_N
 commentEN 	=INTERVAL_N
 
 [res_5023]
 name	  	=PHOTO_MAIN_BG_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\main_bg.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\main_bg.bmp
 commentCN 	=MAIN_BG
 commentEN 	=MAIN_BG
 
 [res_5024]
 name	  	=PHOTO_MOVE_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\move.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\move.bmp
 commentCN 	=MOVE
 commentEN 	=MOVE
 
 [res_5025]
 name	  	=PHOTO_MSGBOX_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\MsgBox.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\MsgBox.bmp
 commentCN 	=MSGBOX
 commentEN 	=MSGBOX
 
 [res_5026]
 name	  	=PHOTO_MSGBOX_BTN_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\msgbox_btn_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\msgbox_btn_f.bmp
 commentCN 	=MSGBOX_BTN_F
 commentEN 	=MSGBOX_BTN_F
 
 [res_5027]
 name	  	=PHOTO_MSGBOX_BTN_N_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\msgbox_btn_n.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\msgbox_btn_n.bmp
 commentCN 	=MSGBOX_BTN_N
 commentEN 	=MSGBOX_BTN_N
 
 [res_5028]
 name	  	=PHOTO_MUTE_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\mute.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\mute.bmp
 commentCN 	=MUTE
 commentEN 	=MUTE
 
 [res_5029]
 name	  	=PHOTO_NEXT_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\next.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\next.bmp
 commentCN 	=NEXT
 commentEN 	=NEXT
 
 [res_5030]
 name	  	=PHOTO_PAUSE_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\pause.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\pause.bmp
 commentCN 	=PAUSE
 commentEN 	=PAUSE
 
 [res_5031]
 name	  	=PHOTO_PLAY_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\play.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\play.bmp
 commentCN 	=PLAY
 commentEN 	=PLAY
 
 [res_5032]
 name	  	=PHOTO_PLAY_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\play_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\play_f.bmp
 commentCN 	=PLAY_F
 commentEN 	=PLAY_F
 
 [res_5033]
 name	  	=PHOTO_PREV_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\prev.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\prev.bmp
 commentCN 	=PREV
 commentEN 	=PREV
 
 [res_5034]
 name	  	=PHOTO_ROTATION_0_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\rotation_0.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\rotation_0.bmp
 commentCN 	=ROTATION_0
 commentEN 	=ROTATION_0
 
 [res_5035]
 name	  	=PHOTO_ROTATION_180_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\rotation_180.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\rotation_180.bmp
 commentCN 	=ROTATION_180
 commentEN 	=ROTATION_180
 
 [res_5036]
 name	  	=PHOTO_ROTATION_270_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\rotation_270.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\rotation_270.bmp
 commentCN 	=ROTATION_270
 commentEN 	=ROTATION_270
 
 [res_5037]
 name	  	=PHOTO_ROTATION_90_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\rotation_90.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\rotation_90.bmp
 commentCN 	=ROTATION_90
 commentEN 	=ROTATION_90
 
 [res_5038]
 name	  	=PHOTO_ROTATION_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\rotation_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\rotation_f.bmp
 commentCN 	=ROTATION_F
 commentEN 	=ROTATION_F
 
 [res_5039]
 name	  	=PHOTO_ROTATION_N_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\rotation_n.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\rotation_n.bmp
 commentCN 	=ROTATION_N
 commentEN 	=ROTATION_N
 
 [res_5040]
 name	  	=PHOTO_SCALE_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\scale_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\scale_f.bmp
 commentCN 	=SCALE_F
 commentEN 	=SCALE_F
 
 [res_5041]
 name	  	=PHOTO_SCALE_N_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\scale_n.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\scale_n.bmp
 commentCN 	=SCALE_N
 commentEN 	=SCALE_N
 
 [res_5042]
 name	  	=PHOTO_SLIDESHOW_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\slideshow_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\slideshow_f.bmp
 commentCN 	=SLIDESHOW_F
 commentEN 	=SLIDESHOW_F
 
 [res_5043]
 name	  	=PHOTO_SLIDESHOW_N_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\slideshow_n.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\slideshow_n.bmp
 commentCN 	=SLIDESHOW_N
 commentEN 	=SLIDESHOW_N
 
 [res_5044]
 name	  	=PHOTO_SLIDE_BAR_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\slide_bar.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\slide_bar.bmp
 commentCN 	=SLIDE_BAR
 commentEN 	=SLIDE_BAR
 
 [res_5045]
 name	  	=PHOTO_SLIDE_BG_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\slide_bg.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\slide_bg.bmp
 commentCN 	=SLIDE_BG
 commentEN 	=SLIDE_BG
 
 [res_5046]
 name	  	=PHOTO_SLIDE_BLOCK_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\slide_block.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\slide_block.bmp
 commentCN 	=SLIDE_BLOCK
 commentEN 	=SLIDE_BLOCK
 
 [res_5047]
 name	  	=PHOTO_SLIDE_BLOCK_L_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\slide_block_l.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\slide_block_l.bmp
 commentCN 	=SLIDE_BLOCK_L
 commentEN 	=SLIDE_BLOCK_L
 
 [res_5048]
 name	  	=PHOTO_SLIDE_BLOCK_R_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\slide_block_r.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\slide_block_r.bmp
 commentCN 	=SLIDE_BLOCK_R
 commentEN 	=SLIDE_BLOCK_R
 
 [res_5049]
 name	  	=PHOTO_SSET_BG_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\sset_bg.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\sset_bg.bmp
 commentCN 	=SSET_BG
 commentEN 	=SSET_BG
 
 [res_5050]
 name	  	=PHOTO_SSET_BG_SP_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\sset_bg_sp.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\sset_bg_sp.bmp
 commentCN 	=SSET_BG_SP
 commentEN 	=SSET_BG_SP
 
 [res_5051]
 name	  	=PHOTO_VOLUME_L_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\volume_l.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\volume_l.bmp
 commentCN 	=VOLUME_L
 commentEN 	=VOLUME_L
 
 [res_5052]
 name	  	=PHOTO_VOLUME_R_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\volume_r.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\volume_r.bmp
 commentCN 	=VOLUME_R
 commentEN 	=VOLUME_R
 
 [res_5053]
 name	  	=PHOTO_ZOOMIN_BG_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\zoomin_bg.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\zoomin_bg.bmp
 commentCN 	=ZOOMIN_BG
 commentEN 	=ZOOMIN_BG
 
 [res_5054]
 name	  	=PHOTO_ZOOMIN_BLOCK_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\zoomin_block.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\zoomin_block.bmp
 commentCN 	=ZOOMIN_BLOCK
 commentEN 	=ZOOMIN_BLOCK
 
 [res_5055]
 name	  	=PHOTO_ZOOM_F_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\zoom_f.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\zoom_f.bmp
 commentCN 	=ZOOM_F
 commentEN 	=ZOOM_F
 
 [res_5056]
 name	  	=PHOTO_ZOOM_N_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./photo\zoom_n.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./photo\zoom_n.bmp
 commentCN 	=ZOOM_N
 commentEN 	=ZOOM_N
 

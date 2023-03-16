@@ -1,180 +1,180 @@
 [res_9001]
 name	  	=CALENDAR_COLOURTABLE_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\colourtable.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\colourtable.bmp
 commentCN 	=COLOURTABLE
 commentEN 	=COLOURTABLE
 
 [res_9002]
 name	  	=CALENDAR_H_NEXT_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\h_next.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\h_next.bmp
 commentCN 	=H_NEXT
 commentEN 	=H_NEXT
 
 [res_9003]
 name	  	=CALENDAR_H_PREV_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\h_prev.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\h_prev.bmp
 commentCN 	=H_PREV
 commentEN 	=H_PREV
 
 [res_9004]
 name	  	=CALENDAR_NUM_0_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\num_0.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\num_0.bmp
 commentCN 	=NUM_0
 commentEN 	=NUM_0
 
 [res_9005]
 name	  	=CALENDAR_NUM_1_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\num_1.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\num_1.bmp
 commentCN 	=NUM_1
 commentEN 	=NUM_1
 
 [res_9006]
 name	  	=CALENDAR_NUM_2_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\num_2.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\num_2.bmp
 commentCN 	=NUM_2
 commentEN 	=NUM_2
 
 [res_9007]
 name	  	=CALENDAR_NUM_3_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\num_3.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\num_3.bmp
 commentCN 	=NUM_3
 commentEN 	=NUM_3
 
 [res_9008]
 name	  	=CALENDAR_NUM_4_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\num_4.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\num_4.bmp
 commentCN 	=NUM_4
 commentEN 	=NUM_4
 
 [res_9009]
 name	  	=CALENDAR_NUM_5_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\num_5.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\num_5.bmp
 commentCN 	=NUM_5
 commentEN 	=NUM_5
 
 [res_9010]
 name	  	=CALENDAR_NUM_6_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\num_6.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\num_6.bmp
 commentCN 	=NUM_6
 commentEN 	=NUM_6
 
 [res_9011]
 name	  	=CALENDAR_NUM_7_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\num_7.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\num_7.bmp
 commentCN 	=NUM_7
 commentEN 	=NUM_7
 
 [res_9012]
 name	  	=CALENDAR_NUM_8_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\num_8.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\num_8.bmp
 commentCN 	=NUM_8
 commentEN 	=NUM_8
 
 [res_9013]
 name	  	=CALENDAR_NUM_9_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\num_9.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\num_9.bmp
 commentCN 	=NUM_9
 commentEN 	=NUM_9
 
 [res_9014]
 name	  	=CALENDAR_SELECT_COLOUR_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\select_colour.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\select_colour.bmp
 commentCN 	=SELECT_COLOUR
 commentEN 	=SELECT_COLOUR
 
 [res_9015]
 name	  	=CALENDAR_SETTIME_BG_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\settime_bg.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\settime_bg.bmp
 commentCN 	=SETTIME_BG
 commentEN 	=SETTIME_BG
 
 [res_9016]
 name	  	=CALENDAR_SLASH_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\slash.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\slash.bmp
 commentCN 	=SLASH
 commentEN 	=SLASH
 
 [res_9017]
 name	  	=CALENDAR_TIME_AM_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_am.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_am.bmp
 commentCN 	=TIME_AM
 commentEN 	=TIME_AM
 
 [res_9018]
 name	  	=CALENDAR_TIME_BG_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_bg.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_bg.bmp
 commentCN 	=TIME_BG
 commentEN 	=TIME_BG
 
 [res_9019]
 name	  	=CALENDAR_TIME_COLON_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_colon.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_colon.bmp
 commentCN 	=TIME_COLON
 commentEN 	=TIME_COLON
 
 [res_9020]
 name	  	=CALENDAR_TIME_NUM_0_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_num_0.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_num_0.bmp
 commentCN 	=TIME_NUM_0
 commentEN 	=TIME_NUM_0
 
 [res_9021]
 name	  	=CALENDAR_TIME_NUM_1_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_num_1.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_num_1.bmp
 commentCN 	=TIME_NUM_1
 commentEN 	=TIME_NUM_1
 
 [res_9022]
 name	  	=CALENDAR_TIME_NUM_2_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_num_2.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_num_2.bmp
 commentCN 	=TIME_NUM_2
 commentEN 	=TIME_NUM_2
 
 [res_9023]
 name	  	=CALENDAR_TIME_NUM_3_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_num_3.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_num_3.bmp
 commentCN 	=TIME_NUM_3
 commentEN 	=TIME_NUM_3
 
 [res_9024]
 name	  	=CALENDAR_TIME_NUM_4_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_num_4.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_num_4.bmp
 commentCN 	=TIME_NUM_4
 commentEN 	=TIME_NUM_4
 
 [res_9025]
 name	  	=CALENDAR_TIME_NUM_5_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_num_5.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_num_5.bmp
 commentCN 	=TIME_NUM_5
 commentEN 	=TIME_NUM_5
 
 [res_9026]
 name	  	=CALENDAR_TIME_NUM_6_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_num_6.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_num_6.bmp
 commentCN 	=TIME_NUM_6
 commentEN 	=TIME_NUM_6
 
 [res_9027]
 name	  	=CALENDAR_TIME_NUM_7_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_num_7.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_num_7.bmp
 commentCN 	=TIME_NUM_7
 commentEN 	=TIME_NUM_7
 
 [res_9028]
 name	  	=CALENDAR_TIME_NUM_8_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_num_8.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_num_8.bmp
 commentCN 	=TIME_NUM_8
 commentEN 	=TIME_NUM_8
 
 [res_9029]
 name	  	=CALENDAR_TIME_NUM_9_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_num_9.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_num_9.bmp
 commentCN 	=TIME_NUM_9
 commentEN 	=TIME_NUM_9
 
 [res_9030]
 name	  	=CALENDAR_TIME_PM_BMP
-file	  	=F:\work\sdk_release__LZI-C100A-1C115_2023_0111_1731\livedesk\beetles\res\theme\./calendar\time_pm.bmp
+file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./calendar\time_pm.bmp
 commentCN 	=TIME_PM
 commentEN 	=TIME_PM
 

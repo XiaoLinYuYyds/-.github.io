@@ -1,0 +1,290 @@
+;软件版本号，方案商使用，客户不需要更改
+[prog_ver]
+ver=string:.G01.1500
+
+;对于已经有做进软件的按键改变key_type的值即可，
+;软件坐进去的按键有数值1表示KEY_01, 2-->KEY_02, 3-->KEY_03，
+;8-->KEY_08, 9-->KEY_09, 21-->KEY_21,   25-->KEY_25, 46-->KEY_46,
+;22-->KEY_22EJ,23-->KEY_23EJ ,24-->KEY_24EJ,928-->LZD_KEY_928
+;48-->KEY_48,36-->KEY36,3601-->KEY3601,39-->KEY39,49-->KEY49,51-->KEY51,52-->KEY52,63-->KEY63
+;53-->KEY53,56-->D592KEY56,26-->KEY26,59-->KEY59,60-->KEY60,65-->KEY65,67-->KEY67,
+;66-->KEY66,68-->KEY68,69-->KEY69,70-->KEY70,71-->KEY71,76-->KEY76,94-->KEY94,93-->KEY93,9301-->KEY9301
+;10103-->KEY_101_03正线， 110103-->KEY_101_03反线
+;(目前软件只有以上几种类型)
+[key_para]
+key_type = 67
+ 
+;ad按键x1路，根据阻值从小到大 按键从上往下排列,目前每路可做
+;12个按键，客户修改时，重新写“string:”号后面的字符。
+;电阻从0开始往下，若碰到第一个电阻不是0的 将字符改成"___ "
+如“KEY1=string:___”更改下面的按键请将 上面的key_type设为0
+[key_para_x1]
+KEY1=string:MUSIC
+KEY2=string:MOVIE
+KEY3=string:FM
+KEY4=string:RECORD
+KEY5=string:PHOTO
+KEY6=string:VOICEUP
+KEY7=string:VOICEDOWN
+KEY8=string:LEFT
+KEY9=string:RIGNT
+KEY10=string:ENTER
+KEY11=string:TV
+KEY12=string:DVD
+
+;ad按键x2路，根据阻值从小到大 按键从上往下排列
+[key_para_x2]
+KEY1=string:NUM1
+KEY2=string:NUM2
+KEY3=string:NUM3
+KEY4=string:NUM4
+KEY5=string:NUM5
+KEY6=string:NUM6
+KEY7=string:NUM7
+KEY8=string:NUM8
+KEY9=string:NUM9
+KEY10=string:NUM0
+KEY11=string:MENU
+KEY12=string:SUBMENU
+
+;遥控按键 用户码请填写反码,code是码值，ir_key是按键
+;code和ir_key一一对应
+;客户修改时重新写code后的十六进制数和"string:"后的字符，
+;对于多出的按键写成如“code44=0x00   ir_key44=string:___”
+;对于已经做好的遥控，改变遥控类型ir_type的值和对应用户码，
+;目前软件包含的类型有 1--IR_01,108--IR_0108,     
+;101--IR_TEST_01,  19--IR_19, 191--IR_19EJ, 23--IR_23,16--IR_16
+;24--IR_24 ,  43--IR_43 , 50-->IR_50,46-->IR_46,47--IR47,29-->IR_29
+;42--IR_42,4201--IR_4201,4202--IR_4202,14--IR_14,6--IR_06,45--IR_45,
+;13--IR_13
+;35-->IR_35,34-->IR_34,36-->IR_36,39-->IR_39,20-->IR_20
+;0xf708   2--IR_02, 4--IR_04,401--IR04EJ
+;0xbf40   41-->IR_41,25-->IR_25
+[ir_code_para]
+user_coder=0xff00
+
+ir_type =01
+
+code1=0x14
+ir_key1=string:POWER
+
+code2=0x57
+ir_key2=string:MUTE
+
+code3=0x41
+ir_key3=string:DVD
+
+code4=0x46
+ir_key4=string:TV
+
+code5=0x4A
+ir_key5=string:MENU
+
+code6=0x15
+ir_key6=string:FM
+
+code7=0x08
+ir_key7=string:AVIN
+
+code8=0x0A
+ir_key8=string:LOCK
+
+code9=0x03
+ir_key9=string:SETTING
+
+code10=0x05
+ir_key10=string:UP
+
+code11=0x51
+ir_key11=string:PLAY_PAUSE
+
+code12=0x07
+ir_key12=string:LEFT
+
+code13=0x40
+ir_key13=string:ENTER
+
+code14=0x02
+ir_key14=string:RIGHT
+
+code15=0x0D
+ir_key15=string:LR
+
+code16=0x0F
+ir_key16=string:DOWN
+
+code17=0x44
+ir_key17=string:SHIFT_STOP
+
+code18=0x47
+ir_key18=string:SUBMENU
+
+code19=0x1E
+ir_key19=string:MODE
+
+code20=0x55
+ir_key20=string:MOVIE
+
+code21=0x09
+ir_key21=string:NUM1
+
+code22=0x1D
+ir_key22=string:NUM2
+
+code23=0x1F
+ir_key23=string:NUM3
+
+code24=0x5E
+ir_key24=string:VOICEUP
+
+code25=0x19
+ir_key25=string:NUM4
+
+code26=0x1B
+ir_key26=string:NUM5
+
+code27=0x11
+ir_key27=string:NUM6
+
+code28=0x06
+ir_key28=string:VOICEDOWN
+
+code29=0x17
+ir_key29=string:NUM7
+
+code30=0x12
+ir_key30=string:NUM8
+
+code31=0x59
+ir_key31=string:NUM9
+
+code32=0x18
+ir_key32=string:SHIFT_SF
+
+code33=0x50
+ir_key33=string:NUM0
+
+code34=0x48
+ir_key34=string:SHIFT_SELTIME
+
+code35=0x0E
+ir_key35=string:FB_MULTI
+
+code36=0x1A
+ir_key36=string:FF_MULTI
+
+code37=0x53
+ir_key37=string:SEARCH
+
+code38=0x52
+ir_key38=string:MUSIC
+
+code39=0x01
+ir_key39=string:PREV
+
+code40=0x45
+ir_key40=string:NEXT
+
+code41=0x00
+ir_key41=string:PHOTO
+
+code42=0x00
+ir_key42=string:EBOOK
+
+code43=0x00
+ir_key43=string:RECORD
+
+code44=0x00
+ir_key44=string:FM
+
+[system]
+;fm search thread hold, (1-63) default is 4，灵敏度客户不需要更改
+fm_th=4
+;FM6207灵敏度 范围0x0000~0xffff 推荐参数 0x3848 0x4058 0x4878
+sensibility_6207=0x4878
+;5807的灵敏度参数值可设为0xc0~0xc6
+sensibility_5807=0xc5
+
+;enable restore default param when poweron.
+;参数改变后重新上电开机参数不需保存将相应位置1
+;bit[0,7]:   {mediaType, videoScreenRatio, volume, lang, style, keytone, cvbs, light_off}
+;bit[8,14]: {pwm, bright, contrast, hue, saturability, tv_system, avin_system}
+enRestoreParam=0x0007
+
+;default auto play media type,range:[0,3]:{video,audio,ebook,photo}
+;自动播放媒体类型0是视屏1是音乐2是电子书3是图片
+mediaType=0
+
+;default video screen ratio.
+;0,FULL_SCREEN_VIDEO_RATIO，全屏，按视频比例显示
+;1,FULL_SCREEN_SCREEN_RATIO，全屏，按屏幕比例显示
+;2,ORIGIN_SIZE，按原始尺寸显示
+;3,4:3,  4:3比例显示 可能会导致变形
+;4,16:9 ，16:9比例显示，可能会导致变形
+videoScreenRatio=1
+
+;disable display logo, range:{0,1}:{display, blank}
+;开机logo显示，1不显示，0显示
+logoDisable=0
+
+;real maximum volume, range:[0, 30]
+;音量输出等级
+realVolume_max=28
+
+;default volume 0-30
+;音量默认级数
+volume=30
+
+;default language 0x400/0x410/0x420 en/chs/cht
+;默认语言0x400英文0x410简体中文0x420繁体中文
+lang=0x410
+
+;default background 0-1
+;默认背景，对于只有一个背景的软件，该值为0就可以，不需更改
+style=0
+
+;default keytone off/on 0/1
+;按键音,客户不需更改
+keytone=0
+
+;default cvbs output ntsc/pal 0/1
+;制式 0为N制 1为P制
+cvbs=1
+
+;backlight_off time, range:{0,10,30,60,90}
+;背光自动关闭时间可以设 0不关，10表示10,30表示30秒，
+;60表示60秒，90表示90秒
+light_off=60
+
+;default lcd pwm, range:[0,14]
+;VCOM默认值
+pwm=10
+
+;default display bright, range:[1,100]
+;亮度默认值
+bright=60
+
+;default display contrast, range:[1,100]
+;对比度默认值
+contrast=50
+
+;default display hue, range:[1,100]
+;色度默认值
+hue=40
+
+;default display saturability, range:[1,100]
+;饱和度默认值
+saturability=50
+
+;default tv system, range:[0,8]:{PAL-DK/PAL-I/PAL-BG/NTSC-M/SECAM-DK/PAL-M/PAL-N/PAL-60/SECAM-BG}
+;电视制式，依次对应0,1,2,3,4,5,6,7,8
+tv_system=0
+
+;default avin system, range:[0,8]:{PAL-DK/PAL-I/PAL-BG/NTSC-M/SECAM-DK/PAL-M/PAL-N/PAL-60/SECAM-BG}
+;AVIN 制式
+avin_system=1
+
+;fm 自动关屏时间，该项无用，客户不需更改
+[fm]
+;;auto close screen in fm, in 5s
+;auto_close_scn=30

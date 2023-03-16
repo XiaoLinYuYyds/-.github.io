@@ -1,0 +1,13 @@
+<OSDTable>
+<Groups count="3">
+<OSDItem name="ebook" startid="1" maxid="100" file="lang\ebook\lang.txt"/>
+<OSDItem name="music" startid="101" maxid="200" file="lang\music\lang.txt"/>
+<OSDItem name="Settings" startid="201" maxid="400" file="lang\Settings\lang.txt"/>
+</Groups>
+<LangType count="3">
+<LangItem name="ChineseS" langId="0x410"/>
+<LangItem name="ChineseT" langId="0x420"/>
+<LangItem name="English" langId="0x400"/>
+</LangType>
+<Output bin=".\lang\lang.bin" head=".\lang\lang.h"/>
+</OSDTable>

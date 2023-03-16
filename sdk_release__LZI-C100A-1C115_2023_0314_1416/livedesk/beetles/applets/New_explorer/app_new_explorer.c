@@ -380,6 +380,14 @@ H_WIN app_new_explorer_manwin_create(root_para_t *para)
 		}
 		break;
 
+		case ID_NEW_EXPLORER_EBOOK://4时，执行搜索磁盘的电子书文件功能
+		{
+			new_explorer_ctrl->view_mode  = NEW_EXPLR_LIST_MODE;//EXPLR_LIST_MODE;
+			new_explorer_ctrl->media_type = RAT_MEDIA_TYPE_PIC; //获取磁盘的所有电子书文件
+			new_explorer_ctrl->root_type  = para->root_type;	//检测是USB还是SD卡磁盘
+		}
+		break;
+
 		default://否则直接退出当前switch语句
 			break;
 	}

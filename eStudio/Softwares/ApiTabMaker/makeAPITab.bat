@@ -1,0 +1,1 @@
+ApiTabMaker.exe d:\test_head.he:\work\tcl_i.h desktop 0x1212312 d:\test.h d:\test.c
