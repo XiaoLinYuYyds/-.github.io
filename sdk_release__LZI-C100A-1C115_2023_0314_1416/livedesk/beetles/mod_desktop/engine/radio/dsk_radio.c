@@ -284,7 +284,7 @@ __s32 dsk_radio_get_audio_mode(__s32 *audio_mode)
 	*audio_mode = h_radio->audio_mode;
 	return EPDK_OK;
 }
-
+//收音机获取最小频率
 __s32 dsk_radio_get_min_freq(__s32 *min_freq)
 {
 	if(h_radio == NULL)
@@ -296,7 +296,7 @@ __s32 dsk_radio_get_min_freq(__s32 *min_freq)
 	*min_freq = h_radio->freq_range.fm_area_min_freq;
 	return EPDK_OK;
 }
-
+//收音机获取最大频率
 __s32 dsk_radio_get_max_freq(__s32 *max_freq)
 {
 	if(h_radio == NULL)

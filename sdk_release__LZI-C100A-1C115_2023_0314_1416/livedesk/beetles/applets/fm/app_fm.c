@@ -286,7 +286,7 @@ __s32 notify_to_close_fm(H_WIN hwnd, __s32 id, __s32 para)
 	GUI_SendNotifyMessage(&msg);
 	return EPDK_OK;
 }
-
+//…Ë÷√∆µ¥¯
 static __s32 fm_set_band(FM_CTRLDATA_T *fm_ctrl, dsk_radio_band_mode_t mode)
 {
 	dsk_radio_set_band(mode);

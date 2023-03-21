@@ -162,7 +162,7 @@ static void __decode_read_page(__mbook_decode_t *hdle)
 **********************************************************************************************************************
 *                                               __decode_show_page
 *
-* Description: 读取一页数据到缓存BUF里。
+* Description: 读取一页数据到缓存BUF里。显示一页数据
 *
 * Arguments  :
 *

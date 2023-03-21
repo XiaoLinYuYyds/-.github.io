@@ -56,7 +56,10 @@ static	H_LYR app_new_ebook_8bpp_laye_creat(RECT *rect, __s32 pipe)
 	
 		return layer;
 }
-//命令发送函数
+
+/************************************************************************************************************************
+*Description	:		命令发送函数
+************************************************************************************************************************/
 __s32 app_new_ebook_cmd2para(H_WIN hwin, __s32 id, __s32 data1, __s32 data2)
 {
 	__gui_msg_t mymsg;
@@ -160,13 +163,13 @@ static __s32 new_ebook_GetListItemFileName(__gui_msg_t *msg, __s32 ItemIndex, ch
 #endif
 
 /************************************************************************************
-*播放文件
+*Description	:		播放文件
 ************************************************************************************/
 static __s32 PlayEbookFiles(__gui_msg_t *msg, __s32 index, char *FileName)
 {
 	app_new_ebook_ctrl_t *this;
 	this = (app_new_ebook_ctrl_t *)GUI_WinGetAttr(msg->h_deswin);
-	rat_npl_set_cur(this->rat.rat_handle, index);
+	rat_npl_set_cur(this->rat.rat_handle, index);//设置当前要播放的文件索引id
 	__wrn("\nindex = %d\n",index);
 }
 
@@ -184,7 +187,7 @@ static __s32 app_new_ebook_framewin_create(__gui_msg_t *msg)
 	__u8    err;
 	new_ebook_ctrl = (app_new_ebook_ctrl_t *)GUI_WinGetAttr(msg->h_deswin);
 	//ebook_uipara = (ebook_uipara_t *)get_ebook_uipara();
-
+	__wrn(" app_new_ebook_framewin_create is start... \n");
 	if(new_ebook_ctrl == NULL)
 	{
 		__wrn(" CShowScene malloc error \n");
@@ -193,7 +196,7 @@ static __s32 app_new_ebook_framewin_create(__gui_msg_t *msg)
 
 	/* 创建 mbook core 句柄 */
 	err = 0;
-	new_ebook_ctrl->mbook = MBOOK_Decode_Init(NULL, &err);//电子书解码初始化
+	new_ebook_ctrl->mbook = EBOOK_Decode_Init(NULL, &err);//电子书解码初始化
 
 	if(new_ebook_ctrl->mbook == NULL)
 	{
@@ -203,7 +206,7 @@ static __s32 app_new_ebook_framewin_create(__gui_msg_t *msg)
 	// 获取路径
 	//MBOOK_Decode_GetFilePath(new_ebook_ctrl->mbook, path);
 	// 设置默认编码
-	MBOOK_Decode_SetDefaultCharset(new_ebook_ctrl->mbook, EPDK_CHARSET_ENM_GBK);//默认为GBK编码格式
+	EBOOK_Decode_SetDefaultCharset(new_ebook_ctrl->mbook, EPDK_CHARSET_ENM_GBK);//默认为GBK编码格式
 	{
 		new_ebook_ctrl->config.font_color    = APP_COLOR_WHITE;//文本颜色白色
 	}
@@ -218,14 +221,14 @@ static __s32 app_new_ebook_framewin_create(__gui_msg_t *msg)
 	new_ebook_ctrl->config.bottom_width  = 0;									//
 	new_ebook_ctrl->config.show_width    = 1024;								//
 	new_ebook_ctrl->config.show_height   = 558;									//
-	MBOOK_Decode_Config(new_ebook_ctrl->mbook, &new_ebook_ctrl->config);		//解码控制
+	EBOOK_Decode_Config(new_ebook_ctrl->mbook, &new_ebook_ctrl->config);		//解码控制
 	/*****************************************************************************/
 	// 打开页面显示
-	new_ebook_ctrl->total_page = MBOOK_Decode_GetTotalPage(new_ebook_ctrl->mbook);//获取解码的总页数
+	//new_ebook_ctrl->total_page = MBOOK_Decode_GetTotalPage(new_ebook_ctrl->mbook);//获取解码的总页数
 	__wrn("total_page=%d...\n",new_ebook_ctrl->total_page);
 	//if(new_ebook_ctrl->book_bkpoint.page_no == 0)//从头开始阅读
 	{
-		new_ebook_ctrl->cur_page = MBOOK_Decode_ShowPage(new_ebook_ctrl->mbook, 0); //不存在断点信息或者存在断点信息但从头开始阅读
+		new_ebook_ctrl->cur_page = EBOOK_Decode_ShowPage(new_ebook_ctrl->mbook, 0); //不存在断点信息或者存在断点信息但从头开始阅读
 	}
 	//else
 	{
@@ -266,9 +269,9 @@ static __s32 __app_new_ebook_proc(__gui_msg_t *msg)
 			#if 1//打开RAT搜索文件模块，并且搜索相册图片类型文件
 				eLIBs_memset(FileName, 0, sizeof(FileName));		//数组数据初始化，清0
 				new_ebook_rat_init(msg);							//rat模块初始化
-				new_ebook_GetListItemFileName(msg, 23, FileName);	//获取列表项目的图片文件名
+				new_ebook_GetListItemFileName(msg, 24, FileName);	//获取列表项目的图片文件名
 				__wrn("\nFileName = %s\n",FileName);
-				PlayEbookFiles(msg, 23, FileName);//播放文件
+				PlayEbookFiles(msg, 24, FileName);//播放文件
 			#endif
 
 			app_new_ebook_framewin_create(msg);

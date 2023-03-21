@@ -332,6 +332,7 @@ static __s32 app_new_photo_init(__gui_msg_t *msg)
 		ShowErrorPic(new_photo_ctrl->err_pic);
 		return EPDK_FAIL;
 	}*/
+	new_photo_ctrl->auto_play_timer_id = 0x01;		//自动播放定时器id
 	new_photo_play_for_index_or_default(msg);		//通过传入文件索引播放图片文件
 	ANOLE_SetShowMode(_get_new_photo_ratio());		//设置显示模式
 	anole_set_show_mode(WILLOW_IMAGE_SHOW_ORISIZE);	//设置显示模式为以图片原始大小显示
@@ -356,7 +357,7 @@ static __s32 new_photo_play_for_index_or_default(__gui_msg_t *msg)
 			index = para->photo_index;					//获取需要播放的文件索引
 			__wrn(" index = %d\n",index);
 			//robin_npl_set_cur(index);					//设置当前播放文件
-			anole_npl_playing_seek(index);
+			anole_npl_playing_seek(index);				//搜索文件索引id，设置当前播放文件
 			para->photo_index = -1;						//清除跳转app标志位
 			
 		}
@@ -368,11 +369,69 @@ static __s32 new_photo_play_for_index_or_default(__gui_msg_t *msg)
 				__wrn(" index 2= %d\n",index);
 				/*重新设置从头开始播放文件*/
 				//robin_npl_set_cur(index);				/*设置当前播放列表要播放的当前播放文件索引id*/
-				anole_npl_playing_seek(index);
+				anole_npl_playing_seek(index);			//搜索文件索引id，设置当前播放文件
 			}
 
 		}
 	#endif
+}
+
+#if 1 //定时器配置
+//定时器加载
+static __s32 installed_autopaly_timer(__gui_msg_t * msg)
+{
+	new_photo_ctrl_t *this;
+	this = (new_photo_ctrl_t *)GUI_WinGetAttr(msg->h_deswin);
+
+	if(!GUI_IsTimerInstalled(msg->h_deswin, this->auto_play_timer_id))		//如果没有安装定时器/*检测是否定时器加载*/
+	{
+		GUI_SetTimer(msg->h_deswin, this->auto_play_timer_id, 500, NULL);	//5s刷新一次
+		__wrn("GUI_SetTimer autopaly timer is installed...\n");
+	}	
+}
+//定时器复位
+static __s32 reset_autopaly_timer(__gui_msg_t * msg)
+{
+	new_photo_ctrl_t *this;
+	this = (new_photo_ctrl_t *)GUI_WinGetAttr(msg->h_deswin);
+
+	if(GUI_IsTimerInstalled(msg->h_deswin, this->auto_play_timer_id))		//如果有安装定时器/*检测是否定时器加载*/
+	{
+		GUI_ResetTimer(msg->h_deswin, this->auto_play_timer_id, 500, NULL);	//复位5s刷新一次
+		__wrn("GUI_ResetTimer autopaly timer is success...\n");
+	}	
+}
+//定时器卸载
+static __s32 uninstalled_autopaly_timer(__gui_msg_t * msg)
+{
+	new_photo_ctrl_t *this;
+	this = (new_photo_ctrl_t *)GUI_WinGetAttr(msg->h_deswin);
+
+	if(GUI_IsTimerInstalled(msg->h_deswin, this->auto_play_timer_id))		//如果有安装定时器/*检测是否定时器加载*/
+	{
+		GUI_KillTimer(msg->h_deswin, this->auto_play_timer_id);				//卸载定时器
+		__wrn("GUI_KillTimer autopaly timer is success...\n");
+	}	
+}
+#endif
+
+//自动循环播放图片
+static __s32 autoplay_photo(void)
+{
+	static __s32 play_index=0;
+	__s32 total_index=0;
+	total_index = anole_npl_get_total_count();		//获取播放列表中的文件总数
+	play_index = anole_npl_get_cur();				//获取当前播放的文件索引id
+	play_index += 1;
+	__wrn("autoplay file total_index=%d\n",total_index);
+	__wrn("curplay play_index=%d\n",play_index);
+	if(play_index >= total_index)
+	{
+		play_index = 0;
+	}
+	anole_npl_playing_seek(play_index);			//搜索文件索引id，设置当前播放文件
+	__wrn("autoplay file play_index=%d\n",play_index);
+	PlayCurPhotoFile();
 }
 
 //相册回调处理函数
@@ -399,13 +458,15 @@ static __s32 __app_new_photo_proc(__gui_msg_t *msg)
 				
 			#endif
 			app_new_photo_init(msg);								//相册初始化
+			installed_autopaly_timer(msg);							//定时器设置开启
 		}
 		return EPDK_OK;
 
 		case GUI_MSG_DESTROY:{/*1，销毁*/
 			new_photo_ctrl_t *new_photo_ctrl;
 			new_photo_ctrl = (new_photo_ctrl_t *)GUI_WinGetAttr(msg->h_deswin);
-
+		
+			uninstalled_autopaly_timer(msg);		//释放定时器
 			g_enable_close_scn();					//使能打开荧光屏
 			app_new_photo_uninit(new_photo_ctrl);	//相册不初始化
 			eLIBs_memset(new_photo_ctrl, 0, sizeof(new_photo_ctrl_t));	//结构体初始化，数据清0
@@ -420,7 +481,7 @@ static __s32 __app_new_photo_proc(__gui_msg_t *msg)
 		return EPDK_OK;
 
 		case GUI_MSG_CLOSE:{/*3，关闭*/
-			app_new_photo_cmd2para(msg->h_deswin, NEW_SWITCH_TO_OTHER_APP, NEW_MOVIE_SW_TO_NEW_EXPLORER, 0);//跳转到new explorer列表应用
+			app_new_photo_cmd2para(msg->h_deswin, NEW_SWITCH_TO_OTHER_APP, NEW_MOVIE_SW_TO_NEW_EXPLORER, 2);//跳转到new explorer列表应用，2为TF卡
 			__wrn("GUI_MSG_CLOSE is press frees...\n");
 		}
 		return EPDK_OK;
@@ -441,6 +502,13 @@ static __s32 __app_new_photo_proc(__gui_msg_t *msg)
 					GUI_SendMessage(&mymsg);		//发送信息到当前窗口界面
 				}
 				break;
+				case GUI_MSG_KEY_NUM0:{//0键按下
+					__gui_msg_t mymsg;
+					mymsg.id = GUI_MSG_CLOSE;		//发送关闭命令
+					mymsg.h_deswin = msg->h_deswin;	//选中当前窗口句柄
+					GUI_SendMessage(&mymsg);		//发送信息到当前窗口界面
+				}
+				break;
 			}
 		}
 		break;
@@ -449,6 +517,19 @@ static __s32 __app_new_photo_proc(__gui_msg_t *msg)
 
 		}
 		return EPDK_OK;
+
+		case GUI_MSG_TIMER:{/*19，定时器*/
+			new_photo_ctrl_t *this;
+			this = (new_photo_ctrl_t *)GUI_WinGetAttr(msg->h_deswin);
+			if(this){
+				if(LOWORD(msg->dwAddData1) == this->auto_play_timer_id){
+					__wrn("\n************5s play one photo************\n");
+					autoplay_photo();//自动循环播放
+					reset_autopaly_timer(msg);//复位定时器
+				}
+			}
+		}
+		break;
 		
 		default:
 			break;

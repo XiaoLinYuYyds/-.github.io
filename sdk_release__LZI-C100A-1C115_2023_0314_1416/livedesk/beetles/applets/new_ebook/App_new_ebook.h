@@ -6,6 +6,8 @@
 #include "App_new_ebook_ui_para.h"
 
 #include "mbook_decode.h"
+#include "ebook_decod.h"
+#include "ebook_decod_i.h"
 
 
 
@@ -39,9 +41,17 @@ typedef struct tag_app_new_ebook_ctrl
 	__s32 	root_type;//存放TF卡或USB
 	new_ebook_rat_para_t rat;
 
-	#if 1
+	#if 0//旧的
 	H_DECODE            mbook;//解码
 	__decode_config_t   config;		/* monkey core show config，模块核心显示控制*/
+	__s32	cur_page;	//当前页数
+	__s32	total_page;	//总页数
+	
+	#endif
+
+	#if 1
+	H_DECODE_NEW            mbook;//解码
+	__newdecode_config_t   config;		/* monkey core show config，模块核心显示控制*/
 	__s32	cur_page;	//当前页数
 	__s32	total_page;	//总页数
 	

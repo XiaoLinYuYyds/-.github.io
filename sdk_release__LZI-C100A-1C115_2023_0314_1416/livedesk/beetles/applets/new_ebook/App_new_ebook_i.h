@@ -5,6 +5,7 @@
 #if 1  //必须加载的两个头文件
 #include "apps.h"
 #include "beetles_app.h"
+#include "epdk.h"
 #include "common/common.h"
 #endif
 

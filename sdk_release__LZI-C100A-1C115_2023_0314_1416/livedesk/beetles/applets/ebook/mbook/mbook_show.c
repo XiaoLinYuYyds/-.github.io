@@ -627,7 +627,8 @@ __s32   MBOOK_Show_Page(H_SHOW hdle, __hdle lyr, void *data)
 	}
 
 	p_show = (__mbook_show_t *)hdle;
-
+	__wrn("p_show = %d...\n",p_show);
+	__wrn("config.charset = %d...\n",p_show->config.charset);
 	switch(p_show->config.charset)
 	{
 		case EPDK_CHARSET_ENM_UTF8 :
@@ -650,6 +651,7 @@ __s32   MBOOK_Show_Page(H_SHOW hdle, __hdle lyr, void *data)
 
 		case EPDK_CHARSET_ENM_GBK:
 		{
+			__wrn("EPDK_CHARSET_ENM_GBK...\n");
 			__show_page_gbk(p_show, lyr, data);
 		}
 		break;

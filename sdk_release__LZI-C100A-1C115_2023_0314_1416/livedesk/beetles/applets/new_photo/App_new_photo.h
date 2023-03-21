@@ -20,10 +20,11 @@ typedef	struct app_new_photo_ctrl
 	H_WIN    lyr_photo_spsc;
 	H_WIN    h_photo_spsc;
 	NEW_PHOTO_BMP_RES_T err_pic;//void     *err_pic;
-	GUI_FONT *font;//存放文本
-	__s32    root_type;//存放SD卡或USB类型，2为SD卡
+	GUI_FONT *font;		//存放文本
+	__s32    root_type;	//存放SD卡或USB类型，2为SD卡
 	__s32	photo_index;//列表传入的图片文件索引id
-	new_photo_rat_para_t rat;//媒体类型文件搜索
+	__u8	auto_play_timer_id;	//自动播放定时器
+	new_photo_rat_para_t rat;	//媒体类型文件搜索
 }new_photo_ctrl_t;
 
 

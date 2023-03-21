@@ -23,7 +23,7 @@
 
 typedef struct tag_app_new_ebook_uipara_t
 {
-	RECT txt;
+	RECT txt;//暂时没有使用到
 
 }app_new_ebook_uipara_t;/*界面内容的ui坐标和矩形大小参数*/
 

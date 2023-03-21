@@ -2,7 +2,7 @@
 #include  "new_explorer_list_ui.h"
 
 
-
+static __s32 exit_falg = 0;//判断窗口退出销毁标志
 
 /***********************************************************************************************************
 	建立图层
@@ -152,13 +152,13 @@ static __s32 New_explorer_get_listview_area_rect(  RECT *text_rect)
 {
 	New_Explorers_ViewerList_uiparam_t *ui_param;
 	ui_param = new_explorer_get_list_view_ui_param();//列表控件显示 获取ui坐标参数
-	__wrn("new_explorer get item text rect is...!!\n");
+	__msg("new_explorer get item text rect is...!!\n");
 	//默认SD卡模式      { 156, 8, 420, 455 }/*列表显示区域范围坐标*/
 	text_rect->x = ui_param->List_item_ui_param.ListBarArea.x;
 	text_rect->y = ui_param->List_item_ui_param.ListBarArea.y;
 	text_rect->width = ui_param->List_item_ui_param.ListBarArea.width;
 	text_rect->height = ui_param->List_item_ui_param.ListBarArea.height;
-	__wrn("text_rect: x=%d, y=%d, width=%d, height=%d\n",
+	__msg("text_rect: x=%d, y=%d, width=%d, height=%d\n",
 		text_rect->x,text_rect->y,text_rect->width,text_rect->height);
 
 	return EPDK_OK;
@@ -171,13 +171,13 @@ __s32 New_explorer_get_item_text_rect(  RECT *text_rect)
 {
 	New_Explorers_ViewerList_uiparam_t *ui_param;
 	ui_param = new_explorer_get_list_view_ui_param();//列表控件显示 获取ui坐标参数
-	__wrn("new_explorer get item text rect is...!!\n");
+	__msg("new_explorer get item text rect is...!!\n");
 	//默认SD卡模式      { 59, 0, 338, 30 }/*文件名显示范围坐标*/
 	text_rect->x = ui_param->List_item_ui_param.text_rect.x;
 	text_rect->y = ui_param->List_item_ui_param.text_rect.y;
 	text_rect->width = ui_param->List_item_ui_param.text_rect.width;
 	text_rect->height = ui_param->List_item_ui_param.text_rect.height;
-	__wrn("text_rect: x=%d, y=%d, width=%d, height=%d\n",
+	__msg("text_rect: x=%d, y=%d, width=%d, height=%d\n",
 		text_rect->x,text_rect->y,text_rect->width,text_rect->height);
 
 	return EPDK_OK;
@@ -188,7 +188,7 @@ __s32 New_explorer_get_item_text_rect(  RECT *text_rect)
 static __s32 New_explorer_ExtractFileName(char *FileName, char *FilePath)
 {
 	char *pFileName;
-	__wrn("get Extract File Name is...!!\n");
+	__msg("get Extract File Name is...!!\n");
 	pFileName = eLIBs_strchrlast(FilePath, '\\');//汉字识别
 	pFileName++;
 	eLIBs_strcpy(FileName, pFileName);
@@ -204,7 +204,7 @@ static __s32 New_explorer_GetListItemFileFullPath(new_explorer_list_para_t *list
 	rat_entry_t ItemInfo;
 	eLIBs_memset(&ItemInfo, 0, sizeof(rat_entry_t));
 	ret = rat_get_item_info_by_index(list_para->rat.handle, ItemIndex, &ItemInfo);//获取当前项目信息索引
-	__wrn("get List Item File Full Path is...!!\n");
+	__msg("get List Item File Full Path is...!!\n");
 	if(ret == EPDK_FAIL)
 	{
 		__wrn("get file information form rat fail!!\n");
@@ -224,14 +224,14 @@ static __s32 New_explorer_GetListItemFileName(new_explorer_list_para_t *list_par
 	char FilePath[RAT_MAX_FULL_PATH_LEN];
 	eLIBs_memset(FilePath, 0, sizeof(FilePath));//数组初始化数据清0
 	ret = New_explorer_GetListItemFileFullPath(list_para, ItemIndex, FilePath);//通过索引获取当前条目文件名的全路径,返回EPDK_OK
-	__wrn("get List Item File Name is...!!\n");
+	__msg("get List Item File Name is...!!\n");
 	if(ret == EPDK_FAIL)
 	{
 		return EPDK_FAIL;
 	}
 
 	New_explorer_ExtractFileName(FileName, FilePath);//从全路径获取文件名
-	__wrn("get List Item Extract File Name is ok ok...!!\n");
+	__msg("get List Item Extract File Name is ok ok...!!\n");
 	return EPDK_OK;
 }
 #if 0
@@ -551,7 +551,7 @@ static	__s32 New_explorer_ListView_creat(H_WIN list_win)
 	list_para	=	(new_explorer_list_para_t *)GUI_WinGetAttr(list_win);//获取数据
 	list_para->list_framewin = list_win;	//窗口句柄保存
 	list_para->list_font	 = NULL;		//列表文本为空
-	__wrn("\n~~~~~~~~~~ListView creat is initializing~~~~~~~~~~~\n");
+	__msg("\n~~~~~~~~~~ListView creat is initializing~~~~~~~~~~~\n");
 
 	if((list_para->media_type == RAT_MEDIA_TYPE_VIDEO)||		//文件类型为视频文件
 		(list_para->media_type == RAT_MEDIA_TYPE_AUDIO)||		//文化类型为音频文件
@@ -563,7 +563,7 @@ static	__s32 New_explorer_ListView_creat(H_WIN list_win)
 		__wrn("\n~~~~~~~~~~file search is OK OK OK	OK~~~~~~~~~~~\n");
 	}
 	//New_explorer_ListBar_init(list_win);	//列表条目初始化，列表模式下的列表显示区域 初始化
-	__wrn("\n~~~~~~~~~~file search is 11111	OK~~~~~~~~~~~\n");
+	__msg("\n~~~~~~~~~~file search is 11111	OK~~~~~~~~~~~\n");
 	#if 0//直接绘制单个文本名
 		eLIBs_memset(FileName, 0, sizeof(FileName));//数组数据初始化，清0
 		
@@ -596,11 +596,11 @@ static	__s32 New_explorer_ListView_creat(H_WIN list_win)
 		__wrn("\nlist_item_number < list_para->rat.total = %d\n",list_para->rat.total);	
 		for(list_item_number = 0;list_item_number < list_para->rat.total-4;list_item_number++)//绘制矩形，显示视频文件名
 		{
-			__wrn("\n~~~~~~~~~~file search is 22222	is~~~~~~~~~~~\n");
+			__msg("\n~~~~~~~~~~file search is 22222	is~~~~~~~~~~~\n");
 			New_explorer_GetListItemFileName(list_para, list_item_number, FileName);//获取列表项目文件名
 			New_explorer_get_item_text_rect(&TextRect);//获取绘制文本显示矩形区域，成功返回：EPDK_OK
-			__wrn("\n~~~~~~~~~~file search is 22222	OK~~~~~~~~~~~\n");
-			__wrn("\nlist_item_number = %d\n",list_item_number);	
+			__msg("\n~~~~~~~~~~file search is 22222	OK~~~~~~~~~~~\n");
+			__msg("\nlist_item_number = %d\n",list_item_number);	
 			#if 1	//在列表模式下的列表显示区域坐标（156, 8, 420, 455） 绘制文本信息存放坐标
 				GUI_SetFont(list_para->list_font);		//设置文本
 				GUI_UC_SetEncodeUTF8();					//设置文本编码格式
@@ -621,9 +621,9 @@ static	__s32 New_explorer_ListView_creat(H_WIN list_win)
 						List_TextRect.x1 =	156 + (TextRect.x + TextRect.width);	//文本名显示的矩形宽为固定338 + 59 +156 = 553
 						List_TextRect.y1 =	list_item_number*50 + 8 + (TextRect.y + TextRect.height);	//文本名显示的矩形高为固定30，项目条数量*50间隔+30为y1的y轴终止坐标
 					}
-					__wrn("List_TextRect: x0=%d, y0=%d, x1=%d, y1=%d\n",List_TextRect.x0,List_TextRect.y0,List_TextRect.x1,List_TextRect.y1);
+					__msg("List_TextRect: x0=%d, y0=%d, x1=%d, y1=%d\n",List_TextRect.x0,List_TextRect.y0,List_TextRect.x1,List_TextRect.y1);
 
-					__wrn("New_explorer_draw_listview_item_text FileName=%s is...!!\n",FileName);
+					__msg("New_explorer_draw_listview_item_text FileName=%s is...!!\n",FileName);
 					GUI_DispStringInRect(FileName, &List_TextRect, GUI_TA_VCENTER);//显示视频MP4文件名文本到矩形
 					//GUI_DispStringAt(FileName,100,20+list_item_number*50);
 					__wrn("FileName=%s is...!!\n",FileName);
@@ -636,12 +636,12 @@ static	__s32 New_explorer_ListView_creat(H_WIN list_win)
 		__wrn("\n list_para->rat.total = %d\n",list_para->rat.total);	
 		for(list_item_number = 0;list_item_number < list_para->rat.total-4;list_item_number++)//绘制矩形，显示9个视频文件名
 		{
-			__wrn("\n~~~~~~~~~~file search is	OK~~~~~~~~~~~\n");
+			__msg("\n~~~~~~~~~~file search is	OK~~~~~~~~~~~\n");
 			New_explorer_GetListItemFileName(list_para, list_item_number, list_para->FileName);//获取列表项目文件名
 			New_explorer_get_item_text_rect(&TextRect);//获取绘制文本显示矩形区域，成功返回：EPDK_OK
-			__wrn("\n~~~~~~~~~~file search is 33333	OK~~~~~~~~~~~\n");
+			__msg("\n~~~~~~~~~~file search is 33333	OK~~~~~~~~~~~\n");
 			{
-				__wrn("list_para->FileName=%s is...!!\n",list_para->FileName);
+				__msg("list_para->FileName=%s is...!!\n",list_para->FileName);
 			}
 		}
 	#endif
@@ -699,9 +699,9 @@ static __s32 _new_explorer_list_ui_one_paint(__gui_msg_t *msg, __s32 key_num)
 			}
 			unfoucs_id = key_num;
 			//list_para->focus_text_id = key_num;
-			__wrn("List_TextRect: x0=%d, y0=%d, x1=%d, y1=%d\n",List_TextRect.x0,List_TextRect.y0,List_TextRect.x1,List_TextRect.y1);
+			__msg("List_TextRect: x0=%d, y0=%d, x1=%d, y1=%d\n",List_TextRect.x0,List_TextRect.y0,List_TextRect.x1,List_TextRect.y1);
 
-			__wrn("list_para-> FileName=%s is...!!\n",list_para->FileName);
+			__msg("list_para-> FileName=%s is...!!\n",list_para->FileName);
 			GUI_DispStringInRect(list_para->FileName, &List_TextRect, GUI_TA_VCENTER);//显示视频MP4文件名文本到矩形
 			eLIBs_strcpy((char *)FileName_backups,(const char *)list_para->FileName);//拷贝到数组
 			__wrn("FileName_backups=%s is...!!\n",FileName_backups);
@@ -729,13 +729,13 @@ static __s32 _new_explorer_list_ui_all_paint(__gui_msg_t *msg)
 	void	*scroll_bmp;			//存放滚动条白色图数据
 	void	*list_item_focus_bmp;	//存放列表项目条背景图数据
 	__s32	list_item_number=0;
-	__wrn("_new_explorer_list_ui_all_paint 0 is....\n");
+	__msg("_new_explorer_list_ui_all_paint 0 is....\n");
 	if(GUI_LyrWinGetSta(GUI_WinGetLyrWin(msg->h_deswin)) == GUI_LYRWIN_STA_SUSPEND)
 	{
 		return EPDK_FAIL;
 	}
 	new_explorer_list_ctrl = (new_explorer_list_ctrl_t *)GUI_WinGetAddData(msg->h_deswin);	//获取添加一个数据到msg结构体
-	__wrn("_new_explorer_list_ui_all_paint 1 is....\n");
+	__msg("_new_explorer_list_ui_all_paint 1 is....\n");
 	GUI_LyrWinSel(new_explorer_list_ctrl->new_explorer_list_para->list_layer);				//选择新添加的app应用framewin子窗口图层
 	__wrn("list_layer = %d\n",new_explorer_list_ctrl->new_explorer_list_para->list_layer);
 	
@@ -809,7 +809,7 @@ static __s32 _new_explorer_list_ui_all_paint(__gui_msg_t *msg)
 			gui_list_item_rect.y		=	new_explorer_list_ctrl->ViewerList_uiparam->List_item_ui_param.item_rect.y + list_item_number*50;
 			gui_list_item_rect.width	=	new_explorer_list_ctrl->ViewerList_uiparam->List_item_ui_param.item_rect.width;
 			gui_list_item_rect.height	=	new_explorer_list_ctrl->ViewerList_uiparam->List_item_ui_param.item_rect.height;
-			__wrn("gui_list_item_rect 2：x= %d,y= %d,width= %d,heigh= %d\n",
+			__msg("gui_list_item_rect 2：x= %d,y= %d,width= %d,heigh= %d\n",
 				gui_list_item_rect.x,gui_list_item_rect.y,gui_list_item_rect.width,gui_list_item_rect.height);
 			New_explorer_list_get_item_number_size(msg,list_item_number);	//获取项目编号
 			{
@@ -822,7 +822,7 @@ static __s32 _new_explorer_list_ui_all_paint(__gui_msg_t *msg)
 				GUI_BMP_Draw(list_item_focus_bmp, gui_list_item_rect.x, gui_list_item_rect.y);//绘制图片
 				GUI_SetColor(GUI_YELLOW);			//设置文本颜色
 				GUI_DispStringAt(new_explorer_list_ctrl->list_item_number_size,gui_list_item_rect.x+5,gui_list_item_rect.y + 3);//项目编号 字符串显示和坐标
-				__wrn("_new_explorer_list_ui_one_paint list item number ok ok \n");
+				__msg("_new_explorer_list_ui_one_paint list item number ok ok \n");
 			}
 		}
 		#endif
@@ -847,6 +847,11 @@ static __s32  New_explorer_ListView_Key_Proc(__gui_msg_t *msg,__s32 key_num)
 	{
 		__wrn(" New_explorer_ListView_Key msg->dwAddData2 = %d\n",msg->dwAddData2);
 		__wrn(" key1 last_key = %d\n",last_key);
+		if(exit_falg == 1)//销毁过一次窗口
+		{
+			last_key = -1;//清-1，作用是避免应用返回资源管理器列表时又自动执行下面的功能
+			exit_falg = 0;
+		}
 		if(GUI_MSG_KEY_ENTER == last_key)
 		{
 			app_new_explorer_cmd2parent(msg->h_deswin, ID_OP_NEW_EXPLORER_ENTER, key_num, 0);//向manwin窗口发送回车确认按键消息信号
@@ -927,7 +932,7 @@ static __s32 _new_explorer_list_win_proc(__gui_msg_t *msg)
 			//New_explorer_ListView_creat(msg->h_deswin);//列表模型下的列表视图创建
 			__wrn("\n**************New_explorer_ListView_creat is******************\n");
 
-			__wrn("_new_explorer_list_win_proc GUI_MSG_CREATE 0 is...\n");
+			__msg("_new_explorer_list_win_proc GUI_MSG_CREATE 0 is...\n");
 			eLIBs_memset(new_explorer_list_ctrl, 0, sizeof(new_explorer_list_ctrl_t));//结构体数据初始化，数据清0
 			new_explorer_list_ctrl->new_explorer_list_para = new_explorer_list_para;
 			GUI_WinSetAddData(msg->h_deswin, (__u32)new_explorer_list_ctrl);			//添加一个数据								//添加一个数据	
@@ -971,6 +976,7 @@ static __s32 _new_explorer_list_win_proc(__gui_msg_t *msg)
 					new_explorer_list_ctrl = NULL ;
 				}
 			#endif
+			exit_falg = 1;//退出标志
 			__wrn("new_explorer_list_ctrl->new_explorer_list_para free size = %d\n",new_explorer_list_ctrl->new_explorer_list_para);
 			__wrn("new_explorer_list_ctrl free size = %d\n",new_explorer_list_ctrl);
 			__wrn("new_explorer_ListPara  free size = %d\n",new_explorer_list_para);//打印结构体是否释放内存
