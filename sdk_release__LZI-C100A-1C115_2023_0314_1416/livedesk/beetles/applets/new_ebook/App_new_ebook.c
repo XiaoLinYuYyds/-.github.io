@@ -168,15 +168,17 @@ static __s32 new_ebook_GetListItemFileName(__gui_msg_t *msg, __s32 ItemIndex, ch
 static __s32 PlayEbookFiles(__gui_msg_t *msg, __s32 index, char *FileName)
 {
 	app_new_ebook_ctrl_t *this;
+	HRATNPL h_rat;
 	this = (app_new_ebook_ctrl_t *)GUI_WinGetAttr(msg->h_deswin);
+	//h_rat = rat_npl_open(RAT_MEDIA_TYPE_EBOOK);
 	rat_npl_set_cur(this->rat.rat_handle, index);//设置当前要播放的文件索引id
 	__wrn("\nindex = %d\n",index);
 }
 
 /************************************************************************************
-*创建电子书文件显示的framewin窗口
+*Description	:	创建电子书文件显示和解码
 ************************************************************************************/
-static __s32 app_new_ebook_framewin_create(__gui_msg_t *msg)
+static __s32 app_new_ebook_decode_create(__gui_msg_t *msg)
 {
 	__s32               tmp, time;
 	__s32               tmp_point;
@@ -187,7 +189,7 @@ static __s32 app_new_ebook_framewin_create(__gui_msg_t *msg)
 	__u8    err;
 	new_ebook_ctrl = (app_new_ebook_ctrl_t *)GUI_WinGetAttr(msg->h_deswin);
 	//ebook_uipara = (ebook_uipara_t *)get_ebook_uipara();
-	__wrn(" app_new_ebook_framewin_create is start... \n");
+	__wrn(" app_new_ebook_decode_create is start... \n");
 	if(new_ebook_ctrl == NULL)
 	{
 		__wrn(" CShowScene malloc error \n");
@@ -211,16 +213,16 @@ static __s32 app_new_ebook_framewin_create(__gui_msg_t *msg)
 		new_ebook_ctrl->config.font_color    = APP_COLOR_WHITE;//文本颜色白色
 	}
 	/*********************************电子书文本显示控制**************************/
-	new_ebook_ctrl->config.show_rotate   = 0;									//
-	new_ebook_ctrl->config.font_size     = 16;									//
+	new_ebook_ctrl->config.show_rotate   = 0;									//横竖屏显示，0为竖屏
+	new_ebook_ctrl->config.font_size     = 16;									//文本字节大小
 	new_ebook_ctrl->config.char_font     = new_ebook_ctrl->font;				//
-	new_ebook_ctrl->config.row_space     = 10;									//
-	new_ebook_ctrl->config.col_space     = 2;									//
-	new_ebook_ctrl->config.border_width  = 10;									//
+	new_ebook_ctrl->config.row_space     = 10;									//行间距
+	new_ebook_ctrl->config.col_space     = 2;									//列间距
+	new_ebook_ctrl->config.border_width  = 10;									//边框宽
 	new_ebook_ctrl->config.scroll_width  =  0;									//
-	new_ebook_ctrl->config.bottom_width  = 0;									//
-	new_ebook_ctrl->config.show_width    = 1024;								//
-	new_ebook_ctrl->config.show_height   = 558;									//
+	new_ebook_ctrl->config.bottom_width  = 0;									//底宽
+	new_ebook_ctrl->config.show_width    = 1024;								//显示宽
+	new_ebook_ctrl->config.show_height   = 558;									//显示高
 	EBOOK_Decode_Config(new_ebook_ctrl->mbook, &new_ebook_ctrl->config);		//解码控制
 	/*****************************************************************************/
 	// 打开页面显示
@@ -271,10 +273,10 @@ static __s32 __app_new_ebook_proc(__gui_msg_t *msg)
 				new_ebook_rat_init(msg);							//rat模块初始化
 				new_ebook_GetListItemFileName(msg, 24, FileName);	//获取列表项目的图片文件名
 				__wrn("\nFileName = %s\n",FileName);
-				PlayEbookFiles(msg, 24, FileName);//播放文件
+				//PlayEbookFiles(msg, 24, FileName);//播放文件
 			#endif
 
-			app_new_ebook_framewin_create(msg);
+			app_new_ebook_decode_create(msg);//创建电子书解码
 			
 			
 		}
@@ -288,7 +290,7 @@ static __s32 __app_new_ebook_proc(__gui_msg_t *msg)
 			
 			if(this->mbook)
 			{
-				MBOOK_Decode_Uninit(this->mbook);
+				EBOOK_Decode_Uninit(this->mbook);//删除解码模块
 				this->mbook = NULL;
 			}
 			eLIBs_memset(this, 0, sizeof(app_new_ebook_ctrl_t));
@@ -364,6 +366,7 @@ H_WIN app_new_ebook_manwin_create(root_para_t *para)
 	eLIBs_memset(new_ebook_ctrl, 0, sizeof(app_new_ebook_ctrl_t));
 	new_ebook_ctrl->font      = para->font;//文本
 	new_ebook_ctrl->root_type = para->root_type;//TF卡或USB类型
+	new_ebook_ctrl->index	  = para->data;//传入的文件索引id
 	__wrn("root_type=%d\n",new_ebook_ctrl->root_type);
 	/*****************************开始操作配置manwin窗口*********************************/
 	eLIBs_memset(&create_info, 0, sizeof(__gui_manwincreate_para_t));

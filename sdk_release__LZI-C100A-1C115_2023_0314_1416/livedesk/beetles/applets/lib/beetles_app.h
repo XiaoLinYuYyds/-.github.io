@@ -92,7 +92,7 @@ extern GUI_FONT    *SWFFont;
 #define APP_NEWPHOTO		"app_new_photo"
 #define APP_NEWMUSIC		"app_new_music"
 #define APP_NEWEBOOK		"app_new_ebook"
-
+#define	APP_NEWFM			"app_new_ebook"//收音机
 
 
 #define APP_HOME_ID			0x1001
@@ -117,7 +117,7 @@ extern GUI_FONT    *SWFFont;
 #define APP_NEWPHOTO_ID				0x9901	//新添加相册APP应用程序的id存放地址
 #define APP_NEWMUSIC_ID				0x9A01	//新添加音乐APP应用程序的id存放地址
 #define APP_NEWEBOOK_ID				0x9B01	//新添加电子书APP应用程序的id存放地址
-
+#define	APP_NEWFM_ID				0x9C01	//新添加收音机APP应用程序的id存放地址
 
 
 #if SP_FavoriteFiles
@@ -151,7 +151,7 @@ typedef enum
 {
 	ID_HOME_NEWMUSIC = 0,/*ID_HOME_MUSIC*/
 	ID_HOME_MOVIE,
-	ID_HOME_NEW_EXPORER,		   /*ID_HOME_MOVIE,*/
+	
 #if SP_APP_ATV
 	ID_HOME_TV,
 	//ID_HOME_AVIN,
@@ -160,6 +160,7 @@ typedef enum
 	//ID_HOME_DVD,
 	
 	ID_HOME_NEW_PHOTO,/*新添加的相册app应用程序，manwin窗口创建标志*/
+	ID_HOME_NEW_EBOOK,				/*新添加的电子书app应用manwin窗口*/
 	ID_HOME_FM,
 	ID_HOME_RECORD,
 	ID_HOME_GENERAL_SETTING,
@@ -188,8 +189,9 @@ typedef enum
 	ID_HOME_EBOOK,
 	ID_HOME_NUMBER,//新添加窗口ID
 	ID_HOME_NEW_MOVIE,			  /*新添加的movie视频app应用程序，manwin窗口创建标志*/
-	ID_HOME_NEW_SETTING_NUMBER,/*新添加的空白的manwin窗口*/
-	ID_HOME_NEW_EBOOK,/*新添加的电子书app应用manwin窗口*/
+	ID_HOME_NEW_SETTING_NUMBER,		/*新添加的空白的manwin窗口*/
+	ID_HOME_NEW_EXPORER,		   /*ID_HOME_MOVIE,*/
+	ID_HOME_NEW_FM,					/*收音机的manwin窗口创建标志*/
 } root_home_id_t;
 
 typedef enum
@@ -279,6 +281,7 @@ typedef enum
   NEW_EBOOK_SW_TO_NEW_EXPLORER,
   NEW_EXPLORER_SW_TO_NEW_MOVIE,
   NEW_EXPLORER_SW_TO_NEW_PHOTO,/*跳转到new_photo应用*/
+  NEW_EXPLORER_SW_TO_NEW_EBOOK,/*跳转到new_ebook应用*/
 } new_setting_sw_to_t;
 
 typedef enum

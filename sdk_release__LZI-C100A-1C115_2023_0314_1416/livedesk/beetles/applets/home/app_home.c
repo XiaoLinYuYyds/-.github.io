@@ -1056,6 +1056,28 @@ static __s32 app_home_proc(__gui_msg_t *msg)
 								}
 								break;
 							}
+
+							case ID_HOME_NEW_EBOOK:{//新添加电子书app应用
+								check_disk(home_para);//检查是否存在磁盘
+								__wrn("ID_HOME_NEW_EBOOK\n");
+								__wrn("home_para->root_type is... = %d\n",home_para->root_type);
+
+								if(home_para->root_type != 0)//等于2为TF卡,2<<8等于512:二进制为 0010 0000 0000
+								{
+									__wrn("send ID_HOME_NEW_EBOOK to app_root_scene.c is...\n");
+									GUI_LyrWinSetSta(home_para->lyr_smenu, GUI_LYRWIN_STA_SUSPEND);		//sub_menu子菜单图层窗口挂起状态
+									GUI_LyrWinSetSta(home_para->lyr_mmenu, GUI_LYRWIN_STA_SUSPEND); 	//main_menu主菜单图层窗口挂起状态
+									GUI_LyrWinSetSta(home_para->lyr_forground, GUI_LYRWIN_STA_SUSPEND);	//main_menu主菜单前景图层窗口挂起状态
+									main_menu_uninit_res(home_para->h_mmenu);							//主菜单窗口释放图片资源
+									main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEW_EBOOK, 2);	//发送到app_root_scene.c文件进入新的new_ebook创建manwin窗口功能；2为TF卡
+									__wrn("send ID_HOME_NEW_EBOOK is ok\n");
+								}
+								else
+								{
+									__wrn("ID_HOME_NEW_EBOOK no disk currently is...\n");
+								}
+								break;
+							}
 							
 
 							/*

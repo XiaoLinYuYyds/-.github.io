@@ -28,10 +28,11 @@ typedef struct tag_info_config //页：配置信息
 
 
 H_EBOOK_ANALYSIS  EBOOK_Analysis_Init(ES_FILE *fd);//文件编码格式分析初始化
-__s32   EBOOK_Analysis_Config(H_EBOOK_ANALYSIS hdle, __ebook_analysis_config_t *config);
-__s32   EBOOK_Analysis_Work(H_EBOOK_ANALYSIS hdle);
-__s32   EBOOK_Analysis_GetInfo(H_EBOOK_ANALYSIS hdle, __u32 page_no, __ebook_one_page_t *page_info);
-__s32   EBOOK_Analysis_GetPage(H_EBOOK_ANALYSIS hdle, __u32 offset);
+__s32   EBOOK_Analysis_Config(H_EBOOK_ANALYSIS hdle, __ebook_analysis_config_t *config);//文件分析配置
+__s32   EBOOK_Analysis_Work(H_EBOOK_ANALYSIS hdle);//分析当前文件的页面信息
+__s32   EBOOK_Analysis_GetInfo(H_EBOOK_ANALYSIS hdle, __u32 page_no, __ebook_one_page_t *page_info);//获取页面信息
+__s32   EBOOK_Analysis_GetPage(H_EBOOK_ANALYSIS hdle, __u32 offset);//获取页面号
+__s32	EBOOK_Analysis_Uninit(H_EBOOK_ANALYSIS hdle);//释放文件分析模块
 
 
 

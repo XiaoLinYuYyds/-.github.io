@@ -325,6 +325,7 @@ H_LYRIC new_music_lyrics(music_lyrics_para_t *para)
 
 	robin_get_lyric_item_list(hLyric->items, total);			//获得所有的歌词列表
 	hLyric->char_code = _EncodingMap(hLyric->items->uDataType);	//获得字体编码
+	__wrn("hlyric->char_code = %d...\n",hLyric->char_code);
 	//GUI_ClearRect(hLyric->UI.area.x,hLyric->UI.area.y,hLyric->UI.area.x + hLyric->UI.area.width, hLyric->UI.area.y + hLyric->UI.area.height);
 	{
 		__u32 font_height = 0, i = 0;

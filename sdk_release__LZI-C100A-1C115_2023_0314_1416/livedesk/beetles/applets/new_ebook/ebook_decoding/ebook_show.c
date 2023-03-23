@@ -87,7 +87,7 @@ static void __ebook_show_page_bgk(__ebook_show_t *hdle, __hdle lyr, void *data)
 			{
 				__u16 t;
 				t = tmp;
-				tmp = eLIBs_GBK_to_Unicode(t);
+				tmp = eLIBs_GBK_to_Unicode(t);//GBK格式
 
 				if(0xffff == tmp)
 				{

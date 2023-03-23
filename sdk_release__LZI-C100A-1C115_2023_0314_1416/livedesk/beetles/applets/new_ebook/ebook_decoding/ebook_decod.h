@@ -32,14 +32,14 @@ typedef struct tag_NEWDECODE_CONFIG
 	__u32       font_size;              // 字体大小
 	__u32       border_width;           // 两边留白宽度
 	__u32       bottom_width;           // 底边留白宽度
-	__u32	      scroll_width;			//滑动条的宽度
+	__u32	      scroll_width;			// 滑动条的宽度
 	__u32       show_width;             // 显示的宽度
 	__u32       show_height;            // 显示的高度
 	__u32       row_space;              // 行间距
 	__u32       col_space;              // 列间距
 	__u32       font_color;             // 字体的颜色
 	__u32       back_color;             // 背景的颜色
-	__u32       show_rotate;            // 横竖屏显示
+	__u32       show_rotate;            // 横竖屏显示，1竖屏，0横屏
 } __newdecode_config_t;
 
 
@@ -61,10 +61,11 @@ typedef struct tag_NEWDECODE_CONFIG
 
 
 H_DECODE_NEW   EBOOK_Decode_Init(char *filename, __u8 *err);
-__s32 EBOOK_Decode_Config(H_DECODE_NEW hdle, __newdecode_config_t *config);
-__s32 EBOOK_Decode_SetDefaultCharset(H_DECODE_NEW hdle, __epdk_charset_enm_e charset);
-__s32   EBOOK_Decode_ShowPage(H_DECODE_NEW hdle, __u32 offset);
-__s32   EBOOK_Analysis_GetTotalPage(H_EBOOK_ANALYSIS hdle);
+__s32 	EBOOK_Decode_Config(H_DECODE_NEW hdle, __newdecode_config_t *config);//解码配置
+__s32 	EBOOK_Decode_SetDefaultCharset(H_DECODE_NEW hdle, __epdk_charset_enm_e charset);//设置默认编码格式
+__s32   EBOOK_Decode_ShowPage(H_DECODE_NEW hdle, __u32 offset);//显示页
+__s32   EBOOK_Analysis_GetTotalPage(H_EBOOK_ANALYSIS hdle);//获取总页数
+__s32 	EBOOK_Decode_Uninit(H_DECODE_NEW *hdle);//释放解码模块
 
 
 

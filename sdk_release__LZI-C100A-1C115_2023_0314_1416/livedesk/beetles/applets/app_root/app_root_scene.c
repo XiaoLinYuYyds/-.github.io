@@ -6265,8 +6265,9 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 						}
 						break;
 
-						case ID_HOME_NEW_EBOOK:
+						case ID_HOME_NEW_EBOOK:/*新添加的电子书app程序*/
 						{
+							#if 0//直接打开
 							gscene_hbar_set_state(HBAR_ST_HIDE);
 							__app_root_change_to_default_bg();
 							__wrn("\n********************home switch to new ebook ***************\n");
@@ -6279,6 +6280,29 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 
 							GUI_WinSetFocusChild(root_ctrl->h_app_new_ebook);//按键消息信号发送到当前创建的manwin窗口
 							app_root_cacheoff();
+							#else//通过资源管理器列表打开
+							gscene_hbar_set_state(HBAR_ST_HIDE);//设置为隐藏
+							__app_root_change_to_default_bg();
+							__wrn("**********enter new explorer create is... to new photo**********\n");
+							__wrn("root type=%d\n", msg->dwReserved);
+							root_para->root_type  = RAT_TF;//msg->dwReserved;//2，RAT_TF;
+							root_para->explr_root = RAT_TF;//msg->dwReserved;
+							
+							root_para->data = ID_NEW_EXPLORER_EBOOK;	//单独显示电子书文件内容数据，一起存放到结构体root_para的data里面
+							__wrn("root_para->data=%d\n", root_para->data);
+							root_para->return_to_explorer_file_list = 0 ;//列表模式
+							//root_ctrl->root_para->h_parent= GUI_WinGetParent(root_ctrl->h_app_home);
+							{
+								app_root_cacheon();
+								root_ctrl->h_app_new_explorer =  app_new_explorer_manwin_create(root_para);//创建new explorer 应用的manwin窗口
+								__wrn("root_ctrl->h_app_explorer = %x\n", root_ctrl->h_app_new_explorer);
+								GUI_WinSetFocusChild(root_ctrl->h_app_new_explorer);//按键消息信号发送到当前创建的manwin窗口
+								app_root_cacheoff();
+								__wrn("**********enter new explorer create ok  **********\n");
+								__wrn("ID_HOME_NEW_EXPORER msg->dwAddData2 =%d\n", msg->dwAddData2);
+								break;
+							}
+							#endif
 						}
 						break;
 
@@ -6445,6 +6469,40 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 							GUI_WinSetFocusChild(root_ctrl->h_app_new_photo);
 							#endif
 							app_root_cacheoff();
+						}
+						break;
+
+						case NEW_EXPLORER_SW_TO_NEW_EBOOK://跳转到新添加的电子书应用app
+						{
+							/*gscene_hbar_set_state(HBAR_ST_HIDE);
+							__app_root_change_to_default_bg();
+							__wrn("\n********************new explorer switch to new ebook ***************\n");
+							root_para->root_type = RAT_TF;//msg->dwReserved;//2，TF卡
+							root_para->explr_root = RAT_TF;//msg->dwReserved;
+							root_para->data	=	ID_NEW_EXPLORER_EBOOK;//搜索电子书文件的id索引
+							root_para->return_to_explorer_file_list = 0 ;//列表模式
+							root_ctrl->h_app_new_ebook = app_new_ebook_manwin_create(root_para);//创建电子书manwin窗口
+							app_root_cacheon();
+
+							GUI_WinSetFocusChild(root_ctrl->h_app_new_ebook);//按键消息信号发送到当前创建的manwin窗口
+							app_root_cacheoff();*/
+
+							__msg("**********new explorer to new ebook**********\n");
+							gscene_hbar_set_state(HBAR_ST_HIDE);//设置为隐藏
+							//GUI_ManWinDelete(root_ctrl->h_app_new_explorer);	//删除当前新添加app资源管理器应用程序的manwin窗口
+							//root_ctrl->h_app_new_explorer = NULL;
+							__wrn("play ebook file index=%d\n", msg->dwReserved);//播放图片文件的索引id
+							app_root_cacheon();
+							//root_para->root_type = msg->dwReserved;
+							//root_para->data = 0;
+							root_para->data = msg->dwReserved;//播放文件的索引id
+							root_para->explr_root = RAT_TF;
+							root_para->root_type = root_para->explr_root;
+							root_ctrl->h_app_new_ebook = app_new_ebook_manwin_create(root_para);//创建新的电子书manwin窗口
+							__here__;
+							GUI_WinSetFocusChild(root_ctrl->h_app_new_ebook);
+							app_root_cacheoff();
+							__here__;
 						}
 						break;
 						

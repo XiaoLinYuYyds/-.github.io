@@ -412,7 +412,7 @@ __s32   EBOOK_Analysis_GetPage(H_EBOOK_ANALYSIS hdle, __u32 offset)
 ************************************************************************************************************************
 *                       				MBOOK_Analysis_GetTotalPage
 *
-*Description: 删除页面分析模块
+*Description: 分析模块获取文件总页数
 *
 *Arguments  : hdle: 操作句柄.
 *
@@ -435,8 +435,47 @@ __s32   EBOOK_Analysis_GetTotalPage(H_EBOOK_ANALYSIS hdle)
 }
 
 
+/*
+************************************************************************************************************************
+*                       				MBOOK_Analysis_GetTotalPage
+*
+*Description: 删除页面分析模块
+*
+*Arguments  : hdle: 操作句柄.
+*
+*Return     : total_page: 成功，返回当前文件总页码
+*			  EPDK_FAIL: 失败
+*
+************************************************************************************************************************
+*/
+__s32	EBOOK_Analysis_Uninit(H_EBOOK_ANALYSIS hdle)
+{
+	__ebook_analysis_t		*p_analysis;
 
+	if(hdle == NULL)
+	{
+		__wrn("hdle is null...\n");
+		return EPDK_FALSE;
+	}
 
+	p_analysis = (__ebook_analysis_t *)hdle;
+
+	if(p_analysis->block_buf)
+	{
+		My_Pfree(p_analysis->block_buf, p_analysis->block_size);//释放块的内存空间
+		p_analysis->block_buf = NULL;
+	}
+
+	if(p_analysis->page_info)
+	{
+		My_Pfree(p_analysis->page_info, (sizeof(__ebook_one_page_t) * EBOOK_MAX_SHOW_PAGE + 1023) / 1024);
+		p_analysis->page_info = NULL;
+		p_analysis->p_operate = NULL;
+	}
+
+	My_Mfree(0, p_analysis);
+	return EPDK_OK;
+}
 
 
 

@@ -208,6 +208,8 @@ static __s32 _new_explorer_manager_win_proc(__gui_msg_t *msg)
 				app_new_explorer_cmd2parent(msg->h_deswin, NEW_SWITCH_TO_OTHER_APP, NEW_EXPLORER_SW_TO_NEW_MOVIE, msg->dwAddData1);//退出到new_movie应用程序app；msg->dwAddData1：为播放文件id索引
 			else if(2 == msg->dwAddData2)//2伪退出到new_photo应用界面
 				app_new_explorer_cmd2parent(msg->h_deswin, NEW_SWITCH_TO_OTHER_APP, NEW_EXPLORER_SW_TO_NEW_PHOTO, msg->dwAddData1);//退出到new_photo应用程序app；msg->dwAddData1：为播放图片文件id索引
+			else if(3 == msg->dwAddData2)//3伪退出到new_ebook应用界面
+				app_new_explorer_cmd2parent(msg->h_deswin, NEW_SWITCH_TO_OTHER_APP, NEW_EXPLORER_SW_TO_NEW_EBOOK, msg->dwAddData1);//退出到new_ebook应用程序app；msg->dwAddData1：为播放电子书文件id索引
 			
 		}
 		return EPDK_OK;
@@ -278,6 +280,9 @@ static __s32 _new_explorer_manager_win_proc(__gui_msg_t *msg)
 							}
 							else if(new_explorer_ctrl->media_type == RAT_MEDIA_TYPE_PIC){//搜索的媒体类型图片文件
 								my_msg.dwAddData2 = 2;//app界面切换到new_photo应用程序
+							}
+							else if(new_explorer_ctrl->media_type == RAT_MEDIA_TYPE_EBOOK){//搜索的媒体类型电子书文件
+								my_msg.dwAddData2 = 3;//app界面切换到new_ebook应用程序
 							}
 							GUI_SendNotifyMessage(&my_msg);		//发送通知信息到当前manwin窗口
 							return EPDK_OK;						//直接退出这个case GUI_MSG_COMMAND:语句
@@ -383,7 +388,7 @@ H_WIN app_new_explorer_manwin_create(root_para_t *para)
 		case ID_NEW_EXPLORER_EBOOK://4时，执行搜索磁盘的电子书文件功能
 		{
 			new_explorer_ctrl->view_mode  = NEW_EXPLR_LIST_MODE;//EXPLR_LIST_MODE;
-			new_explorer_ctrl->media_type = RAT_MEDIA_TYPE_PIC; //获取磁盘的所有电子书文件
+			new_explorer_ctrl->media_type = RAT_MEDIA_TYPE_EBOOK; //获取磁盘的所有电子书文件
 			new_explorer_ctrl->root_type  = para->root_type;	//检测是USB还是SD卡磁盘
 		}
 		break;

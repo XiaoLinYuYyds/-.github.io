@@ -39,6 +39,7 @@ typedef struct tag_app_new_ebook_ctrl
 
 	GUI_FONT	*font;//存放文本
 	__s32 	root_type;//存放TF卡或USB
+	__u32	index;	  //存放资源管理器列表传入的文件索引id
 	new_ebook_rat_para_t rat;
 
 	#if 0//旧的

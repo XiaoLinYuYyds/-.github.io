@@ -130,7 +130,30 @@ void    EBOOK_Layer_Rotate(H_WIN h_lyr, __u32 w, __u32 h, __u32 rotate)
 	}
 }
 
+/*
+**********************************************************************************************************************
+*                                               EBOOK_Layer_DelLay
+*
+* Description:删除图层
+*
+* Arguments  :
+*
+* Returns    :if delete lyr success, return epdk_ok; fail return epdk_false
 
+* Notes      :
+*
+**********************************************************************************************************************
+*/
+__s32	EBOOK_Layer_DelLay(H_WIN lyr)
+{
+	if(lyr == NULL){
+		__wrn("lyr is null ...\n");
+		return EPDK_FALSE;
+	}
+
+	GUI_LyrWinDelete(lyr);//删除图层
+	return EPDK_OK;
+}
 
 
 

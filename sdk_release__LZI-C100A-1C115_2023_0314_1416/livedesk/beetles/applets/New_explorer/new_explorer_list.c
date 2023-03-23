@@ -555,7 +555,8 @@ static	__s32 New_explorer_ListView_creat(H_WIN list_win)
 
 	if((list_para->media_type == RAT_MEDIA_TYPE_VIDEO)||		//文件类型为视频文件
 		(list_para->media_type == RAT_MEDIA_TYPE_AUDIO)||		//文化类型为音频文件
-		(list_para->media_type == RAT_MEDIA_TYPE_PIC))			//文件类型为图片文件
+		(list_para->media_type == RAT_MEDIA_TYPE_PIC)||			//文件类型为图片文件
+		(list_para->media_type == RAT_MEDIA_TYPE_EBOOK))		//文件类型为电子书文件
 	{
 		__wrn("\n~~~~~~~~~~file search is initializing~~~~~~~~~~~\n");
 		New_explorer_FileSearch_module_rat_init(list_para);	//文件搜索模式,搜索视频文件，RAT初始化
