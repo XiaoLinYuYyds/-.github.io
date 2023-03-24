@@ -99,7 +99,7 @@ HRAT rat_open(const char *pDir, rat_media_type_t media_type, __u32 OnceCnt)
 	__bool rat_list_research;
 	rat_list_research = EPDK_FALSE;//文件列表是否被重新搜索
 	rat_npl_need_update = EPDK_FALSE;//文件列表被重新搜索后，播放列表是否需要更新
-	__msg("rat_open: pDir=%s media_type=%d OnceCnt=%d\n", pDir, media_type, OnceCnt);
+	__wrn("rat_open: pDir=%s media_type=%d OnceCnt=%d\n", pDir, media_type, OnceCnt);
 	RAT_ENTER_CRITICAL_SECTION;
 
 	for(i = 0 ; i < RAT_MAX_LIST_CNT ; i++)

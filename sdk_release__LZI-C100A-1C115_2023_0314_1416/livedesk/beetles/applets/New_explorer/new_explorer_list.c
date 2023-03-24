@@ -536,6 +536,18 @@ static	__s32 New_explorer_FileSearch_module_rat_init(new_explorer_list_para_t	*l
 	return EPDK_OK;
 }
 
+/******
+*RAT模块释放删除
+******/
+static __s32 rat_uninit(new_explorer_list_para_t	*list_para)
+{
+	if(list_para->rat.handle){
+		__wrn("rat.handle start delete...\n");
+		rat_close(list_para->rat.handle);//关闭rat模块
+		__wrn("delete is success...\n");
+	}
+}
+
 /*=============================================================================================
 *Description：new explorer list view ui creat
 *			  app应用 列表模式下的列表视图 UI 创建；直接绘制显示视频类媒体文件名
@@ -957,13 +969,16 @@ static __s32 _new_explorer_list_win_proc(__gui_msg_t *msg)
 			
 			__wrn("_new_explorer_list_win_proc GUI_MSG_DESTROY\n");
 			new_explorer_list_ctrl = (new_explorer_list_ctrl_t *)GUI_WinGetAddData(msg->h_deswin);//获取这个结构体的数据
+			//释放RAT模块
+			//rat_clear_all_list();//方法1，删除所有播放列表
+			rat_uninit(new_explorer_list_para);//方法2，删除本次的RAT模块
 			New_explorer_list_uninit(new_explorer_list_ctrl);//释放图片使用资源
 			#if 1	//释放结构体的内存空间
 				if(new_explorer_list_ctrl->new_explorer_list_para)//释放列表framewin窗口的图层和文本结构体的内存空间
 				{
 					__wrn("new_explorer_list_ctrl win free new_explorer_list_para.....\n");
 					
-					__wrn("new_explorer_ListPara 33 size = %d\n",sizeof(new_explorer_list_para_t));
+					__msg("new_explorer_ListPara 33 size = %d\n",sizeof(new_explorer_list_para_t));
 					My_Bfree(new_explorer_list_ctrl->new_explorer_list_para, sizeof(new_explorer_list_para_t));//释放结构体内存空间
 					new_explorer_list_ctrl->new_explorer_list_para = NULL ;
 				}
@@ -972,15 +987,15 @@ static __s32 _new_explorer_list_win_proc(__gui_msg_t *msg)
 				{
 					__wrn("new_explorer_list_ctrl win free new_explorer_list_ctrl.....\n");
 					
-					__wrn("new_explorer_list_ctrl  size = %d\n",sizeof(new_explorer_list_ctrl_t));
+					__msg("new_explorer_list_ctrl  size = %d\n",sizeof(new_explorer_list_ctrl_t));
 					My_Bfree(new_explorer_list_ctrl, sizeof(new_explorer_list_ctrl_t));	
 					new_explorer_list_ctrl = NULL ;
 				}
 			#endif
 			exit_falg = 1;//退出标志
-			__wrn("new_explorer_list_ctrl->new_explorer_list_para free size = %d\n",new_explorer_list_ctrl->new_explorer_list_para);
-			__wrn("new_explorer_list_ctrl free size = %d\n",new_explorer_list_ctrl);
-			__wrn("new_explorer_ListPara  free size = %d\n",new_explorer_list_para);//打印结构体是否释放内存
+			__msg("new_explorer_list_ctrl->new_explorer_list_para free size = %d\n",new_explorer_list_ctrl->new_explorer_list_para);
+			__msg("new_explorer_list_ctrl free size = %d\n",new_explorer_list_ctrl);
+			__msg("new_explorer_ListPara  free size = %d\n",new_explorer_list_para);//打印结构体是否释放内存
 			
 		}
 			return EPDK_OK;

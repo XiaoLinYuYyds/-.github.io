@@ -60,7 +60,7 @@ typedef struct tag_NEWDECODE_CONFIG
 
 
 
-H_DECODE_NEW   EBOOK_Decode_Init(char *filename, __u8 *err);
+H_DECODE_NEW   EBOOK_Decode_Init(char *filename, __u8 *err, __u32 index);
 __s32 	EBOOK_Decode_Config(H_DECODE_NEW hdle, __newdecode_config_t *config);//解码配置
 __s32 	EBOOK_Decode_SetDefaultCharset(H_DECODE_NEW hdle, __epdk_charset_enm_e charset);//设置默认编码格式
 __s32   EBOOK_Decode_ShowPage(H_DECODE_NEW hdle, __u32 offset);//显示页

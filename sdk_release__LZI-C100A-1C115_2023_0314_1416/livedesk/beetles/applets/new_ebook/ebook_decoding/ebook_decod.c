@@ -533,7 +533,7 @@ static void __ebook_decode_show_config(__ebook_decode_t *hdle)
 *
 ************************************************************************************************************************
 */
-H_DECODE_NEW   EBOOK_Decode_Init(char *filename, __u8 *err)
+H_DECODE_NEW   EBOOK_Decode_Init(char *filename, __u8 *err, __u32 index)
 {
 	__ebook_decode_t	*p_decode;
 	*err = 0;
@@ -555,7 +555,10 @@ H_DECODE_NEW   EBOOK_Decode_Init(char *filename, __u8 *err)
 		if(h_rat_npl == NULL){
 			__wrn("h_rat_npl = %d is null...\n",h_rat_npl);
 		}
-		//rat_npl_set_cur(h_rat_npl, index);
+		if(index != -1){
+			rat_npl_set_cur(h_rat_npl, index);
+		}
+		__wrn("index = %d...\n", index);
 		npl_index = rat_npl_get_cur(h_rat_npl);			//获取当前播放列表的播放文件索引id
 		__wrn("npl_index = %d...\n",npl_index);
 		rat_npl_index2file(h_rat_npl, npl_index, p_decode->file_path);//通过文件索引id获取文件名
