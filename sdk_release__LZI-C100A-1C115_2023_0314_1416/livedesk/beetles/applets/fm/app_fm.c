@@ -158,6 +158,7 @@ static void on_fm_test_freq_end(FM_CTRLDATA_T *fm_ctrl)
 
 //////////////////////////////////////////////////////////////////////////
 #define FM_CB_NEED_NOTIFY_FRW(_p) (_p && _p->h_main_lyr && GUI_LyrWinGetSta(_p->h_main_lyr) == GUI_LYRWIN_STA_ON)
+//搜索成功回调处理函数
 __s32 cb_srhch_success(void *arg_p)
 {
 	FM_WND_T *wnd_para;
@@ -192,7 +193,7 @@ __s32 cb_srhch_success(void *arg_p)
 #endif
 	return 0;
 }
-
+//搜索失败回调处理函数
 __s32 cb_srhch_fail(void *arg_p)
 {
 	FM_WND_T *wnd_para;
@@ -213,7 +214,7 @@ __s32 cb_srhch_fail(void *arg_p)
 
 	return 0;
 }
-
+//搜索超时回调处理函数
 __s32 cb_srhch_over(void *arg_p)
 {
 	FM_WND_T *wnd_para;
@@ -298,7 +299,7 @@ static __s32 fm_set_band(FM_CTRLDATA_T *fm_ctrl, dsk_radio_band_mode_t mode)
 
 #define MASK_CheckDisk_SD 	(1<<0)
 #define MASK_CheckDisk_UD 	(1<<1)
-
+//存在外部磁盘
 __bool __app_fm_has_external_disk(__u32 type)
 {
 	__s32 ret;

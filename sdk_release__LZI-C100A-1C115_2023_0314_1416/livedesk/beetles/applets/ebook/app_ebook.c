@@ -398,7 +398,7 @@ __s32   mbook_on_create(__gui_msg_t *msg)
 	page_para.cur_page = ebook_ctrl->cur_page;
 	page_para.total_page = ebook_ctrl->total_page;
 	eLIBs_strcpy(page_para.name, (void *)(eLIBs_strchrlast(path, '\\') + 1));	//获取当前阅读的电子书的书名
-	
+
 	if(ebook_ctrl->loading_lyr)
 	{
 		GUI_LyrWinDelete(ebook_ctrl->loading_lyr);	//删除loading 窗口
@@ -1227,14 +1227,14 @@ static __s32 _app_ebook_Proc(__gui_msg_t  *msg)
 
 				if(ret != 0)	//不存在断点信息
 				{
-					__wrn("mbook_load_breakpoint_info fail or there is no breakpoint info........\n");
+					__msg("mbook_load_breakpoint_info fail or there is no breakpoint info........\n");
 					ebook_ctrl->book_bkpoint.page_no = 0;
 					mbook_on_create(msg);
 					__here__;
 				}
 				else
 				{
-					__wrn("mbook_load_breakpoint_info succeed\n");
+					__msg("mbook_load_breakpoint_info succeed\n");
 
 					if(ebook_ctrl->book_bkpoint.page_no > 1)
 					{
@@ -1263,7 +1263,7 @@ static __s32 _app_ebook_Proc(__gui_msg_t  *msg)
 					}
 				}
 			}
-			__wrn("*********ebook create end************\n");
+			__msg("*********ebook create end************\n");
 			return 0;
 		}
 
@@ -1386,6 +1386,7 @@ static __s32 _app_ebook_Proc(__gui_msg_t  *msg)
 		{
 			ebook_ctrl_t     *ebook_ctrl;
 			__gui_msg_t		setmsg;
+			__msg("timer....\n");
 			ebook_ctrl = (ebook_ctrl_t *)GUI_WinGetAttr(msg->h_deswin);
 			ebook_ctrl->cur_page = MBOOK_Decode_ShowNext(ebook_ctrl->mbook);
 			setmsg.id = COM_CMD_UPDATE_PAGE;

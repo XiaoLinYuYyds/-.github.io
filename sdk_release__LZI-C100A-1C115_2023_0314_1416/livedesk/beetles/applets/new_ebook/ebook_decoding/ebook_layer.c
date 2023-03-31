@@ -85,7 +85,7 @@ __s32   EBOOK_Layer_OpenShow(H_WIN h_lyr)
 		return EPDK_FAIL;
 	}
 
-	GUI_LyrWinSetSta(h_lyr, GUI_LYRWIN_STA_ON);
+	GUI_LyrWinSetSta(h_lyr, GUI_LYRWIN_STA_ON);//设置图层状态
 	return EPDK_OK;
 }
 
@@ -106,11 +106,11 @@ __s32   EBOOK_Layer_OpenShow(H_WIN h_lyr)
 void    EBOOK_Layer_Rotate(H_WIN h_lyr, __u32 w, __u32 h, __u32 rotate)
 {
 	GUI_RECT rect;
-	GUI_LyrWinSel(h_lyr);
+	GUI_LyrWinSel(h_lyr);			//选择图层
 
 	if(rotate == 0)
 	{
-		GUI_SetLCDSize(w, h);
+		GUI_SetLCDSize(w, h);		//设置LCD显示屏尺寸大小
 		GUI_SetLCDDirection(rotate);//设置LCD显示屏的方向：横屏
 		rect.x0 = 0;
 		rect.y0 = 0;

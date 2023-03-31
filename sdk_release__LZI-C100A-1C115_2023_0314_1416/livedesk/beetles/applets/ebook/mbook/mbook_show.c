@@ -28,7 +28,7 @@ __mbook_show_t;
 *
 * Description: 写一页到软图层上（UTF8编码格式）
 *
-* Arguments  :
+* Arguments  : hdle:显示句柄；lyr:指定的软图层句柄；data:需要写入并显示文本内容数据
 *
 * Returns    :
 
@@ -61,7 +61,7 @@ static void __show_page_utf8(__mbook_show_t *hdle, __hdle lyr, void *data)
 
 	while(row < p_config->page_row)
 	{
-		if((*p_data == 0x0a) || (*p_data == 0x0d))
+		if((*p_data == 0x0a) || (*p_data == 0x0d))//相当于文本内容里面的回车按下换行标志；换行符：0x0a;回车换行符：0x0d 0x0a；
 		{
 			//换行符检查
 			row++;
@@ -133,7 +133,7 @@ static void __show_page_utf8(__mbook_show_t *hdle, __hdle lyr, void *data)
 *
 * Description: 写一页到软图层上（UTF16_BE编码格式）
 *
-* Arguments  :
+* Arguments  : hdle:显示句柄；lyr:指定的软图层句柄；data:需要写入并显示文本内容数据
 *
 * Returns    :
 
@@ -228,7 +228,7 @@ static void __show_page_utf16_be(__mbook_show_t *hdle, __hdle lyr, void *data)
 *
 * Description: 写一页到软图层上（UTF16_LE编码格式）
 *
-* Arguments  :
+* Arguments  : hdle:显示句柄；lyr:指定的软图层句柄；data:需要写入并显示文本内容数据
 *
 * Returns    :
 
@@ -323,7 +323,7 @@ static void __show_page_utf16_le(__mbook_show_t *hdle, __hdle lyr, void *data)
 *
 * Description: 写一页到软图层上（GBK编码格式）
 *
-* Arguments  :
+* Arguments  : hdle:显示句柄；lyr:指定的软图层句柄；data:需要写入并显示文本内容数据
 *
 * Returns    :
 
@@ -356,7 +356,7 @@ static void __show_page_gbk(__mbook_show_t *hdle, __hdle lyr, void *data)
 	{
 		tmp = *p_data & 0xff;
 
-		if((tmp == 0x0d) || (tmp == 0x0a))
+		if((tmp == 0x0d) || (tmp == 0x0a))//相当于文本内容里面的回车按下换行标志；换行符：0x0a;回车换行符：0x0d 0x0a；
 		{
 			row++;
 			x = p_config->show_start + SHOW_START;
@@ -392,7 +392,7 @@ static void __show_page_gbk(__mbook_show_t *hdle, __hdle lyr, void *data)
 				__u16 t;
 				t = tmp;
 				tmp = eLIBs_GBK_to_Unicode(t);
-
+				__msg("eLIBs_GBK_to_Unicode t = %x\n", t);
 				if(0xffff == tmp)
 				{
 					__msg("eLIBs_GBK_to_Unicode fail, t = %x\n", t);
@@ -435,7 +435,7 @@ static void __show_page_gbk(__mbook_show_t *hdle, __hdle lyr, void *data)
 *
 * Description: 写一页到软图层上（GBK编码格式）
 *
-* Arguments  :
+* Arguments  : hdle:显示句柄；lyr:指定的软图层句柄；data:需要写入并显示文本内容数据
 *
 * Returns    :
 
@@ -540,7 +540,7 @@ static void __show_page_big5(__mbook_show_t *hdle, __hdle lyr, void *data)
 *
 *Description: 页面显示模块的初始化
 *
-*Arguments  :
+*Arguments  : 
 *
 *
 *Return     : H_SHOW: 返回页面显示模块操作句柄
@@ -559,7 +559,7 @@ H_SHOW  MBOOK_Show_Init(void)
 	}
 
 	eLIBs_memset(p_show, 0, sizeof(__mbook_show_t));
-	p_show->disp_hdle = eLIBs_fopen("b:\\DISP\\DISPLAY", "r+");	// 打开显示驱动
+	p_show->disp_hdle = eLIBs_fopen("b:\\DISP\\DISPLAY", "r+");	// 打开显示驱动文件
 
 	if(p_show->disp_hdle == NULL)
 	{
@@ -609,8 +609,9 @@ __s32   MBOOK_Show_Config(H_SHOW hdle, __show_config_t *config)
 *
 *Description: 写一页数据到指定的软图层上
 *
-*Arguments  : hdle: 操作句柄
-*             lyr: 图层句柄
+*Arguments  : hdle: 显示操作句柄
+*             lyr: 指定的图层句柄
+*			  data：写入的文本内容数据
 *
 *Return     : EPDK_OK: 成功
 *			  EPDK_FAIL: 失败
@@ -627,9 +628,8 @@ __s32   MBOOK_Show_Page(H_SHOW hdle, __hdle lyr, void *data)
 	}
 
 	p_show = (__mbook_show_t *)hdle;
-	__wrn("p_show = %d...\n",p_show);
-	__wrn("config.charset = %d...\n",p_show->config.charset);
-	switch(p_show->config.charset)
+
+	switch(p_show->config.charset)//编码格式
 	{
 		case EPDK_CHARSET_ENM_UTF8 :
 		{
@@ -675,7 +675,7 @@ __s32   MBOOK_Show_Page(H_SHOW hdle, __hdle lyr, void *data)
 *
 *Description: 删除页面显示模块
 *
-*Arguments  : hdle: 操作句柄
+*Arguments  : hdle: 显示操作句柄
 *
 *
 *Return     : EPDK_OK: 成功
@@ -696,7 +696,7 @@ __s32   MBOOK_Show_Uninit(H_SHOW hdle)
 
 	if(p_show->disp_hdle)
 	{
-		eLIBs_fclose(p_show->disp_hdle);
+		eLIBs_fclose(p_show->disp_hdle);//关闭显示驱动文件
 		p_show->disp_hdle = NULL;
 	}
 

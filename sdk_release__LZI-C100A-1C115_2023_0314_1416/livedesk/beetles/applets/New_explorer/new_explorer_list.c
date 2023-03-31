@@ -100,19 +100,19 @@ static void New_explorer_list_uninit(new_explorer_list_ctrl_t *list_ctrl)
 	__wrn("New_explorer_list_uninit is 0 ok\n");
 	if(list_ctrl->new_explorer_scroll_bg_bmp)
 	{
-		__wrn("New_explorer_list_uninit is 1 ...\n");
+		__msg("New_explorer_list_uninit is 1 ...\n");
 		theme_close(list_ctrl->new_explorer_scroll_bg_bmp);//滚动条背景图释放
 		__wrn("New_explorer_list_uninit is 1 ok\n");
 	}
 	if(list_ctrl->new_explorer_scroll_bmp)
 	{
-		__wrn("New_explorer_list_uninit is 2...\n");
+		__msg("New_explorer_list_uninit is 2...\n");
 		theme_close(list_ctrl->new_explorer_scroll_bmp);//滚动条白色图片使用资源释放
 		__wrn("New_explorer_list_uninit is 2 ok\n");
 	}
 	if(list_ctrl->new_explorer_list_item_focus_bmp)
 	{
-		__wrn("New_explorer_list_uninit is 3...\n");
+		__msg("New_explorer_list_uninit is 3...\n");
 		theme_close(list_ctrl->new_explorer_list_item_focus_bmp);//列表条目选中的背景图片使用资源释放
 		__wrn("New_explorer_list_uninit is 3 ok\n");
 	}

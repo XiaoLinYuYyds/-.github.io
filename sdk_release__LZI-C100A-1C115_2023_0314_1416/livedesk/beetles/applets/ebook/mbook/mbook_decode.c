@@ -21,53 +21,53 @@ extern void *file_core;
 
 typedef	enum tag__DECODE_MODE
 {
-  DECODE_NULL = 0,								/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îºï¿½Ò³			*/
-  DECODE_CURR,									/* ï¿½ï¿½ï¿½ëµ±Ç°Ò³			*/
-  DECODE_PREV,									/* ï¿½ï¿½ï¿½ëµ±Ç°Ò³ï¿½ï¿½Ç°ï¿½ï¿½Ò³	*/
-  DECODE_NEXT,									/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½Äºï¿½ï¿½ï¿½Ò³	*/
+  DECODE_NULL = 0,								/* ²»½âÂëÈÎºÎÒ³			*/
+  DECODE_CURR,									/* ½âÂëµ±Ç°Ò³			*/
+  DECODE_PREV,									/* ½âÂëµ±Ç°Ò³µÄÇ°ÃæÒ³	*/
+  DECODE_NEXT,									/* ½âÂëËùÓÐÒ³µÄºóÃæÒ³	*/
 } __decode_mode_e;
 
-typedef struct tag_MBOOK_CACHE               // Ò³ï¿½ï¿½ï¿½ï¿½
+typedef struct tag_MBOOK_CACHE               // Ò³»º³å
 {
-	__s32       page_sta;                   // Ò³ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½1 ï¿½É¹ï¿½ï¿½ï¿½ 0 Ê§ï¿½ï¿½
-	__s32       page_no;                    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½
-	H_WIN       page_lyr;                   // ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+	__s32       page_sta;                   // Ò³Ãæ½âÂë³É¹¦±êÊ¾£º1 ³É¹¦¡¢ 0 Ê§°Ü
+	__s32       page_no;                    // »º´æÀïµÄÒ³ÃæºÅ
+	H_WIN       page_lyr;                   // »º´æÒ³¶ÔÓ¦µÄÈíÍ¼²ã
 }
 __page_cache_t;
 
 
 typedef struct tag_MBOOK_DECODE
 {
-	char				    file_path[MAX_FILE_NAME];       // ï¿½Ä¼ï¿½Â·ï¿½ï¿½
-	ES_FILE                *file_hdle;                      // ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½
-	H_ANALYSIS              analysis_hdle;                  // ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	H_SHOW                  show_hdle;                      // Ò³ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
+	char				    file_path[MAX_FILE_NAME];       // ÎÄ¼þÂ·¾¶
+	ES_FILE                *file_hdle;                      // ÎÄ¼þ¾ä±ú
+	H_ANALYSIS              analysis_hdle;                  // ÎÄ¼þ·ÖÎö¾ä±ú
+	H_SHOW                  show_hdle;                      // Ò³ÃæÏÔÊ¾¾ä±ú
 
-	H_FONT                  font_hdle;                      // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	H_FONT                  font_hdle;                      // ×ÖÌå²Ù×÷¾ä±ú
 
-	__s64                   file_size;                      // ï¿½Ä¼ï¿½ï¿½ï¿½Ð¡
-	__epdk_charset_enm_e    default_charset;                // Ä¬ï¿½Ï±ï¿½ï¿½ï¿½ï¿½Ê½
-	GUI_FONT               *char_font;                      // ï¿½Ö¿ï¿½ï¿½ï¿½
-	__s32                  *char_table;                     // ï¿½Ö·ï¿½ï¿½Ö¿ï¿½ï¿½ï¿½
+	__s64                   file_size;                      // ÎÄ¼þ´óÐ¡
+	__epdk_charset_enm_e    default_charset;                // Ä¬ÈÏ±àÂë¸ñÊ½
+	GUI_FONT               *char_font;                      // ×Ö¿â¾ä±ú
+	__s32                  *char_table;                     // ×Ö·û×Ö¿í±í
 
-	H_WIN                   show_lyr;                       // ï¿½ï¿½Ê¾Í¼ï¿½ï¿½
-	__page_cache_t          page[DECODE_MBOOK_NUM];          // Ò³ï¿½æ»ºï¿½ï¿½ï¿½ï¿½
-	__u32                   data_len;                       // Ò»Ò³ï¿½ï¿½ï¿½ÝµÄ´ï¿½Ð¡
-	__u8                   *page_data;                      // Ò»Ò³ï¿½ï¿½ï¿½Ý´ï¿½Åµï¿½Ö·
+	H_WIN                   show_lyr;                       // ÏÔÊ¾Í¼²ã
+	__page_cache_t          page[DECODE_MBOOK_NUM];          // Ò³Ãæ»º³åÆ÷
+	__u32                   data_len;                       // Ò»Ò³Êý¾ÝµÄ´óÐ¡
+	__u8                   *page_data;                      // Ò»Ò³Êý¾Ý´æ·ÅµØÖ·
 
-	__s32                   total_page;                     // ï¿½Ä¼ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
-	__s32                   current_page;                   // ï¿½ï¿½Ç°ï¿½ï¿½Ê¾Ò³ï¿½ï¿½
+	__s32                   total_page;                     // ÎÄ¼þ×ÜÒ³Êý
+	__s32                   current_page;                   // µ±Ç°ÏÔÊ¾Ò³ºÅ
 
-	__s32                   move_state;                     // Ò³ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½Æ±ï¿½Ê¾
-	__s32                   move_height;                    // Ò³ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ß¶ï¿½
+	__s32                   move_state;                     // Ò³ÃæÒÆ¶¯¿ØÖÆ±êÊ¾
+	__s32                   move_height;                    // Ò³ÃæÒÆ¶¯¸ß¶È
 
-	__u8				    decode_tsk;                     // Ô¤ï¿½ï¿½ï¿½ß³ï¿½
-	__s32				    decode_cnt;                     // Ô¤ï¿½ï¿½Ò³Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	__krnl_event_t		    *decode_sem;                     // Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ï¿½
-	__decode_mode_e		    decode_sta;                     // Ô¤ï¿½ï¿½Ä£Ê½
+	__u8				    decode_tsk;                     // Ô¤½âÏß³Ì
+	__s32				    decode_cnt;                     // Ô¤½âÒ³Ñ­»·¼ÆÊý
+	__krnl_event_t		    *decode_sem;                     // Ô¤½â¿ØÖÆÐÅºÅÁ¿
+	__decode_mode_e		    decode_sta;                     // Ô¤½âÄ£Ê½
 
-	__decode_config_t       config;                         // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
-	__epdk_charset_enm_e    charset;                        // ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+	__decode_config_t       config;                         // ÅäÖÃÐÅÏ¢
+	__epdk_charset_enm_e    charset;                        // ÎÄ¼þ±àÂë
 }
 __mbook_decode_t;
 
@@ -76,7 +76,7 @@ __mbook_decode_t;
 **********************************************************************************************************************
 *                                               __decode_get_charset
 *
-* Description: ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
+* Description: »ñÈ¡µ±Ç°ÎÄ¼þ±àÂë¸ñÊ½
 *
 * Arguments  :
 *
@@ -93,16 +93,17 @@ static void __decode_get_charset(__mbook_decode_t *hdle)
 	p_decode = hdle;
 	eLIBs_fseek(p_decode->file_hdle, 0, SEEK_SET);
 	eLIBs_fread(buff, 3, sizeof(char), p_decode->file_hdle);
+	__wrn("__decode_get_charset buff[0] = %x, buff[1] = %x, buff[2] = %x...\n", buff[0], buff[1], buff[2]);
 
-	if((buff[0] == 0xff) && (buff[1] == 0xfe))
+	if((buff[0] == 0xff) && (buff[1] == 0xfe))		//»ñÈ¡ÎÄ¼þÁ÷Ç°Á½¸ö×Ö½Ú£¬·Ö±ðÎª0xff¡¢0xfe±íÊ¾UTF16LE±àÂë¸ñÊ½ÎÄ¼þ
 	{
 		p_decode->charset = EPDK_CHARSET_ENM_UTF16LE;
 	}
-	else if((buff[0] == 0xfe) && (buff[1] == 0xff))
+	else if((buff[0] == 0xfe) && (buff[1] == 0xff))//ÎÄ¼þÁ÷Ç°Á½¸ö×Ö½Ú£¬·Ö±ðÎª0xfe¡¢0xff±íÊ¾UTF16BE±àÂë¸ñÊ½ÎÄ¼þ
 	{
 		p_decode->charset = EPDK_CHARSET_ENM_UTF16BE;
 	}
-	else if((buff[0] == 0xef) && (buff[1] == 0xbb) && (buff[2] == 0xbf))
+	else if((buff[0] == 0xef) && (buff[1] == 0xbb) && (buff[2] == 0xbf))//UTF8ÓÐBOM±àÂë¸ñÊ½
 	{
 		p_decode->charset = EPDK_CHARSET_ENM_UTF8;
 	}
@@ -116,7 +117,7 @@ static void __decode_get_charset(__mbook_decode_t *hdle)
 **********************************************************************************************************************
 *                                               __decode_read_page
 *
-* Description: ï¿½ï¿½È¡Ò»Ò³ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½BUFï¿½ï¡£
+* Description: ¶ÁÈ¡Ò»Ò³Êý¾Ýµ½»º´æBUFÀï¡£
 *
 * Arguments  :
 *
@@ -132,7 +133,7 @@ static void __decode_read_page(__mbook_decode_t *hdle)
 	__one_page_t        tmp_page;
 	__mbook_decode_t	*p_decode;
 	p_decode = hdle;
-	// ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð¶ï¿½È¡ï¿½ï¿½ï¿½ï¿½
+	// ´ÓÎÄ¼þÖÐ¶ÁÈ¡Êý¾Ý
 	MBOOK_Analysis_GetInfo(p_decode->analysis_hdle, p_decode->current_page + p_decode->decode_cnt - DECODE_MBOOK_NUM / 2, &tmp_page);
 	__msg("start = %d, end = %d, page = %d \n", tmp_page.page_start, tmp_page.page_end, tmp_page.page_no);
 	size = tmp_page.page_end - tmp_page.page_start;
@@ -141,7 +142,7 @@ static void __decode_read_page(__mbook_decode_t *hdle)
 	*(p_decode->page_data + size) = 0xff;
 	*(p_decode->page_data + size + 1) = 0xfe;
 
-	// ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½
+	// ½«¶ÁÈ¡µÄÊý¾ÝÐ´µ½ÈíÍ¼²ãÉÏ
 	if(p_decode->config.show_rotate == 0)
 	{
 		MBOOK_Layer_Rotate(p_decode->page[p_decode->decode_cnt].page_lyr, p_decode->config.show_width,
@@ -162,7 +163,7 @@ static void __decode_read_page(__mbook_decode_t *hdle)
 **********************************************************************************************************************
 *                                               __decode_show_page
 *
-* Description: ï¿½ï¿½È¡Ò»Ò³ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½BUFï¿½ï¡£ï¿½ï¿½Ê¾Ò»Ò³ï¿½ï¿½ï¿½ï¿½
+* Description: ¶ÁÈ¡Ò»Ò³Êý¾Ýµ½»º´æBUFÀï¡£
 *
 * Arguments  :
 *
@@ -221,7 +222,7 @@ static void __decode_show_page(__mbook_decode_t *hdle)
 **********************************************************************************************************************
 *                                               __decode_brush_page
 *
-* Description: Ë¢ï¿½ï¿½Ò³ï¿½æ»ºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+* Description: Ë¢ÐÂÒ³Ãæ»º´æÀïµÄÐÅÏ¢
 *
 * Arguments  :
 *
@@ -283,7 +284,7 @@ static void __decode_brush_page(__mbook_decode_t *hdle, __decode_mode_e mode)
 **********************************************************************************************************************
 *                                               __decode_get_page
 *
-* Description: ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ñ½ï¿½Ãµï¿½Ò³ï¿½ï¿½
+* Description: »ñµÃÒ»¸öÒÑ½âºÃµÄÒ³Ãæ
 *
 * Arguments  :
 *
@@ -298,10 +299,10 @@ static void __decode_get_page(__mbook_decode_t *hdle, __decode_mode_e mode)
 	__u8 			    err;
 	__mbook_decode_t	*p_decode;
 	p_decode = hdle;
-	// ï¿½ï¿½×¡ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ï¿½decode_semï¿½ï¿½
+	// ÄÃ×¡½âÂëÐÅºÅÁ¿decode_sem¡£
 	esKRNL_SemPend(p_decode->decode_sem, 0, &err);
 
-	// Ë¢ï¿½ï¿½Ò³ï¿½æ»ºï¿½ï¿½ï¿½
+	// Ë¢ÐÂÒ³Ãæ»º³å³Ø
 	if(mode == DECODE_CURR)
 	{
 		__decode_brush_page(p_decode, DECODE_CURR);
@@ -317,7 +318,7 @@ static void __decode_get_page(__mbook_decode_t *hdle, __decode_mode_e mode)
 		__decode_brush_page(p_decode, DECODE_NEXT);
 	}
 
-	// ï¿½Ð¶Ïµï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½É£ï¿½Î´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½âµ±Ç°Ò³ï¿½ï¿½
+	// ÅÐ¶Ïµ±Ç°Ò³½âÂëÊÇ·ñÍê³É£¬Î´Íê³ÉÔòÁ¢¿Ì½âµ±Ç°Ò³¡£
 	p_decode->decode_cnt = DECODE_MBOOK_NUM / 2;
 
 	if((p_decode->page[p_decode->decode_cnt].page_sta == 0)
@@ -328,7 +329,7 @@ static void __decode_get_page(__mbook_decode_t *hdle, __decode_mode_e mode)
 	}
 
 	p_decode->decode_sta = mode;
-	// ï¿½Í·Å½ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ï¿½decode_semï¿½ï¿½
+	// ÊÍ·Å½âÂëÐÅºÅÁ¿decode_sem¡£
 	esKRNL_SemPost(p_decode->decode_sem);
 }
 
@@ -336,7 +337,7 @@ static void __decode_get_page(__mbook_decode_t *hdle, __decode_mode_e mode)
 **********************************************************************************************************************
 *                                               __decode_get_next_page
 *
-* Description: ï¿½ï¿½Ãµï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½
+* Description: »ñµÃµ±Ç°Ò³µÄÏÂÒ»Ò³Ãæ
 *
 * Arguments  :
 *
@@ -367,7 +368,7 @@ static void __decode_get_next_page(__mbook_decode_t *hdle)
 **********************************************************************************************************************
 *                                               __decode_get_prev_page
 *
-* Description: ï¿½ï¿½Ãµï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½
+* Description: »ñµÃµ±Ç°Ò³µÄÉÏÒ»Ò³Ãæ
 *
 * Arguments  :
 *
@@ -398,7 +399,7 @@ static void __decode_get_prev_page(__mbook_decode_t *hdle)
 **********************************************************************************************************************
 *                                               __decode_move_down
 *
-* Description: Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ß³ï¿½
+* Description: Ò³Ãæ½âÎöÐ´ÈíÍ¼²ãÏß³Ì
 *
 * Arguments  :
 *
@@ -413,7 +414,7 @@ static void __decode_move_down(__mbook_decode_t *hdle, __s32 step)
 	__s32                   tmp_h;
 	__mbook_decode_t       *p_decode;
 	p_decode = hdle;
-	// ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½Ê¾Ò³ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Yï¿½ï¿½
+	// »ñÈ¡µ±Ç°ÏÔÊ¾Ò³µÄÆÁÄ»´°¿ÚÆðÊ¼Y¡£
 	tmp_h   = MBOOK_Layer_GetSrcH(p_decode->show_lyr);
 
 	if((p_decode->current_page >= p_decode->total_page) && (p_decode->move_state == 0))
@@ -425,7 +426,7 @@ static void __decode_move_down(__mbook_decode_t *hdle, __s32 step)
 
 	if((p_decode->move_height + step) >= tmp_h)
 	{
-		// ï¿½ï¿½Ò³
+		// ·­Ò³
 		__decode_get_page(p_decode, DECODE_NEXT);
 
 		if(p_decode->current_page < p_decode->total_page)
@@ -452,7 +453,7 @@ static void __decode_move_down(__mbook_decode_t *hdle, __s32 step)
 **********************************************************************************************************************
 *                                               __decode_move_up
 *
-* Description: Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ß³ï¿½
+* Description: Ò³Ãæ½âÎöÐ´ÈíÍ¼²ãÏß³Ì
 *
 * Arguments  :
 *
@@ -467,7 +468,7 @@ static void __decode_move_up(__mbook_decode_t *hdle, __s32 step)
 	__s32                   tmp_h;
 	__mbook_decode_t       *p_decode;
 	p_decode = hdle;
-	// ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½Ê¾Ò³ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼Yï¿½ï¿½
+	// »ñÈ¡µ±Ç°ÏÔÊ¾Ò³µÄÆÁÄ»´°¿ÚÆðÊ¼Y¡£
 	tmp_h   = MBOOK_Layer_GetSrcH(p_decode->show_lyr);
 
 	if((p_decode->current_page <= 1) && (p_decode->move_state == 0))
@@ -479,7 +480,7 @@ static void __decode_move_up(__mbook_decode_t *hdle, __s32 step)
 
 	if((p_decode->move_height - step) <= 0)
 	{
-		// ï¿½ï¿½Ò³
+		// ·­Ò³
 		if(p_decode->current_page > 1)
 		{
 			__decode_get_page(p_decode, DECODE_PREV);
@@ -504,7 +505,7 @@ static void __decode_move_up(__mbook_decode_t *hdle, __s32 step)
 **********************************************************************************************************************
 *                                               __decode_task
 *
-* Description: Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ß³ï¿½
+* Description: Ò³Ãæ½âÎöÐ´ÈíÍ¼²ãÏß³Ì
 *
 * Arguments  :
 *
@@ -559,9 +560,9 @@ EXIT_DEC_TASK:
 ************************************************************************************************************************
 *                       				__decode_show_config
 *
-*Description: ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½
+*Description: ÅäÖÃ»æÖÆÄ£¿éÏà¹Ø²ÎÊý
 *
-*Arguments  : hdleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle£º ²Ù×÷¾ä±ú
 *
 *
 *Return     : NULL
@@ -576,7 +577,7 @@ static void __decode_show_config(__mbook_decode_t *hdle)
 	p_decode = hdle;
 	p_config = &p_decode->config;
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½Ð´Ä£ï¿½ï¿½
+	// ÅäÖÃÊý¾Ý¶ÁÐ´Ä£¿é
 	if(p_config->show_rotate == 0)
 	{
 		show_cfg.show_start = p_config->border_width;
@@ -611,9 +612,9 @@ static void __decode_show_config(__mbook_decode_t *hdle)
 ************************************************************************************************************************
 *                       				__decode_analysis_config
 *
-*Description: ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½
+*Description: ÅäÖÃ½âÂëÄ£¿éÏà¹Ø²ÎÊý
 *
-*Arguments  : hdleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle£º ²Ù×÷¾ä±ú
 *
 *
 *Return     : NULL
@@ -628,10 +629,10 @@ static void __decode_analysis_config(__mbook_decode_t *hdle)
 	__decode_config_t      *p_config;
 	p_decode = hdle;
 	p_config = &p_decode->config;
-	// ï¿½ï¿½È¡ï¿½ï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½Ï¢
+	// ¶ÁÈ¡µ±Ç°Ò³µÄÐÅÏ¢
 	MBOOK_Analysis_GetInfo(p_decode->analysis_hdle, p_decode->current_page, &tmp_page);
 
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+	// ÅäÖÃÎÄ¼þ½âÎöÄ£¿é
 	if(p_config->show_rotate == 0)
 	{
 		analysis_cfg.show_width = p_config->show_width - 2 * p_config->border_width + p_config->row_space;
@@ -650,11 +651,11 @@ static void __decode_analysis_config(__mbook_decode_t *hdle)
 	}
 
 	MBOOK_Analysis_Config(p_decode->analysis_hdle, &analysis_cfg);
-	// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+	// Æô¶¯ÎÄ¼þ·ÖÎö
 	MBOOK_Analysis_Work(p_decode->analysis_hdle);
-	// ï¿½ï¿½È¡ï¿½ï¿½Ò³ï¿½ï¿½
+	// »ñÈ¡×ÜÒ³Êý
 	p_decode->total_page = MBOOK_Analysis_GetTotalPage(p_decode->analysis_hdle);
-	// ï¿½ï¿½Î»ï¿½ï¿½Ç°Ò³
+	// ¶¨Î»µ±Ç°Ò³
 	p_decode->current_page = MBOOK_Analysis_GetPage(p_decode->analysis_hdle, tmp_page.page_start);
 }
 
@@ -711,12 +712,12 @@ __s32  MBOOK_Decode_get_filename(char *filename)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_Init
 *
-*Description: ï¿½ï¿½Ê¼ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+*Description: ³õÊ¼»¯Ò³Ãæ½âÂëÄ£¿é
 *
-*Arguments  : filenameï¿½ï¿½ï¿½Ä¼ï¿½È«Â·ï¿½ï¿½ï¿½ï¿½
+*Arguments  : filename£ºÎÄ¼þÈ«Â·¾¶Ãû
 *
 *
-*Return     : H_DECODE: ï¿½ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ err :0 ï¿½ï¿½ï¿½ï¿½ï¿½Þ´ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Return     : H_DECODE: ·µ»Ø½âÂë²Ù×÷¾ä±ú err :0 ´ú±íÎÞ´íÎó£¬1´ú±íÎÄ¼þ²»´æÔÚ 2´ú±íÆäËü´íÎó
 *
 ************************************************************************************************************************
 */
@@ -724,7 +725,7 @@ H_DECODE   MBOOK_Decode_Init(char *filename, __u8 *err)
 {
 	__mbook_decode_t	*p_decode;
 	*err = 0;
-	p_decode = (__mbook_decode_t *)My_Malloc(0, sizeof(__mbook_decode_t));	// ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½
+	p_decode = (__mbook_decode_t *)My_Malloc(0, sizeof(__mbook_decode_t));	// ÉêÇëÄÚ´æ
 
 	if(p_decode == 0)
 	{
@@ -775,7 +776,7 @@ H_DECODE   MBOOK_Decode_Init(char *filename, __u8 *err)
 	}
 
 	p_decode->data_len      = 15;
-	p_decode->page_data = (void *)My_Palloc(p_decode->data_len, 0);		// ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½
+	p_decode->page_data = (void *)My_Palloc(p_decode->data_len, 0);		// ÉêÇëÄÚ´æ
 
 	if(p_decode->page_data == 0)
 	{
@@ -790,9 +791,9 @@ H_DECODE   MBOOK_Decode_Init(char *filename, __u8 *err)
 	p_decode->charset           = EPDK_CHARSET_ENM_GBK;
 	p_decode->default_charset   = EPDK_CHARSET_ENM_GBK;
 	p_decode->decode_cnt	= DECODE_MBOOK_NUM / 2;
-	p_decode->decode_sta 	= DECODE_NULL;	// ï¿½ï¿½ï¿½ï¿½×´Ì¬Î»
-	p_decode->decode_sem 	= esKRNL_SemCreate(1);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ï¿½
-	p_decode->decode_tsk	= esKRNL_TCreate(__decode_task, (void *)p_decode, 0x2000, KRNL_priolevel5);		// ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	p_decode->decode_sta 	= DECODE_NULL;	// ½âÂë×´Ì¬Î»
+	p_decode->decode_sem 	= esKRNL_SemCreate(1);	// ½âÂë¿ØÖÆÐÅºÅÁ¿
+	p_decode->decode_tsk	= esKRNL_TCreate(__decode_task, (void *)p_decode, 0x2000, KRNL_priolevel5);		// ¼ÓÔØÔ¤½âÏß³Ì
 	return p_decode;
 INIT_ERROR_4:
 
@@ -833,13 +834,13 @@ INIT_ERROR_1:
 ************************************************************************************************************************
 *                       				MBOOK_Decode_Config
 *
-*Description: ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+*Description: ÅäÖÃÒ³Ãæ½âÂëÄ£¿é
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             config: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Ö¸ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             config: ²ÎÊýÅäÖÃÐÅÏ¢Ö¸Õë
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -856,9 +857,9 @@ __s32   MBOOK_Decode_Config(H_DECODE hdle, __decode_config_t *config)
 	}
 
 	p_decode = (__mbook_decode_t *)hdle;
-	// ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
+	// »ñÈ¡ÎÄ¼þ±àÂë¸ñÊ½
 	__decode_get_charset(p_decode);
-	// ï¿½ï¿½È¡ï¿½Ö·ï¿½ï¿½Ö¿ï¿½ï¿½ï¿½Ï¢
+	// »ñÈ¡×Ö·û×Ö¿âÐÅÏ¢
 	eLIBs_memcpy(&(p_decode->config), config, sizeof(__decode_config_t));
 	p_decode->font_hdle     = MBOOK_Font_Init(config->char_font, config->font_size);
 	p_decode->char_font     = MBOOK_Font_GetFont(p_decode->font_hdle);
@@ -870,7 +871,7 @@ __s32   MBOOK_Decode_Config(H_DECODE hdle, __decode_config_t *config)
 		{
 			p_decode->page[i].page_sta  = 0;
 			p_decode->page[i].page_no   = 0;
-			p_decode->page[i].page_lyr  = MBOOK_Layer_CreatLayer(config->show_width, config->show_height - config->bottom_width, 1);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+			p_decode->page[i].page_lyr  = MBOOK_Layer_CreatLayer(config->show_width, config->show_height - config->bottom_width, 1);	// ÉêÇëÈíÍ¼²ã
 
 			if(p_decode->page[i].page_lyr == NULL)
 			{
@@ -878,22 +879,22 @@ __s32   MBOOK_Decode_Config(H_DECODE hdle, __decode_config_t *config)
 			}
 		}
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Í¼ï¿½ï¿½
-		p_decode->show_lyr  = MBOOK_Layer_CreatLayer(config->show_width, config->show_height - config->bottom_width, 1);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Í¼ï¿½ï¿½
+		// ´´½¨ÏÔÊ¾Í¼²ã
+		p_decode->show_lyr  = MBOOK_Layer_CreatLayer(config->show_width, config->show_height - config->bottom_width, 1);	// ÉêÇëÏÔÊ¾Í¼²ã
 
 		if(p_decode->show_lyr == NULL)
 		{
 			goto INIT_ERROR_2;
 		}
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+		// ÅäÖÃÎÄ¼þ½âÎöÄ£¿é
 		analysis_cfg.show_width = config->show_width - 2 * config->border_width + config->row_space;
-		analysis_cfg.page_row   = (config->show_height - config->bottom_width) / (config->font_size + config->row_space);
+		analysis_cfg.page_row   = (config->show_height - config->bottom_width) / (config->font_size + config->row_space);//Ò³µÄ×î´óÐÐÊý
 		analysis_cfg.col_width  = config->font_size + config->col_space;
 		analysis_cfg.char_table = p_decode->char_table;
 		analysis_cfg.charset    = p_decode->charset;
 		MBOOK_Analysis_Config(p_decode->analysis_hdle, &analysis_cfg);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½Ð´Ä£ï¿½ï¿½
+		// ÅäÖÃÊý¾Ý¶ÁÐ´Ä£¿é
 		show_cfg.show_start = config->border_width;
 		show_cfg.show_width = config->show_width - 2 * config->border_width + config->row_space - config->scroll_width;
 		show_cfg.page_row   = (config->show_height - config->bottom_width) / (config->font_size + config->row_space);
@@ -905,7 +906,7 @@ __s32   MBOOK_Decode_Config(H_DECODE hdle, __decode_config_t *config)
 		show_cfg.char_table = p_decode->char_table;
 		show_cfg.charset    = p_decode->charset;
 		MBOOK_Show_Config(p_decode->show_hdle, &show_cfg);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+		// Æô¶¯ÎÄ¼þ·ÖÎö
 		MBOOK_Analysis_Work(p_decode->analysis_hdle);
 	}
 	else
@@ -914,7 +915,7 @@ __s32   MBOOK_Decode_Config(H_DECODE hdle, __decode_config_t *config)
 		{
 			p_decode->page[i].page_sta  = 0;
 			p_decode->page[i].page_no   = 0;
-			p_decode->page[i].page_lyr  = MBOOK_Layer_CreatLayer(config->show_width - config->bottom_width, config->show_height, 1);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+			p_decode->page[i].page_lyr  = MBOOK_Layer_CreatLayer(config->show_width - config->bottom_width, config->show_height, 1);	// ÉêÇëÈíÍ¼²ã
 
 			if(p_decode->page[i].page_lyr == NULL)
 			{
@@ -922,21 +923,21 @@ __s32   MBOOK_Decode_Config(H_DECODE hdle, __decode_config_t *config)
 			}
 		}
 
-		p_decode->show_lyr  = MBOOK_Layer_CreatLayer(config->show_width - config->bottom_width, config->show_height, 1);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Í¼ï¿½ï¿½
+		p_decode->show_lyr  = MBOOK_Layer_CreatLayer(config->show_width - config->bottom_width, config->show_height, 1);	// ÉêÇëÏÔÊ¾Í¼²ã
 
 		if(p_decode->show_lyr == NULL)
 		{
 			goto INIT_ERROR_2;
 		}
 
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+		// ÅäÖÃÎÄ¼þ½âÎöÄ£¿é
 		analysis_cfg.show_width = config->show_height - 2 * config->border_width + config->row_space - config->scroll_width;
 		analysis_cfg.page_row   = (config->show_width - config->bottom_width) / (config->font_size + config->row_space);
 		analysis_cfg.col_width  = config->font_size + config->col_space;
 		analysis_cfg.char_table = p_decode->char_table;
 		analysis_cfg.charset    = p_decode->charset;
 		MBOOK_Analysis_Config(p_decode->analysis_hdle, &analysis_cfg);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½Ð´Ä£ï¿½ï¿½
+		// ÅäÖÃÊý¾Ý¶ÁÐ´Ä£¿é
 		show_cfg.show_start = config->border_width;
 		show_cfg.show_width = config->show_height - 2 * config->border_width + config->row_space;
 		show_cfg.page_row   = (config->show_width - config->bottom_width) / (config->font_size + config->row_space);
@@ -948,12 +949,12 @@ __s32   MBOOK_Decode_Config(H_DECODE hdle, __decode_config_t *config)
 		show_cfg.char_table = p_decode->char_table;
 		show_cfg.charset    = p_decode->charset;
 		MBOOK_Show_Config(p_decode->show_hdle, &show_cfg);
-		// ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+		// Æô¶¯ÎÄ¼þ·ÖÎö
 		MBOOK_Analysis_Work(p_decode->analysis_hdle);
 	}
 
 	__here__
-	// ï¿½ï¿½È¡ï¿½ï¿½Ò³ï¿½ï¿½
+	// »ñÈ¡×ÜÒ³Êý
 	p_decode->current_page  = 1;
 	p_decode->total_page    = MBOOK_Analysis_GetTotalPage(p_decode->analysis_hdle);
 	__here__
@@ -977,13 +978,13 @@ INIT_ERROR_1:
 ************************************************************************************************************************
 *                       				MBOOK_Decode_ShowPage
 *
-*Description: ï¿½ï¿½Ê¾ï¿½ï¿½Ç°Ò³ï¿½ï¿½
+*Description: ÏÔÊ¾µ±Ç°Ò³Ãæ
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
 *
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1009,13 +1010,13 @@ __s32   MBOOK_Decode_ShowPage(H_DECODE hdle, __u32 offset)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_ShowNext
 *
-*Description: ï¿½ï¿½Ê¾ï¿½ï¿½Ò»Ò³ï¿½ï¿½
+*Description: ÏÔÊ¾ÏÂÒ»Ò³Ãæ
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
 *
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1045,13 +1046,13 @@ __s32   MBOOK_Decode_ShowNext(H_DECODE hdle)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_ShowPrev
 *
-*Description: ï¿½ï¿½Ê¾ï¿½ï¿½Ò»Ò³ï¿½ï¿½
+*Description: ÏÔÊ¾ÉÏÒ»Ò³Ãæ
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
 *
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1081,13 +1082,13 @@ __s32   MBOOK_Decode_ShowPrev(H_DECODE hdle)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_SeekPage
 *
-*Description: ï¿½ï¿½×ªï¿½ï¿½Ö¸ï¿½ï¿½Ò³ï¿½ï¿½
+*Description: Ìø×ªµ½Ö¸¶¨Ò³Ãæ
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             page_no: Òªï¿½ï¿½Ê¾ï¿½ï¿½Ò³ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             page_no: ÒªÏÔÊ¾µÄÒ³Âë
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1127,13 +1128,13 @@ __s32   MBOOK_Decode_SeekPage(H_DECODE hdle, __u32 page_no)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_SeekOffset
 *
-*Description: ï¿½ï¿½×ªï¿½ï¿½Ö¸ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½
+*Description: Ìø×ªµ½Ö¸¶¨Æ«ÒÆÁ¿
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             offset: ï¿½Ä¼ï¿½Æ«ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             offset: ÎÄ¼þÆ«ÒÆÁ¿
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1164,13 +1165,13 @@ __s32   MBOOK_Decode_SeekOffset(H_DECODE hdle, __u32 offset)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_MovePage
 *
-*Description: ï¿½ï¿½×ªï¿½ï¿½Ö¸ï¿½ï¿½Ò³ï¿½ï¿½
+*Description: Ìø×ªµ½Ö¸¶¨Ò³Ãæ
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             x, y: ï¿½Æ¶ï¿½ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             x, y: ÒÆ¶¯µÄÆ«ÒÆÁ¿
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1220,13 +1221,13 @@ __s32   MBOOK_Decode_MovePage(H_DECODE hdle, __s32 x, __s32 y)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_RotatePage
 *
-*Description: ï¿½ï¿½×ªï¿½ï¿½Ç°Ò³ï¿½ï¿½
+*Description: Ðý×ªµ±Ç°Ò³Ãæ
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
 *
 *
-*Return     : ï¿½É¹ï¿½ï¿½ï¿½0 - 0ï¿½È£ï¿½90 - 90ï¿½ï¿½
-*			  Ê§ï¿½Ü£ï¿½-1
+*Return     : ³É¹¦£º0 - 0¶È£¬90 - 90¶È
+*			  Ê§°Ü£º-1
 *
 ************************************************************************************************************************
 */
@@ -1252,10 +1253,10 @@ __s32   MBOOK_Decode_RotatePage(H_DECODE hdle)
 		p_decode->config.show_rotate = 0;
 	}
 
-	// ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// ¹ÒÆðÔ¤½âÏß³Ì
 	esKRNL_SemPend(p_decode->decode_sem, 0, &err);
 
-	// É¾ï¿½ï¿½Í¼ï¿½ï¿½
+	// É¾³ýÍ¼²ã
 	for(i = 0; i < DECODE_MBOOK_NUM; i++)
 	{
 		if(p_decode->page[i].page_lyr)
@@ -1271,14 +1272,14 @@ __s32   MBOOK_Decode_RotatePage(H_DECODE hdle)
 		p_decode->show_lyr = NULL;
 	}
 
-	//ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+	//´´½¨Í¼²ã
 	if(p_decode->config.show_rotate == 0)
 	{
 		for(i = 0; i < DECODE_MBOOK_NUM; i++)
 		{
 			p_decode->page[i].page_sta  = 0;
 			p_decode->page[i].page_no   = 0;
-			p_decode->page[i].page_lyr  = MBOOK_Layer_CreatLayer(p_decode->config.show_width, p_decode->config.show_height - p_decode->config.bottom_width, 1);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+			p_decode->page[i].page_lyr  = MBOOK_Layer_CreatLayer(p_decode->config.show_width, p_decode->config.show_height - p_decode->config.bottom_width, 1);	// ÉêÇëÈíÍ¼²ã
 
 			if(p_decode->page[i].page_lyr == NULL)
 			{
@@ -1286,7 +1287,7 @@ __s32   MBOOK_Decode_RotatePage(H_DECODE hdle)
 			}
 		}
 
-		p_decode->show_lyr  = MBOOK_Layer_CreatLayer(p_decode->config.show_width, p_decode->config.show_height - p_decode->config.bottom_width, 1);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Í¼ï¿½ï¿½
+		p_decode->show_lyr  = MBOOK_Layer_CreatLayer(p_decode->config.show_width, p_decode->config.show_height - p_decode->config.bottom_width, 1);	// ÉêÇëÏÔÊ¾Í¼²ã
 
 		if(p_decode->show_lyr == NULL)
 		{
@@ -1299,7 +1300,7 @@ __s32   MBOOK_Decode_RotatePage(H_DECODE hdle)
 		{
 			p_decode->page[i].page_sta  = 0;
 			p_decode->page[i].page_no   = 0;
-			p_decode->page[i].page_lyr  = MBOOK_Layer_CreatLayer(p_decode->config.show_width - p_decode->config.bottom_width, p_decode->config.show_height, 1);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½
+			p_decode->page[i].page_lyr  = MBOOK_Layer_CreatLayer(p_decode->config.show_width - p_decode->config.bottom_width, p_decode->config.show_height, 1);	// ÉêÇëÈíÍ¼²ã
 
 			if(p_decode->page[i].page_lyr == NULL)
 			{
@@ -1307,7 +1308,7 @@ __s32   MBOOK_Decode_RotatePage(H_DECODE hdle)
 			}
 		}
 
-		p_decode->show_lyr  = MBOOK_Layer_CreatLayer(p_decode->config.show_width - p_decode->config.bottom_width, p_decode->config.show_height, 1);	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾Í¼ï¿½ï¿½
+		p_decode->show_lyr  = MBOOK_Layer_CreatLayer(p_decode->config.show_width - p_decode->config.bottom_width, p_decode->config.show_height, 1);	// ÉêÇëÏÔÊ¾Í¼²ã
 
 		if(p_decode->show_lyr == NULL)
 		{
@@ -1315,14 +1316,14 @@ __s32   MBOOK_Decode_RotatePage(H_DECODE hdle)
 		}
 	}
 
-	// ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½
+	// ÅäÖÃ½âÂë
 	__decode_analysis_config(p_decode);
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+	// ÅäÖÃÏÔÊ¾
 	__decode_brush_page(p_decode, DECODE_CURR);
 	__decode_show_config(p_decode);
-	// ï¿½Ö¸ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// »Ö¸´Ô¤½âÏß³Ì
 	esKRNL_SemPost(p_decode->decode_sem);
-	// ï¿½ï¿½È¡ï¿½ï¿½Ç°Ò³
+	// »ñÈ¡µ±Ç°Ò³
 	p_decode->move_height   = 0;
 	p_decode->move_state    = 0;
 	__decode_get_page(p_decode, DECODE_CURR);
@@ -1348,13 +1349,13 @@ INIT_ERROR_1:
 ************************************************************************************************************************
 *                       				MBOOK_Decode_RotatePage
 *
-*Description: ï¿½ï¿½×ªï¿½ï¿½Ç°Ò³ï¿½ï¿½
+*Description: Ðý×ªµ±Ç°Ò³Ãæ
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
 *
 *
-*Return     : ï¿½É¹ï¿½ï¿½ï¿½0ï¿½È£ï¿½90ï¿½ï¿½
-*			  Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ EPDK_FAIL
+*Return     : ³É¹¦£º0¶È£¬90¶È
+*			  Ê§°Ü£º·µ»Ø EPDK_FAIL
 *
 ************************************************************************************************************************
 */
@@ -1375,13 +1376,13 @@ __s32   MBOOK_Decode_GetRotate(H_DECODE hdle)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_GetTotalPage
 *
-*Description: ï¿½ï¿½×ªï¿½ï¿½Ç°Ò³ï¿½ï¿½
+*Description: Ðý×ªµ±Ç°Ò³Ãæ
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
 *
 *
-*Return     : ï¿½É¹ï¿½ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
-*			  Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ 0
+*Return     : ³É¹¦£º»Ø·Å×ÜÒ³Êý
+*			  Ê§°Ü£º·µ»Ø 0
 *
 ************************************************************************************************************************
 */
@@ -1402,13 +1403,13 @@ __s32   MBOOK_Decode_GetTotalPage(H_DECODE hdle)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_GetCurrentPage
 *
-*Description: ï¿½ï¿½×ªï¿½ï¿½Ç°Ò³ï¿½ï¿½
+*Description: Ðý×ªµ±Ç°Ò³Ãæ
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
 *
 *
-*Return     : ï¿½É¹ï¿½ï¿½ï¿½ï¿½Ø·Åµï¿½Ç°Ò³ï¿½ï¿½
-*			  Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ 0
+*Return     : ³É¹¦£º»Ø·Åµ±Ç°Ò³Êý
+*			  Ê§°Ü£º·µ»Ø 0
 *
 ************************************************************************************************************************
 */
@@ -1429,13 +1430,13 @@ __s32   MBOOK_Decode_GetCurrentPage(H_DECODE hdle)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_GetCurrentPage
 *
-*Description: ï¿½ï¿½È¡Ö¸ï¿½ï¿½Ò³ï¿½ï¿½Ò³ï¿½ï¿½Æ«ï¿½ï¿½Öµ
+*Description: »ñÈ¡Ö¸¶¨Ò³µÄÒ³ÃæÆ«ÒÆÖµ
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             page: Ö¸ï¿½ï¿½Ò³ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             page: Ö¸¶¨Ò³Âë
 *
-*Return     : ï¿½É¹ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ò³ï¿½ï¿½Æ«ï¿½ï¿½ï¿½ï¿½
-*			  Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½-1
+*Return     : ³É¹¦£ºÖ¸¶¨Ò³ÃæÆ«ÒÆÁ¿
+*			  Ê§°Ü£º·µ»Ø-1
 *
 ************************************************************************************************************************
 */
@@ -1464,13 +1465,13 @@ __s32   MBOOK_Decode_GetPageOffset(H_DECODE hdle, __u32 page_no)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_GetFileName
 *
-*Description: ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+*Description: »ñÈ¡ÎÄ¼þµÄÎÄ¼þÃû
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             name: ï¿½Ä¼ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             name: ÎÄ¼þÃû
 *
-*Return     : ï¿½É¹ï¿½ï¿½ï¿½PDK_OKK
-*			  Ê§ï¿½Ü£ï¿½EPDK_FAIL
+*Return     : ³É¹¦£ºPDK_OKK
+*			  Ê§°Ü£ºEPDK_FAIL
 *
 ************************************************************************************************************************
 */
@@ -1494,13 +1495,13 @@ __s32   MBOOK_Decode_GetFileName(H_DECODE hdle, char *name)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_GetFileSize
 *
-*Description: ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+*Description: »ñÈ¡ÎÄ¼þµÄÎÄ¼þÃû
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
 *
 *
-*Return     : ï¿½É¹ï¿½ï¿½ï¿½ï¿½Ü´ï¿½Ð¡
-*			  Ê§ï¿½Ü£ï¿½-1
+*Return     : ³É¹¦£º×Ü´óÐ¡
+*			  Ê§°Ü£º-1
 *
 ************************************************************************************************************************
 */
@@ -1521,13 +1522,13 @@ __s64   MBOOK_Decode_GetFileSize(H_DECODE hdle)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_GetFilePath
 *
-*Description: ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½È«Â·ï¿½ï¿½ï¿½ï¿½
+*Description: »ñÈ¡ÎÄ¼þµÄÈ«Â·¾¶Ãû
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             path: Â·ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             path: Â·¾¶Ãû
 *
-*Return     : ï¿½É¹ï¿½ï¿½ï¿½PDK_OKK
-*			  Ê§ï¿½Ü£ï¿½EPDK_FAIL
+*Return     : ³É¹¦£ºPDK_OKK
+*			  Ê§°Ü£ºEPDK_FAIL
 *
 ************************************************************************************************************************
 */
@@ -1549,13 +1550,13 @@ __s32   MBOOK_Decode_GetFilePath(H_DECODE hdle, char *path)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_GetFileContext
 *
-*Description: ï¿½ï¿½È¡ï¿½ï¿½Ç°Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
+*Description: »ñÈ¡µ±Ç°Ò³ÃæµÄÐÅÏ¢
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             context: ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             context: ÎÄ¼þÄÚÈÝ
 *
-*Return     : ï¿½É¹ï¿½ï¿½ï¿½PDK_OKK
-*			  Ê§ï¿½Ü£ï¿½EPDK_FAIL
+*Return     : ³É¹¦£ºPDK_OKK
+*			  Ê§°Ü£ºEPDK_FAIL
 *
 ************************************************************************************************************************
 */
@@ -1580,13 +1581,13 @@ __s32   MBOOK_Decode_GetFileContext(H_DECODE hdle, char *context)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_SetRowSpace
 *
-*Description: ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½
+*Description: ÉèÖÃÐÐ¼ä¾à
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             space: ï¿½Ð¼ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             space: ÐÐ¼ä¾à
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1608,16 +1609,16 @@ __s32   MBOOK_Decode_SetRowSpace(H_DECODE hdle, __u32 space)
 	}
 
 	p_decode->config.row_space = space;
-	// ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// ¹ÒÆðÔ¤½âÏß³Ì
 	esKRNL_SemPend(p_decode->decode_sem, 0, &err);
-	// ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½
+	// ÅäÖÃ½âÂë
 	__decode_analysis_config(p_decode);
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+	// ÅäÖÃÏÔÊ¾
 	__decode_brush_page(p_decode, DECODE_CURR);
 	__decode_show_config(p_decode);
-	// ï¿½Ö¸ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// »Ö¸´Ô¤½âÏß³Ì
 	esKRNL_SemPost(p_decode->decode_sem);
-	// ï¿½ï¿½È¡ï¿½ï¿½Ç°Ò³
+	// »ñÈ¡µ±Ç°Ò³
 	__decode_get_page(p_decode, DECODE_CURR);
 
 	if(p_decode->move_height)
@@ -1633,13 +1634,13 @@ __s32   MBOOK_Decode_SetRowSpace(H_DECODE hdle, __u32 space)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_SetColSpace
 *
-*Description: ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½
+*Description: ÉèÖÃÁÐ¼ä¾à
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             space: ï¿½Ð¼ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             space: ÁÐ¼ä¾à
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1661,16 +1662,16 @@ __s32   MBOOK_Decode_SetColSpace(H_DECODE hdle, __u32 space)
 	}
 
 	p_decode->config.col_space = space;
-	// ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// ¹ÒÆðÔ¤½âÏß³Ì
 	esKRNL_SemPend(p_decode->decode_sem, 0, &err);
-	// ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½
+	// ÅäÖÃ½âÂë
 	__decode_analysis_config(p_decode);
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+	// ÅäÖÃÏÔÊ¾
 	__decode_brush_page(p_decode, DECODE_CURR);
 	__decode_show_config(p_decode);
-	// ï¿½Ö¸ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// »Ö¸´Ô¤½âÏß³Ì
 	esKRNL_SemPost(p_decode->decode_sem);
-	// ï¿½ï¿½È¡ï¿½ï¿½Ç°Ò³
+	// »ñÈ¡µ±Ç°Ò³
 	__decode_get_page(p_decode, DECODE_CURR);
 
 	if(p_decode->move_height)
@@ -1686,13 +1687,13 @@ __s32   MBOOK_Decode_SetColSpace(H_DECODE hdle, __u32 space)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_SetBorderWidth
 *
-*Description: ï¿½ï¿½ï¿½Ã±ß¾ï¿½
+*Description: ÉèÖÃ±ß¾à
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             space: ï¿½ß¾ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             space: ±ß¾à
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1715,16 +1716,16 @@ __s32   MBOOK_Decode_SetBorderWidth(H_DECODE hdle, __u32 width)
 
 	p_decode->config.border_width = width;
 	__msg("p_decode->config.border_width = %d \n", p_decode->config.border_width);
-	// ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// ¹ÒÆðÔ¤½âÏß³Ì
 	esKRNL_SemPend(p_decode->decode_sem, 0, &err);
-	// ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½
+	// ÅäÖÃ½âÂë
 	__decode_analysis_config(p_decode);
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+	// ÅäÖÃÏÔÊ¾
 	__decode_show_config(p_decode);
 	__decode_brush_page(p_decode, DECODE_CURR);
-	// ï¿½Ö¸ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// »Ö¸´Ô¤½âÏß³Ì
 	esKRNL_SemPost(p_decode->decode_sem);
-	// ï¿½ï¿½È¡ï¿½ï¿½Ç°Ò³
+	// »ñÈ¡µ±Ç°Ò³
 	__decode_get_page(p_decode, DECODE_CURR);
 
 	if(p_decode->move_height)
@@ -1740,13 +1741,13 @@ __s32   MBOOK_Decode_SetBorderWidth(H_DECODE hdle, __u32 width)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_SetBackColor
 *
-*Description: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ä±ï¿½ï¿½ï¿½É«
+*Description: ÉèÖÃÏÔÊ¾µÄ±³¾°É«
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             color: ï¿½ï¿½É«
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             color: ÑÕÉ«
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1774,13 +1775,13 @@ __s32   MBOOK_Decode_SetBackColor(H_DECODE hdle, __u32 color)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_SetFontColor
 *
-*Description: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½É«
+*Description: ÉèÖÃÏÔÊ¾ÎÄ×ÖµÄÑÕÉ«
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             color: ï¿½ï¿½É«
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             color: ÑÕÉ«
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1802,16 +1803,16 @@ __s32   MBOOK_Decode_SetFontColor(H_DECODE hdle, __u32 color)
 	}
 
 	p_decode->config.font_color = color;
-	// ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// ¹ÒÆðÔ¤½âÏß³Ì
 	esKRNL_SemPend(p_decode->decode_sem, 0, &err);
-	// ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½
+	// ÅäÖÃ½âÂë
 	__decode_analysis_config(p_decode);
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+	// ÅäÖÃÏÔÊ¾
 	__decode_brush_page(p_decode, DECODE_CURR);
 	__decode_show_config(p_decode);
-	// ï¿½Ö¸ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// »Ö¸´Ô¤½âÏß³Ì
 	esKRNL_SemPost(p_decode->decode_sem);
-	// ï¿½ï¿½È¡ï¿½ï¿½Ç°Ò³
+	// »ñÈ¡µ±Ç°Ò³
 	__decode_get_page(p_decode, DECODE_CURR);
 	__decode_show_page(p_decode);
 	return EPDK_OK;
@@ -1821,13 +1822,13 @@ __s32   MBOOK_Decode_SetFontColor(H_DECODE hdle, __u32 color)
 ************************************************************************************************************************
 *                       				MBOOK_Decode_SetDefaultCharset
 *
-*Description: ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï±ï¿½ï¿½ï¿½ï¿½Ê½
+*Description: ÉèÖÃÄ¬ÈÏ±àÂë¸ñÊ½
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-*             charset: Ä¬ï¿½Ï±ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
+*             charset: Ä¬ÈÏ±àÂë
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */
@@ -1854,28 +1855,28 @@ __s32   MBOOK_Decode_SetDefaultCharset(H_DECODE hdle, __epdk_charset_enm_e chars
 	    || (p_decode->charset == EPDK_CHARSET_ENM_UTF16BE)
 	    || (p_decode->charset == EPDK_CHARSET_ENM_UTF8))
 	{
-		// ï¿½ï¿½Î´Öªï¿½ï¿½ï¿½ï¿½
+		// ·ÇÎ´Öª±àÂë
 		return EPDK_OK;
 	}
 
 	if(p_decode->decode_sta == DECODE_NULL)
 	{
-		// Î´ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+		// Î´¿ªÊ¼½âÂë
 		return EPDK_OK;
 	}
 
-	// ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// ¹ÒÆðÔ¤½âÏß³Ì
 	esKRNL_SemPend(p_decode->decode_sem, 0, &err);
-	// ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
+	// »ñÈ¡ÎÄ¼þ±àÂë¸ñÊ½
 	__decode_get_charset(p_decode);
-	// ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½
+	// ÅäÖÃ½âÂë
 	__decode_analysis_config(p_decode);
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
+	// ÅäÖÃÏÔÊ¾
 	__decode_brush_page(p_decode, DECODE_CURR);
 	__decode_show_config(p_decode);
-	// ï¿½Ö¸ï¿½Ô¤ï¿½ï¿½ï¿½ß³ï¿½
+	// »Ö¸´Ô¤½âÏß³Ì
 	esKRNL_SemPost(p_decode->decode_sem);
-	// ï¿½ï¿½È¡ï¿½ï¿½Ç°Ò³
+	// »ñÈ¡µ±Ç°Ò³
 	__decode_get_page(p_decode, DECODE_CURR);
 
 	if(p_decode->move_height)
@@ -1891,13 +1892,13 @@ __s32   MBOOK_Decode_SetDefaultCharset(H_DECODE hdle, __epdk_charset_enm_e chars
 ************************************************************************************************************************
 *                       				MBOOK_Decode_Uninit
 *
-*Description: É¾ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
+*Description: É¾³ýÒ³Âë½âÂëÄ£¿é
 *
-*Arguments  : hdle: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*Arguments  : hdle: ²Ù×÷¾ä±ú
 *
 *
-*Return     : EPDK_OK: ï¿½É¹ï¿½
-*			  EPDK_FAIL: Ê§ï¿½ï¿½
+*Return     : EPDK_OK: ³É¹¦
+*			  EPDK_FAIL: Ê§°Ü
 *
 ************************************************************************************************************************
 */

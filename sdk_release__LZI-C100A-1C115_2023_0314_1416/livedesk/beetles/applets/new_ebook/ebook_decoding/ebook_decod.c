@@ -55,7 +55,7 @@ __ebook_decode_t;
 
 static void __ebook_decode_read_page(__ebook_decode_t *hdle);
 static void __ebook_decode_brush_page(__ebook_decode_t *hdle, __newdecode_mode_e mode);
-
+#if 1
 /*
 **********************************************************************************************************************
 *                                               __decode_task
@@ -100,7 +100,7 @@ static void __ebook_decode_task(void *p_arg)
 
 			if(p_decode->decode_cnt == DECODE_EBOOK_NUM)
 			{
-				//__wrn("decode_cnt = %d ...\n",p_decode->decode_cnt);
+				__msg("decode_cnt = %d ...\n",p_decode->decode_cnt);
 				p_decode->decode_cnt = 0;
 			}
 		}
@@ -139,13 +139,13 @@ static void __ebook_decode_read_page(__ebook_decode_t *hdle)
 	size = tmp_page.page_end - tmp_page.page_start;
 	eLIBs_fseek(p_decode->file_hdle, tmp_page.page_start, ELIBS_SEEK_SET);	//函数用来移动文件位置指针到指定的位置上，作用是读取文本时一个一个读取文本内容的位置
 	eLIBs_fread(p_decode->page_data, 1, size, p_decode->file_hdle);			//从文件读二进制数据
-	*(p_decode->page_data + size) = 0xff;
-	*(p_decode->page_data + size + 1) = 0xfe;
+	*(p_decode->page_data + size) = 0xff;				//读取到1个字节 赋值为0xff，
+	*(p_decode->page_data + size + 1) = 0xfe;			//读取到的第二个字节，赋值为0xfe;则两个结合相当于是设置为UTF16-LE编码格式
 	__wrn("page_data = %x ...\n",p_decode->page_data);
 	__wrn("size= %d ...\n",size);
 	__wrn("show_rotote = %d ...\n",p_decode->config.show_rotate);
 	// 将读取的数据写到软图层上
-	if(p_decode->config.show_rotate == 0)//横屏
+	if(p_decode->config.show_rotate == 0)//横屏方向
 	{
 		EBOOK_Layer_Rotate(p_decode->page[p_decode->decode_cnt].page_lyr, p_decode->config.show_width,
 		                   p_decode->config.show_height - p_decode->config.bottom_width, 0);
@@ -157,8 +157,8 @@ static void __ebook_decode_read_page(__ebook_decode_t *hdle)
 	}
 	__wrn("page = %d, page_lyr = %d ...\n", p_decode->decode_cnt, p_decode->page[p_decode->decode_cnt].page_lyr);
 	
-	p_decode->page[p_decode->decode_cnt].page_sta = 1;
-	p_decode->page[p_decode->decode_cnt].page_no  = p_decode->current_page + p_decode->decode_cnt - DECODE_EBOOK_NUM / 2;
+	p_decode->page[p_decode->decode_cnt].page_sta = 1;	//解码成功，页面状态置1
+	p_decode->page[p_decode->decode_cnt].page_no  = p_decode->current_page + p_decode->decode_cnt - DECODE_EBOOK_NUM / 2;//页面号
 	__wrn("page_lyr show page is start ...\n");
 	EBOOK_Show_Page(p_decode->show_hdle, p_decode->page[p_decode->decode_cnt].page_lyr, p_decode->page_data);//显示当前页数据到页面图层
 	__wrn("page_lyr show page is stop ...\n");
@@ -186,18 +186,23 @@ static void	__ebook_decode_get_charset(__ebook_decode_t *hdle)
 	eLIBs_fseek(p_decode->file_hdle, 0, SEEK_SET);			//文件位置移动
 	eLIBs_fread(buf, 3, sizeof(char), p_decode->file_hdle);	//读取文件二进制数据
 	__wrn("__ebook_decode_get_charset buf[0] = %x, buf[1] = %x, buf[2] = %x...\n", buf[0], buf[1], buf[2]);
-	if((buf[0] == 0xff) && (buf[1] == 0xfe)) {//如果buf数据为这个时，则判断为UTF_16LE编码格式
-		p_decode->charset = EPDK_CHARSET_ENM_UTF16LE;//重新设置解码的编码格式
+	if((buf[0] == 0xff) && (buf[1] == 0xfe)) {			//获取文件流前两个字节，分别为0xff、0xfe表示UTF16LE编码格式文件
+		p_decode->charset = EPDK_CHARSET_ENM_UTF16LE;	//重新设置解码的编码格式
 	}
-	else if((buf[0] == 0xfe) && (buf[1] == 0xff)) {
+	else if((buf[0] == 0xfe) && (buf[1] == 0xff)) {		//读取到文件流前两个字节，分别为0xfe、0xff表示UTF16BE编码格式文件
 		p_decode->charset = EPDK_CHARSET_ENM_UTF16BE;
 	}
-	else if((buf[0] == 0xe7) && (buf[1] == 0xac)) {//BIG5编码格式
+	else if((buf[0] == 0xe7) && (buf[1] == 0xac)) {		//BIG5编码格式
 		p_decode->charset = EPDK_CHARSET_ENM_BIG5;
 	}
-	else if((buf[0] == 0xef) && (buf[1] == 0xbb) && (buf[2] == 0xbf)) {
+	else if((buf[0] == 0xef) && (buf[1] == 0xbb) && (buf[2] == 0xbf)) {//读取到文件流前三个字节，表示UTF8有BOM编码格式
 		p_decode->charset = EPDK_CHARSET_ENM_UTF8;
+		__wrn("get UTF8 have bom charset...\n");
 	}
+	/*else if((buf[0] == 0x30) && (buf[2] == 0xe3)) {		//读取到文件流前三个字节，使用第1和第三个字节，表示UTF8无BOM编码格式
+		p_decode->charset = EPDK_CHARSET_ENM_UTF8;
+		__wrn("get UTF8 not bom charset...\n");
+	}*/
 	else {//其他编码格式
 		p_decode->charset = p_decode->default_charset;//默认GBK编码格式
 	}
@@ -234,12 +239,12 @@ static void __ebook_decode_get_page(__ebook_decode_t *hdle, __newdecode_mode_e m
 	else if(mode == DECODE_PREV)
 	{
 		p_decode->current_page--;
-		__ebook_decode_brush_page(p_decode, DECODE_PREV);
+		__ebook_decode_brush_page(p_decode, DECODE_PREV);//刷新上一页
 	}
 	else if(mode == DECODE_NEXT)
 	{
 		p_decode->current_page++;
-		__ebook_decode_brush_page(p_decode, DECODE_NEXT);
+		__ebook_decode_brush_page(p_decode, DECODE_NEXT);//刷新下一页
 	}
 
 	// 判断当前页解码是否完成，未完成则立刻解当前页。
@@ -250,7 +255,7 @@ static void __ebook_decode_get_page(__ebook_decode_t *hdle, __newdecode_mode_e m
 	    && ((p_decode->current_page + p_decode->decode_cnt - DECODE_EBOOK_NUM / 2) <= p_decode->total_page))
 	{
 		__wrn("__ebook_decode_get_page ...\n");
-		__ebook_decode_read_page(p_decode);
+		__ebook_decode_read_page(p_decode);//读取解码页数据
 	}
 
 	p_decode->decode_sta = mode;
@@ -283,7 +288,7 @@ static void __ebook_decode_get_next_page(__ebook_decode_t *hdle)
 	if((p_decode->page[p_decode->decode_cnt].page_sta == 0)
 	    && ((p_decode->current_page + p_decode->decode_cnt - DECODE_EBOOK_NUM / 2) > 0))
 	{
-		__ebook_decode_read_page(p_decode);
+		__ebook_decode_read_page(p_decode);//读取解码页数据
 	}
 
 	esKRNL_SemPost(p_decode->decode_sem);//恢复线程信号量
@@ -314,6 +319,8 @@ static void __ebook_decode_show_page(__ebook_decode_t *hdle)
 	FB                  fb_src2;//页面2图层，大小
 	__ebook_decode_t	*p_decode;
 	p_decode = hdle;
+	__wrn("__decode_show_page...\n");
+	__wrn("config.show_rotate = %d\n",p_decode->config.show_rotate);
 
 	if(p_decode->config.show_rotate == 0)
 	{
@@ -488,6 +495,8 @@ static void __ebook_decode_show_config(__ebook_decode_t *hdle)
 	__newdecode_config_t      *p_config;
 	p_decode = hdle;
 	p_config = &p_decode->config;
+	__wrn("__decode_show_config....\n");
+	__wrn("show_rotate = %d\n",p_config->show_rotate);
 
 	// 配置数据读写模块
 	if(p_config->show_rotate == 0)//横屏
@@ -519,6 +528,7 @@ static void __ebook_decode_show_config(__ebook_decode_t *hdle)
 
 	EBOOK_Show_Config(p_decode->show_hdle, &show_cfg);//页面显示模块的参数配置
 }
+#endif
 
 /*
 ************************************************************************************************************************
@@ -556,7 +566,7 @@ H_DECODE_NEW   EBOOK_Decode_Init(char *filename, __u8 *err, __u32 index)
 			__wrn("h_rat_npl = %d is null...\n",h_rat_npl);
 		}
 		if(index != -1){
-			rat_npl_set_cur(h_rat_npl, index);
+			rat_npl_set_cur(h_rat_npl, index);			//设置当前要播放文件的索引id
 		}
 		__wrn("index = %d...\n", index);
 		npl_index = rat_npl_get_cur(h_rat_npl);			//获取当前播放列表的播放文件索引id
@@ -568,7 +578,7 @@ H_DECODE_NEW   EBOOK_Decode_Init(char *filename, __u8 *err, __u32 index)
 		eLIBs_memcpy(p_decode->file_path, filename, MAX_FILE_NAME_SIZE);
 	}
 
-	p_decode->file_hdle = eLIBs_fopen(p_decode->file_path, "rb");		//"rb"打开二进制文件进行读取;文件句柄获取
+	p_decode->file_hdle = eLIBs_fopen(p_decode->file_path, "rb");		//"rb"打开二进制文件进行读取;文件句柄获取，先获取文件路径/文件名才能执行这个文件打开API接口函数
 	__wrn("EBOOK_Decode_Init 2...\n");
 	if(p_decode->file_hdle == NULL){//文件句柄为空,文件不存在
 		*err = 1;
@@ -682,12 +692,12 @@ __s32 EBOOK_Decode_Config(H_DECODE_NEW hdle, __newdecode_config_t *config)
 	//获取字符字库信息
 	eLIBs_memcpy(&(p_decode->config), config, sizeof(__newdecode_config_t));		//字符串拷贝
 	p_decode->font_hdle 	= EBOOK_Font_Init(config->char_font, config->font_size);//电子书文本初始化，设置文本 
-	p_decode->char_font		= EBOOK_Font_GetFont(p_decode->file_hdle);				//获取文本操作句柄
-	p_decode->char_table	= EBOOK_Font_GetTable(p_decode->file_hdle);				//获取文本字宽表
+	p_decode->char_font		= EBOOK_Font_GetFont(p_decode->font_hdle);				//获取文本操作句柄
+	p_decode->char_table	= EBOOK_Font_GetTable(p_decode->font_hdle);				//获取文本字宽表
 
-	if(config->show_rotate == 0)
+	if(config->show_rotate == 0)	//横屏
 	{
-		__wrn("EBOOK_Decode_Config show_rotate = 0\n");
+		__wrn("EBOOK_Decode_Config 0 show_rotate = 0\n");
 		for(i = 0; i < DECODE_EBOOK_NUM; i++)//页数，一页一图层
 		{
 			p_decode->page[i].page_sta = 0;
@@ -713,6 +723,13 @@ __s32 EBOOK_Decode_Config(H_DECODE_NEW hdle, __newdecode_config_t *config)
 		analysis_cfg.col_width  = config->font_size + config->col_space;
 		analysis_cfg.char_table = p_decode->char_table;
 		analysis_cfg.charset    = p_decode->charset;
+		#if 1
+			__wrn("show_width = %d\n",analysis_cfg.show_width);
+			__wrn("page_row = %d\n",analysis_cfg.page_row);
+			__wrn("col_width = %d\n",analysis_cfg.col_width);
+			__wrn("char_table = %d \n",analysis_cfg.char_table);
+			__wrn("charset = %d\n",analysis_cfg.charset);
+		#endif
 		EBOOK_Analysis_Config(p_decode->analysis_hdle, &analysis_cfg);
 		//配置数据读写模块
 		show_config.show_start	= config->border_width;
@@ -725,13 +742,25 @@ __s32 EBOOK_Decode_Config(H_DECODE_NEW hdle, __newdecode_config_t *config)
 		show_config.char_font   = p_decode->char_font;
 		show_config.char_table  = p_decode->char_table;
 		show_config.charset     = p_decode->charset;
+		#if 1
+			__wrn("show_start = %d\n",show_config.show_width);
+			__wrn("show_width = %d\n",show_config.show_width);
+			__wrn("page_row = %d\n",show_config.page_row);
+			__wrn("row_height = %d\n",show_config.row_height);
+			__wrn("col_width = %d\n",show_config.col_width);
+			__wrn("font_color = %d\n",show_config.font_color);
+			__wrn("back_color = %d\n",show_config.back_color);
+			__wrn("char_font = %d\n",show_config.char_font);
+			__wrn("char_table = %d \n",show_config.char_table);
+			__wrn("charset = %d\n",show_config.charset);
+		#endif
 		EBOOK_Show_Config(p_decode->show_hdle, &show_config);//电子书显示模块配置
 		//启动电子书文件分析模块
 		EBOOK_Analysis_Work(p_decode->analysis_hdle);
 	}
 	else
 	{
-		__wrn("EBOOK_Decode_Config show_rotate = %d\n", config->show_rotate);
+		/*__wrn("EBOOK_Decode_Config 1 show_rotate = %d\n", config->show_rotate);
 		for(i = 0; i < DECODE_EBOOK_NUM; i++)
 		{
 			p_decode->page[i].page_sta  = 0;
@@ -771,7 +800,7 @@ __s32 EBOOK_Decode_Config(H_DECODE_NEW hdle, __newdecode_config_t *config)
 		show_config.charset    = p_decode->charset;
 		EBOOK_Show_Config(p_decode->show_hdle, &show_config);//电子书显示模块配置
 		// 启动文件分析
-		EBOOK_Analysis_Work(p_decode->analysis_hdle);
+		EBOOK_Analysis_Work(p_decode->analysis_hdle);*/
 	}
 
 	//获取总页数
@@ -787,8 +816,8 @@ EBOOK_INIT_ERROR_1:
 		if(p_decode->page[i].page_lyr){
 			//删除图层
 			//MBOOK_Layer_DeleteLayer(p_decode->page[i].page_lyr);
-			//GUI_LyrWinDelete(p_decode->page[i].page_lyr);
-			//p_decode->page[i].page_lyr = NULL;
+			GUI_LyrWinDelete(p_decode->page[i].page_lyr);
+			p_decode->page[i].page_lyr = NULL;
 		}
 	}
 
@@ -820,25 +849,29 @@ __s32 EBOOK_Decode_SetDefaultCharset(H_DECODE_NEW hdle, __epdk_charset_enm_e cha
 	}
 
 	p_decode = (__ebook_decode_t *)hdle;
+	__wrn("EBOOK_Decode_SetDefaultCharset...\n");
 
 	if(p_decode->default_charset == charset)//如果默认编码格式 等于 检测到的编码格式
 	{
+		__wrn("default_charset is GBK...\n");
 		return EPDK_OK;
 	}
 
-	p_decode->default_charset = charset;//重新把编码格式赋值给默认编码格式变量
+	/*p_decode->default_charset = charset;//重新把编码格式赋值给默认编码格式变量
 
 	if((p_decode->charset == EPDK_CHARSET_ENM_UTF16LE)
 	    || (p_decode->charset == EPDK_CHARSET_ENM_UTF16BE)
 	    || (p_decode->charset == EPDK_CHARSET_ENM_UTF8))
 	{
 		// 非未知编码
+		__wrn("UTF8 is STOP...\n");
 		return EPDK_OK;
 	}
 
 	if(p_decode->decode_sta == DECODE_NULL)
 	{
 		// 未开始解码
+		__wrn("decode_sta is NULL...\n");
 		return EPDK_OK;
 	}
 
@@ -870,7 +903,7 @@ __s32 EBOOK_Decode_SetDefaultCharset(H_DECODE_NEW hdle, __epdk_charset_enm_e cha
 	__wrn("show page is start...\n");
 	__ebook_decode_show_page(p_decode);//显示到页面界面图层
 	__wrn("show page is stop...\n");
-	return EPDK_OK;	
+	return EPDK_OK;	*/
 
 
 }
@@ -897,6 +930,7 @@ __s32   EBOOK_Decode_ShowPage(H_DECODE_NEW hdle, __u32 offset)
 	{
 		return EPDK_FAIL;
 	}
+	__wrn("EBOOK_Decode_ShowPage...\n");
 
 	p_decode = (__ebook_decode_t *)hdle;
 	p_decode->current_page = EBOOK_Analysis_GetPage(p_decode->analysis_hdle, offset);//获取当前分析页的页号

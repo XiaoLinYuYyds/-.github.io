@@ -437,13 +437,16 @@ static  __s32 __analysis_page_gbk(__mbook_analysis_t *hdle, __u32 len)
 		else
 		{
 			tmp_x = tmp_x + tmp_w;
+			__msg(" tmp_x = %d\n",tmp_x);
 		}
 
 		if((tmp_ofs + 4) >= len)
 		{
+			__msg(" tmp_ofs = %d\n",tmp_ofs);
 			break;
 		}
 	}
+	__msg("gbk hdle->total_page = %d\n",hdle->total_page);
 
 	hdle->last_end  = hdle->last_end + tmp_ofs;
 	hdle->p_operate = p_one;
@@ -916,24 +919,28 @@ __s32   MBOOK_Analysis_Work(H_ANALYSIS hdle)
 	{
 		case EPDK_CHARSET_ENM_UTF8 :
 		{
+			__wrn("analysis file UTF8\n");
 			__analysis_page_info_utf8(p_analysis);
 		}
 		break;
 
 		case EPDK_CHARSET_ENM_UTF16BE:
 		{
+			__wrn("analysis file UTF16BE\n");
 			__analysis_page_info_utf16_be(p_analysis);
 		}
 		break;
 
 		case EPDK_CHARSET_ENM_UTF16LE:
 		{
+			__wrn("analysis file UTF16LE\n");
 			__analysis_page_info_utf16_le(p_analysis);
 		}
 		break;
 
 		case EPDK_CHARSET_ENM_GBK:
 		{
+			__wrn("analysis file GBK\n");
 			__analysis_page_info_gbk(p_analysis);
 		}
 		break;
@@ -1017,6 +1024,7 @@ __s32   MBOOK_Analysis_GetPage(H_ANALYSIS hdle, __u32 offset)
 
 	if(offset < 10)
 	{
+		__msg("offset = %d\n",offset);
 		return 1;
 	}
 
@@ -1034,7 +1042,6 @@ __s32   MBOOK_Analysis_GetPage(H_ANALYSIS hdle, __u32 offset)
 			break;
 		}
 	}
-
 	return p_one->page_no;
 }
 

@@ -1,5 +1,12 @@
 #include "ebook_decod_i.h"
 
+typedef struct tag_EBOOK_FONT
+{
+	__s32       font_size;	//文本大小
+	__s32      *font_table;	//字体表
+	GUI_FONT   *char_font;	//字体句柄
+}
+__ebook_font_t;
 
 /*
 ************************************************************************************************************************
@@ -43,11 +50,15 @@ H_EBOOK_FONT EBOOK_Font_Init(GUI_FONT *ebook_font, __u32 size)
 	{
 		*(p_font->font_table + i) = GUI_GetCharDistX(i);//获取字符间的距离
 	}
+	__wrn(" p_font = %d\n",p_font);
 
 	return p_font;
 EBOOK_FONT_ERROR_2:
 	GUI_TTF_Done(p_font->char_font);//字体
+	__wrn(" p_font->char_font = %d\n",p_font->char_font);
 	p_font->char_font = NULL;
+FONT_ERROR_1:
+	My_Mfree(0, p_font);
 	return NULL;
 }
 

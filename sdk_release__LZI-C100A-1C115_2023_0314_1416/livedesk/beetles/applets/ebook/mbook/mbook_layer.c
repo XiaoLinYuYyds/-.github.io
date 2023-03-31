@@ -20,12 +20,13 @@
 **********************************************************************************************************************
 *                                               MBOOK_Layer_CreatLayer
 *
-* Description:
+* Description: 创建8bpp图层
 *
-* Arguments  :
+* Arguments  : w：图层宽
+*			   h：图层高
+*			   pipe：图层管道；0或1
+* Returns    : 返回创建的图层句柄hlyr
 *
-* Returns    :
-
 * Notes      :
 *
 **********************************************************************************************************************
@@ -81,11 +82,11 @@ H_WIN   MBOOK_Layer_CreatLayer(__u32 w, __u32 h, __s32 pipe)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_DeleteLayer
 *
-* Description:
+* Description:	图层删除
 *
-* Arguments  :
+* Arguments  :	h_lyr：创建好的图层句柄
 *
-* Returns    :
+* Returns    :	EPDK_OK:成功；EPDK_FAIL:失败。
 
 * Notes      :
 *
@@ -106,11 +107,11 @@ __s32   MBOOK_Layer_DeleteLayer(H_WIN h_lyr)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_OpenShow
 *
-* Description:
+* Description:	打开图层状态:图层显示打开
 *
-* Arguments  :
+* Arguments  :	h_lyr：创建好的图层句柄
 *
-* Returns    :
+* Returns    :	EPDK_OK:成功；EPDK_FAIL:失败。
 
 * Notes      :
 *
@@ -131,11 +132,11 @@ __s32   MBOOK_Layer_OpenShow(H_WIN h_lyr)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_CloseShow
 *
-* Description:
+* Description:	关闭图层状态:图层显示关闭
 *
-* Arguments  :
+* Arguments  :	h_lyr：创建好的图层句柄
 *
-* Returns    :
+* Returns    :	EPDK_OK:成功；EPDK_FAIL:失败。
 
 * Notes      :
 *
@@ -156,11 +157,11 @@ __s32   MBOOK_Layer_CloseShow(H_WIN h_lyr)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_IsOnShow
 *
-* Description:
+* Description:	检查图层状态是否打开
 *
-* Arguments  :
+* Arguments  :	h_lyr：创建好的图层句柄
 *
-* Returns    :
+* Returns    :	EPDK_TRUE:真；EPDK_FALSE:假
 
 * Notes      :
 *
@@ -185,12 +186,12 @@ __s32   MBOOK_Layer_IsOnShow(H_WIN h_lyr)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_GetSrcY
 *
-* Description: ??????????????
+* Description: 移动图层的显示区域，获取源窗口显示区域的y轴起始坐标
 *
-* Arguments  : h_lyr: ?????????
+* Arguments  : h_lyr: 操作的图层
 *
 *
-* Returns    : ?????????????????
+* Returns    : 返回当前图层的起始区域。
 
 * Notes      :
 *
@@ -207,12 +208,12 @@ __s32   MBOOK_Layer_GetSrcY(H_WIN h_lyr)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_GetScnY
 *
-* Description: ??????????????
+* Description: 移动图层的显示区域，获取荧光屏显示区域的y轴起始坐标
 *
-* Arguments  : h_lyr: ?????????
+* Arguments  : h_lyr: 操作的图层
 *
 *
-* Returns    : ?????????????????
+* Returns    : 返回当前图层的起始区域。
 
 * Notes      :
 *
@@ -229,12 +230,12 @@ __s32   MBOOK_Layer_GetScnY(H_WIN h_lyr)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_GetSrcH
 *
-* Description: ??????????????
+* Description: 移动图层的显示区域，获取源窗口显示区域的高
 *
-* Arguments  : h_lyr: ?????????
+* Arguments  : h_lyr: 操作的图层
 *
 *
-* Returns    : ?????????????????
+* Returns    : 返回当前图层的起始区域。
 
 * Notes      :
 *
@@ -251,12 +252,12 @@ __s32   MBOOK_Layer_GetSrcH(H_WIN h_lyr)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_MoveSrc
 *
-* Description: ??????????????
+* Description: 移动图层的显示区域，源窗口显示区域的移动
 *
-* Arguments  : h_lyr: ?????????
-*              step???????????
+* Arguments  : h_lyr: 操作的图层
+*              step：要移动的步长
 *
-* Returns    : < 0????????????????????????> 0????????????????????·???= 0?????????????
+* Returns    : < 0：显示区域移到了屏幕的上方，> 0：显示区域移到了屏幕的下方，= 0：刚好覆盖屏幕。
 
 * Notes      :
 *
@@ -278,12 +279,12 @@ void    MBOOK_Layer_MoveSrc(H_WIN h_lyr, __s32 step)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_SetScn
 *
-* Description: ??????????????
+* Description: 移动图层的显示区域，设置荧光屏显示区域的y轴起始坐标
 *
-* Arguments  : h_lyr: ?????????
-*              step???????????
+* Arguments  : h_lyr: 操作的图层
+*              step：要移动的步长
 *
-* Returns    : < 0????????????????????????> 0????????????????????·???= 0?????????????
+* Returns    : < 0：显示区域移到了屏幕的上方，> 0：显示区域移到了屏幕的下方，= 0：刚好覆盖屏幕。
 
 * Notes      :
 *
@@ -304,12 +305,11 @@ void    MBOOK_Layer_SetScn(H_WIN h_lyr, __s32 y)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_SetSrc
 *
-* Description: ??????????????
+* Description: 移动图层的显示区域，设置源窗口显示区域的y轴起始坐标
 *
-* Arguments  : h_lyr: ?????????
-*              flag????????????0??????????1???????????-1???????????
-*
-* Returns    : -1????????????????????????1????????????????????·???0?????????????
+* Arguments  : h_lyr: 操作的图层
+*             
+* Returns    : 
 
 * Notes      :
 *
@@ -332,12 +332,11 @@ void    MBOOK_Layer_SetSrc(H_WIN h_lyr, __s32 y)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_SetSrc
 *
-* Description: ??????????????
+* Description: 移动图层的显示区域，复位窗口
 *
-* Arguments  : h_lyr: ?????????
-*              flag????????????0??????????1???????????-1???????????
-*
-* Returns    : -1????????????????????????1????????????????????·???0?????????????
+* Arguments  : h_lyr: 操作的图层
+*              
+* Returns    : 
 
 * Notes      :
 *
@@ -357,12 +356,11 @@ void    MBOOK_Layer_ResetWin(H_WIN h_lyr)
 **********************************************************************************************************************
 *                                               MBOOK_Layer_SetSrc
 *
-* Description: ??????????????
+* Description: 移动图层的显示区域，图层旋转方向；
 *
-* Arguments  : h_lyr: ?????????
-*              flag????????????0??????????1???????????-1???????????
-*
-* Returns    : -1????????????????????????1????????????????????·???0?????????????
+* Arguments  : h_lyr: 操作的图层
+*			   rotate：0为横屏；1为竖屏
+* Returns    : 
 
 * Notes      :
 *
@@ -375,13 +373,13 @@ void    MBOOK_Layer_Rotate(H_WIN h_lyr, __u32 w, __u32 h, __u32 rotate)
 
 	if(rotate == 0)
 	{
-		GUI_SetLCDSize(w, h);
-		GUI_SetLCDDirection(rotate);
+		GUI_SetLCDSize(w, h);			//设置LCD显示屏字节大小
+		GUI_SetLCDDirection(rotate);	//设置LCD显示屏方向
 		rect.x0 = 0;
 		rect.y0 = 0;
 		rect.x1 = w;
 		rect.y1 = h;
-		GUI_SetClipRect(&rect);
+		GUI_SetClipRect(&rect);			//设置用于剪切的矩形
 	}
 	else
 	{

@@ -253,7 +253,7 @@ static __s32 app_new_ebook_decode_create(__gui_msg_t *msg)
 	/*********************************电子书文本显示控制**************************/
 	new_ebook_ctrl->config.show_rotate   = 0;									//横竖屏显示，0为竖屏
 	new_ebook_ctrl->config.font_size     = 16;									//文本字节大小
-	new_ebook_ctrl->config.char_font     = new_ebook_ctrl->font;				//
+	new_ebook_ctrl->config.char_font     = new_ebook_ctrl->font;				//字库句柄
 	new_ebook_ctrl->config.row_space     = 10;									//行间距
 	new_ebook_ctrl->config.col_space     = 2;									//列间距
 	new_ebook_ctrl->config.border_width  = 10;									//边框宽
