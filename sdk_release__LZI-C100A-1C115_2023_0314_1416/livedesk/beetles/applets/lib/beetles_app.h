@@ -150,8 +150,8 @@ typedef enum
 typedef enum
 {
 	ID_HOME_NEWMUSIC = 0,/*ID_HOME_MUSIC*/
-	ID_HOME_MOVIE,
 	
+	ID_HOME_NEW_FM,					/*收音机的manwin窗口创建标志*/
 #if SP_APP_ATV
 	ID_HOME_TV,
 	//ID_HOME_AVIN,
@@ -191,7 +191,7 @@ typedef enum
 	ID_HOME_NEW_MOVIE,			  /*新添加的movie视频app应用程序，manwin窗口创建标志*/
 	ID_HOME_NEW_SETTING_NUMBER,		/*新添加的空白的manwin窗口*/
 	ID_HOME_NEW_EXPORER,		   /*ID_HOME_MOVIE,*/
-	ID_HOME_NEW_FM,					/*收音机的manwin窗口创建标志*/
+	ID_HOME_MOVIE,
 } root_home_id_t;
 
 typedef enum

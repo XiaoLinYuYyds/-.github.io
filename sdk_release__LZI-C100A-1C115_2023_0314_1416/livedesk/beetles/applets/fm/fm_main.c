@@ -450,7 +450,7 @@ static __s32 _fm_mainfrw_proc(__gui_msg_t *msg)
 
 		return EPDK_OK;
 
-		case CMD_AUTOSRH_FINDCHFAIL:
+		case CMD_AUTOSRH_FINDCHFAIL://自动搜索所有
 		{
 			FM_UpdateUI(msg->h_deswin);
 		}

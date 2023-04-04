@@ -77,6 +77,7 @@ typedef struct tag_root_ctrl
 	H_WIN	h_app_new_photo;
 	H_WIN	h_app_new_music;/*存放新添加的music应用*/
 	H_WIN	h_app_new_ebook;
+	H_WIN	h_app_new_fm;/*存放新添加的收音机应用*/
 #if SP_APP_AUX
 	H_WIN	h_app_linin;
 #endif
@@ -6306,6 +6307,23 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 						}
 						break;
 
+						case ID_HOME_NEW_FM:
+						{
+							#if 1//直接打开
+								gscene_hbar_set_state(HBAR_ST_HIDE);
+								__app_root_change_to_default_bg();
+								__wrn("\n********************home switch to new fm ***************\n");
+								root_para->root_type = msg->dwReserved;//2，TF卡
+								root_para->explr_root = msg->dwReserved;
+								root_ctrl->h_app_new_fm = app_new_fm_manwin_create(root_para);//创建收音机manwin窗口
+								app_root_cacheon();
+
+								GUI_WinSetFocusChild(root_ctrl->h_app_new_fm);//按键消息信号发送到当前创建的manwin窗口
+								app_root_cacheoff();
+							#endif
+						}
+						break;
+
 						default:
 							break;
 					}
@@ -6774,6 +6792,27 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 				
 		}
 		break;
+		case APP_NEWFM_ID:
+		{
+			switch(HIWORD(msg->dwAddData1)){
+				case NEW_SWITCH_TO_OTHER_APP:{
+					switch(msg->dwAddData2){
+						case NEW_SETTING_SW_TO_MAIN:{
+							__wrn("**********new fm to home**********\n");
+							GUI_ManWinDelete(root_ctrl->h_app_new_fm);	/*删除新添加的fm收音机应用manwin窗口*/
+							root_ctrl->h_app_new_fm = NULL;
+							__here__;
+							app_root_cacheon();
+							__app_home_restore(msg);						/*重新创建home应用的manwin窗口*/
+							app_root_cacheoff();
+							break;
+						}
+						break;
+					}
+				}
+			}
+		}
+		break;
 		
 		case APP_EXPLORER_ID:
 		{
@@ -7010,7 +7049,7 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 
 						case EXPLR_SW_TO_EBOOK:
 						{
-							#if 0
+							#if 1
 							//删除后台音乐
 							//__app_root_delete_bg_music(msg);
 							__msg("**********explorer to ebook**********\n");

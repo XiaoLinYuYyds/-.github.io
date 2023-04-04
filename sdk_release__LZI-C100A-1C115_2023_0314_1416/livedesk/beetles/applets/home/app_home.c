@@ -1078,7 +1078,18 @@ static __s32 app_home_proc(__gui_msg_t *msg)
 								}
 								break;
 							}
-							
+
+							case ID_HOME_NEW_FM:
+							{
+								__wrn("send ID_HOME_NEW_FM to app_root_scene.c is...\n");
+								GUI_LyrWinSetSta(home_para->lyr_smenu, GUI_LYRWIN_STA_SUSPEND);		//sub_menu子菜单图层窗口挂起状态
+								GUI_LyrWinSetSta(home_para->lyr_mmenu, GUI_LYRWIN_STA_SUSPEND); 	//main_menu主菜单图层窗口挂起状态
+								GUI_LyrWinSetSta(home_para->lyr_forground, GUI_LYRWIN_STA_SUSPEND);	//main_menu主菜单前景图层窗口挂起状态
+								main_menu_uninit_res(home_para->h_mmenu);							//主菜单窗口释放图片资源
+								main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEW_FM, 2);	//发送到app_root_scene.c文件进入新的new_fm创建manwin窗口功能；2为TF卡
+								__wrn("send ID_HOME_NEW_FM is ok\n");
+							}
+							break;
 
 							/*
 							case ID_HOME_POWER_SETTING:
