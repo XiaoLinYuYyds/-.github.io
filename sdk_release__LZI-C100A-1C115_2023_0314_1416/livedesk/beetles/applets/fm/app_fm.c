@@ -479,6 +479,7 @@ static __s32 fm_auto_search_start(FM_CTRLDATA_T *fm_ctrl)
 	g_is_searching = 1;
 	//g_set_close_scn_time(1);
 	dsk_radio_get_search_flag(&search_flag) ;
+	__wrn("search_flag = %d:\n",search_flag);
 
 	if(1 == search_flag) //正在搜索过程中不允许中断，必须得搜索完后才能进行
 	{
@@ -491,8 +492,8 @@ static __s32 fm_auto_search_start(FM_CTRLDATA_T *fm_ctrl)
 		fm_ctrl->search_mode = SRHMODE_AUTO;
 		dsk_radio_set_automanual_mode(DSK_RADIO_SEARCH_AUTO);
 		dsk_radio_rcv_set_play_list_type(PLAY_LIST_SEARCH_RESULT);
-		__wrn("fm_auto_search_start:");
-		dsk_radio_rcv_search_all(0, 0);
+		__wrn("fm_auto_search_start:\n");
+		dsk_radio_rcv_search_all(0, 0);//搜索所有
 		esKRNL_TimeDly(5);
 		SEND_MSG(DSK_MSG_SCREEN_CLOSE, NULL, GUI_WinGetHandFromName("init"), 0, 0, 0);
 		return EPDK_OK;
@@ -510,6 +511,7 @@ static __s32 fm_init_data(FM_CTRLDATA_T *fm_ctrl)
 	{
 		dsk_radio_chan_t chan_info;
 		reg_fm_para_t *para;
+		__wrn("dsk_radio_is_open is have...\n");
 		get_reg_pointer(para, reg_fm_para_t, REG_APP_FM);
 		fm_ctrl->channel_count = dsk_radio_rcv_get_search_result_vn();
 		__wrn("fm_ctrl->channel_count = %d\n", fm_ctrl->channel_count);
@@ -522,7 +524,7 @@ static __s32 fm_init_data(FM_CTRLDATA_T *fm_ctrl)
 			fm_ctrl->channel_count = 0;
 			//初始化reg_fm_para_t
 			ZeroMemory(para, sizeof(reg_fm_para_t));
-			fm_reg_set_sel_channel_id(para, 0);
+			//fm_reg_set_sel_channel_id(para, 0);
 			// 			fm_reg_set_channel_(para, 0, fm_ctrl->cur_freq); //设置默认一个频道频率
 			// 			fm_reg_set_channel_count(para, fm_ctrl->channel_count);
 			dsk_radio_rcv_get_search_result(para);
@@ -637,7 +639,7 @@ static __s32 fm_init_module(void *cb_arg, FM_CTRLDATA_T *fm_ctrl)
 
 				if(0 != para->FM_channel[i])
 				{
-					num++;
+					num++;//记录有效的频率
 				}
 			}
 
@@ -649,8 +651,8 @@ static __s32 fm_init_module(void *cb_arg, FM_CTRLDATA_T *fm_ctrl)
 	}
 
 	dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_SUCCESS, esKRNL_GetCallBack(cb_srhch_success), cb_arg);
-	dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_FAIL, esKRNL_GetCallBack(cb_srhch_fail), cb_arg);
-	dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_OVER, esKRNL_GetCallBack(cb_srhch_over), cb_arg);
+	//dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_FAIL, esKRNL_GetCallBack(cb_srhch_fail), cb_arg);
+	//dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_OVER, esKRNL_GetCallBack(cb_srhch_over), cb_arg);
 	//dsk_radio_rcv_set_search_cb(esKRNL_GetCallBack(fm_auto_search_cb),(void *)fmplay_menu_attr);
 	fm_init_data(fm_ctrl);
 	return EPDK_OK;
@@ -875,7 +877,7 @@ static __s32 on_fm_auto_search_dlg_cmd(H_WIN hwnd, __s32 id, __s32 para)
 }
 
 
-
+//获取图标
 void *Fm_get_icon_res(__u32 index)
 {
 	fm_icon_data_t *icon_table = NULL;
@@ -928,7 +930,7 @@ void *Fm_get_icon_res(__u32 index)
 	}
 }
 
-
+//数子图层绘制
 static __s32 FM_digit_layer_draw(__gui_msg_t *msg)
 {
 	__s32 	 i;
@@ -1030,7 +1032,7 @@ static __s32 FM_digit_layer_draw(__gui_msg_t *msg)
 	GUI_LyrWinSetTop(*phLyr);
 	return EPDK_OK;
 }
-
+//显示数字
 void fm_display_digit(__gui_msg_t *msg)
 {
 	H_LYR	*phLyr;
@@ -1102,7 +1104,7 @@ void fm_display_digit(__gui_msg_t *msg)
 	__wrn("movie_ctrl->ndigit_fm_num=%d\n", wnd_para->fm_ctrl.ndigit_fm_num);
 	FM_digit_layer_draw(msg);
 }
-
+//删除数字图层
 __s32 FM_delete_digit_layer(__gui_msg_t *msg)
 {
 	FM_WND_T *wnd_para;
@@ -1144,7 +1146,7 @@ __s32 FM_delete_digit_layer(__gui_msg_t *msg)
 	__wrn("fm_delete_digit_layer end...\n");
 	return EPDK_OK;
 }
-
+//数字回调处理函数
 __s32 fm_proc_digital(__gui_msg_t *msg)
 {
 	FM_WND_T *wnd_para;
@@ -1383,7 +1385,7 @@ static __s32 on_fm_manwnd_command(__gui_msg_t *msg)
 			__wrn("msg->dwAddData1 == %d\n", msg->dwAddData1);
 
 		case ID_FM_SCENE_SSET:
-			return on_fm_sset_cmd(msg->h_deswin, HISWORD(msg->dwAddData1), msg->dwAddData2);
+			//return on_fm_sset_cmd(msg->h_deswin, HISWORD(msg->dwAddData1), msg->dwAddData2);
 
 		case ID_FM_IS_AUTO_SEARCH_DLG:
 			return on_fm_auto_search_dlg_cmd(msg->h_deswin, HISWORD(msg->dwAddData1), msg->dwAddData2);
@@ -1846,7 +1848,7 @@ static __s32 on_fm_create(__gui_msg_t *msg)
 
 	_app_show_focus_wnd(wnd_para->h_main_wnd, wnd_para->h_main_lyr);
 	GUI_LyrWinSetTop(wnd_para->h_main_lyr);
-#if TIME_FMAutoCloseScreen
+/*#if TIME_FMAutoCloseScreen
 	g_set_close_scn_time(TIME_FMAutoCloseScreen);
 #else
 	auto_close_scn_time = get_auto_close_scn_time_fm();
@@ -1857,7 +1859,7 @@ static __s32 on_fm_create(__gui_msg_t *msg)
 		g_set_close_scn_time(auto_close_scn_time);
 	}
 
-#endif
+#endif*/
 	{
 	ES_FILE *paudio;
 	__u32 ret;
@@ -1889,7 +1891,7 @@ static __s32 _app_fm_Proc(__gui_msg_t *msg)
 		case GUI_MSG_CREATE:
 		{
 			esPWM_LockCpuFreq();//禁止CPU自动调节频率，防止FM杂音
-			dsk_set_auto_off_time(0);
+			//dsk_set_auto_off_time(0);
 			//pull_down_gpio(4, 15);//拉低LCD15，选择AB类功放
 			//dsk_amplifier_onoff(1);//打开功放
 			g_FMManWnd = msg->h_deswin;
@@ -1954,15 +1956,15 @@ static __s32 _app_fm_Proc(__gui_msg_t *msg)
 		{
 			FM_WND_T *wnd_para;
 			FM_GetWndPara(wnd_para, FM_WND_T, msg->h_deswin);
-
-			if(msg->dwAddData1 == wnd_para->fm_ctrl.digit_timmer_id)
+			__wrn("ID_TIMER_FM_TestPlayFreq timer\n");
+			/*if(msg->dwAddData1 == wnd_para->fm_ctrl.digit_timmer_id)
 			{
 				__wrn("timmer has come...\n");
 				return fm_proc_digital(msg);
-			}
+			}*/
 
 #if SP_FM_WhenAutoSearch_PlayFreq
-			else if(msg->dwAddData1 == ID_TIMER_FM_TestPlayFreq)
+			/*else if(msg->dwAddData1 == ID_TIMER_FM_TestPlayFreq)
 			{
 				if(GUI_IsTimerInstalled(msg->h_deswin, ID_TIMER_FM_TestPlayFreq) == EPDK_TRUE)
 				{
@@ -1973,7 +1975,7 @@ static __s32 _app_fm_Proc(__gui_msg_t *msg)
 				dsk_amplifier_onoff(0);
 				dsk_radio_rcv_autosearch_resume();
 				return EPDK_OK;
-			}
+			}*/
 
 #endif
 		}

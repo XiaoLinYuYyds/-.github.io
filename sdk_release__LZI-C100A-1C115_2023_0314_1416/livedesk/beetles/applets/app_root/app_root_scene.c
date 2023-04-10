@@ -2806,6 +2806,11 @@ static __s32 app_root_process_before_show_dlg(root_ctrl_t *root_ctrl)
 		app_fm_notify_delete_sub_scene(root_ctrl->h_app_fm);
 	}
 
+	if(root_ctrl->h_app_new_fm)
+	{
+		app_fm_notify_delete_sub_scene(root_ctrl->h_app_new_fm);
+	}
+
 	if(root_ctrl->h_app_setting)
 	{
 		app_setting_notify_delete_sub_dlg_scene(root_ctrl->h_app_setting);
@@ -2901,6 +2906,10 @@ static __s32 app_root_process_after_show_dlg(root_ctrl_t *root_ctrl)
 	else if(root_ctrl->h_app_fm)
 	{
 		GUI_WinSetFocusChild(root_ctrl->h_app_fm);
+	}
+	else if(root_ctrl->h_app_new_fm)
+	{
+		GUI_WinSetFocusChild(root_ctrl->h_app_new_fm);
 	}
 	else if(root_ctrl->h_app_calendar)
 	{
@@ -4501,6 +4510,7 @@ static __s32 app_root_check_volume_key(__gui_msg_t *msg)
 				    &&(!(root_ctrl->h_app_new_movie)) //新添加的movie应用app
 				    &&(!(root_ctrl->h_app_new_music))//新添加音乐
 				    &&(!(root_ctrl->h_app_new_ebook)) 
+				    &&(!(root_ctrl->h_app_new_fm)) 
 				#if SP_APP_ATV
 				    &&(!(root_ctrl->h_app_atv))
 				#endif
@@ -4566,6 +4576,7 @@ static __s32 app_root_check_volume_key(__gui_msg_t *msg)
 				    &&(!(root_ctrl->h_app_new_movie)) //新添加的movie应用app
 				    &&(!(root_ctrl->h_app_new_music))//新添加音乐
 				    &&(!(root_ctrl->h_app_new_ebook)) 
+				    &&(!(root_ctrl->h_app_new_fm))
 				#if SP_APP_ATV
 				    &&(!(root_ctrl->h_app_atv))
 				#endif
@@ -4712,6 +4723,10 @@ __s32 app_root_shift_mode(root_ctrl_t *root_ctrl, __u32 type)
 		s_shiftMode = m_eShiftMode_movie;
 	}
 	else if(root_ctrl->h_app_fm)
+	{
+		s_shiftMode = m_eShiftMode_fm;
+	}
+	else if(root_ctrl->h_app_new_fm)//新添加收音机
 	{
 		s_shiftMode = m_eShiftMode_fm;
 	}
@@ -8174,6 +8189,20 @@ __s32 app_root_win_proc(__gui_msg_t *msg)
 					{
 						//__here__;
 						if(root_ctrl->h_app_fm)
+						{
+							//__here__;
+							is_fm_searching = app_fm_get_auto_search_state();
+
+							if(1 == is_fm_searching)
+							{
+								amplifer_onoff = 0;
+								break;
+							}
+
+							playing = 1;
+						}
+
+						if(root_ctrl->h_app_new_fm)//新添加的收音机窗口句柄
 						{
 							//__here__;
 							is_fm_searching = app_fm_get_auto_search_state();

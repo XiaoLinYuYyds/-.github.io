@@ -96,7 +96,7 @@ __bool dsk_radio_is_open(void)
 __pCBK_t dsk_radio_set_cb(dsk_radio_event_e event, __pCBK_t cb, void *ctx)
 {
 	__pCBK_t  cb_old;
-
+	__wrn("dsk_radio_set_cb is input\n...");
 	switch(event)
 	{
 		case DSK_RADIO_EVENT_SEARCH_SUCCESS:

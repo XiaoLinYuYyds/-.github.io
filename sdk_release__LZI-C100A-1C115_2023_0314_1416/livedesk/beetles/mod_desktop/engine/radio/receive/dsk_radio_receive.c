@@ -67,12 +67,13 @@ void __autosearch_thread(void *p_arg)
 			esKRNL_TDel(EXEC_prioself);
 			break;
 		}
+		//__wrn(" DSK:search_flag = %d\n", dsk_radio_rcv->search_flag);
 
-		if(dsk_radio_rcv->search_flag == 0x01)
+		if(dsk_radio_rcv->search_flag == 0x01)//搜索中
 		{
 			dsk_radio_rcv->cur_freq = dsk_radio_rcv->start_freq;
 
-			if(dsk_radio_rcv->auto_maual_mode == DSK_RADIO_SEARCH_MANUAL)
+			if(dsk_radio_rcv->auto_maual_mode == DSK_RADIO_SEARCH_MANUAL)//手动搜索
 			{
 				radio_freq = dsk_radio_rcv->start_freq + LARK_SEARCH_STEP_US;
 				__wrn(" DSK:radio_freq = %d\n", radio_freq);
@@ -97,12 +98,12 @@ void __autosearch_thread(void *p_arg)
 						curfreq = h_radio->freq_range.fm_area_max_freq;
 						dsk_radio_rcv->manual_cur_channum |= 0xf0000000;
 						result = eLIBs_fioctrl(h_radio->fm_drv, DRV_FM_CMD_RECVE_SEARCH, DRV_FM_MANUAL_SEARCH | DRV_FM_SEARCH_DOWN, (void *)(curfreq));
-						__wrn(" DSK:result = %d\n", result);
+						__wrn(" DSK:result 1 = %d\n", result);
 					}
 					else
 					{
 						result = eLIBs_fioctrl(h_radio->fm_drv, DRV_FM_CMD_RECVE_SEARCH, DRV_FM_MANUAL_SEARCH | DRV_FM_SEARCH_DOWN, (void *)(curfreq));
-						__wrn(" DSK:result = %d\n", result);
+						__wrn(" DSK:result 2 = %d\n", result);
 					}
 				}
 				else//向小的方向搜索
@@ -119,17 +120,17 @@ void __autosearch_thread(void *p_arg)
 						radio_freq = h_radio->freq_range.fm_area_min_freq;
 						dsk_radio_rcv->manual_cur_channum |= 0xf0000000;
 						result = eLIBs_fioctrl(h_radio->fm_drv, DRV_FM_CMD_RECVE_SEARCH, DRV_FM_MANUAL_SEARCH | DRV_FM_SEARCH_UP, (void *)(radio_freq));
-						__wrn(" DSK:result = %d\n", result);
+						__wrn(" DSK:result 3 = %d\n", result);
 					}
 					else	//FM4702
 					{
 						__here__;
 						result = eLIBs_fioctrl(h_radio->fm_drv, DRV_FM_CMD_RECVE_SEARCH, DRV_FM_MANUAL_SEARCH | DRV_FM_SEARCH_UP, (void *)(radio_freq));
-						__wrn(" DSK:result = %d\n", result);
+						__wrn(" DSK:result 4 = %d\n", result);
 					}
 				}
 			}
-			else		//dsk_radio_rcv->auto_maual_mode == DSK_RADIO_SEARCH_AUTO
+			else		//dsk_radio_rcv->auto_maual_mode == DSK_RADIO_SEARCH_AUTO 自动搜索
 			{
 				radio_freq = dsk_radio_rcv->start_freq;
 				__wrn(" DSK auto search:radio_freq = %d\n", radio_freq);

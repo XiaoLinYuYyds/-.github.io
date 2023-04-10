@@ -1,6 +1,15 @@
----- MBOOK_Decode_Init Matches (5 in 4 files) ----
-mbook_on_create in app_ebook.c (livedesk\beetles\applets\ebook) : 	ebook_ctrl->mbook = MBOOK_Decode_Init(NULL, &err);
-app_new_ebook_framewin_create in App_new_ebook.c (livedesk\beetles\applets\new_ebook) : 	ebook_ctrl->mbook = MBOOK_Decode_Init(NULL, &err);
-mbook_decode.c (livedesk\beetles\applets\ebook\mbook) line 712 : *                       				MBOOK_Decode_Init
-mbook_decode.c (livedesk\beetles\applets\ebook\mbook) line 723 : H_DECODE   MBOOK_Decode_Init(char *filename, __u8 *err)
-mbook_decode.h (livedesk\beetles\applets\ebook\mbook) line 40 : H_DECODE   MBOOK_Decode_Init(char *filename, __u8 *err);
+---- DSK_MSG_SCREEN_CLOSE Matches (14 in 10 files) ----
+fm_auto_search_start in app_fm.c (livedesk\beetles\applets\fm) : 		SEND_MSG(DSK_MSG_SCREEN_CLOSE, NULL, GUI_WinGetHandFromName("init"), 0, 0, 0);
+__app_movie_proc in app_movie.c (livedesk\beetles\applets\movie) : 		case DSK_MSG_SCREEN_CLOSE :
+__new_fm_auto_search_start in app_new_fm.c (livedesk\beetles\applets\new_fm) : 		SEND_MSG(DSK_MSG_SCREEN_CLOSE, NULL, GUI_WinGetHandFromName("init"), 0, 0, 0);//发送
+app_root_win_proc in app_root_scene.c (livedesk\beetles\applets\app_root) : 		case DSK_MSG_SCREEN_CLOSE :
+mmenu_proc_key_enter in atv_menu.c (livedesk\beetles\applets\atv) : 									SEND_MSG(DSK_MSG_SCREEN_CLOSE, NULL, GUI_WinGetHandFromName("init"), 0, 0, 0);
+_atv_menu_proc in atv_menu.c (livedesk\beetles\applets\atv) : 					SEND_MSG(DSK_MSG_SCREEN_CLOSE, NULL, GUI_WinGetHandFromName("init"), 0, 0, 0);	
+dsk_msg.h (includes\emod\mod_desktop\dsk_msg) line 69 :   DSK_MSG_SCREEN_CLOSE,		// 通知关屏
+dsk_msg.h (livedesk\beetles\include\mod_desktop\msg_srv) line 71 :   DSK_MSG_SCREEN_CLOSE,		// 通知关屏
+fm_mainfrw_key_proc in fm_main.c (livedesk\beetles\applets\fm) : 				//SEND_MSG(DSK_MSG_SCREEN_CLOSE, msg->h_deswin, GUI_WinGetHandFromName("init"), 0, 0, 0);
+fm_mainfrw_key_proc in fm_main.c (livedesk\beetles\applets\fm) : 				//SEND_MSG(DSK_MSG_SCREEN_CLOSE, msg->h_deswin, GUI_WinGetHandFromName("init"), 0, 0, 0);
+g_close_screen in g_close_screen.c (livedesk\beetles\init\display) : 	msg.id 			= DSK_MSG_SCREEN_CLOSE;
+init_mainwin_cb in init_server.c (livedesk\beetles\init\ui) : 				SEND_MSG(DSK_MSG_SCREEN_CLOSE, NULL, msg->h_deswin, 0, 0);
+init_mainwin_cb in init_server.c (livedesk\beetles\init\ui) : 		case DSK_MSG_SCREEN_CLOSE:
+init_mainwin_cb in init_server.c (livedesk\beetles\init\ui) : 					msgex.id				= DSK_MSG_SCREEN_CLOSE;

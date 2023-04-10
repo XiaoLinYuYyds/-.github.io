@@ -6,12 +6,40 @@
 #include "beetles_app.h"
 #endif
 
+#define ID_TIMER_FM_TestPlayFreq_1				0x9876
+#define ID_TIMER_FM_TestPlayFreq_Speed_1			250	// 250 *10ms
 
 
 #define	NEW_FM_ID	(APP_NEWFM_ID+1)
 
+#define NEW_FM_GetManWnd()                   (g_FMManWnd)
+#define NEW_FM_GetWndPara(_p, _t, _hwnd)     (_p = (_t *)GUI_WinGetAttr(_hwnd))
+#define NEW_MAX_CHANNEL_FREQ                     FM_SEARCH_CHN_MAX_FREQ
+#define NEW_MIN_CHANNEL_FREQ                     FM_SEARCH_CHN_MIN_FREQ
+#define NEW_FM_UpdateUI(_hwnd)               do{ __msg("FM_UpdateUI\n"); GUI_WinUpdate(_hwnd, EPDK_TRUE);} while (0)
 
+typedef enum
+{
+  CMD_AUTOSRH_FINDCH = GUI_MSG_USER_DEF,
+  CMD_AUTOSRH_FINDCHFAIL,
+  CMD_AUTOSRH_OVER,
+  FM_COMMAND,
+} __fmplay_msg_t;
 
+typedef enum
+{
+  NEW_CMD_AUTOSRH_FINDCH = GUI_MSG_USER_DEF,
+  NEW_CMD_AUTOSRH_FINDCHFAIL,
+  NEW_CMD_AUTOSRH_OVER,
+  NEW_FM_COMMAND,
+} __NEW_fmplay_msg_t;
+
+enum
+{
+  NEW_SRHMODE_IDLE,
+  NEW_SRHMODE_AUTO,
+  NEW_SRHMODE_MANUAL,
+};
 
 
 #if 1//°´¼üÏûÏ¢ÃüÁî

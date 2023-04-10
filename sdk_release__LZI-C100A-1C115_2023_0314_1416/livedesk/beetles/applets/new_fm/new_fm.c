@@ -19,7 +19,69 @@
 
 
 
+/*
+************************************************************************************************************************
+*                       				__new_fm_frmwin_proc
+*
+*Description: fm的framewin窗口按键处理函数
+*
+*Arguments  : 
+*            
+*
+*Return     : 
+*
+************************************************************************************************************************
+*/
+static __s32  __new_fm_key_proc(__gui_msg_t *msg)
+{
+	static __s32 key_last = -1;
+	if(KEY_UP_ACTION == msg->dwAddData2)
+	{
+		switch(key_last)
+		{
+			case GUI_MSG_KEY_ENTER:{//自动搜索---开始
+				__wrn("enter new fm framewin..\n");
+				app_new_fm_cmd2parent(msg->h_deswin, MSG_NEW_FM_OP_ENTER, 0, 0);
+			}
+			break;
 
+			case GUI_MSG_KEY_MENU:{//退出应用---
+				__wrn("quit new fm framewin..\n");
+				app_new_fm_cmd2parent(msg->h_deswin, MSG_NEW_FM_OP_EXIT, 0, 0);
+			}
+			break;
+		}
+	}
+	else
+	{
+		switch(msg->dwAddData1)
+		{
+			case GUI_MSG_KEY_ENTER:{
+
+			}
+			break;
+
+			case GUI_MSG_KEY_RIGHT:{
+				__wrn("right new fm framewin..\n");
+				app_new_fm_cmd2parent(msg->h_deswin, MSG_NEW_FM_OP_RIGHT, 0, 0);
+			}
+			break;
+
+			case GUI_MSG_KEY_MENU:{
+
+			}
+			break;
+		}
+	}
+
+	if(KEY_UP_ACTION == msg->dwAddData2) {
+		key_last = -1;
+	}
+	else {
+		key_last = msg->dwAddData1;
+	}
+
+}
 
 
 
@@ -56,18 +118,38 @@ static __s32 __new_fm_frmwin_proc(__gui_msg_t *msg)
 			app_new_fm_cmd2parent(msg->h_deswin, MSG_NEW_FM_OP_EXIT, 0, 0);
 		}
 		return EPDK_OK;
+
+		case MSG_NEW_FM_OP_ENTER:{
+			__wrn("enter new fm framewin..\n");
+			app_new_fm_cmd2parent(msg->h_deswin, MSG_NEW_FM_OP_ENTER, 0, 0);
+		}
+		return EPDK_OK;
 		
 		case GUI_MSG_KEY: { //5,
 
-			switch(msg->dwAddData1){
-				case GUI_MSG_KEY_MENU:{
+			__new_fm_key_proc(msg);
+			/*switch(msg->dwAddData1){
+				case GUI_MSG_KEY_MENU:{//退出
 					__gui_msg_t mymsg;
 					mymsg.id = GUI_MSG_QUIT;
 					mymsg.h_deswin = msg->h_deswin;
 					GUI_SendMessage(&mymsg);
 				}
 				break;
-			}
+				case GUI_MSG_KEY_ENTER:{//回车
+					__gui_msg_t mymsg;
+					mymsg.id = MSG_NEW_FM_OP_ENTER;
+					mymsg.h_deswin = msg->h_deswin;
+					GUI_SendMessage(&mymsg);
+				}
+				break;
+
+				case GUI_MSG_KEY_RIGHT:{//下一首
+					__wrn("right new fm framewin..\n");
+					app_new_fm_cmd2parent(msg->h_deswin, MSG_NEW_FM_OP_RIGHT, 0, 0);
+				}
+				break;
+			}*/
 		}
 		break;
 	}
