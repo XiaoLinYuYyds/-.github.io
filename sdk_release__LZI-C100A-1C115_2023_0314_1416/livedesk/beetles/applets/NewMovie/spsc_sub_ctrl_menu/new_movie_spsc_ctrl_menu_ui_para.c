@@ -1,9 +1,8 @@
-
 #include	"new_movie_spsc_ctrl_menu_ui_para.h"
 
 
 
-new_movie_spsc_ctrl_menu_uipara_t uipara_1024_600 =
+static new_movie_spsc_ctrl_menu_uipara_t uipara_1024_600 =
 {
 	{//控制菜单图层大小
 		(1024-364)/2, 465, 364, 94

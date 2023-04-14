@@ -6,11 +6,11 @@
 #include "beetles_app.h"
 #endif
 
-#define ID_TIMER_FM_TestPlayFreq_1				0x9876
-#define ID_TIMER_FM_TestPlayFreq_Speed_1			250	// 250 *10ms
+#define ID_TIMER_FM_TestPlayFreq_1				0x01/*0x9876*/
+#define ID_TIMER_FM_TestPlayFreq_Speed_1		250	// 250 *10ms
 
 
-#define	NEW_FM_ID	(APP_NEWFM_ID+1)
+#define	NEW_FM_ID	(APP_NEWFM_ID+1)	//framewin窗口id
 
 #define NEW_FM_GetManWnd()                   (g_FMManWnd)
 #define NEW_FM_GetWndPara(_p, _t, _hwnd)     (_p = (_t *)GUI_WinGetAttr(_hwnd))
@@ -18,27 +18,46 @@
 #define NEW_MIN_CHANNEL_FREQ                     FM_SEARCH_CHN_MIN_FREQ
 #define NEW_FM_UpdateUI(_hwnd)               do{ __msg("FM_UpdateUI\n"); GUI_WinUpdate(_hwnd, EPDK_TRUE);} while (0)
 
-typedef enum
+typedef struct  //TODO: 精简某些量
 {
-  CMD_AUTOSRH_FINDCH = GUI_MSG_USER_DEF,
-  CMD_AUTOSRH_FINDCHFAIL,
-  CMD_AUTOSRH_OVER,
-  FM_COMMAND,
-} __fmplay_msg_t;
+
+	__s32 cur_max_freq; //存放当前最大频率：108000
+	__s32 cur_min_freq; //存放当前最小频率：87000
+
+	__s32 channel_id;     //存放当前通道id号
+	__u32 cur_freq;       //存放当前频率
+	__u32 channel_count;  //存放通道总数
+
+	__s32 search_mode;    //搜索模式 : auto or manual
+
+	__s32 is_record;
+
+	__s32 thumb_show;     // thumb btn,0 -- 不显示, 1 -- 显示为非焦点, 2 -- 显示为焦点
+	__s32 audio_mode;
+
+	//数字选取===================================
+	__s32  ndigit_fm_num;    //数字选取序号
+	__u8   digit_timmer_id;  //数字选取timmer id号
+	H_LYR  hdigit_layer;     //显示当前数字的图层
+	//=============================================
+	__bool m_dispCue;
+}
+NEW_FM_CTRLDATA_T;
+
 
 typedef enum
 {
-  NEW_CMD_AUTOSRH_FINDCH = GUI_MSG_USER_DEF,
-  NEW_CMD_AUTOSRH_FINDCHFAIL,
-  NEW_CMD_AUTOSRH_OVER,
+  NEW_CMD_AUTOSRH_FINDCH = GUI_MSG_USER_DEF,	//自动搜索状态下搜索到一个频点
+  NEW_CMD_AUTOSRH_FINDCHFAIL,					//自动搜索所有
+  NEW_CMD_AUTOSRH_OVER,							//自动搜索完成
   NEW_FM_COMMAND,
 } __NEW_fmplay_msg_t;
 
 enum
 {
-  NEW_SRHMODE_IDLE,
-  NEW_SRHMODE_AUTO,
-  NEW_SRHMODE_MANUAL,
+  NEW_SRHMODE_IDLE,		//空状态
+  NEW_SRHMODE_AUTO,		//自动搜索状态
+  NEW_SRHMODE_MANUAL,	//手动搜索状态
 };
 
 

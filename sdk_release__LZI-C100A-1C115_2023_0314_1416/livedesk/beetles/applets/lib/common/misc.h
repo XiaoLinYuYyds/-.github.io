@@ -206,7 +206,9 @@ typedef struct tag_load_bmpres_type
 	do \
 	{ \
 		APP_dsk_theme_open((_res).handle, _id); \
+		__msg("id = %d\n", _id);\
 		(_res).data = dsk_theme_hdl2buf((_res).handle); \
+		__msg("(_res).data = %d\n", (_res).data);\
 		DEBUG_BMP_DATA((_res).data); \
 	} while(0)
 

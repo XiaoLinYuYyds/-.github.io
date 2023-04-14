@@ -19,18 +19,12 @@ typedef struct	{//位域结构体
   	__u32 adcEnBit			: 1;	//b31
 }AdcAnaCtl1;
 
-typedef struct rbtre
-{
-	__s32 key;
-	struct rbtre *right;
-	struct rbtre *left;
-}node, *tree;
-
 //////////////////////////////////////////////////////////////////////////
 // 建立图层
 #define fm_layer_create(_lyr, _prt, _name)   app_com_layer_create_default(_lyr, _prt, _name)
 
 __s32 g_is_searching1 = 0;
+
 
 
 //窗口的命令发送函数
@@ -159,7 +153,7 @@ static void on_new_fm_test_freq_end(NEW_FM_CTRLDATA_T *fm_ctrl)
 ************************************************************************************************************************
 *                       				app_new_fm_scene_create
 *
-*Description: 用于fm的搜索成功回调处理函数//当前找到一个有效频率
+*Description: 用于fm的搜索成功函数//当前找到一个有效频率
 *
 *Arguments  : 
 *            
@@ -168,7 +162,6 @@ static void on_new_fm_test_freq_end(NEW_FM_CTRLDATA_T *fm_ctrl)
 *
 ************************************************************************************************************************
 */
-
 static void on_new_fm_test_freq_ok(NEW_FM_CTRLDATA_T *fm_ctrl)
 {
 	if(fm_ctrl->search_mode == NEW_SRHMODE_MANUAL)//手动搜索
@@ -192,14 +185,42 @@ static void on_new_fm_test_freq_ok(NEW_FM_CTRLDATA_T *fm_ctrl)
 		}
 	}
 }
-//////////////////////////////////////////////////////////////////////////
+
+/*
+************************************************************************************************************************
+*                       				app_new_fm_scene_create
+*
+*Description: 用于fm的搜索失败函数//当前没有找到一个有效频率
+*
+*Arguments  : 
+*            
+*
+*Return     : 
+*
+************************************************************************************************************************
+*/
+static void on_new_fm_test_freq_fail(NEW_FM_CTRLDATA_T *this)
+{
+	if(this->search_mode == NEW_SRHMODE_MANUAL)
+	{
+		dsk_radio_rcv_get_cur_freq(&this->cur_freq);//获取---收音机接收端当前的播放频率
+		__wrn("@cur_freq = %d\n",this->cur_freq);
+	}
+	else
+	{
+		dsk_radio_rcv_get_cur_freq(&this->cur_freq);//获取---收音机接收端当前的播放频率
+		__wrn("@cur_freq = %d\n",this->cur_freq);
+	}
+}
+
+//////////////////////////////////////////////////////////////////////////图层状态打开
 #define NEW_FM_CB_NEED_NOTIFY_FRW(_p) (_p && _p->fm_lyr && GUI_LyrWinGetSta(_p->fm_lyr) == GUI_LYRWIN_STA_ON)
 
 /*
 ************************************************************************************************************************
 *                       				app_new_fm_scene_create
 *
-*Description: 用于fm的搜索成功回调处理函数
+*Description: 用于fm的---搜索成功---回调处理函数
 *
 *Arguments  : 
 *            
@@ -217,22 +238,24 @@ __s32 new_cb_srhch_success(void *arg_p)
 
 	if(wnd_para)
 	{
-		on_new_fm_test_freq_ok(&wnd_para->fm_ctrl);//搜索成功
+		on_new_fm_test_freq_ok(&wnd_para->fm_ctrl);	//搜索成功
 		__wrn("draw:fm_ctrl->cur_freq = %d\n", wnd_para->fm_ctrl.cur_freq);
 	}
 
-	if(NEW_FM_CB_NEED_NOTIFY_FRW(wnd_para))
+	if(NEW_FM_CB_NEED_NOTIFY_FRW(wnd_para))			//图层状态是否打开
 	{
-		NOTIFY_MSG(NEW_CMD_AUTOSRH_FINDCH, hwnd, wnd_para->fm_framewin, 0, 0, 0);//通告MSG
+		NOTIFY_MSG(NEW_CMD_AUTOSRH_FINDCH, hwnd, wnd_para->fm_framewin, 0, 0, 0);//通告MSG，发送信息到framewin窗口，发送--自动搜索成功--命令进行---更新UI数据
 	}
 
-#if 1
+#if 1	//设置 或 恢复 搜索定时器
 	if(GUI_IsTimerInstalled(hwnd, ID_TIMER_FM_TestPlayFreq_1) == EPDK_TRUE)
 	{
+		__wrn("GUI_ResetTimer ---> timer reset...\n");
 		GUI_ResetTimer(hwnd, ID_TIMER_FM_TestPlayFreq_1, ID_TIMER_FM_TestPlayFreq_Speed_1, 0);//定时器复位
 	}
 	else
 	{
+		__wrn("GUI_SetTimer ---> timer set...\n");
 		GUI_SetTimer(hwnd, ID_TIMER_FM_TestPlayFreq_1, ID_TIMER_FM_TestPlayFreq_Speed_1, 0);//开启定时器
 	}
 	g_is_searching1 = 2;
@@ -241,8 +264,20 @@ __s32 new_cb_srhch_success(void *arg_p)
 	
 	return 0;
 }
-#if 0
-//搜索失败回调处理函数
+#if 1
+/*
+************************************************************************************************************************
+*                       				new_cb_srhch_fail
+*
+*Description: 用于fm的---搜索失败--回调处理函数
+*
+*Arguments  : 
+*            
+*
+*Return     : 
+*
+************************************************************************************************************************
+*/
 __s32 new_cb_srhch_fail(void *arg_p)
 {
 	new_fm_ctrl *wnd_para;
@@ -258,12 +293,24 @@ __s32 new_cb_srhch_fail(void *arg_p)
 
 	if(NEW_FM_CB_NEED_NOTIFY_FRW(wnd_para))
 	{
-		NOTIFY_MSG(CMD_AUTOSRH_FINDCHFAIL, hwnd, wnd_para->fm_framewin, 0, 0, 0);
+		NOTIFY_MSG(NEW_CMD_AUTOSRH_FINDCHFAIL, hwnd, wnd_para->fm_framewin, 0, 0, 0);//发送信息到framewin子窗口，自动搜索失败命令
 	}
 
 	return 0;
 }
-//搜索超时回调处理函数
+/*
+************************************************************************************************************************
+*                       				new_cb_srhch_fail
+*
+*Description: 用于fm的---搜索超时--回调处理函数
+*
+*Arguments  : 
+*            
+*
+*Return     : 
+*
+************************************************************************************************************************
+*/
 __s32 new_cb_srhch_over(void *arg_p)
 {
 	new_fm_ctrl *wnd_para;
@@ -308,15 +355,15 @@ __s32 new_cb_srhch_over(void *arg_p)
 
 	if(wnd_para)
 	{
-		on_new_fm_test_freq_end(&wnd_para->fm_ctrl);
+		//on_new_fm_test_freq_end(&wnd_para->fm_ctrl);
 	}
 
 	if(NEW_FM_CB_NEED_NOTIFY_FRW(wnd_para))
 	{
-		NOTIFY_MSG(CMD_AUTOSRH_OVER, hwnd, wnd_para->fm_framewin, 0, 0, 0);
+		NOTIFY_MSG(NEW_CMD_AUTOSRH_OVER, hwnd, wnd_para->fm_framewin, 0, 0, 0);//发送信息到framewin子窗口，发送自动搜索完成命令
 	}
 
-	SEND_MSG(DSK_MSG_SCREEN_OPEN, hwnd, GUI_WinGetHandFromName("init"), 0, 0, 0);
+	SEND_MSG(DSK_MSG_SCREEN_OPEN, hwnd, GUI_WinGetHandFromName("init"), 0, 0, 0);//发送信息到init跟目录，打开屏幕命令
 	g_is_searching1 = 0;
 	__wrn("cb_srhch_over():end\n");
 	return 0;
@@ -325,7 +372,7 @@ __s32 new_cb_srhch_over(void *arg_p)
 
 /*
 ************************************************************************************************************************
-*                       				app_new_fm_scene_create
+*                       				__new_fm_auto_search_start
 *
 *Description: 用于fm的自动搜索函数
 *
@@ -354,11 +401,51 @@ static __s32 __new_fm_auto_search_start(NEW_FM_CTRLDATA_T *fm_ctrl)
 		fm_ctrl->search_mode = NEW_SRHMODE_AUTO;					//赋值搜索模式为自动搜索模式
 		dsk_radio_set_automanual_mode(DSK_RADIO_SEARCH_AUTO);		//设置为自动模式
 		dsk_radio_rcv_set_play_list_type(PLAY_LIST_SEARCH_RESULT);	//设置---播放列表类型
-		dsk_radio_rcv_search_all(88800, 0);							//收音机接收端---搜索所有频率和通道
+		dsk_radio_rcv_search_all(0, 0);								//收音机接收端---搜索所有频率和通道
 		esKRNL_TimeDly(5);//延时5*10ms
-		SEND_MSG(DSK_MSG_SCREEN_CLOSE, NULL, GUI_WinGetHandFromName("init"), 0, 0, 0);//发送
+		//SEND_MSG(DSK_MSG_SCREEN_CLOSE, NULL, GUI_WinGetHandFromName("init"), 0, 0, 0);//发送关闭屏幕信息命令到ini根目录
 		return EPDK_OK;
 	}
+}
+/*
+************************************************************************************************************************
+*                       				__new_fm_manual_search_start
+*
+*Description: 用于fm的手动搜索函数
+*
+*Arguments  : 
+*             way：0
+*
+*Return     : 
+*
+************************************************************************************************************************
+*/
+static __s32 __new_fm_manual_search_start(NEW_FM_CTRLDATA_T *fm_ctrl, __u32 way)
+{
+	__u32 search_flag;
+	static __s32 freq;
+	dsk_radio_get_search_flag(&search_flag);	//获取搜索标志
+	__wrn("search_flag = %d:\n",search_flag);
+	
+	if(1 == search_flag)						//正在搜索过程中不允许中断，必须得搜索完后才能进行
+	{
+		__wrn("__new_fm_auto_search_start:return\n");
+		return EPDK_OK;
+	}
+	else
+	{
+		__wrn("__new_fm_auto_search_start:\n");
+		fm_ctrl->search_mode = NEW_SRHMODE_MANUAL;					//赋值搜索模式为手动搜索模式
+		dsk_radio_set_manual_way(way);								//设置手动途径，0为向下搜索、1为向上搜索
+		dsk_radio_set_automanual_mode(DSK_RADIO_SEARCH_MANUAL);		//设置为手动模式
+		dsk_radio_rcv_set_play_list_type(PLAY_LIST_SEARCH_RESULT);	//设置---播放列表类型
+		__wrn("fm_ctrl->cur_freq = %d, fm_ctrl->channel_id+1 = %d\n",fm_ctrl->cur_freq, fm_ctrl->channel_id+1);
+	
+		dsk_radio_rcv_search_all(fm_ctrl->cur_freq, fm_ctrl->channel_id+1);	//搜索所有的频率和通道
+		//SEND_MSG(DSK_MSG_SCREEN_CLOSE, NULL, GUI_WinGetHandFromName("init"), 0, 0, 0);//发送关闭屏幕信息命令到ini根目录
+		return EPDK_OK;
+	}
+
 }
 
 //设置频带
@@ -508,9 +595,11 @@ static __s32 __new_fm_init_radio_module(void *cb_arg, NEW_FM_CTRLDATA_T *fm_ctrl
 		__wrn("radio_rcv_set_play_list_type is ok...\n");
 	}
 	__wrn("dsk_radio_set_cb is start...\n");
-	dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_SUCCESS, esKRNL_GetCallBack((__pCBK_t)new_cb_srhch_success), cb_arg);//收音机设置搜索频率，跳转搜索成功回调处理函数
+	dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_SUCCESS, esKRNL_GetCallBack((__pCBK_t)new_cb_srhch_success), cb_arg);	//收音机设置搜索频率，跳转搜索成功回调处理函数
+	__wrn("dsk_radio_set_cb is start...\n");
+	dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_FAIL, esKRNL_GetCallBack((__pCBK_t)new_cb_srhch_fail), cb_arg);			//收音机设置搜索频率，跳转搜索失败回调处理函数
 	__wrn("__new_fm_init_date is start...\n");
-	__new_fm_init_date(fm_ctrl);//初始化数据
+	__new_fm_init_date(fm_ctrl);							//初始化数据
 	return EPDK_OK;
 }
 
@@ -543,6 +632,64 @@ static __s32 __new_fm_uninit_radio_module(void)
 	return EPDK_OK;
 }
 
+/*
+************************************************************************************************************************
+*                       				__new_fm_next_freq_play
+*
+*Description: 用于fm的radio模块 播放---下一个频率 函数
+*
+*Arguments  : null
+*             
+*
+*Return     : 返回EPDK_OK
+*
+************************************************************************************************************************
+*/
+static __s32 __new_fm_next_freq_play(void)
+{
+	__u32 cur_freq = 0;
+	__wrn("next freq play...\n");
+	dsk_radio_rcv_get_cur_freq(&cur_freq);//
+	__wrn("cur_freq 0 = %d\n", cur_freq);
+	
+	dsk_radio_rcv_next_freq_play();			//收音机接收端---播放下一个频率频道
+	
+	dsk_radio_rcv_get_cur_freq(&cur_freq);	//获取---收音机接收端当前的播放频率
+	__wrn("cur_freq 1 = %d\n", cur_freq);
+	dsk_radio_rcv_set_freq_play(cur_freq);	//设置---收音机接收端--播放当前频率
+
+	return EPDK_OK;
+}
+
+/*
+************************************************************************************************************************
+*                       				__new_fm_init_radio_module
+*
+*Description: 用于fm的radio模块 播放---上一个频率 函数
+*
+*Arguments  : null
+*             
+*
+*Return     : 返回EPDK_OK
+*
+************************************************************************************************************************
+*/
+static __s32 __new_fm_pre_freq_play(void)
+{
+	__u32 cur_freq = 0;
+	__wrn("prev freq play...\n");
+	dsk_radio_rcv_get_cur_freq(&cur_freq);//
+	__wrn("cur_freq 0 = %d\n", cur_freq);
+	
+	dsk_radio_rcv_pre_freq_play();			//收音机接收端---播放上一个频率频道
+	
+	dsk_radio_rcv_get_cur_freq(&cur_freq);	//获取---收音机接收端当前的播放频率
+	__wrn("cur_freq 1 = %d\n", cur_freq);
+	dsk_radio_rcv_set_freq_play(cur_freq);	//设置---收音机接收端--播放当前频率，在这里作用是把上一个频率设置为当前播放频率
+
+	return EPDK_OK;
+}
+
 #endif
 
 /*
@@ -560,29 +707,31 @@ static __s32 __new_fm_uninit_radio_module(void)
 */
 static __s32  app_new_fm_scene_create(__gui_msg_t *msg)
 {
-	new_fm_ctrl		*fm_ctrl;
+	new_fm_ctrl		*this;
 	RECT	fm_rect;
 	fm_create_para_t	fm_create;
-	fm_ctrl = (new_fm_ctrl *)GUI_WinGetAttr(msg->h_deswin);
+	this = (new_fm_ctrl *)GUI_WinGetAttr(msg->h_deswin);
 	eLIBs_memset(&fm_create, 0, sizeof(fm_create_para_t));
 	//////////fm的framewin图层大小///////////
 	fm_rect.x	= 0;
 	fm_rect.y	= 0;
-	fm_rect.width	= 600;
-	fm_rect.height	= 1024;
-	fm_layer_create(fm_ctrl->fm_lyr, &fm_rect, "new_fm_lyr"); //创建图层
+	fm_rect.width	= 1024;
+	fm_rect.height	= 600;
+	fm_layer_create(this->fm_lyr, &fm_rect, "new_fm_lyr"); //创建图层
 	////////////////////////////////////////
-	if(!fm_ctrl->fm_lyr) {
+	if(!this->fm_lyr) {
 		__wrn("fm_lyr is null...\n");
 		return EPDK_FALSE;
 	} else {
 		__wrn("fm_lyr is create success...\n");
 	}
-	fm_create.fm_frmlyr = fm_ctrl->fm_lyr;
+	fm_create.fm_frmlyr = this->fm_lyr;
 	fm_create.fm_frmwin = msg->h_deswin;	//赋值窗口句柄
-	fm_ctrl->fm_framewin = new_fm_frmwin_create(msg->h_deswin,  &fm_create);//framewin窗口创建函数
-
-	GUI_WinSetFocusChild(fm_ctrl->fm_framewin);//发送按键等命令信息到framewin子窗口
+	fm_create.fm_ctrl1  = &this->fm_ctrl;
+	this->fm_framewin = new_fm_frmwin_create(msg->h_deswin,  &fm_create);//framewin窗口创建函数
+	//_app_show_focus_wnd(fm_ctrl->fm_framewin, fm_ctrl->fm_lyr);
+	//GUI_LyrWinSetTop(fm_ctrl->fm_lyr);
+	GUI_WinSetFocusChild(this->fm_framewin);//发送按键等命令信息到framewin子窗口
 	return EPDK_OK;
 }
 
@@ -618,8 +767,8 @@ static	__s32	app_new_fm_proc(__gui_msg_t *msg)
 
 			gscene_bgd_set_state(BGD_STATUS_SHOW);							//设置荧光屏显示状态，显示状态
 			//打开图层状态
-			_app_show_focus_wnd(wnd_para->fm_framewin, wnd_para->fm_lyr);	//图层状态打开
-			GUI_LyrWinSetTop(wnd_para->fm_lyr);								//图层置顶
+			//_app_show_focus_wnd(wnd_para->fm_framewin, wnd_para->fm_lyr);	//图层状态打开
+			//GUI_LyrWinSetTop(wnd_para->fm_lyr);								//图层置顶
 
 			/*{
 				ES_FILE *paudio;
@@ -665,9 +814,14 @@ static	__s32	app_new_fm_proc(__gui_msg_t *msg)
 		return EPDK_OK;
 
 		case MSG_NEW_FM_OP_ENTER:{//回车按下，开启自动搜索
-			NEW_FM_CTRLDATA_T *fm_ctrl;
-			fm_ctrl = (NEW_FM_CTRLDATA_T *)GUI_WinGetAttr(msg->h_deswin);
-			__new_fm_auto_search_start(fm_ctrl);//自动搜索开始
+			new_fm_ctrl *this;
+			this = (new_fm_ctrl *)GUI_WinGetAttr(msg->h_deswin);
+			if(msg->dwAddData2 == 1){	//长按、自动搜索
+				__new_fm_auto_search_start(&this->fm_ctrl);//自动搜索开始
+			}
+			else{	//短按、手动搜索
+				__new_fm_manual_search_start(&this->fm_ctrl, 0);//手动搜索开始
+			}
 			__wrn("g_is_searching1 = %d...\n", g_is_searching1);
 			/*if(g_is_searching1)
 			{
@@ -682,18 +836,17 @@ static	__s32	app_new_fm_proc(__gui_msg_t *msg)
 		return EPDK_OK;
 
 		case MSG_NEW_FM_OP_RIGHT:{//下一首按下，播放下一首频率
-			__u32 cur_freq = 0;
-			__wrn("next freq play...\n");
-			dsk_radio_rcv_get_cur_freq(&cur_freq);//
-			__wrn("cur_freq 0 = %d\n", cur_freq);
-			
-			dsk_radio_rcv_next_freq_play();		//收音机接收端---播放下一个频率频道
-			
-			dsk_radio_rcv_get_cur_freq(&cur_freq);//获取---收音机接收端当前的播放频率
-			__wrn("cur_freq 1 = %d\n", cur_freq);
-			dsk_radio_rcv_set_freq_play(cur_freq);//设置---收音机接收端--播放当前频率
+				__new_fm_next_freq_play();//播放下一首频率
+				//__new_fm_manual_search_start(fm_ctrl, 1);//手动搜索开始
 		}
 		return EPDK_OK;
+		
+		case MSG_NEW_FM_OP_LEFT:{//上一首按下，播放上一首频率
+			__new_fm_pre_freq_play();//播放上一首频率
+			//__new_fm_manual_search_start(fm_ctrl, 0);//手动搜索开始
+		}
+		return EPDK_OK;
+		
 		
 		case GUI_MSG_KEY:{		//5，按键
 			
@@ -711,7 +864,7 @@ static	__s32	app_new_fm_proc(__gui_msg_t *msg)
 							__gui_msg_t mmsg;
 							mmsg.h_deswin = msg->h_deswin;
 							mmsg.id		  = GUI_MSG_QUIT;
-							GUI_SendMessage(&mmsg);
+							GUI_SendMessage(&mmsg);//向本窗口或指定窗口发送信息命令
 						}
 						break;
 
@@ -719,6 +872,7 @@ static	__s32	app_new_fm_proc(__gui_msg_t *msg)
 							__gui_msg_t mmsg;
 							mmsg.h_deswin = msg->h_deswin;
 							mmsg.id		  = MSG_NEW_FM_OP_ENTER;
+							mmsg.dwAddData2 = msg->dwAddData2;// 手动/自动搜索模式切换，1自动，2手动
 							GUI_SendMessage(&mmsg);
 						}
 						break;
@@ -730,6 +884,14 @@ static	__s32	app_new_fm_proc(__gui_msg_t *msg)
 							GUI_SendMessage(&mmsg);
 						}
 						break;
+
+						case MSG_NEW_FM_OP_LEFT:{//上一首频率播放
+							__gui_msg_t mmsg;
+							mmsg.h_deswin = msg->h_deswin;
+							mmsg.id		  = MSG_NEW_FM_OP_LEFT;
+							GUI_SendMessage(&mmsg);
+						}
+						break;
 					}
 				}
 			}
@@ -737,10 +899,11 @@ static	__s32	app_new_fm_proc(__gui_msg_t *msg)
 		return EPDK_OK;
 
 		case GUI_MSG_TIMER:{	//19，定时器
-					//new_fm_ctrl	*hwnd;
-					//hwnd = (new_fm_ctrl *)GUI_WinGetAttr(msg->h_deswin);
+					new_fm_ctrl	*hwnd;
+					hwnd = (new_fm_ctrl *)GUI_WinGetAttr(msg->h_deswin);
+					
 					__wrn("ID_TIMER_FM_TestPlayFreq_1 timer0...\n");
-					if(msg->dwAddData1 == ID_TIMER_FM_TestPlayFreq_1)
+					if(msg->dwAddData1 == ID_TIMER_FM_TestPlayFreq_1)//搜索到一首有效的频率
 					{
 						__wrn("ID_TIMER_FM_TestPlayFreq_1 timer\n");
 						if(GUI_IsTimerInstalled(msg->h_deswin, ID_TIMER_FM_TestPlayFreq_1) == EPDK_TRUE)
@@ -749,7 +912,7 @@ static	__s32	app_new_fm_proc(__gui_msg_t *msg)
 						}
 						g_is_searching1 = 1;
 						dsk_amplifier_onoff(0);				//关闭功放声音
-						dsk_radio_rcv_autosearch_resume();	//恢复自动搜索
+						dsk_radio_rcv_autosearch_resume();	//恢复自动搜索,继续搜索
 						return EPDK_OK;
 					}
 		}

@@ -4,31 +4,7 @@
 #include	"app_new_fm_i.h"
 
 
-typedef struct  //TODO: 精简某些量
-{
 
-	__s32 cur_max_freq; //当前最大频率：108000
-	__s32 cur_min_freq; //当前最小频率：87000
-
-	__s32 channel_id;     //当前通道id号
-	__u32 cur_freq;       //当前频率
-	__u32 channel_count;  //通道总数
-
-	__s32 search_mode;    //搜索模式 : auto or manual
-
-	__s32 is_record;
-
-	__s32 thumb_show;     // thumb btn,0 -- 不显示, 1 -- 显示为非焦点, 2 -- 显示为焦点
-	__s32 audio_mode;
-
-	//数字选取===================================
-	__s32  ndigit_fm_num;    //数字选取序号
-	__u8   digit_timmer_id;  //数字选取timmer id号
-	H_LYR  hdigit_layer;     //显示当前数字的图层
-	//=============================================
-	__bool m_dispCue;
-}
-NEW_FM_CTRLDATA_T;
 
 typedef struct app_new_fm_ctrl
 {
@@ -42,7 +18,7 @@ typedef struct app_new_fm_ctrl
 }new_fm_ctrl;	
 
 
-
+extern new_fm_ctrl;
 
 
 #endif

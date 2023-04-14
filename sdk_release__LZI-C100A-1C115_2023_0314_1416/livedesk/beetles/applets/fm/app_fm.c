@@ -524,7 +524,7 @@ static __s32 fm_init_data(FM_CTRLDATA_T *fm_ctrl)
 			fm_ctrl->channel_count = 0;
 			//初始化reg_fm_para_t
 			ZeroMemory(para, sizeof(reg_fm_para_t));
-			//fm_reg_set_sel_channel_id(para, 0);
+			fm_reg_set_sel_channel_id(para, 0);
 			// 			fm_reg_set_channel_(para, 0, fm_ctrl->cur_freq); //设置默认一个频道频率
 			// 			fm_reg_set_channel_count(para, fm_ctrl->channel_count);
 			dsk_radio_rcv_get_search_result(para);
@@ -651,7 +651,7 @@ static __s32 fm_init_module(void *cb_arg, FM_CTRLDATA_T *fm_ctrl)
 	}
 
 	dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_SUCCESS, esKRNL_GetCallBack(cb_srhch_success), cb_arg);
-	//dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_FAIL, esKRNL_GetCallBack(cb_srhch_fail), cb_arg);
+	dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_FAIL, esKRNL_GetCallBack(cb_srhch_fail), cb_arg);
 	//dsk_radio_set_cb(DSK_RADIO_EVENT_SEARCH_OVER, esKRNL_GetCallBack(cb_srhch_over), cb_arg);
 	//dsk_radio_rcv_set_search_cb(esKRNL_GetCallBack(fm_auto_search_cb),(void *)fmplay_menu_attr);
 	fm_init_data(fm_ctrl);
@@ -1385,7 +1385,7 @@ static __s32 on_fm_manwnd_command(__gui_msg_t *msg)
 			__wrn("msg->dwAddData1 == %d\n", msg->dwAddData1);
 
 		case ID_FM_SCENE_SSET:
-			//return on_fm_sset_cmd(msg->h_deswin, HISWORD(msg->dwAddData1), msg->dwAddData2);
+			return on_fm_sset_cmd(msg->h_deswin, HISWORD(msg->dwAddData1), msg->dwAddData2);
 
 		case ID_FM_IS_AUTO_SEARCH_DLG:
 			return on_fm_auto_search_dlg_cmd(msg->h_deswin, HISWORD(msg->dwAddData1), msg->dwAddData2);
@@ -1891,7 +1891,7 @@ static __s32 _app_fm_Proc(__gui_msg_t *msg)
 		case GUI_MSG_CREATE:
 		{
 			esPWM_LockCpuFreq();//禁止CPU自动调节频率，防止FM杂音
-			//dsk_set_auto_off_time(0);
+			dsk_set_auto_off_time(0);
 			//pull_down_gpio(4, 15);//拉低LCD15，选择AB类功放
 			//dsk_amplifier_onoff(1);//打开功放
 			g_FMManWnd = msg->h_deswin;
@@ -1956,15 +1956,15 @@ static __s32 _app_fm_Proc(__gui_msg_t *msg)
 		{
 			FM_WND_T *wnd_para;
 			FM_GetWndPara(wnd_para, FM_WND_T, msg->h_deswin);
-			__wrn("ID_TIMER_FM_TestPlayFreq timer\n");
-			/*if(msg->dwAddData1 == wnd_para->fm_ctrl.digit_timmer_id)
+
+			if(msg->dwAddData1 == wnd_para->fm_ctrl.digit_timmer_id)
 			{
 				__wrn("timmer has come...\n");
 				return fm_proc_digital(msg);
-			}*/
+			}
 
 #if SP_FM_WhenAutoSearch_PlayFreq
-			/*else if(msg->dwAddData1 == ID_TIMER_FM_TestPlayFreq)
+			else if(msg->dwAddData1 == ID_TIMER_FM_TestPlayFreq)
 			{
 				if(GUI_IsTimerInstalled(msg->h_deswin, ID_TIMER_FM_TestPlayFreq) == EPDK_TRUE)
 				{
@@ -1975,7 +1975,7 @@ static __s32 _app_fm_Proc(__gui_msg_t *msg)
 				dsk_amplifier_onoff(0);
 				dsk_radio_rcv_autosearch_resume();
 				return EPDK_OK;
-			}*/
+			}
 
 #endif
 		}
