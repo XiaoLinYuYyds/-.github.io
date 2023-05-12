@@ -6,7 +6,7 @@
 #ifdef TEST_CONTROL
 H_WIN	g_controlWin = 0;
 #endif
-
+//发送信息命令到当前选择的窗口
 static void rec_view_frm_sendSelf(__gui_msg_t *msg, __u32 id)
 {
 	__gui_msg_t sendMsg;
@@ -18,7 +18,7 @@ static void rec_view_frm_sendSelf(__gui_msg_t *msg, __u32 id)
 	sendMsg.dwReserved = 0;
 	GUI_SendMessage(&sendMsg);
 }
-
+//发送信息命令到父窗口
 static void rec_view_frm_sendParent(__gui_msg_t *msg, __u32 id)
 {
 	__gui_msg_t sendMsg;
@@ -40,8 +40,9 @@ static __s32 rec_view_frm_on_create(__gui_msg_t *msg)
 	{
 		return EPDK_FAIL;
 	}
-
+	__msg("rec_view_frm_on_create is start...\n");
 #if 1 == START_RECORD_IMMEDIATALLY
+	__msg("record_start is start...\n");
 	record_start(pviewFrm_ctl->precordDoc);
 #endif
 	pviewFrm_ctl->recTimeID 	= 0xFF;
@@ -75,7 +76,7 @@ static __s32 _rec_view_frm_on_destory(__gui_msg_t *msg)
 	{
 		return EPDK_FAIL;
 	}
-
+	__msg("_rec_view_frm_on_destory is start...\n");
 	record_view_exit(pviewFrm_ctl->pview, pviewFrm_ctl->layer);
 	GUI_KillTimer(msg->h_deswin, pviewFrm_ctl->recTimeID);
 	record_unInit(pviewFrm_ctl->precordDoc);

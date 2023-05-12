@@ -1224,7 +1224,7 @@ __s32 dsk_reg_set_app_restore_flag(reg_app_e eApp, __bool flag)
 	all_app_para->restore_flag[eApp] = flag;
 	return EPDK_OK;
 }
-
+//保存当前播放文件消息
 __s32 dsk_reg_save_cur_play_info(reg_app_e eApp, __s32 index, char *filename, rat_root_t root_type)
 {
 	if(!all_app_para)
@@ -1232,7 +1232,7 @@ __s32 dsk_reg_save_cur_play_info(reg_app_e eApp, __s32 index, char *filename, ra
 		__err("reg para not init...\n");
 		return EPDK_FAIL;
 	}
-
+	__wrn(" save cur play index = %d...",index);
 	switch(eApp)
 	{
 		case REG_APP_MOVIE:

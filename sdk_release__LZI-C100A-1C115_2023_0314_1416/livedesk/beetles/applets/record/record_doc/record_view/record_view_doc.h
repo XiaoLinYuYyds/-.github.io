@@ -41,7 +41,7 @@ typedef struct tag_record_doc
 
 	__u32			fileSize;				//单位KB
 	__u32			diskFreeTime;			//单位秒
-	__u64			diskFreeSize;
+	__u64			diskFreeSize;			//磁盘剩余内存大小
 
 	RECORD_STATE	recState;				//录音状态
 	__u32			recordMaxTimes;			//最大可录音时间

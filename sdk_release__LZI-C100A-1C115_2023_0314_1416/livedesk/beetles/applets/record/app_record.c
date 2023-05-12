@@ -393,13 +393,13 @@ u32 adcEnBit            :
 }
 AdcAnaCtl_t;
 
-//////
+//////创建
 static __s32 app_record_on_create(__gui_msg_t *msg)
 {
 	precord_ctrl_t precord_para;
 	precord_para = (precord_ctrl_t)GUI_WinGetAttr(msg->h_deswin);
 	g_disable_standby();
-	init_record_res(&precord_para->rec_ui);
+	init_record_res(&precord_para->rec_ui);//加载图片资源
 	precord_para->rec_view.pui 		= &precord_para->rec_ui;
 	precord_para->rec_listView.pui 	= &precord_para->rec_ui;
 	precord_para->layer = record_8bpp_layer_create();
@@ -513,7 +513,7 @@ static __s32 app_record_on_command(__gui_msg_t *msg)
 {
 	return EPDK_OK;
 }
-
+//回调处理函数
 static __s32 _record_manager_win_proc(__gui_msg_t *msg)
 {
 	__msg("_record_manager_win_proc msg->id=%d, msg->h_deswin=%x, msg->dwAddData1=%d, msg->dwAddData2=%d\n"

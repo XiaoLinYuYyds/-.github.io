@@ -26,6 +26,7 @@ typedef	struct tag_app_new_music_ctrl
 	GUI_FONT *font;//存放文本
 	__s32    root_type;
 	__s32	 play_timer_id;
+	__u32	lastplay_index;	   //存放TF卡插入播放上一次播放的音乐文件索引id
 }app_new_music_ctrl_t;
 
 

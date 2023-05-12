@@ -267,7 +267,7 @@ __s32 fast_draw_freq_scale(__gui_msg_t *msg)
 }
 #endif
 
-#if 1	//方法2 直接申请图片资源
+#if 0	//方法2 直接申请图片资源
 //申请图片资源
 int id[10] = {ID_FM_B0_BMP,ID_FM_B1_BMP,ID_FM_B2_BMP,ID_FM_B3_BMP,ID_FM_B4_BMP, 
 			ID_FM_B5_BMP,ID_FM_B6_BMP,ID_FM_B7_BMP,ID_FM_B8_BMP,ID_FM_B9_BMP};//频率数字图片资源头句柄
@@ -548,7 +548,7 @@ static __s32 __new_fm_frmwin_proc(__gui_msg_t *msg)
 			GUI_LyrWinSetSta(fm_ctrl->fm_frmcreate->hlyr, GUI_LYRWIN_STA_ON);	//图层状态打开
 			GUI_LyrWinSetTop(fm_ctrl->fm_frmcreate->hlyr);	//图层置顶
 		#else
-			_app_show_layer(fm_ctrl->fm_frmcreate->hlyr);
+			_app_show_layer(fm_ctrl->fm_frmcreate->hlyr);	//图层状态打开
 		#endif
 		
 		 #if 1//方法1 通过注册表的方式申请图片资源

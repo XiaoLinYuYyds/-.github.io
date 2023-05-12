@@ -25,7 +25,7 @@ __s32 record_strFilter(const char *filters, __s32 index, char *filter)
 	*filter = '\0';
 	return ret;
 }
-
+//比较最后一个字符串长度
 __s32 record_strcmplast(const char *name, const char *filters)
 {
 	__s32 i, cnt, nameLen, filterLen;
@@ -67,7 +67,7 @@ __s32 record_strcmplast(const char *name, const char *filters)
 
 	return -1;
 }
-
+//记录文件号
 __u32 record_file_num(const char *dirname, const char *filter)
 {
 	ES_DIR		*pDir = NULL;
@@ -95,7 +95,7 @@ __u32 record_file_num(const char *dirname, const char *filter)
 	eLIBs_closedir(pDir);
 	return fileCnt;
 }
-
+//获取录音、记录文件名
 char *record_get_fileName(const char *dirname, __u32 index, const char *filter, char *fileName)
 {
 	ES_DIR		*pDir = NULL;
@@ -129,7 +129,7 @@ char *record_get_fileName(const char *dirname, __u32 index, const char *filter, 
 	eLIBs_closedir(pDir);
 	return fileName;
 }
-
+//录音时间转字符型
 void record_time_to_char(char *buff, __time_t time, char sp)
 {
 	__s16 cnt = 0;
@@ -153,7 +153,7 @@ void record_time_to_char(char *buff, __time_t time, char sp)
 	buff[cnt++] = time.second % 10 + '0';
 	buff[cnt++] = '\0';
 }
-
+//录音日期转字符型
 void record_date_to_char(char *buff, __date_t date, char sp)
 {
 	__s16 cnt = 0;

@@ -35,7 +35,8 @@ static int get_part_by_name(const char *equipment, char *des)
 	{
 		eLIBs_memset(equipment_name, 0, MAX_FS_NAME_LEN);
 		eLIBs_GetPTName(partition[i], equipment_name);
-
+		__msg("\n partition[%d] = %s\n", i, partition[i]);
+		__msg("\n equipment = %s\n", equipment);
 		if(eLIBs_strncmp(equipment_name, equipment, eLIBs_strlen(equipment)) == 0)
 		{
 			status = eLIBs_IsPartFormated(partition[i]);
@@ -43,6 +44,7 @@ static int get_part_by_name(const char *equipment, char *des)
 			if(status == ELIBS_PART_FMT_FORMATED)
 			{
 				eLIBs_strcpy(part_name[i], partition[i]);
+				__wrn("\n part_name[%d] = %s\n", i, part_name[i]);
 				ret = 0;
 			}
 			else

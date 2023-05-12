@@ -213,7 +213,7 @@ void  main_cmd_child(H_WIN hwin, __s32 id, __s32 data1, __s32 data2)
 	msg.dwReserved = 0;
 	GUI_SendNotifyMessage(&msg);
 }
-//检查磁盘
+//检查磁盘类型，TF卡或USB等
 static void check_disk(home_para_t *home_para)
 {
 	__s32 i;
@@ -222,7 +222,7 @@ static void check_disk(home_para_t *home_para)
 	char diskname[RAT_MAX_PARTITION][4];
 	{
 		__target_para_t target;
-		esKSRV_GetTargetPara(&target);
+		esKSRV_GetTargetPara(&target);//获取目标参数
 
 		if(target.debugenable == EPDK_TRUE)////如果是调试，则默认为有外设//112350
 		{
@@ -242,7 +242,7 @@ static void check_disk(home_para_t *home_para)
 		{
 			if(diskname[i][0])
 			{
-				__msg("SD : diskname[%d]=%s\n", i, diskname[i]);
+				__wrn("USB : diskname[%d]=%s\n", i, diskname[i]);
 				home_para->root_type += RAT_USB;
 				cnt++;
 			}
@@ -260,7 +260,7 @@ static void check_disk(home_para_t *home_para)
 		{
 			if(diskname[i][0])
 			{
-				__msg("SD : diskname[%d]=%s\n", i, diskname[i]);
+				__wrn("SD : diskname[%d]=%s\n", i, diskname[i]);
 				home_para->root_type += RAT_TF << 8;
 				cnt++;
 			}
@@ -849,11 +849,11 @@ static __s32 app_home_proc(__gui_msg_t *msg)
 
 										switch(root_para->log & MASK_RootLog__LastFs)
 										{
-											case OP_RootLog__LastFs_SD:
+											case OP_RootLog__LastFs_SD://SD卡
 												main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, home_para->focus_id, RAT_TF);
 												break;
 
-											case OP_RootLog__LastFs_UD:
+											case OP_RootLog__LastFs_UD://U盘
 											default :
 												main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, home_para->focus_id, RAT_USB);
 												break;
@@ -1002,7 +1002,7 @@ static __s32 app_home_proc(__gui_msg_t *msg)
 									GUI_LyrWinSetSta(home_para->lyr_mmenu, GUI_LYRWIN_STA_SUSPEND); 	//main_menu主菜单图层窗口挂起状态
 									GUI_LyrWinSetSta(home_para->lyr_forground, GUI_LYRWIN_STA_SUSPEND);	//main_menu主菜单前景图层窗口挂起状态
 									main_menu_uninit_res(home_para->h_mmenu);							//主菜单窗口释放图片资源
-									main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEW_MOVIE, 2);	//发送到app_root_scene.c文件进入新的new_movie创建manwin窗口功能；2为TF卡
+									main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEW_MOVIE, RAT_TF);	//发送到app_root_scene.c文件进入新的new_movie创建manwin窗口功能；2为TF卡
 									__wrn("send ID_HOME_NEW_MOVIE is ok\n");
 								}
 								else
@@ -1024,7 +1024,7 @@ static __s32 app_home_proc(__gui_msg_t *msg)
 									GUI_LyrWinSetSta(home_para->lyr_mmenu, GUI_LYRWIN_STA_SUSPEND); 	//main_menu主菜单图层窗口挂起状态
 									GUI_LyrWinSetSta(home_para->lyr_forground, GUI_LYRWIN_STA_SUSPEND);	//main_menu主菜单前景图层窗口挂起状态
 									main_menu_uninit_res(home_para->h_mmenu);							//主菜单窗口释放图片资源
-									main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEW_PHOTO, 2);	//发送到app_root_scene.c文件进入新的new_movie创建manwin窗口功能；2为TF卡
+									main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEW_PHOTO, RAT_TF);	//发送到app_root_scene.c文件进入新的new_movie创建manwin窗口功能；2为TF卡
 									__wrn("send ID_HOME_NEW_PHOTO is ok\n");
 								}
 								else
@@ -1047,7 +1047,7 @@ static __s32 app_home_proc(__gui_msg_t *msg)
 									GUI_LyrWinSetSta(home_para->lyr_mmenu, GUI_LYRWIN_STA_SUSPEND); 	//main_menu主菜单图层窗口挂起状态
 									GUI_LyrWinSetSta(home_para->lyr_forground, GUI_LYRWIN_STA_SUSPEND);	//main_menu主菜单前景图层窗口挂起状态
 									main_menu_uninit_res(home_para->h_mmenu);							//主菜单窗口释放图片资源
-									main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEWMUSIC, 2);	//发送到app_root_scene.c文件进入新的new_movie创建manwin窗口功能；2为TF卡
+									main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEWMUSIC, RAT_TF);	//发送到app_root_scene.c文件进入新的new_movie创建manwin窗口功能；2为TF卡
 									__wrn("send ID_HOME_NEW_MUSIC is ok\n");
 								}
 								else
@@ -1069,7 +1069,7 @@ static __s32 app_home_proc(__gui_msg_t *msg)
 									GUI_LyrWinSetSta(home_para->lyr_mmenu, GUI_LYRWIN_STA_SUSPEND); 	//main_menu主菜单图层窗口挂起状态
 									GUI_LyrWinSetSta(home_para->lyr_forground, GUI_LYRWIN_STA_SUSPEND);	//main_menu主菜单前景图层窗口挂起状态
 									main_menu_uninit_res(home_para->h_mmenu);							//主菜单窗口释放图片资源
-									main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEW_EBOOK, 2);	//发送到app_root_scene.c文件进入新的new_ebook创建manwin窗口功能；2为TF卡
+									main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEW_EBOOK, RAT_TF);	//发送到app_root_scene.c文件进入新的new_ebook创建manwin窗口功能；2为TF卡
 									__wrn("send ID_HOME_NEW_EBOOK is ok\n");
 								}
 								else
@@ -1086,8 +1086,26 @@ static __s32 app_home_proc(__gui_msg_t *msg)
 								GUI_LyrWinSetSta(home_para->lyr_mmenu, GUI_LYRWIN_STA_SUSPEND); 	//main_menu主菜单图层窗口挂起状态
 								GUI_LyrWinSetSta(home_para->lyr_forground, GUI_LYRWIN_STA_SUSPEND);	//main_menu主菜单前景图层窗口挂起状态
 								main_menu_uninit_res(home_para->h_mmenu);							//主菜单窗口释放图片资源
-								main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEW_FM, 2);	//发送到app_root_scene.c文件进入新的new_fm创建manwin窗口功能；2为TF卡
+								main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEW_FM, RAT_TF);	//发送到app_root_scene.c文件进入新的new_fm创建manwin窗口功能；2为TF卡
 								__wrn("send ID_HOME_NEW_FM is ok\n");
+							}
+							break;
+
+							case ID_HOME_NEW_RECORD://新添加录音app应用
+							{
+								check_disk(home_para);		//检查是否存在磁盘
+								__wrn("ID_HOME_RECORD\n");
+								__wrn("root_type = %d\n",home_para->root_type);
+								if(home_para->root_type != 0)//不等于0，有TF卡或者USB插入时有效
+								{
+									__wrn("send ID_HOME_NEW_RECORD to app_root_scene.c is...\n");
+									GUI_LyrWinSetSta(home_para->lyr_smenu, GUI_LYRWIN_STA_SUSPEND);		//sub_menu子菜单图层窗口挂起状态
+									GUI_LyrWinSetSta(home_para->lyr_mmenu, GUI_LYRWIN_STA_SUSPEND);		//main_menu主菜单图层窗口挂起状态
+									GUI_LyrWinSetSta(home_para->lyr_forground, GUI_LYRWIN_STA_SUSPEND);	//main_menu主菜单前景图层窗口挂起状态
+									main_menu_uninit_res(home_para->h_mmenu);							//主菜单窗口释放图片资源
+									main_cmd2parent(msg->h_deswin, SWITCH_TO_OTHER_APP, ID_HOME_NEW_RECORD,RAT_TF);	//发送到app_root_scene.c文件进入新的new_fm创建manwin窗口功能；2为TF卡
+									__wrn("send ID_HOME_NEW_RECORD is ok\n");
+								}
 							}
 							break;
 

@@ -22,10 +22,10 @@ typedef struct tag_EBOOK_DECODE
 {
 	char				    file_path[MAX_FILE_NAME_SIZE];  // 文件路径
 	ES_FILE                *file_hdle;                      // 文件句柄
-	H_EBOOK_ANALYSIS         analysis_hdle;                  // 文件分析句柄
-	H_EBOOK_SHOW                  show_hdle;                      // 页面显示句柄
+	H_EBOOK_ANALYSIS        analysis_hdle;                  // 文件分析句柄
+	H_EBOOK_SHOW            show_hdle;                      // 页面显示句柄
 
-	H_EBOOK_FONT                  font_hdle;                      // 字体操作句柄
+	H_EBOOK_FONT            font_hdle;                      // 字体操作句柄
 	/*文件文本参数*/
 	__s64                   file_size;                      // 文件大小
 	__epdk_charset_enm_e    default_charset;                // 默认编码格式
@@ -48,7 +48,7 @@ typedef struct tag_EBOOK_DECODE
 	__krnl_event_t		    *decode_sem;                    // 预解控制信号量
 	__newdecode_mode_e		decode_sta;                     // 预解模式
 
-	__newdecode_config_t       config;                         // 配置信息
+	__newdecode_config_t    config;                         // 配置信息
 	__epdk_charset_enm_e    charset;                        // 文件编码
 }
 __ebook_decode_t;
@@ -84,7 +84,7 @@ static void __ebook_decode_task(void *p_arg)
 		}
 		//__wrn("decode_sta is start...\n");
 		esKRNL_TimeDly(5);//5*10ms
-		esKRNL_SemPend(p_decode->decode_sem, 0, &err);
+		esKRNL_SemPend(p_decode->decode_sem, 0, &err);//信号量的作用主要是用来控制线程的并发量
 
 		if(p_decode->decode_sta != DECODE_NULL)
 		{
@@ -574,6 +574,10 @@ H_DECODE_NEW   EBOOK_Decode_Init(char *filename, __u8 *err, __u32 index)
 		rat_npl_index2file(h_rat_npl, npl_index, p_decode->file_path);//通过文件索引id获取文件名
 		__wrn("file_path = %s...\n",p_decode->file_path);
 		rat_npl_close(h_rat_npl);						//关闭rat相关的媒体类型文件
+		#if 1//保存用于TF卡插入自动播放上一次的电子书索引id，使用TF卡插拔时生效
+			__wrn("npl_index = %d, p_decode->file_path = %s... \n", npl_index, p_decode->file_path);
+			dsk_reg_save_cur_play_info(REG_APP_EBOOK, npl_index, p_decode->file_path, RAT_TF);
+		#endif
 	} else {
 		eLIBs_memcpy(p_decode->file_path, filename, MAX_FILE_NAME_SIZE);
 	}

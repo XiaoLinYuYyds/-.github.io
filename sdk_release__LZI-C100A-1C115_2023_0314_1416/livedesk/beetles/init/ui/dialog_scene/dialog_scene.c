@@ -30,7 +30,7 @@
 #define LOW_POWER_TOUT					500
 #define POWER_OFF_TOUT					10
 #define ORCHID_UPDATE_TOUT				200		//check whether orchid update completed every 2 sec
-
+//对话框图层创建
 static H_LYR scene_dialog_layer_create(void)
 {
 	H_LYR layer = NULL;
@@ -83,7 +83,7 @@ static H_LYR scene_dialog_layer_create(void)
 
 	return layer;
 }
-
+//对话框结构体数据初始化
 __s32 dialog_init(H_WIN hwnd)
 {
 	init_scene_t *p_scene = (init_scene_t *)GUI_WinGetAddData(hwnd);
@@ -99,7 +99,7 @@ __s32 dialog_init(H_WIN hwnd)
 	p_scene->dialog_layer   = scene_dialog_layer_create();
 	return EPDK_OK;
 }
-
+//对话框清理函数：作用是删除对话框图层窗口
 __s32 dialog_deinit(H_WIN hwnd)
 {
 	init_scene_t *p_scene = (init_scene_t *)GUI_WinGetAddData(hwnd);
@@ -108,12 +108,12 @@ __s32 dialog_deinit(H_WIN hwnd)
 	__here__
 	return EPDK_OK;
 }
-
+//对话框framewin窗口回调处理函数
 __s32 cb_dialog_frm(__gui_msg_t *msg)
 {
 	return GUI_FrmWinDefaultProc(msg);
 }
-
+//对话框framewin窗口创建
 static H_WIN dialog_frm_win_create(H_WIN parent, H_LYR layer)
 {
 	H_WIN 						h_win;
@@ -141,7 +141,7 @@ static H_WIN dialog_frm_win_create(H_WIN parent, H_LYR layer)
 
 	return h_win;
 }
-
+//对话框场景创建
 static void scene_dialog_create(init_scene_t *p_scene, __s32 str_id, __s32 dialog_id)
 {
 	pdialog_create_t pdialog_para;
@@ -157,7 +157,7 @@ static void scene_dialog_create(init_scene_t *p_scene, __s32 str_id, __s32 dialo
 	__msg("after progress_dialog_create\n");
 	GUI_LyrWinSetSta(p_scene->dialog_layer, GUI_LYRWIN_STA_SUSPEND);
 }
-
+//场景 置于 在 对话框 之上
 void scene_on_dialog(__gui_msg_t *msg)
 {
 	init_scene_t *p_scene = (init_scene_t *)GUI_WinGetAddData(msg->h_deswin);
@@ -190,7 +190,7 @@ void scene_on_dialog(__gui_msg_t *msg)
 
 			__here__;
 
-			if(p_scene->usb_connect)
+			if(p_scene->usb_connect)//显示USB设备正在连接中......
 			{
 				__here__;
 				p_scene->cur_dialog = USBD_DIALOG;

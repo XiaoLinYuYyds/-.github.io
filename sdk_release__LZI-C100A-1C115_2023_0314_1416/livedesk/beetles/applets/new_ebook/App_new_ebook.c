@@ -165,7 +165,10 @@ static __s32 new_ebook_GetListItemFileName(__gui_msg_t *msg, __s32 ItemIndex, ch
 
 	new_ebook_ExtractFileName(FileName, FilePath);			//从全路径获取文件名
 	__wrn("get List Item Extract File Name is ok ok...!!\n");
-	
+	#if 0//保存用于TF卡插入自动播放上一次的电子书索引id，使用TF卡插拔时生效
+			__wrn("FilePath = %s... \n", FileName);
+			dsk_reg_save_cur_play_info(REG_APP_EBOOK, ItemIndex, FilePath, RAT_TF);
+	#endif
 	rat_set_file_for_play(this->rat.rat_handle, FileName);	//需要设置当前文件播放
 	return EPDK_OK;
 }
@@ -187,6 +190,10 @@ static __s32 PlayEbookFiles(__gui_msg_t *msg, char *FileName)
 	if(this->index != -1){
 		__wrn("from new explorer send file index... \n");
 		new_ebook_GetListItemFileName(msg, this->index, FileName);
+		#if 0//保存用于TF卡插入自动播放上一次的电子书索引id，使用TF卡插拔时生效
+			__wrn("FileName = %s... \n", FileName);
+			dsk_reg_save_cur_play_info(REG_APP_EBOOK, this->index, FileName, RAT_TF);
+		#endif
 	}
 	else {
 		__wrn("from explorer send file index... \n");
@@ -359,6 +366,13 @@ static __s32 __app_new_ebook_proc(__gui_msg_t *msg)
 			app_new_ebook_cmd2para(msg->h_deswin, NEW_SWITCH_TO_OTHER_APP, NEW_SETTING_SW_TO_MAIN, 0);//退出到home应用
 		}
 		return EPDK_OK;
+
+		case DSK_MSG_FS_PART_PLUGOUT://TF卡拔出自动退出该app应用
+		{
+			__wrn("TF cared plugout new_ebook manwin...\n");
+			app_new_ebook_cmd2para(msg->h_deswin, NEW_SWITCH_TO_OTHER_APP, NEW_SETTING_SW_TO_MAIN, 0);//退出
+		}
+		return EPDK_OK;
 		
 		case GUI_MSG_KEY:{/*5*/
 
@@ -438,6 +452,46 @@ H_WIN app_new_ebook_manwin_create(root_para_t *para)
 		return EPDK_FALSE;
 	}
 
+	if(hManWin)
+	{
+		reg_root_para_t *root_reg_para;
+		__s32 reg_storage_type;
+		reg_storage_type = 0;
+
+		if(para)
+		{
+			if(RAT_TF == para->root_type)
+			{
+				reg_storage_type = 0;
+			}
+			else if(RAT_USB == para->root_type)
+			{
+				reg_storage_type = 1;
+			}
+			else
+			{
+				__wrn("para->root_para->root_type invalid...\n");
+			}
+		}
+
+		root_reg_para = (reg_root_para_t *)dsk_reg_get_para_by_app(REG_APP_ROOT);//通过app获取注册表
+
+		if(root_reg_para)//这部分操作是保存媒体类型，用于TF卡插入时自动播放
+		{
+			__s32 reg_app_type;
+			__wrn("m_eMediaTypeList_ebook input new_ebook manwin...\n");
+			reg_app_type = m_eMediaTypeList_ebook;
+			root_reg_para->cur_play_storage = reg_storage_type;
+			root_reg_para->last_play_app = reg_app_type;
+			root_reg_para->last_app_play_storage[reg_app_type] = reg_storage_type;
+			root_reg_para->last_storage_play_app[reg_storage_type] = reg_app_type;
+		}
+		else
+		{
+			__wrn("para is null...\n");
+		}
+	}
+	
 	return hManWin;
 }
 

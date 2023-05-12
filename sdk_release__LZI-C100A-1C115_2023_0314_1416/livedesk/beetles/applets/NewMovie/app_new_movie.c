@@ -664,7 +664,7 @@ __s32  new_movie_cmd2parent(H_WIN hwin, __s32 id, __s32 data2, __s32 reserved)
 __s32 new_movie_robin_sem_init(void)
 {
 	if(0 == g_new_movie_robin_sem){
-		g_new_movie_robin_sem = esKRNL_SemCreate(1);//robin组件创建
+		g_new_movie_robin_sem = esKRNL_SemCreate(1);//robin组件创建，信号量创建
 	}
 
 	if(g_new_movie_robin_sem){
@@ -1474,6 +1474,14 @@ static __s32 __app_new_movie_proc(__gui_msg_t *msg)
 
 			return EPDK_OK;
 		}
+
+		case DSK_MSG_FS_PART_PLUGOUT://TF卡拔出自动退出该app应用
+		{
+			__wrn("TF cared plugout new_movie manwin...\n");
+			new_movie_cmd2parent(msg->h_deswin, NEW_SWITCH_TO_OTHER_APP, NEW_SETTING_SW_TO_MAIN, 0);//退出
+		}
+		return EPDK_OK;
+				
 #if 1
 		case GUI_MSG_TIMER://窗口定时器功能
 		{
@@ -1653,46 +1661,46 @@ H_WIN app_new_movie_manwin_create(root_para_t *para)
 	create_info.hHosting        = NULL;
 	hManWin = GUI_ManWinCreate(&create_info);
 	__wrn("app_new_new_movie_create, hManWin=%x\n", hManWin);
-	#if 0
-	if(hManWin)
-	{
-		reg_root_para_t *root_reg_para;
-		__s32 reg_storage_type;
-		reg_storage_type = 0;
-
-		if(para)
+	#if 1
+	if(hManWin)//如果创建好了manwin窗口
 		{
-			if(RAT_TF == para->root_type)
+			reg_root_para_t *root_reg_para;
+			__s32 reg_storage_type;
+			reg_storage_type = 0;
+	
+			if(para)
 			{
-				reg_storage_type = 0;
+				if(RAT_TF == para->root_type)
+				{
+					reg_storage_type = 0;
+				}
+				else if(RAT_USB == para->root_type)
+				{
+					reg_storage_type = 1;
+				}
+				else
+				{
+					__wrn("para->root_para->root_type invalid...\n");
+				}
 			}
-			else if(RAT_USB == para->root_type)
+	
+			root_reg_para = (reg_root_para_t *)dsk_reg_get_para_by_app(REG_APP_ROOT);	//通过APP获取注册表
+	
+			if(root_reg_para)//这部分操作是保存媒体类型，用于TF卡插入时自动播放
 			{
-				reg_storage_type = 1;
+				__s32 reg_app_type;
+				__wrn("m_eMediaTypeList_ebook input new_ebook manwin...\n");
+				reg_app_type = m_eMediaTypeList_video;									//媒体类型
+				root_reg_para->cur_play_storage = reg_storage_type; 					//当前播放文件的储存类型：TF、USB
+				root_reg_para->last_play_app = reg_app_type;							//上一次播放的app类型
+				root_reg_para->last_app_play_storage[reg_app_type] = reg_storage_type;	//上一次app播放文件的储存类型
+				root_reg_para->last_storage_play_app[reg_storage_type] = reg_app_type;	//上一次储存app播放文件的媒体类型
 			}
 			else
 			{
-				__wrn("para->root_para->root_type invalid...\n");
+				__wrn("para is null...\n");
 			}
 		}
-
-		root_reg_para = (reg_root_para_t *)dsk_reg_get_para_by_app(REG_APP_ROOT);
-
-		if(root_reg_para)
-		{
-			__s32 reg_app_type;
-			__wrn("root_reg_para...\n");
-			reg_app_type = m_eMediaTypeList_video;
-			root_reg_para->cur_play_storage = reg_storage_type;
-			root_reg_para->last_play_app = reg_app_type;
-			root_reg_para->last_app_play_storage[reg_app_type] = reg_storage_type;
-			root_reg_para->last_storage_play_app[reg_storage_type] = reg_app_type;
-		}
-		else
-		{
-			__wrn("para is null...\n");
-		}
-	}
 	#endif
 
 	return hManWin;

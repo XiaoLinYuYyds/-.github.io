@@ -149,6 +149,7 @@ static void on_new_fm_test_freq_end(NEW_FM_CTRLDATA_T *fm_ctrl)
 }
 #endif
 
+#if 1 //搜索结果
 /*
 ************************************************************************************************************************
 *                       				app_new_fm_scene_create
@@ -212,10 +213,13 @@ static void on_new_fm_test_freq_fail(NEW_FM_CTRLDATA_T *this)
 		__wrn("@cur_freq = %d\n",this->cur_freq);
 	}
 }
+#endif
 
 //////////////////////////////////////////////////////////////////////////图层状态打开
 #define NEW_FM_CB_NEED_NOTIFY_FRW(_p) (_p && _p->fm_lyr && GUI_LyrWinGetSta(_p->fm_lyr) == GUI_LYRWIN_STA_ON)
 
+
+#if 1	//搜索结果回调函数
 /*
 ************************************************************************************************************************
 *                       				app_new_fm_scene_create
@@ -264,7 +268,7 @@ __s32 new_cb_srhch_success(void *arg_p)
 	
 	return 0;
 }
-#if 1
+
 /*
 ************************************************************************************************************************
 *                       				new_cb_srhch_fail
@@ -287,7 +291,7 @@ __s32 new_cb_srhch_fail(void *arg_p)
 
 	if(wnd_para)
 	{
-		on_new_fm_test_freq_fail(&wnd_para->fm_ctrl);
+		on_new_fm_test_freq_fail(&wnd_para->fm_ctrl);//搜索失败函数
 		__wrn("draw:fm_ctrl->cur_freq = %d\n", wnd_para->fm_ctrl.cur_freq);
 	}
 
@@ -561,7 +565,7 @@ static __s32 __new_fm_init_radio_module(void *cb_arg, NEW_FM_CTRLDATA_T *fm_ctrl
 		__wrn("radio_open is start...\n");
 		dsk_radio_open();									//打开radio模块
 		__wrn("radio_open is ok...\n");
-		dsk_radio_rcv_open();								//收音机接收端模块---打开
+		dsk_radio_rcv_open();								//收音机接收端模块---打开--->会创建自动搜索线程
 		__wrn("radio_rcv_open is ok...\n");
 		dsk_radio_set_band(DSK_RADIO_BAND_US_EUP);			//设置收音机频段 为美国频段
 		__wrn("radio_set_band is ok...\n");
@@ -625,7 +629,7 @@ static __s32 __new_fm_uninit_radio_module(void)
 		if(dsk_radio_rcv_is_open())			//检测接收端---是否打开
 		{
 			dsk_radio_rcv_search_stop();	//收音机接收端--搜索停止
-			dsk_radio_rcv_close();			//收音机接收端模块---关闭
+			dsk_radio_rcv_close();			//收音机接收端模块---关闭、关闭自动搜索线程
 		}
 		dsk_radio_close();					//收音机radio模块关闭
 	}
@@ -650,12 +654,12 @@ static __s32 __new_fm_next_freq_play(void)
 	__u32 cur_freq = 0;
 	__wrn("next freq play...\n");
 	dsk_radio_rcv_get_cur_freq(&cur_freq);//
-	__wrn("cur_freq 0 = %d\n", cur_freq);
+	__msg("cur_freq 0 = %d\n", cur_freq);
 	
 	dsk_radio_rcv_next_freq_play();			//收音机接收端---播放下一个频率频道
 	
 	dsk_radio_rcv_get_cur_freq(&cur_freq);	//获取---收音机接收端当前的播放频率
-	__wrn("cur_freq 1 = %d\n", cur_freq);
+	__msg("cur_freq 1 = %d\n", cur_freq);
 	dsk_radio_rcv_set_freq_play(cur_freq);	//设置---收音机接收端--播放当前频率
 
 	return EPDK_OK;
@@ -679,12 +683,12 @@ static __s32 __new_fm_pre_freq_play(void)
 	__u32 cur_freq = 0;
 	__wrn("prev freq play...\n");
 	dsk_radio_rcv_get_cur_freq(&cur_freq);//
-	__wrn("cur_freq 0 = %d\n", cur_freq);
+	__msg("cur_freq 0 = %d\n", cur_freq);
 	
 	dsk_radio_rcv_pre_freq_play();			//收音机接收端---播放上一个频率频道
 	
 	dsk_radio_rcv_get_cur_freq(&cur_freq);	//获取---收音机接收端当前的播放频率
-	__wrn("cur_freq 1 = %d\n", cur_freq);
+	__msg("cur_freq 1 = %d\n", cur_freq);
 	dsk_radio_rcv_set_freq_play(cur_freq);	//设置---收音机接收端--播放当前频率，在这里作用是把上一个频率设置为当前播放频率
 
 	return EPDK_OK;

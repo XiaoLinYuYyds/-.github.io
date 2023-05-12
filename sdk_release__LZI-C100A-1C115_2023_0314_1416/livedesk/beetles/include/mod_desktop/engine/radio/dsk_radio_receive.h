@@ -32,6 +32,7 @@ typedef enum
   PLAY_LIST_FAVORITE
 } __play_list_type_e;
 
+//volatile关键字是防止优化编译器把变量从内存装入 CPU 寄存器中，意思是让编译器每次操作该变量时一定要从内存中真正取出，而不是使用已经存在寄存器中的值
 
 extern __pCBK_t volatile  cb_search_success;
 extern void    *volatile  cb_ctx_search_success;

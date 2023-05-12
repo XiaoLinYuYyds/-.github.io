@@ -1159,7 +1159,7 @@ H_WIN app_photo_create(root_para_t *para)
 	create_info.hHosting        = NULL;
 	hManWin = GUI_ManWinCreate(&create_info);
 
-	/*if(hManWin)
+	if(hManWin)
 	{
 		reg_root_para_t *root_reg_para;
 		__s32 reg_storage_type;
@@ -1196,7 +1196,7 @@ H_WIN app_photo_create(root_para_t *para)
 		{
 			__wrn("para is null...\n");
 		}
-	}*/
+	}
 
 	return hManWin;
 }

@@ -213,6 +213,14 @@ static __s32 _new_explorer_manager_win_proc(__gui_msg_t *msg)
 			
 		}
 		return EPDK_OK;
+
+		case DSK_MSG_FS_PART_PLUGOUT://TF卡拔出自动退出该app应用
+		{
+			__wrn("TF cared plugout new_explorer manwin...\n");
+			app_new_explorer_cmd2parent(msg->h_deswin, NEW_SWITCH_TO_OTHER_APP, NEW_SETTING_SW_TO_MAIN, 0);//退出
+		}
+		return EPDK_OK;
+				
 		case GUI_MSG_KEY:		//manwin窗口按键功能
 		{
 			#if 0//发送按键信号到当前的APP_NEWSETTING_ID父窗口manwin窗口的写法

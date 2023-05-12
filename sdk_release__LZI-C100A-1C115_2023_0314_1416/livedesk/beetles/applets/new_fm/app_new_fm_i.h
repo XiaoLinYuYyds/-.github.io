@@ -16,7 +16,7 @@
 #define NEW_FM_GetWndPara(_p, _t, _hwnd)     (_p = (_t *)GUI_WinGetAttr(_hwnd))
 #define NEW_MAX_CHANNEL_FREQ                     FM_SEARCH_CHN_MAX_FREQ
 #define NEW_MIN_CHANNEL_FREQ                     FM_SEARCH_CHN_MIN_FREQ
-#define NEW_FM_UpdateUI(_hwnd)               do{ __msg("FM_UpdateUI\n"); GUI_WinUpdate(_hwnd, EPDK_TRUE);} while (0)
+#define NEW_FM_UpdateUI(_hwnd)               do{ __msg("FM_UpdateUI\n"); GUI_WinUpdate(_hwnd, EPDK_TRUE);} while (0)	//窗口更新
 
 typedef struct  //TODO: 精简某些量
 {

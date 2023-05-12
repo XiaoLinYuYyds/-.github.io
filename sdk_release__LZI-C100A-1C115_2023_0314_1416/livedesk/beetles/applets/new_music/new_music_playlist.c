@@ -82,6 +82,10 @@ static __s32 get_playlist_FileName(playlist_ctrl_t *this, __s32 FileIndex, char 
 		__wrn("get list item file path is fail...\n");
 		return EPDK_FAIL;
 	}
+	#if 1//保存用于TF卡插入自动播放上一次的音乐文件索引id，使用TF卡插拔时生效
+			__wrn("FilePath = %s... \n", FilePath);
+			dsk_reg_save_cur_play_info(REG_APP_EBOOK, FileIndex, FilePath, RAT_TF);
+	#endif
 	__msg("get list item file path is success...\n");
 
 	__wrn(" forme file path get file name is start...\n");
@@ -90,6 +94,7 @@ static __s32 get_playlist_FileName(playlist_ctrl_t *this, __s32 FileIndex, char 
 }
 #endif
 
+#if 1	//图片bmp资源申请与释放
 //申请使用图片资源
 static __s32 __playlist_uipara_init(__gui_msg_t *msg)
 {
@@ -118,6 +123,7 @@ static __s32 __playlist_uipara_deinit(__gui_msg_t *msg)
 		__wrn("theme close is success...\n");
 	}
 }
+#endif
 
 /*****************************************************************************
 *Description	:	播放列表音乐文件的项目索引id转换成文件编号序号获取函数:
@@ -225,7 +231,9 @@ static __s32 __playlist_ui_paint_all_item(playlist_ctrl_t *this, __gui_msg_t *ms
 			}
 		#endif
 		//}
-		if(index == 0){//第一个绘制选中背景
+		if(this->framewin_create_para->CurFocus_id == index)//用于TF卡插入后自动播放并绘制选中该文件
+		//if(index == 0)
+		{//第一个绘制选中背景
 			#if 1//绘制选中的音乐文件背景条目
 				//GUI_SetFont(this->framewin_create_para->font);//设置文本
 				GUI_SetFont(playlist_create_para->font);//设置文本
@@ -371,6 +379,10 @@ static __s32 key_updown_focus_ui_paint(__gui_msg_t *msg, playlist_ctrl_t	*this)
 	#if 1//通过索引获取当前选中音乐文件的文件名
 		get_playlist_FileName(this, index, cur_filename);//获取文件名，然后存放到FileName数组
 		__wrn("cur_filename = %s...\n",cur_filename);
+	#endif
+
+	#if 1//保存用于TF卡插入自动播放上一次的音乐索引id，使用TF卡插拔时生效
+			dsk_reg_save_cur_play_info(REG_APP_MUSIC, index, cur_filename, RAT_TF);
 	#endif
 
 	#if 1 //删除上一次选中的音乐文件条目显示矩形
@@ -745,6 +757,13 @@ static __s32 __playlist_proc(__gui_msg_t *msg)
 		}
 		break;
 
+		case DSK_MSG_FS_PART_PLUGOUT://TF卡拔出自动退出该app应用
+		{
+			__wrn("TF cared plugout out new_music_playlist...\n");
+			app_new_music_cmd2para(msg->h_deswin, send_cmd_playlist_exit, 0, 0);//向
+		}
+		break;
+
 		case MSG_PLAYLIST_OP_UP:{//选中上一个文件，可从播放器new_music.c文件接收到这命令
 			playlist_ctrl_t	*this;
 			__u32 playlist_autodisp;//播放列表自动显示，0为直接发送播放命令，1为播放完一首后不发送播放命令
@@ -826,6 +845,7 @@ H_WIN	playlist_frmwin_create(H_WIN h_parent, playlist_create_para_t *para)
 	playlist_create_para->font = para->font;//文本
 	playlist_create_para->root_type = para->root_type;//TF卡模式
 	playlist_create_para->playlist_hlyr = para->playlist_hlyr;//传入图层
+	playlist_create_para->CurFocus_id	= para->CurFocus_id;//用于TF卡插入自动播放时获取的上一次播放的文件索引id
 	
 	__wrn("fb.size.width=%d, fb.size.height=%d \n",fb.size.width, fb.size.height);
 	__wrn("h_parent = %x \n",h_parent);

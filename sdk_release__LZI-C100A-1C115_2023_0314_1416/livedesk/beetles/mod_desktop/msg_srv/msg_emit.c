@@ -1052,7 +1052,7 @@ static void ksrv_msg_thread(void *arg)
 				esKRNL_TDel(OS_PRIO_SELF);
 			}
 
-			usrmsg = esKSRV_GetMsg();				// 系统消息队列
+			usrmsg = esKSRV_GetMsg();				// 获取系统消息队列
 
 			if(usrmsg)
 			{
@@ -1188,13 +1188,14 @@ static void ksrv_msg_thread(void *arg)
 		}
 		else	/* system 消息 */
 		{
-			if((usrmsg & 0x0000ffff) == KMSG_USR_SYSTEM_FS_PLUGIN)
+			__msg("usrmsg=0x%x\n", usrmsg);
+			if((usrmsg & 0x0000ffff) == KMSG_USR_SYSTEM_FS_PLUGIN)			//FS表示文件系统，目前用于TF卡插拔操作
 			{
 				pmsg->type = DSK_MSG_FS_PART_PLUGIN;
-				pmsg->data = (usrmsg & KMSG_USR_SYSTEM_FS_PARA_MASK) >> 16;
+				pmsg->data = (usrmsg & KMSG_USR_SYSTEM_FS_PARA_MASK) >> 16;	//usrmsg=0x14x0031,所以右移动16位得磁盘符号0x14x，4x表示盘符：45为E、46为F、“41~5A:表示盘符A~Z”
 				__wrn("DSK_MSG_FS_PART_PLUGIN, pmsg->data=0x%x\n", pmsg->data);
 			}
-			else if((usrmsg & 0x0000ffff) == KMSG_USR_SYSTEM_FS_PLUGOUT)
+			else if((usrmsg & 0x0000ffff) == KMSG_USR_SYSTEM_FS_PLUGOUT)	//FS表示文件系统，目前用于TF卡插拔操作
 			{
 				pmsg->type = DSK_MSG_FS_PART_PLUGOUT;
 				pmsg->data = (usrmsg & KMSG_USR_SYSTEM_FS_PARA_MASK) >> 16;
@@ -1207,66 +1208,67 @@ static void ksrv_msg_thread(void *arg)
 				switch(usrmsg)
 				{
 					case KMSG_USR_SYSTEM_USBD_PLUGIN:		// usb device plug in
-						__msg("case KMSG_USR_SYSTEM_USBD_PLUGIN\n");
+						__wrn("case KMSG_USR_SYSTEM_USBD_PLUGIN\n");
 						pmsg->type = DSK_MSG_USBD_PLUG_IN;
 						break;
 
 					case KMSG_USR_SYSTEM_USBD_PLUGOUT:    	// usb device plug out
 						pmsg->type = DSK_MSG_USBD_PLUG_OUT;
-						__msg("case KMSG_USR_SYSTEM_USBD_PLUGOUT\n");
+						__wrn("case KMSG_USR_SYSTEM_USBD_PLUGOUT\n");
 						break;
 
-					case KMSG_USR_SYSTEM_SDMMC_PLUGOUT:
+					case KMSG_USR_SYSTEM_SDMMC_PLUGOUT:		//SD 卡设备拔出
 						pmsg->type = DSK_MSG_APP_EXIT;
+						__wrn("case KMSG_USR_SYSTEM_SDMMC_PLUGOUT\n");
 						break;
 
 					case KMSG_USR_SYSTEM_USBH_PLUGOUT:		// usb host 设备拔出
 						pmsg->type = DSK_MSG_APP_EXIT;
 						break;
 
-					case KMSG_USR_SYSTEM_TVDAC_PLUGIN:
+					case KMSG_USR_SYSTEM_TVDAC_PLUGIN:		// TVDAC 电视接口解码设备插入
 						__msg("**********KMSG_USR_SYSTEM_TVDAC_PLUGIN***********\n");
 						pmsg->type = DSK_MSG_TVDAC_PLUGIN;
 						break;
 
-					case KMSG_USR_SYSTEM_TVDAC_PLUGOUT:
+					case KMSG_USR_SYSTEM_TVDAC_PLUGOUT:		// TVDAC 电视接口解码设备拔出
 						__msg("***********KMSG_USR_SYSTEM_TVDAC_PLUGOUT***************\n");
 						pmsg->type = DSK_MSG_TVDAC_PLUGOUT;
 						break;
 
-					case KMSG_USR_SYSTEM_HDMI_PLUGIN:
+					case KMSG_USR_SYSTEM_HDMI_PLUGIN:		// 多媒体接口设备插入
 						__msg("**********KMSG_USR_SYSTEM_HDMI_PLUGIN***********\n");
 						pmsg->type = DSK_MSG_HDMI_PLUGIN;
 						break;
 
-					case KMSG_USR_SYSTEM_HDMI_PLUGOUT:
+					case KMSG_USR_SYSTEM_HDMI_PLUGOUT:		// 多媒体接口设备拔出
 						__msg("***********KMSG_USR_SYSTEM_HDMI_PLUGOUT***************\n");
 						pmsg->type = DSK_MSG_HDMI_PLUGOUT;
 						break;
 #if( EPDK_CASE == EPDK_LIVE_TOUCH )
 
-					case KMSG_USR_SYSTEM_WAKEUP:
+					case KMSG_USR_SYSTEM_WAKEUP:			// 系统设备待机唤醒
 						__here__
 						pmsg->type = DSK_MSG_STANDBY_WAKE_UP;
 						break;
 #endif
 
-					case KMSG_USR_SYSTEM_MIC_PLUGIN:
+					case KMSG_USR_SYSTEM_MIC_PLUGIN:		// 麦克风设备插入
 						//__msg_jjl("KMSG_USR_SYSTEM_MIC_PLUGIN\n");
 						pmsg->type = DSK_MSG_MIC_PLUGIN;
 						break;
 					
-					case KMSG_USR_SYSTEM_MIC_PLUGOUT:
+					case KMSG_USR_SYSTEM_MIC_PLUGOUT:		// 麦克风设备拔出
 						//__msg_jjl("KMSG_USR_SYSTEM_MIC_PLUGOUT\n");
 						pmsg->type = DSK_MSG_MIC_PLUGOUT;
 						break;
 					
-					case KMSG_USR_SYSTEM_AUX_PLUGIN:
+					case KMSG_USR_SYSTEM_AUX_PLUGIN:		// 音频输入设备插入
 						//__msg_jjl("KMSG_USR_SYSTEM_AUX_PLUGIN\n");
 						pmsg->type = DSK_MSG_AUX_PLUGIN;
 						break;
 					
-					case KMSG_USR_SYSTEM_AUX_PLUGOUT:
+					case KMSG_USR_SYSTEM_AUX_PLUGOUT:		// 音频输入设备拔出
 						//__msg_jjl("KMSG_USR_SYSTEM_AUX_PLUGOUT\n");
 						pmsg->type = DSK_MSG_AUX_PLUGOUT;
 						break;

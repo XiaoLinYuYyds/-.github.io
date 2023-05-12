@@ -3,7 +3,7 @@
 
 static __bool	gs_isRecording = 0;
 static __s32 	gs_bkVolume = 0;
-
+//设置音质
 static void record_set_quality(precord_doc_t precord_doc)
 {
 	switch(precord_doc->recQuality)
@@ -159,13 +159,13 @@ __s32 record_init(precord_doc_t precord_doc)
 		__u32 s = 0;
 		precord_doc->diskFreeTime = precord_doc->diskFreeSize / (precord_doc->media_file.audio_inf.uAudioBps / 8);
 		s = (precord_doc->diskFreeSize >> 20);
-		__inf("disk free size:%d MB\n", s);
-		__inf("disk free time:%d hour\n", precord_doc->diskFreeTime / 3600);
+		__wrn("disk free size:%d MB\n", s);
+		__wrn("disk free time:%d hour\n", precord_doc->diskFreeTime / 3600);
 	}
 
 	//install ginkgo module
 	precord_doc->mid_ginkgo = esMODS_MInstall(BEETLES_APP_ROOT"mod\\ginkgo.mod", 0);
-
+	__msg("mid_ginkgo:%d \n", precord_doc->mid_ginkgo);
 	if(!precord_doc->mid_ginkgo)
 	{
 		__wrn("\n\nInstall cedar module failed!\n\n");
@@ -174,7 +174,7 @@ __s32 record_init(precord_doc_t precord_doc)
 
 	//open ginkgo module
 	precord_doc->mod_ginkgo = esMODS_MOpen(precord_doc->mid_ginkgo, 0);
-
+	__msg("mod_ginkgo:%d \n", precord_doc->mod_ginkgo);
 	if(!precord_doc->mod_ginkgo)
 	{
 		__wrn("\n\nOpen cedar module failed!\n\n");
@@ -228,6 +228,7 @@ __s32 record_unInit(precord_doc_t precord_doc)
 	//close and uninstall cedar module
 	if(precord_doc->mod_ginkgo)
 	{
+		__msg("mod_ginkgo = %d!!!!\n", precord_doc->mod_ginkgo);
 		esMODS_MClose(precord_doc->mod_ginkgo);
 		precord_doc->mod_ginkgo = 0;
 	}
@@ -282,7 +283,7 @@ void record_volume_reset(__u8 enter_exit)
 	}
 #endif
 }
-
+//设置麦克风参数
 void record_mic_param_set(__u8 enter_exit, __u8 recordType)
 {
 	if(enter_exit)
@@ -290,12 +291,14 @@ void record_mic_param_set(__u8 enter_exit, __u8 recordType)
 		#if SP_Software_Echo
 			if((recordType == RECORD_MIC) && IOCTRL__MIC_DET__IS_PLUGIN())
 			{
+				__msg("record mic....\n");
 				// 话筒录音时，有话筒插入，则调整混响参数
 				dsk_audio_echo_close();
 				dsk_audio_echo_open(AUDIO_REC_USR_MIC, 0);
 				dsk_echo_level_set(0);
 			}
 		#endif
+		__msg("record mic 000....\n");
 			
 		dsk_audio_echo_set_mic_pre_gain(1);
 		dsk_audio_echo_set_mic_gain(5);
@@ -308,11 +311,12 @@ void record_mic_param_set(__u8 enter_exit, __u8 recordType)
 				// 话筒录音停止时，有话筒插入，则恢复混响参数
 				dsk_audio_echo_close();
 				dsk_audio_echo_open(AUDIO_REC_USR_MIC, 1);
+				__msg("record mic 00111....\n");
 				#if (SP_Software_Echo == OP_SP_Software_Echo_AdjustByKnob)
 				{
 					__u32 level;
 					level = dsk_echo_level_get_setting();
-	
+					__msg("record mic 111....\n");
 					if(level == EPDK_FAIL)
 					{
 						level = 0;
@@ -324,7 +328,7 @@ void record_mic_param_set(__u8 enter_exit, __u8 recordType)
 				{
 					__s32 level;
 					level = dsk_echo_level_get_setting();
-	
+					__msg("record mic 222....\n");
 					if(level == EPDK_FAIL)
 					{
 						level = 3;
@@ -335,6 +339,7 @@ void record_mic_param_set(__u8 enter_exit, __u8 recordType)
 				#endif
 			}	
 	#endif
+	__msg("record mic 333....\n");
 	}
 }
 
@@ -343,7 +348,7 @@ __s32 record_start(precord_doc_t precord_doc)
 	__s32				ret;
 	app_root_play_app_sounds(SHORT_KEY_WAVE_FILE_RECORD_START);
 	precord_doc->diskFreeSize	= eLIBs_GetVolFSpace(precord_doc->curSearchDisk);//1024*1024*1024;
-
+	__msg("\n diskFreeSize = %d\n",precord_doc->diskFreeSize);
 	if(precord_doc->diskFreeSize == 0)
 	{
 		__wrn("\n\ndisk is full!\n\n");
@@ -352,7 +357,7 @@ __s32 record_start(precord_doc_t precord_doc)
 		return EPDK_FAIL;
 	}
 
-	if(precord_doc->recordType == RECORD_MIC)
+	if(precord_doc->recordType == RECORD_MIC)//麦克风录音
 	{
 		record_volume_reset(1);	
 	}
@@ -360,8 +365,9 @@ __s32 record_start(precord_doc_t precord_doc)
 	record_set_quality(precord_doc);
 	record_set_recSource(precord_doc);
 	record_set_path(precord_doc);
+	__msg("mod_gonkgo 1:%d \n", precord_doc->mod_ginkgo);
 	ret = esMODS_MIoctrl(precord_doc->mod_ginkgo, GINKGO_SET_MEDIAFILE, 0, &precord_doc->media_file);
-
+	__msg("\n\n&precord_doc->media_file =%d\n\n", precord_doc->media_file);
 	if(ret < 0)
 	{
 		__wrn("\n\nInput media file to ginkgo failed!\n\n");
@@ -374,7 +380,7 @@ __s32 record_start(precord_doc_t precord_doc)
 	}
 
 	record_mic_param_set(1, precord_doc->recordType);
-
+	__msg("mod_gonkgo 2:%d \n", precord_doc->mod_ginkgo);
 	// 启动录制
 	ret = esMODS_MIoctrl(precord_doc->mod_ginkgo, GINKGO_CMD_START, 0, 0);
 
@@ -461,12 +467,13 @@ __s32 record_stop(precord_doc_t precord_doc)
 {
 	if(precord_doc->recState != RECORD_STOP)
 	{
+		__msg("mod_gonkgo 3:%d \n", precord_doc->mod_ginkgo);
 		esMODS_MIoctrl(precord_doc->mod_ginkgo, GINKGO_CMD_STOP, 0, 0);
 		app_root_play_app_sounds(SHORT_KEY_WAVE_FILE_RECORD_STOP);
 
 		record_mic_param_set(0, precord_doc->recordType);
 	}
-
+	__msg("stop!!!!!! \n");
 	record_clean(precord_doc);
 	if(precord_doc->recordType == RECORD_MIC)
 	{
@@ -474,7 +481,7 @@ __s32 record_stop(precord_doc_t precord_doc)
 	}
 	return EPDK_OK;
 }
-
+//获取消息队列
 void *record_get_msgqueue(precord_doc_t precord_doc)
 {
 	__u8 err;
@@ -482,7 +489,7 @@ void *record_get_msgqueue(precord_doc_t precord_doc)
 	msg = (void *)esKRNL_QAccept(precord_doc->msg_queue, &err);
 	return msg;
 }
-
+//更新剩余时间
 void record_updateFreeTime(precord_doc_t precord_doc)
 {
 	record_set_quality(precord_doc);

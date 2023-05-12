@@ -1347,6 +1347,7 @@ static __s32 _app_ebook_Proc(__gui_msg_t  *msg)
 				rat_npl_index2file(h_rat_npl, npl_index, file_path);
 				rat_npl_close(h_rat_npl);
 				p_filename = file_path;//eLIBs_strchrlast(file_path,'\\') + 1;
+				__wrn("**********p_filename = %s********\n", p_filename);
 				dsk_reg_save_cur_play_info(REG_APP_EBOOK, npl_index, p_filename, ebook_ctrl->root_type);
 			}
 			__msg("**********before mbook_on_delete********\n");

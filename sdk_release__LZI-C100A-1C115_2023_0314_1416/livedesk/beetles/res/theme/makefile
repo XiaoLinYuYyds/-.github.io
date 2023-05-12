@@ -41,7 +41,9 @@ buildtheme:
 	$(ESTUDIOROOT)/Softwares/Face200/MakeScript/MakeScript.exe ./alarm      13001   14000
 	$(ESTUDIOROOT)/Softwares/Face200/MakeScript/MakeScript.exe ./com_volume 14001   15000
 	$(ESTUDIOROOT)/Softwares/Face200/MakeScript/MakeScript.exe ./atv				20001   21000
-    
+    	
+	$(ESTUDIOROOT)/Softwares/Face200/MakeScript/MakeScript.exe ./little_game 	21001   22000
+    	
 	# create theme for the whole case
 	-rm touchtheme.script
 	cat ./config/touchthemehdr.script   \
@@ -59,6 +61,7 @@ buildtheme:
 		./loading/loading.script            \
 		./com_volume/com_volume.script            \
 		./atv/atv.script            \
+		./little_game/little_game.script            \
 	>> touchtheme.script
 
 	# build the theme
@@ -90,3 +93,5 @@ clean:
 	-rm ./alarm/alarm.script
 	-rm ./com_volume/com_volume.script
 	-rm ./atv/atv.script
+	-rm ./little_game/little_game.script
+		

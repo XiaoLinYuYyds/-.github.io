@@ -1,102 +1,102 @@
 [res_1001]
 name	  	=HOME_HOMELOGO_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\HOMELOGO.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\HOMELOGO.bmp
 commentCN 	=HOMELOGO
 commentEN 	=HOMELOGO
 
 [res_1002]
 name	  	=HOME_MAIN_EBOOK_FOCUS_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_EBOOK_FOCUS.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_EBOOK_FOCUS.bmp
 commentCN 	=MAIN_EBOOK_FOCUS
 commentEN 	=MAIN_EBOOK_FOCUS
 
 [res_1003]
 name	  	=HOME_MAIN_EBOOK_LOSE_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_EBOOK_LOSE.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_EBOOK_LOSE.bmp
 commentCN 	=MAIN_EBOOK_LOSE
 commentEN 	=MAIN_EBOOK_LOSE
 
 [res_1004]
 name	  	=HOME_MAIN_EXPLORER_FOCUS_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_EXPLORER_FOCUS.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_EXPLORER_FOCUS.bmp
 commentCN 	=MAIN_EXPLORER_FOCUS
 commentEN 	=MAIN_EXPLORER_FOCUS
 
 [res_1005]
 name	  	=HOME_MAIN_EXPLORER_LOSE_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_EXPLORER_LOSE.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_EXPLORER_LOSE.bmp
 commentCN 	=MAIN_EXPLORER_LOSE
 commentEN 	=MAIN_EXPLORER_LOSE
 
 [res_1006]
 name	  	=HOME_MAIN_FM_FOCUS_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_FM_FOCUS.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_FM_FOCUS.bmp
 commentCN 	=MAIN_FM_FOCUS
 commentEN 	=MAIN_FM_FOCUS
 
 [res_1007]
 name	  	=HOME_MAIN_FM_LOSE_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_FM_LOSE.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_FM_LOSE.bmp
 commentCN 	=MAIN_FM_LOSE
 commentEN 	=MAIN_FM_LOSE
 
 [res_1008]
 name	  	=HOME_MAIN_GENERAL_SETTING_FOCUS_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_GENERAL_SETTING_FOCUS.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_GENERAL_SETTING_FOCUS.bmp
 commentCN 	=MAIN_GENERAL_SETTING_FOCUS
 commentEN 	=MAIN_GENERAL_SETTING_FOCUS
 
 [res_1009]
 name	  	=HOME_MAIN_GENERAL_SETTING_LOSE_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_GENERAL_SETTING_LOSE.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_GENERAL_SETTING_LOSE.bmp
 commentCN 	=MAIN_GENERAL_SETTING_LOSE
 commentEN 	=MAIN_GENERAL_SETTING_LOSE
 
 [res_1010]
 name	  	=HOME_MAIN_MOVIE_FOCUS_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_MOVIE_FOCUS.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_MOVIE_FOCUS.bmp
 commentCN 	=MAIN_MOVIE_FOCUS
 commentEN 	=MAIN_MOVIE_FOCUS
 
 [res_1011]
 name	  	=HOME_MAIN_MOVIE_LOSE_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_MOVIE_LOSE.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_MOVIE_LOSE.bmp
 commentCN 	=MAIN_MOVIE_LOSE
 commentEN 	=MAIN_MOVIE_LOSE
 
 [res_1012]
 name	  	=HOME_MAIN_MUSIC_FOCUS_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_MUSIC_FOCUS.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_MUSIC_FOCUS.bmp
 commentCN 	=MAIN_MUSIC_FOCUS
 commentEN 	=MAIN_MUSIC_FOCUS
 
 [res_1013]
 name	  	=HOME_MAIN_MUSIC_LOSE_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_MUSIC_LOSE.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_MUSIC_LOSE.bmp
 commentCN 	=MAIN_MUSIC_LOSE
 commentEN 	=MAIN_MUSIC_LOSE
 
 [res_1014]
 name	  	=HOME_MAIN_PHOTO_FOCUS_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_PHOTO_FOCUS.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_PHOTO_FOCUS.bmp
 commentCN 	=MAIN_PHOTO_FOCUS
 commentEN 	=MAIN_PHOTO_FOCUS
 
 [res_1015]
 name	  	=HOME_MAIN_PHOTO_LOSE_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_PHOTO_LOSE.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_PHOTO_LOSE.bmp
 commentCN 	=MAIN_PHOTO_LOSE
 commentEN 	=MAIN_PHOTO_LOSE
 
 [res_1016]
 name	  	=HOME_MAIN_RECORD_FOCUS_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_RECORD_FOCUS.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_RECORD_FOCUS.bmp
 commentCN 	=MAIN_RECORD_FOCUS
 commentEN 	=MAIN_RECORD_FOCUS
 
 [res_1017]
 name	  	=HOME_MAIN_RECORD_LOSE_BMP
-file	  	=F:\git_work\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_RECORD_LOSE.bmp
+file	  	=F:\git_workSDK\-.github.io\sdk_release__LZI-C100A-1C115_2023_0314_1416\livedesk\beetles\res\theme\./home\MAIN_RECORD_LOSE.bmp
 commentCN 	=MAIN_RECORD_LOSE
 commentEN 	=MAIN_RECORD_LOSE
 

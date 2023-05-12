@@ -106,7 +106,7 @@ static void __show_task(void *p_arg)
 
 	while(1)
 	{
-		if(esKRNL_TDelReq(EXEC_prioself) == OS_TASK_DEL_REQ)
+		if(esKRNL_TDelReq(EXEC_prioself) == OS_TASK_DEL_REQ)//请求删除线程
 		{
 			goto EXIT_DEC_TASK;
 		}
@@ -144,7 +144,7 @@ static __s32 _ebook_loading_proc(__gui_msg_t *msg)
 			GUI_LyrWinSetSta(loading_ctrl->loading_para->loading_layer, GUI_LYRWIN_STA_ON);
 			GUI_LyrWinSetTop(loading_ctrl->loading_para->loading_layer);
 			GUI_LyrWinCacheOff();
-			loading_ctrl->loading_task = esKRNL_TCreate(__show_task, (void *)(msg->h_deswin), 0x1000, KRNL_priolevel3);
+			loading_ctrl->loading_task = esKRNL_TCreate(__show_task, (void *)(msg->h_deswin), 0x1000, KRNL_priolevel3);//创建线程
 		}
 		break;
 

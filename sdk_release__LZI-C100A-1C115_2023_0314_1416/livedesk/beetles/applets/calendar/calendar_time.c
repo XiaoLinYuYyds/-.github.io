@@ -110,7 +110,7 @@ static __s32 on_calendar_time_wnd_command(__gui_msg_t *msg)
 {
 	return EPDK_OK;
 }
-
+//ªÊ÷∆ ±º‰
 static __s32 draw_time(H_WIN hwnd, __time_t *time, calendar_time_wnd_res_t *res, CLD_UI_TIME_PARA_T *ui_time)
 {
 	__s32 format;

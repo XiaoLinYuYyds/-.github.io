@@ -1221,7 +1221,7 @@ static __s32 __new_music_proc(__gui_msg_t *msg)
 			__wrn("new_music_paint_one_item is ok...\n");
 			new_music_rat_init(new_music_ctrl);				//rat模块文件搜索打开初始化
 			
-			#if 1	//获取媒体类型文件的文件名
+			#if 1	//获取媒体类型文件的文件名，与下面 直接播放音乐文件 一起用
 				eLIBs_memset(FileName, 0, sizeof(FileName));				//数组数据初始化，清0
 				new_music_GetListItemFileName(new_music_ctrl, 0, FileName);
 				__wrn("\FileName = %s\n",FileName);
@@ -1243,7 +1243,11 @@ static __s32 __new_music_proc(__gui_msg_t *msg)
 			//PlayCurMusicFile(new_music_ctrl,FileName);			 	//播放音乐文件
 			new_music_play_file(new_music_ctrl, FileName,0);			//播放音乐文件
 			#else	//开始播放音乐文件
-			new_music_play_start(new_music_ctrl,0);//开始播放
+			__wrn("curplay_index = %d...\n", new_music_ctrl->framewin_create_para->curplay_index);
+			if(new_music_ctrl->framewin_create_para->curplay_index > 0)
+			new_music_play_start(new_music_ctrl,new_music_ctrl->framewin_create_para->curplay_index);//开始TF卡插入自动播放
+			else
+			new_music_play_start(new_music_ctrl,0);//开始从0播放
 			#endif
 			
 			install_auto_palymusic_timer(new_music_ctrl,msg, 1);			//开启播放定时器
@@ -1361,6 +1365,13 @@ static __s32 __new_music_proc(__gui_msg_t *msg)
 			new_music_play_ctrl_key_proc(msg);
 			__wrn("__new_music_proc GUI_MSG_KEY is release stop...\n");
 			
+		}
+		break;
+
+		case DSK_MSG_FS_PART_PLUGOUT://TF卡拔出自动退出该app应用
+		{
+			__wrn("TF cared plugout...\n");
+			app_new_music_cmd2para(msg->h_deswin, new_music_play_key_exit, 0, 0);//退出
 		}
 		break;
 
@@ -1662,7 +1673,7 @@ H_WIN	new_music_frmwin_create(H_WIN h_parent, new_music_create_para_t *para)
 	new_music_create_para->font = para->font;//文本
 	new_music_create_para->root_type = para->root_type;//TF卡模式
 	new_music_create_para->new_music_hlyr = para->new_music_hlyr;//传入图层
-	
+	new_music_create_para->curplay_index  = para->curplay_index;//传入TF卡传入自动播放上一次的文件索引id
 	__wrn("fb.size.width=%d, fb.size.height=%d \n",fb.size.width, fb.size.height);
 	__wrn("h_parent = %x \n",h_parent);
 	__wrn("new_music_hlyr = %x \n",new_music_create_para->new_music_hlyr);

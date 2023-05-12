@@ -544,7 +544,7 @@ __s32 music_save_breakpoint(music_player_ctrl_t *This)
 	__wrn("This->list_ctrl=0x%x\n", This->list_ctrl);
 	music_list_save_last_para(This->list_ctrl);			//保存参数
 	__wrn("music_list_save_last_para.......\n");
-	dsk_reg_flush();
+	//dsk_reg_flush();//储存到flush
 	/*
 	if(This->play_cnt < 20)//20
 	{

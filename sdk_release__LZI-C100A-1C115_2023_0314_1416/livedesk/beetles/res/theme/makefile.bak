@@ -41,7 +41,7 @@ buildtheme:
 	$(ESTUDIOROOT)/Softwares/Face200/MakeScript/MakeScript.exe ./alarm      13001   14000
 	$(ESTUDIOROOT)/Softwares/Face200/MakeScript/MakeScript.exe ./com_volume 14001   15000
 	$(ESTUDIOROOT)/Softwares/Face200/MakeScript/MakeScript.exe ./atv				20001   21000
-    
+    	
 	# create theme for the whole case
 	-rm touchtheme.script
 	cat ./config/touchthemehdr.script   \
@@ -88,3 +88,4 @@ clean:
 	-rm ./alarm/alarm.script
 	-rm ./com_volume/com_volume.script
 	-rm ./atv/atv.script
+	

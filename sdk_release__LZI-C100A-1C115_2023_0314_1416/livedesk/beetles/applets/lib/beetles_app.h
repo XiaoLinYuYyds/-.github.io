@@ -87,12 +87,13 @@ extern GUI_FONT    *SWFFont;
 #define APP_RECORD	    	"app_record"
 #define APP_LINEIN		"app_linein"
 #define APP_ATV			"app_atv"
-#define APP_NEWSETTING		"app_newsetting" //新添加通用设置名称
+#define APP_NEWSETTING		"app_newsetting" 	//新添加通用设置名称
 #define APP_NEWMOVIE		"app_new_movie"
 #define APP_NEWPHOTO		"app_new_photo"
 #define APP_NEWMUSIC		"app_new_music"
 #define APP_NEWEBOOK		"app_new_ebook"
-#define	APP_NEWFM			"app_new_ebook"//收音机
+#define	APP_NEWFM			"app_new_ebook"		//新添加收音机名
+#define APP_NEWRECORD	    "app_new_record"	//新添加录音机名
 
 
 #define APP_HOME_ID			0x1001
@@ -118,6 +119,7 @@ extern GUI_FONT    *SWFFont;
 #define APP_NEWMUSIC_ID				0x9A01	//新添加音乐APP应用程序的id存放地址
 #define APP_NEWEBOOK_ID				0x9B01	//新添加电子书APP应用程序的id存放地址
 #define	APP_NEWFM_ID				0x9C01	//新添加收音机APP应用程序的id存放地址
+#define APP_NEWRECORD_ID			0X9D01	//新添加录音机app应用程序的id存放地址
 
 
 #if SP_FavoriteFiles
@@ -151,7 +153,7 @@ typedef enum
 {
 	ID_HOME_NEWMUSIC = 0,/*ID_HOME_MUSIC*/
 	
-	ID_HOME_NEW_FM,					/*收音机的manwin窗口创建标志*/
+	ID_HOME_NEW_MOVIE,			  /*新添加的movie视频app应用程序，manwin窗口创建标志*/
 #if SP_APP_ATV
 	ID_HOME_TV,
 	//ID_HOME_AVIN,
@@ -161,9 +163,10 @@ typedef enum
 	
 	ID_HOME_NEW_PHOTO,/*新添加的相册app应用程序，manwin窗口创建标志*/
 	ID_HOME_NEW_EBOOK,				/*新添加的电子书app应用manwin窗口*/
-	ID_HOME_FM,
+	ID_HOME_NEW_FM,					/*收音机的manwin窗口创建标志*/
 	ID_HOME_RECORD,
-	ID_HOME_GENERAL_SETTING,
+	ID_HOME_NEW_RECORD,				/*新添加的录音app应用manwin窗口创建标志*/
+
 	//ID_HOME_POWER_SETTING,
 	ID_HOME_EXPORER,
 #if SP_APP_CALENDAR
@@ -181,17 +184,24 @@ typedef enum
 	ID_LINEIN_SHORTCUT,
 	ID_RECORD_SHORTCUT,
 	ID_ATV_SHORTCUT,
+	ID_NEW_EBOOK_SHORTCUT,	/*新添加的电子书app应用快捷方式标志*/
+	ID_NEW_MUSIC_SHORTCUT,	/*新的音乐app快捷方式*/
+	ID_NEW_MOVIE_SHORTCUT,	/*新的视频app快捷方式*/
+	ID_NEW_PHOTO_SHORTCUT,	/*新的相册app快捷方式*/
+	ID_NEW_FM_SHORTCUT,		/*新的收音机app快捷方式*/
+	ID_NEW_RECORD_SHORTCUT,	/*新的录音机app快捷方式*/
 	ID_HOME_ATV,
 //	ID_HOME_TV,
 	ID_HOME_AVIN,
 	ID_HOME_MUSIC,
 	ID_HOME_PHOTO,
 	ID_HOME_EBOOK,
-	ID_HOME_NUMBER,//新添加窗口ID
-	ID_HOME_NEW_MOVIE,			  /*新添加的movie视频app应用程序，manwin窗口创建标志*/
+	ID_HOME_FM,
+	ID_HOME_NUMBER,			//新添加窗口ID
 	ID_HOME_NEW_SETTING_NUMBER,		/*新添加的空白的manwin窗口*/
-	ID_HOME_NEW_EXPORER,		   /*ID_HOME_MOVIE,*/
-	ID_HOME_MOVIE,
+	ID_HOME_NEW_EXPORER,		   
+	ID_HOME_GENERAL_SETTING,
+	ID_HOME_MOVIE,					/*ID_HOME_MOVIE,*/
 } root_home_id_t;
 
 typedef enum

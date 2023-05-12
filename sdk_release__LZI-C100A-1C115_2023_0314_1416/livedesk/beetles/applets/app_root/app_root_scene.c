@@ -33,7 +33,7 @@
 //#include "calendar/app_calendar.h"
 
 
-
+#define	APP_SHORTCUT_FLAG	0	//新旧app快捷方式切换标志:1为旧的，0为新的
 #define AMPLIFER_CHECK_TIMMER_ID 0x37
 #define AMPLIFER_CHECK_TIME 100
 
@@ -78,6 +78,7 @@ typedef struct tag_root_ctrl
 	H_WIN	h_app_new_music;/*存放新添加的music应用*/
 	H_WIN	h_app_new_ebook;
 	H_WIN	h_app_new_fm;/*存放新添加的收音机应用*/
+	H_WIN	h_app_new_record;/*存放新添加的录音机应用*/
 #if SP_APP_AUX
 	H_WIN	h_app_linin;
 #endif
@@ -328,7 +329,7 @@ __s32 DetectUpdateFirmware(char *rootDir)
 
 	return 0;
 }
-
+//获取文件总数
 __s32 GetFileTotal(const char *searchPath, rat_media_type_t mediaType)
 {
 	HRAT 	hrat = NULL;
@@ -345,7 +346,7 @@ __s32 GetFileTotal(const char *searchPath, rat_media_type_t mediaType)
 	__wrn("scan files total=%ld\n", total);
 	return total;
 }
-
+//获取固件文件总数
 __s32 GetFileTotal_Firmware(char *rootDir)
 {
 #ifdef PATH__LZ_C100_IMG_FOLDER
@@ -430,7 +431,7 @@ char app_root_detect_update_firmware(root_ctrl_t *root_ctrl)
 	}
 	return 0;
 }
-
+//放弃固件更新
 void app_root_update_firmware_giveup(root_ctrl_t *root_ctrl)
 {
 	__s32 ret = EPDK_FAIL;
@@ -561,6 +562,10 @@ static __s32 app_root_restore_focus_child(root_ctrl_t *root_ctrl)
 	{
 		GUI_WinSetFocusChild(root_ctrl->h_app_photo);
 	}
+	else if(root_ctrl->h_app_new_photo)
+	{
+		GUI_WinSetFocusChild(root_ctrl->h_app_new_photo);
+	}
 	else if(root_ctrl->h_app_ebook)
 	{
 		GUI_WinSetFocusChild(root_ctrl->h_app_ebook);
@@ -580,6 +585,10 @@ static __s32 app_root_restore_focus_child(root_ctrl_t *root_ctrl)
 	else if(root_ctrl->h_app_record)
 	{
 		GUI_WinSetFocusChild(root_ctrl->h_app_record);
+	}
+	else if(root_ctrl->h_app_new_record)//新添加的录音机应用app
+	{
+		GUI_WinSetFocusChild(root_ctrl->h_app_new_record);
 	}
 #if SP_APP_ATV
 	else if(root_ctrl->h_app_atv)
@@ -813,7 +822,7 @@ static __s32 app_root_linein_change(root_ctrl_t *para, __s32 lineinSt)
 #endif
 	return EPDK_OK;
 }
-
+//获取线输入
 static __s32 app_root_get_linein_state(root_ctrl_t *para)
 {
 #if SP_DEV_DET_PLUGIN_BY_AD
@@ -908,7 +917,7 @@ static __s32 app_root_get_linein_state(root_ctrl_t *para)
 	return ret;
 #endif
 }
-
+//检查全局初始化
 static __s32 app_root_globe_check_init(root_ctrl_t *para)
 {
 #if SP_DEV_DET_PLUGIN_BY_AD
@@ -977,7 +986,7 @@ static __s32 app_root_globe_check_init(root_ctrl_t *para)
 #endif
 	return EPDK_OK;
 }
-
+//检查全局不初始化
 static __s32 app_root_globe_check_uninit(root_ctrl_t *para)
 {
 #if SP_DEV_DET_PLUGIN_BY_AD
@@ -1271,7 +1280,7 @@ static __bool __app_root_has_forground_apps(root_ctrl_t *para)
 	__wrn("root has no child\n");
 	return EPDK_FALSE;
 }
-
+//检测背景音乐是否存在
 static __s32 __app_root_is_bg_music_exist(__gui_msg_t *msg, H_WIN *hMusic)
 {
 	H_WIN root, child;
@@ -1306,7 +1315,7 @@ static __s32 __app_root_is_bg_music_exist(__gui_msg_t *msg, H_WIN *hMusic)
 
 	return exist;
 }
-
+//获取音乐索引id
 __s32 __app_root_get_bg_music_index(__u32 *index)
 {
 	H_WIN root, child;
@@ -1343,7 +1352,7 @@ __s32 __app_root_get_bg_music_index(__u32 *index)
 
 	return app_music_get_index(hMusic, index);
 }
-
+//设置音乐背景模式
 static __s32 app_root_set_music_bg_mode(__gui_msg_t *msg)
 {
 	__s32 ret;
@@ -1372,7 +1381,7 @@ static __s32 app_root_set_music_bg_mode(__gui_msg_t *msg)
 
 	return ret;
 }
-
+//删除线输入
 static void __app_root_delete_bg_linein(__gui_msg_t *msg)
 {
 #if SP_APP_AUX
@@ -1410,7 +1419,7 @@ static void __app_root_delete_bg_linein(__gui_msg_t *msg)
 	}
 #endif
 }
-
+//删除背景音乐应用
 static void __app_root_delete_bg_music(__gui_msg_t *msg)
 {
 	H_WIN root, child, next_child;
@@ -1452,7 +1461,7 @@ static void __app_root_delete_bg_music(__gui_msg_t *msg)
 		child = next_child;
 	}
 }
-
+//创建背景音乐
 static void __app_root_create_bg_music(__gui_msg_t *msg)
 {
 	H_WIN root, child;
@@ -1522,7 +1531,7 @@ static void __app_root_change_to_default_bg(void)
 
 #endif
 }
-
+//删除所有应用manwin窗口句柄，除了home界面窗口
 static void __app_root_delete_all_app_except_home(root_ctrl_t *para)
 {
 	H_WIN root, child, next_child;
@@ -1573,7 +1582,9 @@ static void __app_root_delete_all_app_except_home(root_ctrl_t *para)
 	para->h_app_record   = NULL;
 	para->h_app_new_setting = NULL;//新添加通用设置app
 	para->h_app_new_movie = NULL;//新添加的movie应用app
+	para->h_app_new_photo = NULL;
 	para->h_app_new_ebook = NULL;//清空新添加的电子书manwin窗口句柄
+	para->h_app_new_record = NULL;//新添加的录音机应用manwin窗口句柄
 #if SP_APP_AUX
 	para->h_app_linin    = NULL;
 #endif	
@@ -1584,7 +1595,7 @@ static void __app_root_delete_all_app_except_home(root_ctrl_t *para)
 	__wrn("*******__app_root_delete_all_app_except_bg_audio end*******\n");
 }
 
-
+//删除所有app应用manwin窗口句柄，除了音频app应用外
 static void __app_root_delete_all_app_except_bg_audio(root_ctrl_t *para)
 {
 	H_WIN root, child, next_child;
@@ -1641,15 +1652,17 @@ static void __app_root_delete_all_app_except_bg_audio(root_ctrl_t *para)
 	para->h_app_calendar = NULL;
 	para->h_app_record   = NULL;
 	para->h_app_new_movie = NULL;//新添加的movi应用app
+	para->h_app_new_photo = NULL;
 	para->h_app_new_ebook = NULL;
 	//para->h_app_new_music = NULL;//新添加音乐
 	//para->h_app_linin    = NULL;
+	para->h_app_new_record   = NULL;//新添加的录音机应用
 #if SP_APP_ATV
 	para->h_app_atv   = NULL;
 #endif
 	__wrn("*******__app_root_delete_all_app_except_bg_audio end*******\n");
 }
-
+//删除所有的音频应用app
 static void __app_root_delete_all_audio_app(root_ctrl_t *para)
 {
 	H_WIN root, child, next_child;
@@ -1705,6 +1718,7 @@ static void __app_root_delete_all_audio_app(root_ctrl_t *para)
 	para->h_app_record   = NULL;
 	para->h_app_new_movie = NULL;//新添加的movi应用app
 	para->h_app_new_music = NULL;//新添加的音乐应用app
+	para->h_app_new_record   = NULL;
 #if SP_APP_AUX
 	para->h_app_linin    = NULL;
 #endif
@@ -1713,7 +1727,7 @@ static void __app_root_delete_all_audio_app(root_ctrl_t *para)
 #endif
 	__wrn("*******__app_root_delete_all_audio_app end*******\n");
 }
-
+//删除所有app应用的manwin窗口句柄
 static void __app_root_delete_all_app(root_ctrl_t *para)
 {
 	H_WIN root, child, next_child;
@@ -1759,7 +1773,9 @@ static void __app_root_delete_all_app(root_ctrl_t *para)
 	para->h_app_new_setting = NULL;//新添加通用设置app
 	para->h_app_new_movie = NULL;//新添加的movi应用app
 	para->h_app_new_music = NULL;//新添加的音乐应用app
+	para->h_app_new_photo = NULL;
 	para->h_app_new_ebook = NULL;//清除新添加的电子书句柄
+	para->h_app_new_record   = NULL;//新添加的录音机应用句柄
 	
 #if SP_APP_AUX
 	para->h_app_linin    = NULL;
@@ -1816,7 +1832,7 @@ static __s32 __app_root_to_linein(root_ctrl_t *para)
 	return EPDK_OK;
 }
 #endif
-
+//root转到fm收音机app应用程序
 static __s32 __app_root_to_fm(root_ctrl_t *para)
 {
 	H_WIN root, child, next_child;
@@ -1847,7 +1863,7 @@ static __s32 __app_root_to_fm(root_ctrl_t *para)
 #endif
 	return EPDK_OK;
 }
-//root转到setting
+//root转到setting设置app
 static __s32 __app_root_to_setting(root_ctrl_t *para)
 {
 	H_WIN root, child, next_child;
@@ -1922,7 +1938,7 @@ static __s32 __app_root_to_setting(root_ctrl_t *para)
 }
 
 
-
+//root根目录跳到音频应用，音乐app
 static __s32 __app_root_to_audio(root_ctrl_t *para
                                  , __s32 rat_root_type)
 {
@@ -1997,12 +2013,25 @@ static __s32 __app_root_to_audio(root_ctrl_t *para
 	gscene_bgd_set_state(BGD_STATUS_SHOW);
 	app_root_play_app_sounds(SHORT_KEY_WAVE_FILE_MUSIC);
 	para->root_para->explr_root = rat_root_type;
+	#if APP_SHORTCUT_FLAG 
+	{
 	__wrn("begin send msg to load music...\n");
 	app_root_cmd2self(para,
 	                  APP_HOME_ID,
 	                  SWITCH_TO_OTHER_APP,
 	                  ID_MUSIC_SHORTCUT,
 	                  rat_root_type);
+	}
+	#else
+	{
+	__wrn("begin send msg to load new_music...\n");
+	app_root_cmd2self(para,
+	                  APP_HOME_ID,
+	                  SWITCH_TO_OTHER_APP,
+	                  ID_NEW_MUSIC_SHORTCUT,
+	                  rat_root_type);
+	}
+	#endif
 	__wrn("*******__app_root_to_audio success*******\n");
 	IOCTRL__ATV_PW__SET_OFF();
 	return EPDK_OK;
@@ -2044,7 +2073,7 @@ static __s32 __app_root_delete_sos(root_ctrl_t *para)
 }
 
 
-
+//app根目录进入到录音机app应用程序
 static __s32 __app_root_to_record(root_ctrl_t *para
                                   , __s32 rat_root_type)
 {
@@ -2070,6 +2099,12 @@ static __s32 __app_root_to_record(root_ctrl_t *para
 	{
 		__wrn("record alreadly running...\n");
 		return EPDK_FAIL;
+	}	
+	if(NULL != para->h_app_new_record
+	    && para->root_para->root_type == rat_root_type)
+	{
+		__wrn("new record alreadly running...\n");
+		return EPDK_FAIL;
 	}
 
 	__app_root_delete_all_app(para);
@@ -2085,7 +2120,7 @@ static __s32 __app_root_to_record(root_ctrl_t *para
 	return EPDK_OK;
 }
 
-#if SP_APP_ATV
+#if SP_APP_ATV //电视
 __s32 __app_root_ready_to_atv(root_ctrl_t *root_ctrl, __u32 a_eShiftMode)
 {
 	E_SHIFT_MODE t_eShiftMode_getCur;
@@ -2157,7 +2192,7 @@ __s32 __app_root_ready_to_atv(root_ctrl_t *root_ctrl, __u32 a_eShiftMode)
 
 	return t_eShiftMode_getCur;
 }
-
+//root转到atv电视应用
 static __s32 __app_root_to_atv(root_ctrl_t *para)
 {
 	__u32 t_maskFlags;
@@ -2205,7 +2240,7 @@ static __bool is_on_tv(void)
 		return EPDK_TRUE;
 	}
 }
-
+//root转到视频应用app
 static __s32 __app_root_to_video(root_ctrl_t *para
                                  , __s32 rat_root_type)
 {
@@ -2263,17 +2298,30 @@ static __s32 __app_root_to_video(root_ctrl_t *para
 	para->root_para->explr_root = rat_root_type;
 	para->root_para->tv_mode = tv_mode;
 	app_root_play_app_sounds(SHORT_KEY_WAVE_FILE_MOVIE);
+	#if APP_SHORTCUT_FLAG 
+	{
 	__wrn("begin send msg to load movie...\n");
 	app_root_cmd2self(para,
 	                  APP_HOME_ID,
 	                  SWITCH_TO_OTHER_APP,
 	                  ID_MOVIE_SHORTCUT,
 	                  rat_root_type);
+	}
+	#else
+	{
+	__wrn("begin send msg to load new_movie...\n");
+	app_root_cmd2self(para,
+	                  APP_HOME_ID,
+	                  SWITCH_TO_OTHER_APP,
+	                  ID_NEW_MOVIE_SHORTCUT,
+	                  rat_root_type);
+	}
+	#endif
 	__wrn("*******__app_root_to_video success*******\n");
 	IOCTRL__ATV_PW__SET_OFF();
 	return EPDK_OK;
 }
-
+//root转到电子书应用app
 static __s32 __app_root_to_ebook(root_ctrl_t *para
                                  , __s32 rat_root_type)
 {
@@ -2318,16 +2366,30 @@ static __s32 __app_root_to_ebook(root_ctrl_t *para
 	__app_root_delete_all_app_except_bg_audio(para);
 	para->root_para->explr_root = rat_root_type;
 	__wrn("begin send msg to load ebook...\n");
+	#if APP_SHORTCUT_FLAG 
+	{
+	__wrn("******* h_app_ebook success*******\n");
 	app_root_cmd2self(para,
 	                  APP_HOME_ID,
 	                  SWITCH_TO_OTHER_APP,
 	                  ID_EBOOK_SHORTCUT,
 	                  rat_root_type);
+	}
+	#else 
+	{
+	__wrn("******* h_app_new_ebook success*******\n");
+	app_root_cmd2self(para,
+	                  APP_HOME_ID,
+	                  SWITCH_TO_OTHER_APP,
+	                  ID_NEW_EBOOK_SHORTCUT,
+	                  rat_root_type);
+	}
+	#endif
 	__wrn("*******__app_root_to_ebook success*******\n");
 	IOCTRL__ATV_PW__SET_OFF();
 	return EPDK_OK;
 }
-
+//root转到相册应用app
 static __s32 __app_root_to_photo(root_ctrl_t *para
                                  , __s32 rat_root_type)
 {
@@ -2354,6 +2416,12 @@ static __s32 __app_root_to_photo(root_ctrl_t *para
 		__wrn("photo alreadly running...\n");
 		return EPDK_FAIL;
 	}
+	if(NULL != para->h_app_new_photo
+	    && para->root_para->root_type == rat_root_type)
+	{
+		__wrn("new photo alreadly running...\n");
+		return EPDK_FAIL;
+	}
 
 	//外部已经搜索并设置播放列表
 	//ret = __app_root_set_playfile(para->quick_root_type);
@@ -2364,12 +2432,25 @@ static __s32 __app_root_to_photo(root_ctrl_t *para
 	//}
 	__app_root_delete_all_app_except_bg_audio(para);
 	para->root_para->explr_root = rat_root_type;
+	#if APP_SHORTCUT_FLAG 
+	{
 	__wrn("begin send msg to load photo...\n");
 	app_root_cmd2self(para,
 	                  APP_HOME_ID,
 	                  SWITCH_TO_OTHER_APP,
 	                  ID_PHOTO_SHORTCUT,
 	                  rat_root_type);
+	}
+	#else 
+	{
+	__wrn("begin send msg to load new photo...\n");
+	app_root_cmd2self(para,
+	                  APP_HOME_ID,
+	                  SWITCH_TO_OTHER_APP,
+	                  ID_NEW_PHOTO_SHORTCUT,
+	                  rat_root_type);
+	}
+	#endif
 	__wrn("*******__app_root_to_photo success*******\n");
 	IOCTRL__ATV_PW__SET_OFF();
 	return EPDK_OK;
@@ -2521,13 +2602,14 @@ static __s32 __app_root_set_playfile(rat_root_t rat_root_type, rat_media_type_t 
 
 	eLIBs_memset(&ItemInfo, 0, sizeof(rat_entry_t));
 	ret = rat_get_item_info_by_index(hrat, last_file_index, &ItemInfo);
-
+	__wrn("last_file_index = %d...\n",last_file_index);
+	__wrn("ItemInfo.Path = %s...\n",ItemInfo.Path);
 	if(ret == EPDK_OK)
 	{
 		eLIBs_memset(file_path, 0, sizeof(file_path));
 		eLIBs_strcpy(file_path, ItemInfo.Path);
 		ret = eLIBs_strcmp(file_path, last_file_path);
-
+		__wrn("ret = %d...\n",ret);
 		if(ret == 0)		//相等,则播放上一次的文件
 		{
 			rat_set_file_for_play(hrat, last_file_path);
@@ -2547,7 +2629,7 @@ static __s32 __app_root_set_playfile(rat_root_t rat_root_type, rat_media_type_t 
 
 	return EPDK_FAIL;
 }
-
+//获取储存类型对应的磁盘设备：TF、USB等
 static rat_root_t __app_root_get_rat_root_type(__s32 reg_storage_type)
 {
 	rat_root_t rat_root_type;
@@ -2569,7 +2651,7 @@ static rat_root_t __app_root_get_rat_root_type(__s32 reg_storage_type)
 
 	return rat_root_type;
 }
-
+//获取浏览的媒体类型
 static rat_media_type_t __app_root_get_rat_media_type(__s32 reg_media_type)
 {
 	rat_media_type_t rat_media_type;
@@ -2600,7 +2682,7 @@ static rat_media_type_t __app_root_get_rat_media_type(__s32 reg_media_type)
 
 	return rat_media_type;
 }
-
+//获取储存类型1
 static __s32 __app_root_get_reg_storage_type(unsigned char root)
 {
 	__s32 i;
@@ -2611,7 +2693,7 @@ static __s32 __app_root_get_reg_storage_type(unsigned char root)
 	cur_disk_name[0] = root;
 	__wrn("cur_disk_name=%s\n", cur_disk_name);
 	eLIBs_memset(disk_name , 0 , sizeof(disk_name)) ;
-	ret = rat_get_partition_name(RAT_SD_CARD, disk_name);
+	ret = rat_get_partition_name(RAT_SD_CARD, disk_name);//获取SD卡分区名
 
 	if(EPDK_OK == ret)
 	{
@@ -2631,7 +2713,7 @@ static __s32 __app_root_get_reg_storage_type(unsigned char root)
 	}
 
 	eLIBs_memset(disk_name , 0 , sizeof(disk_name)) ;
-	ret = rat_get_partition_name(RAT_USB_DISK, disk_name);
+	ret = rat_get_partition_name(RAT_USB_DISK, disk_name);//获取U盘分区名
 
 	if(EPDK_OK == ret)
 	{
@@ -2652,7 +2734,7 @@ static __s32 __app_root_get_reg_storage_type(unsigned char root)
 
 	return -1;
 }
-
+//获取储存类型2
 static __s32 __app_root_get_reg_storage_type2(rat_root_t rat_root_type)
 {
 	__s32 reg_root_type;
@@ -2669,7 +2751,7 @@ static __s32 __app_root_get_reg_storage_type2(rat_root_t rat_root_type)
 
 	return reg_root_type;
 }
-
+//获取搜索路径
 static __s32  __app_root_get_search_path(rat_root_t rat_root_type, char *search_path)
 {
 	__s32 ret;
@@ -2710,7 +2792,7 @@ static __s32  __app_root_get_search_path(rat_root_t rat_root_type, char *search_
 
 	return ret;
 }
-
+//存在外部磁盘
 static __bool __app_root_has_external_disk(__u32 type)
 {
 	__s32 ret;
@@ -2791,6 +2873,11 @@ static __s32 app_root_process_before_show_dlg(root_ctrl_t *root_ctrl)
 		app_photo_notify_delete_sub_scene(root_ctrl->h_app_photo);
 	}
 
+	if(root_ctrl->h_app_new_photo)
+	{
+		app_photo_notify_delete_sub_scene(root_ctrl->h_app_new_photo);
+	}
+
 	if(root_ctrl->h_app_ebook)
 	{
 		app_ebook_notify_delete_sub_scene(root_ctrl->h_app_ebook);
@@ -2822,6 +2909,10 @@ static __s32 app_root_process_before_show_dlg(root_ctrl_t *root_ctrl)
 	if(root_ctrl->h_app_record)
 	{
 		app_record_notify_delete_sub_scene(root_ctrl->h_app_record);
+	}
+	if(root_ctrl->h_app_new_record)
+	{
+		app_record_notify_delete_sub_scene(root_ctrl->h_app_new_record);
 	}
 
 	return EPDK_OK;
@@ -2860,6 +2951,10 @@ static __s32 app_root_process_after_show_dlg(root_ctrl_t *root_ctrl)
 	{
 		GUI_WinSetFocusChild(root_ctrl->h_app_photo);
 	}
+	else if(root_ctrl->h_app_new_photo)
+	{
+		GUI_WinSetFocusChild(root_ctrl->h_app_new_photo);
+	}
 	else if(root_ctrl->h_app_ebook)
 	{
 		GUI_WinSetFocusChild(root_ctrl->h_app_ebook);
@@ -2879,6 +2974,10 @@ static __s32 app_root_process_after_show_dlg(root_ctrl_t *root_ctrl)
 	else if(root_ctrl->h_app_record)
 	{
 		GUI_WinSetFocusChild(root_ctrl->h_app_record);
+	}
+	else if(root_ctrl->h_app_new_record)
+	{
+		GUI_WinSetFocusChild(root_ctrl->h_app_new_record);
 	}
 #if SP_APP_ATV
 	else if(root_ctrl->h_app_atv)
@@ -3071,7 +3170,7 @@ static __s32 app_root_show_err_info(root_ctrl_t *root_ctrl
 			{
 				if(0 == init_storage_type)
 				{
-					text_id = STRING_ROOT_SD_PLUGIN;
+					text_id = STRING_ROOT_SD_PLUGIN;//SD卡已插入
 				}
 				else if(1 == init_storage_type)
 				{
@@ -3101,7 +3200,7 @@ static __s32 app_root_show_err_info(root_ctrl_t *root_ctrl
 			{
 				if(0 == init_storage_type)
 				{
-					text_id = STRING_ROOT_SD_PLUGIN;
+					text_id = STRING_ROOT_SD_PLUGIN;//SD卡已插入
 				}
 				else if(1 == init_storage_type)
 				{
@@ -3430,6 +3529,10 @@ static __s32 __app_root_play_other_storages_on_plugout(root_ctrl_t *root_ctrl)
 	{
 		reg_media_type = m_eMediaTypeList_photo;
 	}
+	else if(root_ctrl->h_app_new_photo)
+	{
+		reg_media_type = m_eMediaTypeList_photo;
+	}
 	else if(root_ctrl->h_app_movie)
 	{
 		reg_media_type = m_eMediaTypeList_video;
@@ -3452,7 +3555,7 @@ static __s32 __app_root_play_other_storages_on_plugout(root_ctrl_t *root_ctrl)
 		__wrn("no media playing...\n");
 		return EPDK_FAIL;
 	}
-
+	__wrn("storages_plugout this reg_media_type = %d...\n", reg_media_type);
 	root_ctrl->switchMediaEnable_flag = 1;
 	ret = app_root_shortcut_process(root_ctrl, app_root_prob_intent_switch_storage, reg_media_type, reg_storage_type, EPDK_FALSE, EPDK_FALSE);
 	root_ctrl->switchMediaEnable_flag = 0;
@@ -3496,7 +3599,7 @@ static __s32 app_root_prob_media_file_for_play(root_ctrl_t *root_ctrl
 		__wrn("media type error...\n");
 		goto fail;
 	}
-
+	__wrn("last_app_play_storage = %d...\n",para->last_app_play_storage);//上一次播放的媒体介质：TF/USB
 	if(!init_storage_type)
 	{
 		__wrn("storage type is null...\n");
@@ -3531,7 +3634,7 @@ static __s32 app_root_prob_media_file_for_play(root_ctrl_t *root_ctrl
 			goto fail;
 		}
 
-		rat_media_type = __app_root_get_rat_media_type(reg_media_type);
+		rat_media_type = __app_root_get_rat_media_type(reg_media_type);//获取媒体类型
 
 		if(RAT_MEDIA_TYPE_UNKNOWN == rat_media_type)
 		{
@@ -3540,7 +3643,7 @@ static __s32 app_root_prob_media_file_for_play(root_ctrl_t *root_ctrl
 		}
 
 		eLIBs_memset(path, 0, sizeof(path));
-		ret = __app_root_get_search_path(rat_root_type, path);
+		ret = __app_root_get_search_path(rat_root_type, path);//获取搜索路径
 
 		if(EPDK_FAIL == ret)//无磁盘
 		{
@@ -3906,6 +4009,11 @@ static __s32 app_root_prob_storage_type_for_play(root_ctrl_t *root_ctrl
 					__wrn("photo alreadly running\n");
 					goto alreadly_running;
 				}
+				else if(root_ctrl->h_app_new_photo)
+				{
+					__wrn("new photo alreadly running\n");
+					goto alreadly_running;
+				}
 
 				__wrn("photo not running\n");
 				goto from_nearest_storage;
@@ -3990,6 +4098,11 @@ static __s32 app_root_prob_storage_type_for_play(root_ctrl_t *root_ctrl
 				if(!root_ctrl->h_app_photo)
 				{
 					__wrn("photo not running\n");
+					goto not_running;
+				}
+				else if(!root_ctrl->h_app_new_photo)
+				{
+					__wrn("new photo not running\n");
 					goto not_running;
 				}
 
@@ -4250,7 +4363,7 @@ fail:
 
 	return EPDK_FAIL;
 }
-
+//APP快捷方式程序,目前用于TF卡插拔自动播放与退出、快捷按键进入.
 static __s32 app_root_shortcut_process(root_ctrl_t *root_ctrl, app_root_prob_intent_t intent, __s32 reg_media_type, __s32 reg_storage_type, __bool bHideHBar, __bool bShowDlgFlag)
 {
 	__s32 reg_storage_type_bk = reg_storage_type, reg_media_type_bk = reg_media_type;
@@ -4293,11 +4406,11 @@ static __s32 app_root_shortcut_process(root_ctrl_t *root_ctrl, app_root_prob_int
 						{
 							__s32 ret;
 							__u32 rat_root_type;
-							ret = app_music_get_root_type(root_ctrl->h_app_music, &rat_root_type);
+							ret = app_music_get_root_type(root_ctrl->h_app_music, &rat_root_type);//获取当前播放文件的当前盘符
 
 							if(EPDK_OK == ret)
 							{
-								reg_storage_type = __app_root_get_reg_storage_type2(rat_root_type);
+								reg_storage_type = __app_root_get_reg_storage_type2(rat_root_type);//获取文件储存类型
 							}
 						}
 
@@ -4316,25 +4429,25 @@ static __s32 app_root_shortcut_process(root_ctrl_t *root_ctrl, app_root_prob_int
 						{
 							__s32 ret;
 							__u32 rat_root_type;
-							ret = app_music_get_root_type(root_ctrl->h_app_new_music, &rat_root_type);
+							ret = app_music_get_root_type(root_ctrl->h_app_new_music, &rat_root_type);//获取音乐媒体文件所在的盘符
 
 							if(EPDK_OK == ret)
 							{
-								reg_storage_type = __app_root_get_reg_storage_type2(rat_root_type);
+								reg_storage_type = __app_root_get_reg_storage_type2(rat_root_type);//获取储存类型2，
 							}
 						}
 
-						if(MUSICPLAYER_BACKGROUND == mode || MUSICPLAYER_BACKGROUND_HOME == mode)
+						if(MUSICPLAYER_BACKGROUND == mode || MUSICPLAYER_BACKGROUND_HOME == mode)//如果后台播放
 						{
 							__wrn("background new music is running, reseum it directly...\n");
-							goto set_play_file;
+							goto set_play_file;//设置播放文件
 						}
 					}
 				}
 			}
 		}
 
-		if(bShowDlgFlag)
+		if(bShowDlgFlag)//为假进入显示错误消息
 		{
 			app_root_show_err_info(root_ctrl
 			                       , reg_media_type
@@ -4388,9 +4501,11 @@ static __s32 app_root_shortcut_process(root_ctrl_t *root_ctrl, app_root_prob_int
 			__s32 ret;
 			rat_root_t rat_root_type;
 			rat_media_type_t rat_media_type;
-			rat_media_type = __app_root_get_rat_media_type(reg_media_type);
-			rat_root_type = __app_root_get_rat_root_type(reg_storage_type);
+			rat_media_type = __app_root_get_rat_media_type(reg_media_type);//获取浏览的媒体类型
+			rat_root_type = __app_root_get_rat_root_type(reg_storage_type);//获取储存类型对应的磁盘设备：TF、USB等
 
+			__msg("rat_media_type = %d...\n", rat_media_type);
+			
 			if(RAT_MEDIA_TYPE_UNKNOWN == rat_media_type)
 			{
 				__wrn("media type error...\n");
@@ -4403,7 +4518,7 @@ static __s32 app_root_shortcut_process(root_ctrl_t *root_ctrl, app_root_prob_int
 				goto err;
 			}
 
-			ret = __app_root_set_playfile(rat_root_type, rat_media_type);
+			ret = __app_root_set_playfile(rat_root_type, rat_media_type);//设置播放文件
 
 			if(EPDK_FAIL == ret)
 			{
@@ -4419,7 +4534,7 @@ static __s32 app_root_shortcut_process(root_ctrl_t *root_ctrl, app_root_prob_int
 		{
 			rat_root_t rat_root_type;
 			rat_root_type = __app_root_get_rat_root_type(reg_storage_type);
-
+			__msg("reg_media_type = %d type begin_play...\n", reg_media_type);
 			if(RAT_UNKNOWN == rat_root_type)
 			{
 				__wrn("storage type unknown...\n");
@@ -4429,19 +4544,19 @@ static __s32 app_root_shortcut_process(root_ctrl_t *root_ctrl, app_root_prob_int
 			switch(reg_media_type)
 			{
 				case m_eMediaTypeList_video :
-					//__app_root_to_video(root_ctrl, rat_root_type);//自动进入播放视频
+					__app_root_to_video(root_ctrl, rat_root_type);//TF卡或USB插入则自动进入播放视频
 					break;
 
 				case m_eMediaTypeList_audio:
-					__app_root_to_audio(root_ctrl, rat_root_type);
+					__app_root_to_audio(root_ctrl, rat_root_type);//自动播放音乐文件
 					break;
 
 				case m_eMediaTypeList_ebook:
-					__app_root_to_ebook(root_ctrl, rat_root_type);
+					__app_root_to_ebook(root_ctrl, rat_root_type);//自动播放电子书文件
 					break;
 
 				case m_eMediaTypeList_photo:
-					__app_root_to_photo(root_ctrl, rat_root_type);
+					__app_root_to_photo(root_ctrl, rat_root_type);//自动播放相册文件
 					break;
 
 				default :
@@ -4509,8 +4624,10 @@ static __s32 app_root_check_volume_key(__gui_msg_t *msg)
 				    //	&&(!(root_ctrl->h_app_linin)) &&
 				    &&(!(root_ctrl->h_app_new_movie)) //新添加的movie应用app
 				    &&(!(root_ctrl->h_app_new_music))//新添加音乐
+				    &&(!(root_ctrl->h_app_new_photo)) 
 				    &&(!(root_ctrl->h_app_new_ebook)) 
 				    &&(!(root_ctrl->h_app_new_fm)) 
+				    &&(!(root_ctrl->h_app_new_record))//新添加录音app
 				#if SP_APP_ATV
 				    &&(!(root_ctrl->h_app_atv))
 				#endif
@@ -4575,8 +4692,10 @@ static __s32 app_root_check_volume_key(__gui_msg_t *msg)
 				    //	&&(!(root_ctrl->h_app_linin)) &&
 				    &&(!(root_ctrl->h_app_new_movie)) //新添加的movie应用app
 				    &&(!(root_ctrl->h_app_new_music))//新添加音乐
+				    &&(!(root_ctrl->h_app_new_photo)) 
 				    &&(!(root_ctrl->h_app_new_ebook)) 
 				    &&(!(root_ctrl->h_app_new_fm))
+				    &&(!(root_ctrl->h_app_new_record))
 				#if SP_APP_ATV
 				    &&(!(root_ctrl->h_app_atv))
 				#endif
@@ -4686,6 +4805,10 @@ __s32 app_root_shift_mode(root_ctrl_t *root_ctrl, __u32 type)
 		s_shiftMode = m_eShiftMode_ebook;
 	}
 	else if(root_ctrl->h_app_photo)
+	{
+		s_shiftMode = m_eShiftMode_photo;
+	}
+	else if(root_ctrl->h_app_new_photo)
 	{
 		s_shiftMode = m_eShiftMode_photo;
 	}
@@ -4848,7 +4971,7 @@ __s32 app_root_shift_mode(root_ctrl_t *root_ctrl, __u32 type)
 	__app_root_to_fm(root_ctrl);
 	return m_eShiftMode_fm;
 }
-
+//资源管理器打开磁盘
 __s32 app_root__explorer_switch_disk(root_ctrl_t   *root_ctrl)
 {
 	if(root_ctrl->h_app_explorer)
@@ -4957,6 +5080,10 @@ static __s32 app_root_check_mode_key(__gui_msg_t *msg)
 					media = m_eMediaTypeList_ebook;
 				}
 				else if(root_ctrl->h_app_photo)
+				{
+					media = m_eMediaTypeList_photo;
+				}
+				else if(root_ctrl->h_app_new_photo)
 				{
 					media = m_eMediaTypeList_photo;
 				}
@@ -5241,6 +5368,10 @@ static __s32 app_root_check_short_key(__gui_msg_t *msg)
 				else if(root_ctrl->h_app_photo)
 				{
 					media_type = m_eMediaTypeList_photo;//图片
+				}
+				else if(root_ctrl->h_app_new_photo)
+				{
+					media_type = m_eMediaTypeList_photo;//新的图片
 				}
 				else if(root_ctrl->h_app_ebook)
 				{
@@ -5839,7 +5970,8 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 							#ifdef SP_APP_RECORD_ENTER_FORCE
 								if(0)
 							#else
-								if(IOCTRL__MIC_DET__IS_PLUGIN())
+								if(1)//测试录音app，没有麦克风插入直接进入录音app
+								//if(IOCTRL__MIC_DET__IS_PLUGIN())//如果插入了麦克风
 							#endif
 #endif
 								{
@@ -6182,7 +6314,7 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 								break;
 							}
 							#endif
-							#if 1/*第一次进入修改后的*/
+							#if 0/*第一次进入修改后的*/
 							//删除后台linein
 							__app_root_delete_bg_linein(msg);
 							//删除后台音乐
@@ -6208,6 +6340,29 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 							__wrn("after app_new_movie_create...\n");
 							GUI_WinSetFocusChild(root_ctrl->h_app_new_movie);
 							app_root_cacheoff();
+							#endif
+
+							#if 1//进入资源管理器列表，然后显示所有视频文件
+
+							gscene_hbar_set_state(HBAR_ST_HIDE);//设置为隐藏
+							__app_root_change_to_default_bg();
+							__wrn("**********enter new explorer create is... to new movie**********\n");
+							__wrn("root type=%d\n", msg->dwReserved);
+							root_para->root_type  = RAT_TF;//msg->dwReserved;//2，RAT_TF;
+							root_para->explr_root = RAT_TF;//msg->dwReserved;
+							
+							root_para->data = ID_NEW_EXPLORER_MOVIE;	//单独显示视频文件内容数据，一起存放到结构体root_para的data里面
+							__wrn("root_para->data=%d\n", root_para->data);
+							root_para->return_to_explorer_file_list = 0 ;//列表模式
+							{
+								app_root_cacheon();
+								root_ctrl->h_app_new_explorer =  app_new_explorer_manwin_create(root_para);//创建new explorer 应用的manwin窗口
+								__wrn("root_ctrl->h_app_explorer = %x\n", root_ctrl->h_app_new_explorer);
+								GUI_WinSetFocusChild(root_ctrl->h_app_new_explorer);//按键消息信号发送到当前创建的manwin窗口
+								app_root_cacheoff();
+								__wrn("**********enter new explorer create ok  **********\n");
+								__wrn("ID_HOME_NEW_EXPORER msg->dwAddData2 =%d\n", msg->dwAddData2);
+							}
 							#endif
 							break;
 						}
@@ -6322,6 +6477,34 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 						}
 						break;
 
+						case ID_NEW_EBOOK_SHORTCUT://电子书app快捷方式，目前用于TF卡插入时进入创建
+						{
+							reg_root_para_t *para;
+							para = (reg_root_para_t *)dsk_reg_get_para_by_app(REG_APP_ROOT);
+
+							if(para == NULL)
+							{
+								return EPDK_FAIL;
+							}
+							gscene_hbar_set_state(HBAR_ST_HIDE);
+							__app_root_change_to_default_bg();
+
+							app_root_play_app_sounds(SHORT_KEY_WAVE_FILE_EBOOK);
+							__wrn("\n********************home switch to new ebook shortcut***************\n");
+							__wrn("play ebook file index=%d\n", para->last_ebook_index_sd);		//播放电子书文件的索引id
+							app_root_cacheon();
+							root_para->data = para->last_ebook_index_sd;						//播放文件的索引id
+							root_para->explr_root = RAT_TF;
+							root_para->root_type = root_para->explr_root;
+							root_ctrl->h_app_new_ebook = app_new_ebook_manwin_create(root_para);//创建新的电子书manwin窗口
+							__here__;
+							GUI_WinSetFocusChild(root_ctrl->h_app_new_ebook);
+							app_root_cacheoff();
+							__here__;
+							
+							break;
+						}
+
 						case ID_HOME_NEW_FM:
 						{
 							#if 1//直接打开
@@ -6339,6 +6522,118 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 						}
 						break;
 
+						case ID_HOME_NEW_RECORD://新添加的录音app
+						{
+							gscene_bgd_set_state(HBAR_ST_HIDE);
+							__app_root_change_to_default_bg();
+							__wrn("\n********************home switch to new record ***************\n");
+							root_para->root_type = msg->dwReserved;	//RAT_USB或者RAT_TF
+							root_para->record_opt = 0;				//0为正常录音，1为FM收音机录音
+							app_root_cacheon();
+							root_ctrl->h_app_new_record = app_new_record_create(root_para);	//创建record的manwin窗口
+							GUI_WinSetFocusChild(root_ctrl->h_app_new_record);				//按键信息发送到该窗口
+							app_root_cacheoff();
+						}
+						break;
+
+						/*======================================新添加的app快捷方式创建，用于TF卡插入自动播放====================================*/	
+						{
+							case ID_NEW_MUSIC_SHORTCUT://音乐快捷方式
+							{
+								reg_root_para_t *para;
+								para = (reg_root_para_t *)dsk_reg_get_para_by_app(REG_APP_ROOT);//获取app注册表参数
+
+								if(para == NULL)
+								{
+									return EPDK_FAIL;
+								}
+								app_root_play_app_sounds(SHORT_KEY_WAVE_FILE_MUSIC);
+								__wrn("\n********************home switch to new music shortcut***************\n");
+								__wrn("play music file index=%d\n", para->last_music_index_sd);		//播放音乐文件的索引id
+								root_para->root_type = msg->dwReserved;//2，TF卡
+								root_para->explr_root = msg->dwReserved;
+								root_para->data	=	para->last_music_index_sd;//搜索音乐文件的id索引
+								root_para->return_to_explorer_file_list = 1 ;//列表模式
+								app_root_cacheon();
+								root_ctrl->h_app_new_music = app_new_music_manwin_create(root_para);//创建音乐manwin窗口
+								GUI_WinSetFocusChild(root_ctrl->h_app_new_music);//按键消息信号发送到当前创建的manwin窗口
+								app_root_cacheoff();
+								break;
+							}
+
+							case ID_NEW_MOVIE_SHORTCUT:
+							{
+								reg_root_para_t *para;
+								para = (reg_root_para_t *)dsk_reg_get_para_by_app(REG_APP_ROOT);
+
+								if(para == NULL)
+								{
+									return EPDK_FAIL;
+								}
+								app_root_play_app_sounds(SHORT_KEY_WAVE_FILE_MOVIE);
+								__wrn("\n********************home switch to new movie shortcut***************\n");
+								__wrn("play movie file index=%d\n", para->last_movie_index_sd);		//播放视频文件的索引id
+								root_para->root_type = msg->dwReserved;//2，TF卡
+								root_para->explr_root = msg->dwReserved;
+								root_para->data	=	para->last_movie_index_sd;//搜索视频文件的id索引
+								root_para->return_to_explorer_file_list = 1 ;//列表模式
+								app_root_cacheon();
+								root_ctrl->h_app_new_movie = app_new_movie_manwin_create(root_para);//创建视频manwin窗口
+								GUI_WinSetFocusChild(root_ctrl->h_app_new_movie);//按键消息信号发送到当前创建的manwin窗口
+								app_root_cacheoff();
+								break;
+							}
+
+							case ID_NEW_PHOTO_SHORTCUT:
+							{
+								reg_root_para_t *para;
+								para = (reg_root_para_t *)dsk_reg_get_para_by_app(REG_APP_ROOT);
+
+								if(para == NULL)
+								{
+									return EPDK_FAIL;
+								}
+								app_root_play_app_sounds(SHORT_KEY_WAVE_FILE_PHOTO);
+								__wrn("\n********************home switch to new photo shortcut***************\n");
+								__wrn("play photo file index=%d\n", para->last_photo_index_sd);		//播放图片文件的索引id
+								root_para->root_type = msg->dwReserved;//2，TF卡
+								root_para->explr_root = msg->dwReserved;
+								root_para->data	=	para->last_photo_index_sd;//搜索相册文件的id索引
+								root_para->return_to_explorer_file_list = 1 ;//列表模式
+								app_root_cacheon();
+								root_ctrl->h_app_new_photo = app_new_photo_manwin_create(root_para);//创建相册manwin窗口
+								GUI_WinSetFocusChild(root_ctrl->h_app_new_photo);//按键消息信号发送到当前创建的manwin窗口
+								app_root_cacheoff();
+								break;
+							}
+
+							case ID_NEW_FM_SHORTCUT:
+								app_root_play_app_sounds(SHORT_KEY_WAVE_FILE_FM);
+								__wrn("\n********************home switch to new fm shortcut***************\n");
+								root_para->root_type = msg->dwReserved;//2，TF卡
+								root_para->explr_root = msg->dwReserved;
+								root_para->data	=	0;//
+								root_para->return_to_explorer_file_list = 1 ;//列表模式
+								app_root_cacheon();
+								root_ctrl->h_app_new_fm = app_new_fm_manwin_create(root_para);//创建收音机manwin窗口
+								GUI_WinSetFocusChild(root_ctrl->h_app_new_fm);//按键消息信号发送到当前创建的manwin窗口
+								app_root_cacheoff();
+								break;
+
+							case ID_NEW_RECORD_SHORTCUT:
+								app_root_play_app_sounds(SHORT_KEY_WAVE_FILE_RECORD);
+								__wrn("\n********************home switch to new record shortcut***************\n");
+								root_para->root_type = msg->dwReserved;//2，TF卡
+								root_para->explr_root = msg->dwReserved;
+								root_para->data	=	0;
+								root_para->return_to_explorer_file_list = 1 ;//列表模式
+								app_root_cacheon();
+								root_ctrl->h_app_new_record = app_new_record_create(root_para);//创建录音manwin窗口
+								GUI_WinSetFocusChild(root_ctrl->h_app_new_record);//按键消息信号发送到当前创建的manwin窗口
+								app_root_cacheoff();
+								break;
+						}
+						
 						default:
 							break;
 					}
@@ -6351,7 +6646,7 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 		}
 		break;
 		
-		case APP_NEWSETTING_ID://进入新添加的通用设置app的mainwin窗口id
+		case APP_NEWSETTING_ID://进入新添加的通用设置app的manwin窗口id
 		{
 			__wrn("----APP_NEWSETTING_ID to new app IS-----\n");
 			switch(HIWORD(msg->dwAddData1))
@@ -6828,6 +7123,27 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 			}
 		}
 		break;
+		case APP_NEWRECORD_ID://新添加的录音app应用
+		{
+			switch(HIWORD(msg->dwAddData1)) {
+				case NEW_SWITCH_TO_OTHER_APP: {
+					switch(msg->dwAddData2) {
+						case NEW_SETTING_SW_TO_MAIN: {//切换到home界面
+							__wrn("\n*********new record to home*********\n");
+							GUI_ManWinDelete(root_ctrl->h_app_new_record);//删除new record录音应用manwin窗口句柄
+							root_ctrl->h_app_new_record = NULL;
+							__here__;
+							app_root_cacheon();
+							__app_home_restore(msg);//恢复home界面manwin窗口
+							app_root_cacheoff();
+						}
+						break;
+					}
+				}
+				break;
+			}
+		}
+		break;
 		
 		case APP_EXPLORER_ID:
 		{
@@ -7048,7 +7364,7 @@ static __s32 app_root_command_proc(__gui_msg_t *msg)
 							//root_para->root_type = msg->dwReserved;
 							root_para->data = 0;
 							root_para->root_type = root_para->explr_root  ;
-							#if 0//旧的
+							#if 1//旧的
 							root_ctrl->h_app_photo = app_photo_create(root_para);
 							GUI_WinSetFocusChild(root_ctrl->h_app_photo);
 							#else//新添加的相册app
@@ -8283,6 +8599,18 @@ __s32 app_root_win_proc(__gui_msg_t *msg)
 								playing = 1;
 							}
 						}
+						if(root_ctrl->h_app_new_record)
+						{
+							__cedar_status_t sta;
+							sta = robin_get_fsm_status();
+							__wrn("sta=%d\n", sta);
+
+							if(CEDAR_STAT_PLAY == sta)
+							{
+								__here__;
+								playing = 1;
+							}
+						}
 					}
 
 					if(0 == playing)
@@ -8703,6 +9031,10 @@ __s32 app_root_win_proc(__gui_msg_t *msg)
 				{
 					audio_engine_is_open = 1;
 				}
+				if(root_ctrl->h_app_new_record)
+				{
+					audio_engine_is_open = 1;
+				}
 			}
 
 			//__here__;
@@ -8879,7 +9211,7 @@ __s32 app_root_win_proc(__gui_msg_t *msg)
 			break;
 		}
 
-		case DSK_MSG_FS_PART_PLUGOUT:
+		case DSK_MSG_FS_PART_PLUGOUT://文件系统分区拔出、TF卡拔出
 		{
 			root_ctrl_t   *root_ctrl;
 			root_ctrl = (root_ctrl_t *)GUI_WinGetAddData(msg->h_deswin);
@@ -8924,7 +9256,7 @@ __s32 app_root_win_proc(__gui_msg_t *msg)
 			return EPDK_OK;
 		}
 
-		case DSK_MSG_FS_PART_PLUGIN:
+		case DSK_MSG_FS_PART_PLUGIN://文件系统分区插入、TF卡插入
 		{
 			char diskname[4];
 			__u32 last_lun;
@@ -8949,7 +9281,7 @@ __s32 app_root_win_proc(__gui_msg_t *msg)
 			}
 		#endif
 
-			__app_root_delete_sos(root_ctrl);
+			__app_root_delete_sos(root_ctrl);//删除sos
 
 			//if(1 == last_lun)
 			{
@@ -8964,25 +9296,25 @@ __s32 app_root_win_proc(__gui_msg_t *msg)
 					return EPDK_OK;
 				}
 
-				root_ctrl->m_updateFirmwareLog = LOG_UpdateFirmware_By_FSPlugin;
+				root_ctrl->m_updateFirmwareLog = LOG_UpdateFirmware_By_FSPlugin;//通过文件系统分区插入固件升级
 				root_ctrl->root_para->fw_update_file_disk = diskname[0];
 
-				if(!app_root_detect_update_firmware(root_ctrl))
+				if(!app_root_detect_update_firmware(root_ctrl))//检测固件更新
 #endif
 				{
 					__s32 reg_storage_type;
 					__s32 reg_media_type;
-					reg_storage_type = __app_root_get_reg_storage_type(diskname[0]);
+					reg_storage_type = __app_root_get_reg_storage_type(diskname[0]);//获取储存类型：TF卡、U盘等
 					root_ctrl->root_para->log &= ~MASK_RootLog__LastFs;
 
-					switch(reg_storage_type)
+					switch(reg_storage_type)//U盘或TF卡插入检测
 					{
 						case 0:
-							root_ctrl->root_para->log |= OP_RootLog__LastFs_SD;
+							root_ctrl->root_para->log |= OP_RootLog__LastFs_SD;//TF卡
 							break;
 
 						case 1:
-							root_ctrl->root_para->log |= OP_RootLog__LastFs_UD;
+							root_ctrl->root_para->log |= OP_RootLog__LastFs_UD;//U盘
 							break;
 
 						default :
@@ -8991,12 +9323,12 @@ __s32 app_root_win_proc(__gui_msg_t *msg)
 
 					reg_media_type = -1;
 
-					if(-1 != reg_storage_type)
+					if(-1 != reg_storage_type)//TF卡插入，进行播放视频、音乐等：app_root_prob_intent_plugin_for_play 根据这个标志提示SD卡插入弹窗
 					{
 						if(root_ctrl->h_app_home
 						    && MULTI_SCREEN_HOME_MODE_NORMAL == app_multi_screen_home_get_mode(root_ctrl->h_app_home))
 						{
-							app_root_shortcut_process(root_ctrl, app_root_prob_intent_plugin_for_play, reg_media_type, reg_storage_type, EPDK_TRUE, EPDK_TRUE);
+							app_root_shortcut_process(root_ctrl, app_root_prob_intent_plugin_for_play, reg_media_type, reg_storage_type, EPDK_TRUE, EPDK_TRUE);//进入App应用的快捷方式
 						}
 						else
 						{
@@ -9074,14 +9406,14 @@ __s32 app_root_win_proc(__gui_msg_t *msg)
 		}
 
 	#if SP_DEV_DET_PLUGIN_BY_AD
-		case DSK_MSG_MIC_PLUGIN:
+		case DSK_MSG_MIC_PLUGIN://麦克风插入
 		{
 			gs_isPlugin_micDet = 1;
 			__msg_jjl("DSK_MSG_MIC_PLUGIN\n");
 			return EPDK_OK;
 		}
 		
-		case DSK_MSG_MIC_PLUGOUT:
+		case DSK_MSG_MIC_PLUGOUT://麦克风拔出
 		{
 			gs_isPlugin_micDet = 0;
 			__msg_jjl("DSK_MSG_MIC_PLUGOUT\n");

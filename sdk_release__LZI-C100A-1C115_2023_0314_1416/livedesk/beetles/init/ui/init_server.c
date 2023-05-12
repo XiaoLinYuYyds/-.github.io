@@ -388,7 +388,7 @@ static __s32 init_power_off_proc(__gui_msg_t *msg)
 
 	return EPDK_OK;
 }
-
+//usb设备插入初始化
 static __s32 init_usb_device_plugin_proc(__gui_msg_t *msg)
 {
 	__init_ctl_t *init_ctr = (__init_ctl_t *)GUI_WinGetAttr(msg->h_deswin);
@@ -411,11 +411,11 @@ static __s32 init_usb_device_plugin_proc(__gui_msg_t *msg)
 		init_scene_t *p_scene;
 		p_scene = (init_scene_t *)GUI_WinGetAddData(msg->h_deswin);
 		p_scene->usb_connect = EPDK_TRUE;
-		scene_on_dialog(msg);
+		scene_on_dialog(msg);//显示usb设备正在连接对话框
 	}
 	return EPDK_OK;
 }
-
+//usb设备拔出初始化
 static __s32 init_usb_device_plugout_proc(__gui_msg_t *msg)
 {
 	__init_ctl_t *init_ctr = (__init_ctl_t *)GUI_WinGetAttr(msg->h_deswin);
@@ -424,7 +424,7 @@ static __s32 init_usb_device_plugout_proc(__gui_msg_t *msg)
 		init_scene_t *p_scene;
 		p_scene = (init_scene_t *)GUI_WinGetAddData(msg->h_deswin);
 		p_scene->usb_connect = EPDK_FALSE;
-		scene_on_dialog(msg);
+		scene_on_dialog(msg);//退出显示usb设备正在连接对话框
 		p_scene->usb_plug_in = EPDK_FALSE;
 	}
 	return EPDK_OK;
@@ -815,7 +815,10 @@ static __s32 init_set_auto_off(__gui_msg_t *msg)
 	return EPDK_OK;
 }
 
-static __s32 init_scene_create(__gui_msg_t *msg)
+/**
+ * 场景创建
+ */
+ static __s32 init_scene_create(__gui_msg_t *msg)
 {
 	SIZE	screen_size;
 	//	init_scene_t *p_scene;
@@ -836,7 +839,9 @@ static __s32 init_scene_create(__gui_msg_t *msg)
 	__here__
 	return EPDK_OK;
 }
-
+/**
+ * 场景摧毁
+ */
 static __s32 init_scene_destroy(__gui_msg_t *msg)
 {
 	init_scene_t *p_scene = (init_scene_t *)GUI_WinGetAddData(msg->h_deswin);
@@ -847,7 +852,9 @@ static __s32 init_scene_destroy(__gui_msg_t *msg)
 	//gscene_bgd_deinit();
 	return EPDK_OK;
 }
-
+/**
+ *进度条绘制
+ */
 static __s32 __init_prog_draw_progress(init_fw_update_rect_t *prog_bg, init_fw_update_rect_t *prog_left,
                                        init_fw_update_rect_t *prog_mid, init_fw_update_rect_t *prog_cursor,
                                        __s32 min, __s32 max, __s32 cur)
@@ -1172,7 +1179,7 @@ err1:
 
 
 
-
+//调整显示器参数
 __s32 DbgMode__AdjustDispParam(__gui_msg_t *msg)
 {
 	reg_system_para_t *para;
@@ -1831,7 +1838,7 @@ static __s32 init_mainwin_cb(__gui_msg_t *msg)
 				if(GUI_IsTimerInstalled(msg->h_deswin, POWER_OFF_DIALOG_TIME_ID))
 				{
 					__here__;
-					GUI_KillTimer(msg->h_deswin, POWER_OFF_DIALOG_TIME_ID);
+					GUI_KillTimer(msg->h_deswin, POWER_OFF_DIALOG_TIME_ID);//关闭正在关机对话框定时器
 					scene_on_dialog(msg);
 					__here__;
 				}
@@ -1848,8 +1855,8 @@ static __s32 init_mainwin_cb(__gui_msg_t *msg)
 				if(GUI_IsTimerInstalled(msg->h_deswin, LOW_POWER_DIALOG_TIME_ID))
 				{
 					__here__;
-					GUI_KillTimer(msg->h_deswin, LOW_POWER_DIALOG_TIME_ID);
-					scene_on_dialog(msg);
+					GUI_KillTimer(msg->h_deswin, LOW_POWER_DIALOG_TIME_ID);//关闭低电对话框定时器
+					scene_on_dialog(msg);//对话框
 				}
 			}
 
@@ -1864,7 +1871,7 @@ static __s32 init_mainwin_cb(__gui_msg_t *msg)
 			else
 			{
 				__here__;
-				init_usb_device_plugin_proc(msg);
+				init_usb_device_plugin_proc(msg);//USB设备插入连接初始化
 				__here__;
 				NOTIFY_MSG(DSK_MSG_ORCHID_UPDATE_START, NULL, msg->h_deswin, 0, 0);
 				__here__;
@@ -1877,7 +1884,7 @@ static __s32 init_mainwin_cb(__gui_msg_t *msg)
 		{
 			__init_ctl_t *init_ctr = (__init_ctl_t *)GUI_WinGetAttr(msg->h_deswin);
 			__here__;
-			init_usb_device_plugout_proc(msg);
+			init_usb_device_plugout_proc(msg);//usb插头拔出断开初始化
 			init_ctr->tp_msg_enble = EPDK_TRUE;
 			__here__;
 			//usb连接拔出后，需重置低电查询定时器，因为可能低电
@@ -1957,14 +1964,14 @@ static __s32 init_mainwin_cb(__gui_msg_t *msg)
 			break;
 		}
 
-		case DSK_MSG_FS_PART_PLUGIN:
+		case DSK_MSG_FS_PART_PLUGIN://TF卡文件系统分区插入
 		{
 			char diskname[4];
 			__gui_msg_t msgex;
 			__wrn("msg->dwAddData2=0x%X\n", msg->dwAddData2);
 			diskname[0] = (__u8)(msg->dwAddData2);
 			diskname[1] = '\0';
-			__msg("disk %s plug in\n", diskname);
+			__wrn("disk %s plug in\n", diskname);
 
 			if((diskname[0] == 'D') || (diskname[0] == 'E') || (diskname[0] == 'Z'))
 			{
@@ -1985,11 +1992,11 @@ static __s32 init_mainwin_cb(__gui_msg_t *msg)
 			msgex.h_deswin 		= 0;
 			msgex.dwAddData1 	= msg->dwAddData1;
 			msgex.dwAddData2 	= msg->dwAddData2;
-			activity_notify_top(&msgex);
+			activity_notify_top(&msgex);//发送命令消息到活动根目录root窗口
 			break;
 		}
 
-		case DSK_MSG_FS_PART_PLUGOUT:
+		case DSK_MSG_FS_PART_PLUGOUT://TF卡文件系统分区拔出
 		{
 			char diskname[4];
 			__gui_msg_t msgex;
@@ -2008,18 +2015,18 @@ static __s32 init_mainwin_cb(__gui_msg_t *msg)
 			msgex.h_deswin 		= 0;
 			msgex.dwAddData1 	= msg->dwAddData1;
 			msgex.dwAddData2 	= msg->dwAddData2;
-			activity_notify_top(&msgex);
+			activity_notify_top(&msgex);//消息发送到app_root_scene.c
 
-			if(dsk_wkm_is_open())
+			if(dsk_wkm_is_open())//检测随身听模块是否打开
 			{
 				char filename[512];
-				dsk_wkm_get_now_playing_file(filename);
+				dsk_wkm_get_now_playing_file(filename);//获取随身听正在播放的文件
 				__msg("filename = %s\n", filename);
 
-				if(0 == eLIBs_strnicmp(filename, diskname, 1))
+				if(0 == eLIBs_strnicmp(filename, diskname, 1))//比较文件名
 				{
 					__here__
-					dsk_wkm_close();
+					dsk_wkm_close();//随身听模块关闭
 				}
 			}
 
@@ -2151,7 +2158,7 @@ static __s32 init_mainwin_cb(__gui_msg_t *msg)
 			}
 			break;
 		}*/
-		case DSK_MSG_STANDBY_WAKE_UP:
+		case DSK_MSG_STANDBY_WAKE_UP://待机唤醒屏幕
 			__here__
 			init_open_screen(msg);
 			break;

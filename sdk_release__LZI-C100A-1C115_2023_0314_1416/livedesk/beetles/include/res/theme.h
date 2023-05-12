@@ -1800,6 +1800,69 @@
 #define    NAME_ATV_TVSYS_ITEM_8_UNFOCUS_SECAM_BG_BMP                 "ATV_TVSYS_ITEM_8_UNFOCUS_SECAM_BG_BMP"
 #define    ID_ATV_TVSYS_ITEM_8_UNFOCUS_SECAM_BG_BMP                   595
 
+#define    NAME_LITTLE_GAME_HCR_1_BMP                                 "LITTLE_GAME_HCR_1_BMP"
+#define    ID_LITTLE_GAME_HCR_1_BMP                                   596
+
+#define    NAME_LITTLE_GAME_HCR_10_BMP                                "LITTLE_GAME_HCR_10_BMP"
+#define    ID_LITTLE_GAME_HCR_10_BMP                                  597
+
+#define    NAME_LITTLE_GAME_HCR_11_BMP                                "LITTLE_GAME_HCR_11_BMP"
+#define    ID_LITTLE_GAME_HCR_11_BMP                                  598
+
+#define    NAME_LITTLE_GAME_HCR_12_BMP                                "LITTLE_GAME_HCR_12_BMP"
+#define    ID_LITTLE_GAME_HCR_12_BMP                                  599
+
+#define    NAME_LITTLE_GAME_HCR_13_BMP                                "LITTLE_GAME_HCR_13_BMP"
+#define    ID_LITTLE_GAME_HCR_13_BMP                                  600
+
+#define    NAME_LITTLE_GAME_HCR_14_BMP                                "LITTLE_GAME_HCR_14_BMP"
+#define    ID_LITTLE_GAME_HCR_14_BMP                                  601
+
+#define    NAME_LITTLE_GAME_HCR_15_BMP                                "LITTLE_GAME_HCR_15_BMP"
+#define    ID_LITTLE_GAME_HCR_15_BMP                                  602
+
+#define    NAME_LITTLE_GAME_HCR_16_BMP                                "LITTLE_GAME_HCR_16_BMP"
+#define    ID_LITTLE_GAME_HCR_16_BMP                                  603
+
+#define    NAME_LITTLE_GAME_HCR_17_BMP                                "LITTLE_GAME_HCR_17_BMP"
+#define    ID_LITTLE_GAME_HCR_17_BMP                                  604
+
+#define    NAME_LITTLE_GAME_HCR_18_BMP                                "LITTLE_GAME_HCR_18_BMP"
+#define    ID_LITTLE_GAME_HCR_18_BMP                                  605
+
+#define    NAME_LITTLE_GAME_HCR_19_BMP                                "LITTLE_GAME_HCR_19_BMP"
+#define    ID_LITTLE_GAME_HCR_19_BMP                                  606
+
+#define    NAME_LITTLE_GAME_HCR_2_BMP                                 "LITTLE_GAME_HCR_2_BMP"
+#define    ID_LITTLE_GAME_HCR_2_BMP                                   607
+
+#define    NAME_LITTLE_GAME_HCR_20_BMP                                "LITTLE_GAME_HCR_20_BMP"
+#define    ID_LITTLE_GAME_HCR_20_BMP                                  608
+
+#define    NAME_LITTLE_GAME_HCR_21_BMP                                "LITTLE_GAME_HCR_21_BMP"
+#define    ID_LITTLE_GAME_HCR_21_BMP                                  609
+
+#define    NAME_LITTLE_GAME_HCR_3_BMP                                 "LITTLE_GAME_HCR_3_BMP"
+#define    ID_LITTLE_GAME_HCR_3_BMP                                   610
+
+#define    NAME_LITTLE_GAME_HCR_4_BMP                                 "LITTLE_GAME_HCR_4_BMP"
+#define    ID_LITTLE_GAME_HCR_4_BMP                                   611
+
+#define    NAME_LITTLE_GAME_HCR_5_BMP                                 "LITTLE_GAME_HCR_5_BMP"
+#define    ID_LITTLE_GAME_HCR_5_BMP                                   612
+
+#define    NAME_LITTLE_GAME_HCR_6_BMP                                 "LITTLE_GAME_HCR_6_BMP"
+#define    ID_LITTLE_GAME_HCR_6_BMP                                   613
+
+#define    NAME_LITTLE_GAME_HCR_7_BMP                                 "LITTLE_GAME_HCR_7_BMP"
+#define    ID_LITTLE_GAME_HCR_7_BMP                                   614
+
+#define    NAME_LITTLE_GAME_HCR_8_BMP                                 "LITTLE_GAME_HCR_8_BMP"
+#define    ID_LITTLE_GAME_HCR_8_BMP                                   615
+
+#define    NAME_LITTLE_GAME_HCR_9_BMP                                 "LITTLE_GAME_HCR_9_BMP"
+#define    ID_LITTLE_GAME_HCR_9_BMP                                   616
+
 
 //------------------------------------------------------------------------------------------------------------
 // THE END !

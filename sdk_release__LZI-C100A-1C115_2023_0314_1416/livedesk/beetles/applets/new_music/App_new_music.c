@@ -265,6 +265,7 @@ static __s32 app_new_music_framewin_create(__gui_msg_t *msg)
 		
 		create_para.new_music_hlyr = app_new_music_ctrl_para->new_music_frm_lyr;//创建好的图层，赋值到framewin窗口内部图层存放变量
 		create_para.font	=	app_new_music_ctrl_para->font;
+		create_para.curplay_index = app_new_music_ctrl_para->lastplay_index;//用于TF卡插入时播放上一次的文件索引id
 		app_new_music_ctrl_para->new_music_frm_win = new_music_frmwin_create(msg->h_deswin, &create_para);
 		GUI_WinSetFocusChild(app_new_music_ctrl_para->new_music_frm_win);//按键信息发送
 		__wrn("new_music_frm_win = %x...\n",app_new_music_ctrl_para->new_music_frm_win);
@@ -349,6 +350,7 @@ static __s32 playlist_framewin_create(__gui_msg_t *msg)
 		}
 		create_para.playlist_hlyr = app_new_music_ctrl_para->playlist_frm_lyr;//创建好的图层，赋值到framewin窗口内部图层存放变量
 		create_para.font	=	app_new_music_ctrl_para->playlist_font;//文本
+		create_para.CurFocus_id = app_new_music_ctrl_para->lastplay_index;//获取TF卡插入自动播放时上一次的文件索引id
 		app_new_music_ctrl_para->playlist_frm_win = playlist_frmwin_create(msg->h_deswin, &create_para);
 		GUI_WinSetFocusChild(app_new_music_ctrl_para->playlist_frm_win);//按键信息发送
 	}
@@ -475,6 +477,13 @@ static __s32 __app_new_music_proc(__gui_msg_t *msg)
 		}
 		return EPDK_OK;
 
+		case DSK_MSG_FS_PART_PLUGOUT://TF卡拔出自动退出该app应用
+		{
+			__wrn("TF cared plugout new_music manwin...\n");
+			app_new_music_cmd2para(msg->h_deswin, NEW_SWITCH_TO_OTHER_APP, NEW_SETTING_SW_TO_MAIN, 0);//退出
+		}
+		return EPDK_OK;
+		
 		case GUI_MSG_KEY:{/*5，按键*/
 			
 			switch(msg->dwAddData1){
@@ -640,6 +649,7 @@ H_WIN	app_new_music_manwin_create(root_para_t *para)
 	eLIBs_memset(new_music_ctrl, 0, sizeof(app_new_music_ctrl_t));
 	new_music_ctrl->font = para->font;
 	new_music_ctrl->root_type = para->root_type;
+	new_music_ctrl->lastplay_index = para->data;//用于TF卡插入时自动播放获取上一次播放文件索引id
 	/*开始操作配置manwin窗口参数*/
 	eLIBs_memset(&create_info, 0, sizeof(__gui_manwincreate_para_t));//结构体初始化，数据清0
 	create_info.name	=	APP_NEWMUSIC;//APP_NEWPHOTO;
@@ -655,6 +665,45 @@ H_WIN	app_new_music_manwin_create(root_para_t *para)
 		return EPDK_FALSE;
 	}
 
+	if(hManWin)//如果创建好了manwin窗口
+	{
+		reg_root_para_t *root_reg_para;
+		__s32 reg_storage_type;
+		reg_storage_type = 0;
+
+		if(para)
+		{
+			if(RAT_TF == para->root_type)
+			{
+				reg_storage_type = 0;
+			}
+			else if(RAT_USB == para->root_type)
+			{
+				reg_storage_type = 1;
+			}
+			else
+			{
+				__wrn("para->root_para->root_type invalid...\n");
+			}
+		}
+
+		root_reg_para = (reg_root_para_t *)dsk_reg_get_para_by_app(REG_APP_ROOT);	//通过APP获取注册表
+
+		if(root_reg_para)//这部分操作是保存媒体类型，用于TF卡插入时自动播放
+		{
+			__s32 reg_app_type;
+			__wrn("m_eMediaTypeList_ebook input new_ebook manwin...\n");
+			reg_app_type = m_eMediaTypeList_audio;									//媒体类型
+			root_reg_para->cur_play_storage = reg_storage_type;						//当前播放文件的储存类型：TF、USB
+			root_reg_para->last_play_app = reg_app_type;							//上一次播放的app类型
+			root_reg_para->last_app_play_storage[reg_app_type] = reg_storage_type;	//上一次app播放文件的储存类型
+			root_reg_para->last_storage_play_app[reg_storage_type] = reg_app_type;	//上一次储存app播放文件的媒体类型
+		}
+		else
+		{
+			__wrn("para is null...\n");
+		}
+	}
 	
 	return hManWin;
 }

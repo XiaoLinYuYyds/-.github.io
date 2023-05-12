@@ -200,11 +200,13 @@ static __u32 _get_new_photo_ratio(void)
 __s32 PlayCurPhotoFile(void)
 {
 	__s32 ret;
+	__s32 play_index;
 	char Buf[FSYS_DIRNAME_MAX];				//存放文件名
 	eLIBs_memset(Buf, 0, sizeof(Buf));
 	//ret = anole_npl_playing_seek(index);	//在当前播放列表中通过索引搜索文件
 	//__wrn("ret index=%d\n",ret);
 	ret = anole_npl_get_cur();				//获取当前播放文件
+	play_index = ret;
 	__wrn("ret index=%d\n",ret);
 	__wrn("PlayCurPhotoFile...\n");
 	if(-1 == ret)
@@ -227,7 +229,9 @@ __s32 PlayCurPhotoFile(void)
 	{
 		__wrn("ANOLE_PlayCurPhotoFile fail\n");
 	}
-
+	#if 1//保存用于TF卡插入自动播放上一次的图片索引id，使用TF卡插拔时生效
+		dsk_reg_save_cur_play_info(REG_APP_PHOTO, play_index, Buf, RAT_TF);
+	#endif
 	return ret;
 }
 #endif
@@ -491,6 +495,12 @@ static __s32 __app_new_photo_proc(__gui_msg_t *msg)
 			__wrn("GUI_MSG_QUIT is press frees...\n");
 		}
 		return EPDK_OK;
+		case DSK_MSG_FS_PART_PLUGOUT://TF卡拔出自动退出该app应用
+		{
+			__wrn("TF cared plugout new_photo manwin...\n");
+			app_new_photo_cmd2para(msg->h_deswin, NEW_SWITCH_TO_OTHER_APP, NEW_SETTING_SW_TO_MAIN, 0);//退出app到home界面
+		}
+		return EPDK_OK;
 
 		case GUI_MSG_KEY:{/*5，按键*/
 			__wrn("__app_new_photo_proc to GUI_MSG_KEY is press...\n");
@@ -569,7 +579,45 @@ H_WIN	app_new_photo_manwin_create(root_para_t *para)
 		return EPDK_FALSE;
 	}
 
-	
+	if(hManWin)
+	{
+		reg_root_para_t *root_reg_para;
+		__s32 reg_storage_type;
+		reg_storage_type = 0;
+
+		if(para)
+		{
+			if(RAT_TF == para->root_type)
+			{
+				reg_storage_type = 0;
+			}
+			else if(RAT_USB == para->root_type)
+			{
+				reg_storage_type = 1;
+			}
+			else
+			{
+				__wrn("para->root_para->root_type invalid...\n");
+			}
+		}
+
+		root_reg_para = (reg_root_para_t *)dsk_reg_get_para_by_app(REG_APP_ROOT);
+
+		if(root_reg_para)//这部分操作是保存媒体类型，用于TF卡插入时自动播放
+		{
+			__s32 reg_app_type;
+			__wrn("m_eMediaTypeList_photo input App_new_photo manwin...\n");
+			reg_app_type = m_eMediaTypeList_photo;
+			root_reg_para->cur_play_storage = reg_storage_type;
+			root_reg_para->last_play_app = reg_app_type;
+			root_reg_para->last_app_play_storage[reg_app_type] = reg_storage_type;
+			root_reg_para->last_storage_play_app[reg_storage_type] = reg_app_type;
+		}
+		else
+		{
+			__wrn("para is null...\n");
+		}
+	}
 	return hManWin;
 }
 

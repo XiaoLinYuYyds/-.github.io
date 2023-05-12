@@ -51,7 +51,7 @@ typedef struct
 dsk_radio_rcv_t;
 
 static dsk_radio_rcv_t *dsk_radio_rcv = NULL;
-
+//自动搜索线程
 void __autosearch_thread(void *p_arg)
 {
 	dsk_radio_rcv_t *dsk_radio_rcv;
@@ -67,7 +67,7 @@ void __autosearch_thread(void *p_arg)
 			esKRNL_TDel(EXEC_prioself);
 			break;
 		}
-		//__wrn(" DSK:search_flag = %d\n", dsk_radio_rcv->search_flag);
+		__msg(" DSK:search_flag = %d\n", dsk_radio_rcv->search_flag);
 
 		if(dsk_radio_rcv->search_flag == 0x01)//搜索中
 		{
@@ -81,7 +81,7 @@ void __autosearch_thread(void *p_arg)
 				if(dsk_radio_rcv->manual_search_way != 0)  //add by Kingvan  //向大的方向搜索
 				{
 					__s32 curfreq = 0;
-					curfreq = dsk_radio_rcv->start_freq - LARK_SEARCH_STEP_US;
+					curfreq = dsk_radio_rcv->start_freq - LARK_SEARCH_STEP_US;//美国频段
 					__wrn(" DEC: curfreq = %d\n", curfreq);
 					__wrn(" DEC: dsk_radio_rcv->manual_cur_channum = %d\n", dsk_radio_rcv->manual_cur_channum);
 					__wrn(" DEC: curfreq <= dsk_radio_rcv->manual_start_freq = %d\n", curfreq <= dsk_radio_rcv->manual_start_freq);
@@ -114,7 +114,7 @@ void __autosearch_thread(void *p_arg)
 						__wrn(" ADD: (dsk_radio_rcv->manual_cur_channum* 100)|0xff000000 = %d\n", (dsk_radio_rcv->manual_cur_channum * 100) | 0xff000000);
 						result = -1;
 					}
-					else if(radio_freq > h_radio->freq_range.fm_area_max_freq)//FM5807
+					else if(radio_freq > h_radio->freq_range.fm_area_max_freq)//FM5807模块
 					{
 						__here__;
 						radio_freq = h_radio->freq_range.fm_area_min_freq;
@@ -233,7 +233,7 @@ void __autosearch_thread(void *p_arg)
 			}
 		}
 
-		if(dsk_radio_rcv->search_flag == 0x02)//search over
+		if(dsk_radio_rcv->search_flag == 0x02)//search over；搜索结束
 		{
 			if(dsk_radio_rcv->auto_maual_mode == DSK_RADIO_SEARCH_MANUAL)//手动搜索
 			{
@@ -264,7 +264,7 @@ void __autosearch_thread(void *p_arg)
 				}
 			}
 
-			dsk_radio_rcv->search_flag = 0x00;
+			dsk_radio_rcv->search_flag = 0x00;//搜索标志清0
 			dsk_radio_rcv->auto_maual_mode = 0x00;
 			__wrn(" cb_search_over555=0x%x\n", cb_search_over);
 
@@ -275,11 +275,11 @@ void __autosearch_thread(void *p_arg)
 			}
 		}
 
-		esKRNL_TimeDly(1);
+		esKRNL_TimeDly(1);//1*10ms
 		//esKRNL_TimeDly(500);
 	}
 }
-
+//打开radio接收端
 __s32 dsk_radio_rcv_open(void)
 {
 	if(h_radio == NULL)
@@ -306,10 +306,10 @@ __s32 dsk_radio_rcv_open(void)
 	eLIBs_fioctrl(h_radio->fm_drv, DRV_FM_CMD_RECVE_INIT, 0, 0);
 	//dsk_radio_rcv->thread_id = esKRNL_TCreate(__autosearch_thread, (void *)dsk_radio_rcv, 0x400,KRNL_priolevel3);
 	//changed by libaiao, for auto search while display freq,   2011.10.28
-	dsk_radio_rcv->thread_id = esKRNL_TCreate(__autosearch_thread, (void *)dsk_radio_rcv, 0x400, KRNL_priolevel3);
+	dsk_radio_rcv->thread_id = esKRNL_TCreate(__autosearch_thread, (void *)dsk_radio_rcv, 0x400, KRNL_priolevel3);//创建自动搜索线程
 	return EPDK_OK;
 }
-
+//检查radio接收端是否打开
 __bool dsk_radio_rcv_is_open(void)
 {
 	if(dsk_radio_rcv)
@@ -321,7 +321,7 @@ __bool dsk_radio_rcv_is_open(void)
 		return EPDK_FALSE;
 	}
 }
-
+//设置录音机接收端播放频率
 __s32 dsk_radio_rcv_set_freq_play(__s32 freq)
 {
 	__s32 result = 0;
